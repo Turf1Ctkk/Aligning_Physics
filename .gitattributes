@@ -1,0 +1,2 @@
+# Diff context in vendored patch files intentionally includes whitespace.
+*.patch -whitespace

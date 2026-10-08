@@ -1,0 +1,10 @@
+.work/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.pt
+*.onnx
+*.pkl
+*.npz
+.env
+.venv/
