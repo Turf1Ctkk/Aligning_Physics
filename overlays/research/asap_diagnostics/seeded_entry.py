@@ -16,6 +16,11 @@ def main():
     sys.path.insert(0, str(root))
     sys.path.insert(0, str(root / "humanoidverse"))
     import isaacgym  # noqa: F401 -- must precede torch
+    import torch
+    # Small CPU tensor operations/FK otherwise oversubscribe the 25-core host.
+    # This setting affects runtime parallelism, not the PPO sample budget.
+    torch.set_num_threads(int(os.environ.get("ASAP_CPU_THREADS", "4")))
+    torch.set_num_interop_threads(1)
     from humanoidverse.utils.common import seeding
     seeding(args.rng_seed, torch_deterministic=False)
     script = root / "humanoidverse" / ("train_agent.py" if args.mode == "train" else "eval_agent.py")

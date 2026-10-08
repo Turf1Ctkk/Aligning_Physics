@@ -51,6 +51,17 @@ Thus, the actuator error e is directly relevant to this particular mismatch. A j
 
 This is a mechanistic argument for a feature, not a guarantee that an e-diverse dataset produces a better neural model. An estimator with the correct one-parameter structure may need very little data. A residual model may instead be limited by optimization, regularization, finite update frequency, or other state-dependent effects. The Kp experiment is deliberately favorable to structured SysID and should be described that way.
 
+The actual controller clips ankle torque at ±50 Nm. Its instantaneous mismatch is therefore
+
+$$
+\Delta\tau=\operatorname{clip}(K_p^B e-K_d\dot q,\pm L)
+-\operatorname{clip}(K_p^A e-K_d\dot q,\pm L).
+$$
+
+Away from a clipping boundary, the local source sensitivity to stiffness is $e\,\mathbf 1(|K_p^A e-K_d\dot q|<L)$. A large error can thus have zero local sensitivity when the torque is already saturated. When both source and target saturate in the same direction, their instantaneous torques coincide. Near a boundary, a finite gain change can alter the active regime, so the local derivative alone is insufficient. This makes source torque headroom and coverage around saturation boundaries meaningful candidates alongside e. Neither formula is used to supply corrective-action training labels.
+
+A [descriptive training-pool audit](../results/calibration_features/README.md) illustrates this distinction. Evaluating the source PD law at recorded target states gives weighted nominal saturation fractions of approximately 18.94% for CR7, 0.009% for SquatL1, and 3.65% for StepFBL1. These are modeled source commands, not measured target torques. Clip-level joint range and servo-error RMS also have task-dependent associations. No model has yet been trained using these features for selection; they motivate an experiment rather than confirm the hypothesis.
+
 For the actual post-step data format, compute transition features using
 
 $$

@@ -1,6 +1,6 @@
 # Correction mechanisms and adaptation plan
 
-These formulations specify the planned comparison; only the action-residual replay pilot has measured results so far. A G1/IsaacGym adaptation must not be presented as a reproduction of another paper's entire hardware and task pipeline.
+These formulations specify the comparison. Only the action-residual pilot has measured calibration results so far; the shared torque model has passed a small physical integration run. A G1/IsaacGym adaptation must not be presented as a reproduction of another paper's entire hardware and task pipeline.
 
 ## Delta action: existing pilot, downstream stage pending
 
@@ -51,7 +51,13 @@ The existing 50 Hz rollout files cannot recover measured 200 Hz histories throug
 1. A controlled **torque-residual adaptation** using the common existing dataset and a disclosed rate/horizon, isolating correction representation as far as possible.
 2. A closer UAN-method adaptation with newly collected excitation and genuine 5 ms state/history samples.
 
-The second experiment also changes the data source; it cannot isolate model representation unless matched-data controls are added. Neither has run yet.
+The second experiment also changes the data source; it cannot isolate model representation unless matched-data controls are added. Neither full calibration comparison has completed yet.
+
+The implemented matched-data adaptation uses a shared 40→128→128→1 ELU network independently on four ankles. Its inputs are 20 samples of position-command error and zero-target-velocity error, measured from simulator states every 5 ms. The model starts with zero deterministic correction, learns through PPO, adds a scaled torque residual (5 Nm per normalized output) to the nominal PD torque, and clips the sum at the existing torque limits. History is zeroed at replay resets.
+
+Target recordings remain measured at 50 Hz. Nominal inputs are held for four physics steps using the verified next-transition action convention; the reference between measured states is interpolated. We do not claim the files provide measured target histories at 200 Hz. Calibration uses 96 rollout steps per update at 200 Hz to match the simulated duration of the action model's 24 steps at 50 Hz, with discount factors converted to the shorter step. This produces four times as many PPO transitions and a different parameter count, so the comparison cannot isolate model representation alone. The downstream task policy remains at 50 Hz while frozen torque inference runs at 200 Hz.
+
+CPU interface checks verified joint sharing, ankle-only output, zero initialization, finite policy gradients, and four-step nominal command holding. A four-update, 32-environment training run and a 60-window zero-correction replay run passed; these establish integration only. Full calibration and policy comparison are queued.
 
 ## Delta state/dynamics model: secondary baseline
 

@@ -29,4 +29,8 @@ An additional matched clean source-domain check completed all 261 recorded frame
 - Equal-budget calibration-data selection test.
 - Target-domain motion-tracking GIF/video comparisons.
 
+The repository's question, argument, hypothesis, pilot evidence and reproducibility overlay have been pushed. A training-pool actuator-feature audit is now available. SPI-style passive SysID and its downstream comparison are queued behind the main ASAP comparison. The UAN-style shared torque model passed CPU interface checks and a 32-environment, four-update physical training smoke run; a same-domain replay smoke test completed all 60 validation windows. No torque-calibration or downstream gain is claimed from these integration checks.
+
+The GPU stages are serialized after an attempted concurrent candidate replay caused CPU contention. An hourly thread follow-up checks artifacts and failures, with the confirmed GPU cutoff retained.
+
 Missing results remain labelled as missing; this file will be updated from actual artifacts.

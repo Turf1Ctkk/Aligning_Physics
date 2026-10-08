@@ -30,7 +30,7 @@ ASAP's Fig. 10(a) is a particular motivation: replay generalization continues to
 
 **At equal calibration-data and optimization budgets, covering mismatch-sensitive actuator regimes that overlap downstream policy behavior will support learned calibration better than selecting data solely for large joint range or large uncorrected trajectory error.**
 
-Here, useful regimes may include the direction and magnitude of commanded position error, joint velocity, and command change. Motion names and clip count are indirect proxies. Contact phase and history may matter for some mismatches, but are not assumed to be sufficient or necessary in advance.
+Here, useful regimes may include the direction and magnitude of commanded position error, torque headroom, joint velocity, and command change. Motion names and clip count are indirect proxies. Contact phase and history may matter for some mismatches, but are not assumed to be sufficient or necessary in advance.
 
 There are two separately falsifiable parts:
 
@@ -50,6 +50,8 @@ $$
 A stiffness mismatch directly couples to the servo error $e$. A large joint excursion does not imply a large servo error, and two motions can excite similar actuator regimes despite having different names. This provides a concrete reason to measure command-state relationships rather than joint range alone.
 
 The same reasoning is conditional on the mismatch: velocity-dependent friction, torque saturation, and delay need different excitation. It is not a theorem that one coverage measure is optimal for every residual model. For the present Kp test, velocity is a conditioning feature, not automatically an independent source of stiffness information. The post-step record also requires computing the next-transition servo error from state[i] and action[i+1].
+
+Torque clipping further complicates “more excitation”: when both systems saturate in the same direction, increasing servo error can leave their instantaneous applied torques identical. A descriptive audit of the existing training pool finds substantially different command-state distributions and source-model saturation fractions across tasks. This motivates measuring torque headroom as well as range; it does not establish which subset trains a better model. [Feature analysis and figure](results/calibration_features/README.md).
 
 Closed-loop adaptation adds another condition. The fine-tuned policy generates its own actions and visits its own states. A correction accurate on recorded inputs may be inaccurate on this changed distribution, or a policy may exploit its errors. Therefore, low average replay error need not be a sufficient proxy for downstream control quality. [The full research argument](docs/research_argument.md) derives these distinctions and lists competing explanations; [the experimental protocol](docs/experimental_protocol.md) makes them testable.
 

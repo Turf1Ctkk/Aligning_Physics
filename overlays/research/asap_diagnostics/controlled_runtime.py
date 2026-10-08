@@ -58,6 +58,8 @@ class TrackingRecorderPPO(PPO):
         reference = env._motion_lib.get_motion_state(env.motion_ids, times, offset=env.env_origins)
         actual_body = env.simulator._rigid_body_pos
         reference_body = reference["rg_pos"][:, :actual_body.shape[1]]
+        frame["reference_body_pos"] = (reference_body - env.env_origins[:, None]).detach().cpu().numpy().copy()
+        frame["reference_root_pos"] = (reference["root_pos"] - env.env_origins).detach().cpu().numpy().copy()
         frame["tracking_body_error_mm"] = torch.linalg.vector_norm(
             actual_body - reference_body, dim=-1).mean(-1).detach().cpu().numpy() * 1000
         frame["tracking_root_relative_body_error_mm"] = torch.linalg.vector_norm(

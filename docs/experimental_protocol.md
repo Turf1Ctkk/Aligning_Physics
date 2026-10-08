@@ -44,7 +44,7 @@ Sample a valid grid-aligned start within the chosen clip. This gives equal task 
 | Domain randomization | disabled for the mechanism comparison |
 | Independent training seeds | one pilot first, additional seeds for key comparisons if feasible |
 
-Task-policy fine-tuning starts from SquatL1 `model_6000.pt`, retains the learned policy weights and standard deviation, resets optimizer state, and uses 1000 **additional** iterations. Initial actor LR is 1e-4, critic LR 1e-3, and entropy coefficient 0. Apply the same choice to both downstream conditions. The first comparison uses fixed final-iteration policy checkpoints, rather than selecting them on the evaluation seeds.
+Task-policy fine-tuning starts from SquatL1 `model_6000.pt`, retains the learned policy weights and standard deviation, resets optimizer state, and uses 1000 **additional** iterations. Initial actor LR is 1e-4, critic LR 1e-3, and entropy coefficient 0; the inherited adaptive KL schedule can subsequently change the actor LR. Apply the same choice to both downstream conditions. The first comparison uses fixed final-iteration policy checkpoints, rather than selecting them on the evaluation seeds.
 
 ## Metrics
 
