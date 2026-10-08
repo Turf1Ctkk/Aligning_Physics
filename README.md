@@ -58,6 +58,8 @@ Delta action reduces replay position error from 38.42 to 31.12 mm. After noise r
 
 Noise repair improves CR7 success but reduces Squat and Step success. This finding does not establish the cause of the remaining failures. Each main method has one training seed. The two torque datasets also differ, so their contrast does not isolate excitation.
 
+A further [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. The input repair passes a short physical check, but its effect on policy success has not been tested. Delta results therefore still carry this training issue.
+
 The original Step policy succeeds at 90.6% in A and 1.0% in B. It learned the motion, but transfers poorly. CR7 already has 100% B success. [Source check](results/source_quality/metrics.md).
 
 Equal-size trajectory subsets also produce different replay and control results. This motivates the question: **which trajectory properties make learned correction useful, and when do replay gains transfer to humanoid control?** These experiments do not identify one causal feature.

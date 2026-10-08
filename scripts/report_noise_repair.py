@@ -18,6 +18,8 @@ TITLES = ('$E_{g-mpjpe}$ (mm)', '$E_{mpjpe}$ (mm)', '$E_{acc}$ (mm/frame²)', '$
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--root', type=Path, default=ROOT / 'results/noise_repair')
+    parser.add_argument('--baseline-root', type=Path, help='Use a completed earlier repair as the before condition')
+    parser.add_argument('--repair-kind', choices=('noise', 'reset'), default='noise')
     args = parser.parse_args()
     results = {}
     for task in TASKS:
@@ -26,15 +28,25 @@ def main():
             continue
         audit = json.loads((work / 'publication_audit.json').read_text())
         after = json.loads((work / 'comparison.json').read_text())
-        before = json.loads((ROOT / 'results/paper_evaluation' / (task + '.json')).read_text())['asap_ft']
+        before = (json.loads((args.baseline_root / task / 'comparison.json').read_text())
+                  if args.baseline_root else json.loads((ROOT / 'results/paper_evaluation' / (task + '.json')).read_text())['asap_ft'])
         if audit['task'] != task or audit['final_checkpoint_sha256'] != after['checkpoint_sha256'] or len(audit['evaluation_audit']) != 3:
             raise ValueError('Missing repair audit')
+        expected = ({'env._target_', 'experiment_dir', 'experiment_name'} if args.repair_kind == 'reset' else
+                    {'obs.noise_scales.base_pos_z', 'obs.noise_scales.feet_contact_force', 'experiment_dir', 'experiment_name'})
+        if set(audit['training_config_changes']) != expected:
+            raise ValueError('Repair kind does not match the audited intervention')
         results[task] = {'before': checked(before), 'after': checked(after)}
     if not results:
         raise ValueError('No audited repair task is complete')
     missing = [task for task in TASKS if task not in results]
-    lines = ['# Frozen-delta input-noise repair', '',
-             'The repair sets height and foot-force noise to zero during policy fine-tuning. Calibration already used zero noise. Data, input checkpoints, seeds and 1,000-update budgets stay the same. All other saved training settings match.', '',
+    if args.repair_kind == 'reset' and args.baseline_root is None:
+        raise ValueError('Reset report requires the prior noise-repair baseline')
+    description = ('The repair clears the previous delta action when an environment resets. Both conditions already use zero height and foot-force noise. Data, source and calibration checkpoints, seeds and 1,000-update budgets stay the same. Other saved training settings match.'
+                   if args.repair_kind == 'reset' else
+                   'The repair sets height and foot-force noise to zero during policy fine-tuning. Calibration already used zero noise. Data, input checkpoints, seeds and 1,000-update budgets stay the same. All other saved training settings match.')
+    title = '# Frozen-delta reset repair' if args.repair_kind == 'reset' else '# Frozen-delta input-noise repair'
+    lines = [title, '', description, '',
              'This is one paired training run per task. Three evaluation seeds measure deployment variation, not training replication. All stored starts and effective deployment settings match the historical evaluation. Metrics were recomputed from the new 27-point recordings.', '']
     if missing:
         lines += ['Pending tasks: ' + ', '.join(missing) + '. The table contains completed tasks only.', '']
@@ -52,7 +64,7 @@ def main():
         for setting, summary in pair.items():
             metrics = summary['paper_successful_trial_metrics']
             lines.append(f"| {task} | {setting.capitalize()} | {summary['paper_success_pct']:.1f} | " + ' | '.join(f'{metrics[key]:.3f}' if metrics else 'N/A' for key in FIELDS) + ' |')
-    lines += ['', 'The calibrator was not retrained, so open-loop calibration results stay unchanged. The subset policies were not repaired. Their earlier transfer results still carry the input-noise caveat.', '']
+    lines += ['', 'The calibrator was not retrained, so open-loop calibration results stay unchanged. The subset policies were not repaired. Their earlier transfer results still carry the input-noise and reset caveats.', '']
     (args.root / 'metrics.md').write_text('\n'.join(lines) + '\n')
     (args.root / 'chart_data.json').write_text(json.dumps({'completed': results, 'pending_tasks': missing}, indent=2) + '\n')
     fig, axes = plt.subplots(2, 3, figsize=(12, 7))
@@ -74,7 +86,7 @@ def main():
             ax.set_ylim(0, 115)
     axes.flat[-1].axis('off')
     axes.flat[-1].legend(*axes.flat[0].get_legend_handles_labels(), loc='center', frameon=False)
-    fig.suptitle('Frozen-delta input-noise repair')
+    fig.suptitle('Frozen-delta reset repair' if args.repair_kind == 'reset' else 'Frozen-delta input-noise repair')
     caption = 'First-second errors; full-motion success. One paired training seed per task.'
     if missing:
         caption += '\nPending: ' + ', '.join(missing) + '.'

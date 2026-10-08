@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 07:21 Beijing time (UTC+8).
+Updated October 9, 2026, 07:40 Beijing time (UTC+8).
 
 ## Completed
 
@@ -18,7 +18,9 @@ Updated October 9, 2026, 07:21 Beijing time (UTC+8).
 
 ## Server queue
 
-All authorized queues are complete. No GPU experiment is running or queued. The repair changes only height and foot-force noise entering the frozen delta during fine-tuning. Data, input checkpoints, seeds and 1,000-update budgets stay the same. Success changes from 89.6% to 70.8% for Squat, 91.7% to 99.0% for CR7, and 79.2% to 25.0% for Step. [Before/after results](../results/noise_repair/metrics.md).
+The previous queues and input-noise repair are complete. That repair changes only height and foot-force noise. Success changes from 89.6% to 70.8% for Squat, 91.7% to 99.0% for CR7, and 79.2% to 25.0% for Step. [Before/after results](../results/noise_repair/metrics.md).
+
+The author approved a separate reset-only comparison on all three tasks. Step is training; Squat and CR7 follow serially. Every run starts from its original model_6000 with the same frozen delta model_500, seed and 1,000-update budget. Both noise channels remain zero. Rewards, curricula and optimizer settings stay fixed. Each final policy receives the same three-seed B evaluation and independent metric audit. No new tracking result is available yet.
 
 Main comparison charts use the fixed-final repaired delta policy on every task. Other methods and all open-loop calibration results are unchanged. Historical raw reports and the original chart data remain available.
 
@@ -34,6 +36,6 @@ Passive SysID improves Step under this protocol. The repaired delta policies do 
 
 Raw results, historical reports and failed acquisition records are preserved. Final repository cleanup and author-supplied IsaacGym visuals follow review.
 
-A further CPU audit found that episode resets retain the previous delta action in the frozen model's input. Its effect on physical training has not been measured. Runtime code and completed experiments remain unchanged. [Reset audit](settings_audit.md#a-further-reset-issue).
+A further reset audit found that the previous delta action remains in the frozen model's input. Two no-update physical probes confirm that it changes the correction. An opt-in reset repair passes CPU and physical checks. Core files and completed experiments stay unchanged. Its effect on tracking success remains unknown while the new comparison runs. [Reset audit](../results/delta_reset_probe/metrics.md).
 
 GPU cutoff: October 9 at 17:00 Beijing time. Submission deadline: October 10 at 04:59 Beijing time.

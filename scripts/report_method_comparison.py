@@ -30,14 +30,16 @@ def style(ax, unit):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--repair-root', type=Path, help='Use repaired delta policies only after all three tasks pass audit')
+    parser.add_argument('--repair-kind', choices=('noise', 'reset'), default='noise')
+    parser.add_argument('--output', type=Path, default=ROOT / 'results/method_comparison')
     args = parser.parse_args()
-    output = ROOT / 'results/method_comparison'
-    output.mkdir(exist_ok=True)
+    output = args.output
+    output.mkdir(parents=True, exist_ok=True)
     policy = {task: json.loads((ROOT / 'results/paper_evaluation' / (task + '.json')).read_text()) for task in TASKS}
     repair_sources = {}
     if args.repair_root:
         if json.loads((args.repair_root / 'status.json').read_text())['status'] != 'complete':
-            raise ValueError('All three noise repairs must be complete before replacing main delta bars')
+            raise ValueError('All three repairs must be complete before replacing main delta bars')
         for task in TASKS:
             work = args.repair_root / task
             if json.loads((work / 'status.json').read_text())['status'] != 'complete':
@@ -46,6 +48,10 @@ def main():
             repaired = json.loads((work / 'comparison.json').read_text())
             if audit['task'] != task or audit['final_checkpoint_sha256'] != repaired['checkpoint_sha256'] or len(audit['evaluation_audit']) != 3:
                 raise ValueError('Missing repair publication audit')
+            expected = ({'env._target_', 'experiment_dir', 'experiment_name'} if args.repair_kind == 'reset' else
+                        {'obs.noise_scales.base_pos_z', 'obs.noise_scales.feet_contact_force', 'experiment_dir', 'experiment_name'})
+            if set(audit['training_config_changes']) != expected:
+                raise ValueError('Repair kind does not match the audited intervention')
             check_policy(repaired)
             policy[task]['asap_ft'] = repaired
             repair_sources[task] = {'checkpoint': repaired['checkpoint'], 'sha256': repaired['checkpoint_sha256']}
@@ -62,6 +68,14 @@ def main():
         if old_chart.get('repaired_delta_sources'):
             raise ValueError('Original chart data is missing; refuse to label repaired data as historical')
         history.write_text(previous.read_text())
+    if repair_sources and args.repair_kind == 'reset' and previous.exists():
+        noise_history = output / 'noise_repair_chart_data.json'
+        if not noise_history.exists():
+            old_chart = json.loads(previous.read_text())
+            old_sources = old_chart.get('repaired_delta_sources', {})
+            if set(old_sources) != set(TASKS) or any('/noise_repair/' not in v['checkpoint'] for v in old_sources.values()):
+                raise ValueError('Cannot archive the previous noise-only comparison')
+            noise_history.write_text(previous.read_text())
     fig, axes = plt.subplots(2, 2, figsize=(12, 7.4))
     for ax, key, title, unit in zip(axes.flat, FIELDS, TITLES, UNITS):
         values = [row[key] for row in open_rows]
@@ -91,7 +105,9 @@ def main():
     fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5, .95), ncol=4, frameon=False, fontsize=9)
     fig.suptitle('Closed-loop target tracking — first second, 27 points')
     caption = 'Error means include only trials that reach one second; see the table for inclusion percentages.\n'
-    caption += 'Delta uses the preset input-noise repair; other policies are unchanged.' if repair_sources else 'These are the original policies before the delta input-noise repair.'
+    caption += (('Delta uses the preset noise and reset repair; other policies are unchanged.'
+                 if args.repair_kind == 'reset' else 'Delta uses the preset input-noise repair; other policies are unchanged.')
+                if repair_sources else 'These are the original policies before the delta input-noise repair.')
     fig.text(.5, .014, caption, ha='center', fontsize=9)
     fig.tight_layout(rect=(0, .065, 1, .85))
     fig.savefig(output / 'closed_loop.png', dpi=180)
@@ -111,6 +127,8 @@ def main():
     plt.close(fig)
     scope = ('Delta uses the preset height/foot-force noise repair on all three tasks. Other policies and all calibration models are unchanged. [Before/after results](../noise_repair/metrics.md) retain both versions. No test-based checkpoint choice was made.'
              if repair_sources else 'These are the measured results before the training-setting repair. Delta policy training contains the noise mismatch described in the [setting audit](../../docs/settings_audit.md).')
+    if repair_sources and args.repair_kind == 'reset':
+        scope = 'Delta uses the preset noise and reset repairs on all three tasks. Other policies and calibration models are unchanged. [Reset comparison](../reset_repair/metrics.md) retains the previous noise-only policies. All fixed-final repaired models are used regardless of outcome.'
     rows = ['# Method comparison', '', scope, '',
             '## Open-loop replay', '',
             'One second, 24 measured bodies. All replay cases reach the horizon. Means give equal weight to tasks and original rollouts. Original and FT-only use the same uncalibrated dynamics; task policy weights do not enter fixed-action replay.', '',
@@ -136,7 +154,8 @@ def main():
         rows.append('')
     (output/'metrics.md').write_text('\n'.join(rows)+'\n')
     (output/'chart_data.json').write_text(json.dumps({'open_sources':list(sources),'open_metrics':open_rows,
-                'closed_summary':closed,'repaired_delta_sources':repair_sources,'E_vel_definition':'root first-difference error','rate_hz':50},indent=2)+'\n')
+                'closed_summary':closed,'repaired_delta_sources':repair_sources,'repair_kind':args.repair_kind if repair_sources else None,
+                'E_vel_definition':'root first-difference error','rate_hz':50},indent=2)+'\n')
     print('Verified all trial identities and replay weights; generated four-error figures and closed-loop success.')
 
 
