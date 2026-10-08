@@ -1,0 +1,1999 @@
+{
+  "scope": "First stored states/actions for all96 trials per method against FT-only; saved settings and commands. Hidden simulator state is not independently verified",
+  "max_absolute_difference": {
+    "vanilla": {
+      "8101": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8102": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8103": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      }
+    },
+    "ft_only": {
+      "8101": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8102": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8103": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      }
+    },
+    "asap_ft": {
+      "8101": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8102": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8103": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      }
+    },
+    "sysid_ft": {
+      "8101": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8102": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8103": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      }
+    },
+    "torque_ft": {
+      "8101": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8102": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8103": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      }
+    },
+    "active_sysid_ft": {
+      "8101": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8102": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8103": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      }
+    },
+    "wave_ft": {
+      "8101": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8102": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      },
+      "8103": {
+        "dof": 0.0,
+        "dof_vel": 0.0,
+        "root_trans_offset": 0.0,
+        "root_rot": 0.0,
+        "root_lin_vel": 0.0,
+        "root_ang_vel": 0.0,
+        "action": 0.0
+      }
+    }
+  },
+  "raw_config": {
+    "vanilla": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "base_lin_vel": 0.0,
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "actions": 0.0,
+        "dif_local_rigid_body_pos": 0.0,
+        "local_ref_rigid_body_pos": 0.0,
+        "ref_motion_phase": 0.0,
+        "history_actor": 0.0,
+        "history_critic": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_close_to_dof_pos_limit": 0.98,
+        "termination_close_to_dof_vel_limit": 0.98,
+        "termination_close_to_torque_limit": 0.98,
+        "termination_min_base_height": 0.2,
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "ft_only": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01,
+        "base_lin_vel": 0.0,
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "actions": 0.0,
+        "history": 0.0,
+        "dif_local_rigid_body_pos": 0.0,
+        "local_ref_rigid_body_pos": 0.0,
+        "ref_motion_phase": 0.0,
+        "actions_closed_loop": 0.0,
+        "actions_sim2real_policy": 0.0,
+        "history_actor": 0.0,
+        "history_critic": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_close_to_dof_pos_limit": 0.98,
+        "termination_close_to_dof_vel_limit": 0.98,
+        "termination_close_to_torque_limit": 0.98,
+        "termination_min_base_height": 0.3,
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "asap_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01,
+        "base_lin_vel": 0.0,
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "actions": 0.0,
+        "history": 0.0,
+        "dif_local_rigid_body_pos": 0.0,
+        "local_ref_rigid_body_pos": 0.0,
+        "ref_motion_phase": 0.0,
+        "actions_closed_loop": 0.0,
+        "actions_sim2real_policy": 0.0,
+        "history_actor": 0.0,
+        "history_critic": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_close_to_dof_pos_limit": 0.98,
+        "termination_close_to_dof_vel_limit": 0.98,
+        "termination_close_to_torque_limit": 0.98,
+        "termination_min_base_height": 0.3,
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "sysid_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01,
+        "base_lin_vel": 0.0,
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "actions": 0.0,
+        "history": 0.0,
+        "dif_local_rigid_body_pos": 0.0,
+        "local_ref_rigid_body_pos": 0.0,
+        "ref_motion_phase": 0.0,
+        "actions_closed_loop": 0.0,
+        "actions_sim2real_policy": 0.0,
+        "history_actor": 0.0,
+        "history_critic": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_close_to_dof_pos_limit": 0.98,
+        "termination_close_to_dof_vel_limit": 0.98,
+        "termination_close_to_torque_limit": 0.98,
+        "termination_min_base_height": 0.3,
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "torque_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01,
+        "base_lin_vel": 0.0,
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "actions": 0.0,
+        "history": 0.0,
+        "dif_local_rigid_body_pos": 0.0,
+        "local_ref_rigid_body_pos": 0.0,
+        "ref_motion_phase": 0.0,
+        "actions_closed_loop": 0.0,
+        "actions_sim2real_policy": 0.0,
+        "history_actor": 0.0,
+        "history_critic": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_close_to_dof_pos_limit": 0.98,
+        "termination_close_to_dof_vel_limit": 0.98,
+        "termination_close_to_torque_limit": 0.98,
+        "termination_min_base_height": 0.3,
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "active_sysid_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01,
+        "base_lin_vel": 0.0,
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "actions": 0.0,
+        "history": 0.0,
+        "dif_local_rigid_body_pos": 0.0,
+        "local_ref_rigid_body_pos": 0.0,
+        "ref_motion_phase": 0.0,
+        "actions_closed_loop": 0.0,
+        "actions_sim2real_policy": 0.0,
+        "history_actor": 0.0,
+        "history_critic": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_close_to_dof_pos_limit": 0.98,
+        "termination_close_to_dof_vel_limit": 0.98,
+        "termination_close_to_torque_limit": 0.98,
+        "termination_min_base_height": 0.3,
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "wave_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01,
+        "base_lin_vel": 0.0,
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "actions": 0.0,
+        "history": 0.0,
+        "dif_local_rigid_body_pos": 0.0,
+        "local_ref_rigid_body_pos": 0.0,
+        "ref_motion_phase": 0.0,
+        "actions_closed_loop": 0.0,
+        "actions_sim2real_policy": 0.0,
+        "history_actor": 0.0,
+        "history_critic": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_close_to_dof_pos_limit": 0.98,
+        "termination_close_to_dof_vel_limit": 0.98,
+        "termination_close_to_torque_limit": 0.98,
+        "termination_min_base_height": 0.3,
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    }
+  },
+  "effective_config": {
+    "vanilla": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "actions": 0.0,
+        "base_ang_vel": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "history_actor": 0.0,
+        "projected_gravity": 0.0,
+        "ref_motion_phase": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "ft_only": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "actions": 0.0,
+        "base_ang_vel": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "history_actor": 0.0,
+        "projected_gravity": 0.0,
+        "ref_motion_phase": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "asap_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "actions": 0.0,
+        "base_ang_vel": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "history_actor": 0.0,
+        "projected_gravity": 0.0,
+        "ref_motion_phase": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "sysid_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "actions": 0.0,
+        "base_ang_vel": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "history_actor": 0.0,
+        "projected_gravity": 0.0,
+        "ref_motion_phase": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "torque_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "actions": 0.0,
+        "base_ang_vel": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "history_actor": 0.0,
+        "projected_gravity": 0.0,
+        "ref_motion_phase": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "active_sysid_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "actions": 0.0,
+        "base_ang_vel": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "history_actor": 0.0,
+        "projected_gravity": 0.0,
+        "ref_motion_phase": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    },
+    "wave_ft": {
+      "obs.obs_dict.actor_obs": [
+        "base_ang_vel",
+        "projected_gravity",
+        "dof_pos",
+        "dof_vel",
+        "actions",
+        "ref_motion_phase",
+        "history_actor"
+      ],
+      "obs.noise_scales": {
+        "actions": 0.0,
+        "base_ang_vel": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0,
+        "history_actor": 0.0,
+        "projected_gravity": 0.0,
+        "ref_motion_phase": 0.0
+      },
+      "obs.add_noise_currculum": false,
+      "env.config.termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "env.config.termination_scales": {
+        "termination_gravity_x": 0.8,
+        "termination_gravity_y": 0.8,
+        "termination_motion_far_threshold": 1.5
+      },
+      "env.config.termination_curriculum.terminate_when_motion_far_curriculum": false,
+      "env.config.noise_to_initial_level": 0.2,
+      "env.config.init_noise_scale": {
+        "dof_pos": 0.1,
+        "dof_vel": 0.15,
+        "root_pos": 0,
+        "root_rot": 0,
+        "root_vel": 0.01,
+        "root_ang_vel": 0.01
+      },
+      "simulator.config.sim": {
+        "fps": 200,
+        "control_decimation": 4,
+        "substeps": 1,
+        "physx": {
+          "num_threads": 4,
+          "solver_type": 1,
+          "num_position_iterations": 4,
+          "num_velocity_iterations": 0,
+          "contact_offset": 0.01,
+          "rest_offset": 0.0,
+          "bounce_threshold_velocity": 0.5,
+          "max_depenetration_velocity": 1.0,
+          "default_buffer_size_multiplier": 5,
+          "contact_collection": 2
+        }
+      },
+      "robot.control.stiffness": {
+        "hip_yaw": 100,
+        "hip_roll": 100,
+        "hip_pitch": 100,
+        "knee": 200,
+        "ankle_pitch": 16,
+        "ankle_roll": 16,
+        "waist_yaw": 400,
+        "waist_roll": 400,
+        "waist_pitch": 400,
+        "shoulder_pitch": 90,
+        "shoulder_roll": 60,
+        "shoulder_yaw": 20,
+        "elbow": 60
+      },
+      "robot.control.damping": {
+        "hip_yaw": 2.5,
+        "hip_roll": 2.5,
+        "hip_pitch": 2.5,
+        "knee": 5.0,
+        "ankle_pitch": 0.2,
+        "ankle_roll": 0.1,
+        "waist_yaw": 5.0,
+        "waist_roll": 5.0,
+        "waist_pitch": 5.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 1.0,
+        "shoulder_yaw": 0.4,
+        "elbow": 1.0
+      },
+      "robot.motion.motion_file": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "robot.asset.self_collisions": 0,
+      "obs.obs_auxiliary.history_actor": {
+        "base_ang_vel": 4,
+        "projected_gravity": 4,
+        "dof_pos": 4,
+        "dof_vel": 4,
+        "actions": 4,
+        "ref_motion_phase": 4
+      }
+    }
+  },
+  "raw_differences_from_ft_only": {
+    "vanilla": {
+      "obs.noise_scales": {
+        "method": {
+          "base_lin_vel": 0.0,
+          "base_ang_vel": 0.0,
+          "projected_gravity": 0.0,
+          "dof_pos": 0.0,
+          "dof_vel": 0.0,
+          "actions": 0.0,
+          "dif_local_rigid_body_pos": 0.0,
+          "local_ref_rigid_body_pos": 0.0,
+          "ref_motion_phase": 0.0,
+          "history_actor": 0.0,
+          "history_critic": 0.0
+        },
+        "ft_only": {
+          "base_pos_z": 1.0,
+          "feet_contact_force": 0.01,
+          "base_lin_vel": 0.0,
+          "base_ang_vel": 0.0,
+          "projected_gravity": 0.0,
+          "dof_pos": 0.0,
+          "dof_vel": 0.0,
+          "actions": 0.0,
+          "history": 0.0,
+          "dif_local_rigid_body_pos": 0.0,
+          "local_ref_rigid_body_pos": 0.0,
+          "ref_motion_phase": 0.0,
+          "actions_closed_loop": 0.0,
+          "actions_sim2real_policy": 0.0,
+          "history_actor": 0.0,
+          "history_critic": 0.0
+        }
+      },
+      "env.config.termination_scales": {
+        "method": {
+          "termination_close_to_dof_pos_limit": 0.98,
+          "termination_close_to_dof_vel_limit": 0.98,
+          "termination_close_to_torque_limit": 0.98,
+          "termination_min_base_height": 0.2,
+          "termination_gravity_x": 0.8,
+          "termination_gravity_y": 0.8,
+          "termination_motion_far_threshold": 1.5
+        },
+        "ft_only": {
+          "termination_close_to_dof_pos_limit": 0.98,
+          "termination_close_to_dof_vel_limit": 0.98,
+          "termination_close_to_torque_limit": 0.98,
+          "termination_min_base_height": 0.3,
+          "termination_gravity_x": 0.8,
+          "termination_gravity_y": 0.8,
+          "termination_motion_far_threshold": 1.5
+        }
+      }
+    },
+    "ft_only": {},
+    "asap_ft": {},
+    "sysid_ft": {},
+    "torque_ft": {},
+    "active_sysid_ft": {},
+    "wave_ft": {}
+  },
+  "recording_sha256": {
+    "vanilla": {
+      "8101": "e49691a744eff740988074d4cc95cc687ba9e32d0e602027b6382ffd054f9cc8",
+      "8102": "d43a226c3d0b07d926ff8b6d59e831a8176af2cba27e106cfb20958c81eeaca3",
+      "8103": "a1ad7b7615ef7dc042c4fd94873c681215b7a5fb0b66a44e14f6b0da38205a8a"
+    },
+    "ft_only": {
+      "8101": "5bf5439cd9fbf6016f55d4ce8d72662cd11259678debca06b970c39bc8e6ec10",
+      "8102": "7ad548bfee5c0c0b7f941299ec6e678c9286c838f0e0de2cc34d3ea045f5ffe5",
+      "8103": "a831e58a9a055520de6d70e5e2b1d51740eb80933214386359f1bdc3142912e5"
+    },
+    "asap_ft": {
+      "8101": "eebda9e4102310ce1c75532fefc4fa5e5cfce7768d442d4002a81a26a2b1a3b7",
+      "8102": "8469b82ace7470e5e157a86528f6d599bef516b56dd551a8489502a829f8f286",
+      "8103": "35392d4d2dfeee8f4141b78d2a98cdf9113a6bbcc9fdf3ca1850335ced3386e6"
+    },
+    "sysid_ft": {
+      "8101": "b8cb2f87bed65b877482b1187ff812b2e8a310ff298ef639ec866f21e8660c9b",
+      "8102": "e5be720bf13f4a1ded72b76c0bf13a5e5280a33c1fc528ff720e68a527f06caf",
+      "8103": "40226134fc05f2b76b6ba7e70a7b4f30f852f3502037664026a591650bf842cb"
+    },
+    "torque_ft": {
+      "8101": "9d79112299bc92ef7a9e773472e57318c8aeae35ded06eeec50d1a8d53fcc8fe",
+      "8102": "242e4725d844bec249d3ba43430a3bc4353a2c1e9374f93524e41c777f0b529d",
+      "8103": "5707097f6df02d262ad449ff3f6961f0d385c4785f75222615dd9a21a194dc53"
+    },
+    "active_sysid_ft": {
+      "8101": "b958daa8fe6d84d44340bc28bcfb0c6895910e2291757c44866f461a37a79698",
+      "8102": "536aa37611c10b597b270fc10ee6fb3f3cbdae1121f2d111770b6481538b4345",
+      "8103": "ad2bc6cad1e5dbc1a0c626a16c637bfc3415c2601f1457780cee8d1e322ee2d5"
+    },
+    "wave_ft": {
+      "8101": "bc96a27e20f2454437d08aab2a2eaf7c3e46dd81c9475615e450ef2dab73c0ac",
+      "8102": "a36b853ed8531af2dadc92a80e03894e8260602d1494c5690e2d5a0ffe6eb294",
+      "8103": "914798c08f6cbb2440a899ae8c6aad6b67cac31a8011b0dd006f9d1030c2bcf5"
+    }
+  },
+  "evaluation_commands": {
+    "vanilla_seed8101": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "ft_only_seed8101": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/ft_only/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "asap_ft_seed8101": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/asap_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "sysid_ft_seed8101": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/sysid_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "torque_ft_seed8101": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/torque_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "active_sysid_ft_seed8101": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/active_sysid_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "wave_ft_seed8101": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/wave_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "vanilla_seed8102": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "ft_only_seed8102": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/ft_only/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "asap_ft_seed8102": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/asap_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "sysid_ft_seed8102": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/sysid_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "torque_ft_seed8102": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/torque_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "active_sysid_ft_seed8102": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/active_sysid_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "wave_ft_seed8102": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/wave_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "vanilla_seed8103": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "ft_only_seed8103": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/ft_only/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "asap_ft_seed8103": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/asap_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "sysid_ft_seed8103": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/sysid_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "torque_ft_seed8103": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/torque_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "active_sysid_ft_seed8103": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/active_sysid_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    },
+    "wave_ft_seed8103": {
+      "record_steps": 196,
+      "horizon_s": 3.92,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/wave_ft/model_1000.pt",
+      "task_only_environment": true,
+      "extra_action": false
+    }
+  },
+  "policy_checkpoint_sha256": {
+    "vanilla": "c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7",
+    "ft_only": "91dde0fcf0c5533b6675273ab1df8e7e8e122643a44e8a5da0e3a02307072b9a",
+    "asap_ft": "582c054032c1fa831a362e20e4c478166b9e519b315dd1a998d59089f3c6dd43",
+    "sysid_ft": "48ebec08d431694337743322a6966048396136d40dcbf728d4f0887fba900457",
+    "torque_ft": "bede4b6f088cb2cbbb38aa11df75a7cdf76cc74bb972711a55f5a19cd87501e4",
+    "active_sysid_ft": "ac27694d2a78cc69bc00aa79b0cb3b5d71f84562b82569c99eb1ea33ee5ed228",
+    "wave_ft": "7406a1408a8a0c4b93328bd4f2746d4f906f50c47e34544f5e6e94148c9c25a6"
+  },
+  "evaluation_horizon_s": 3.92
+}

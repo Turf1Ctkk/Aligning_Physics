@@ -110,6 +110,8 @@ The [actual 200 Hz acquisition comparison](../results/wave_acquisition/README.md
 
 The FT-only control completes 96/96 in this sample, leaving a completion ceiling for demonstrating extra benefit in the current test. Tracking error and survival must accompany completion, and independently trained policies are needed to judge small differences. A harder mismatch or evaluation distribution could provide additional headroom in a later study; the current thresholds and budgets are retained rather than changed after seeing these outcomes.
 
+The [CR7 task-policy extension](../results/task_extensions/CR7/README.md) adds a task-dependent constraint. The same frozen calibrators are reused, with fresh equal-budget policies from CR7 model6000. Original and FT-only both complete96/96, while all calibrated conditions complete fewer trials (55–92/96). FT-only improves global body error but worsens root-relative error over the same96 successes, illustrating that even the task-error metric is not a single notion of improved control. Some calibrated policies terminate before the first second; their prefix means condition on survivors. CR7 was present in calibration, so these results cannot be labelled out-of-distribution motion generalization. They motivate the controlled within-model data comparison without proving a data bottleneck.
+
 ## 5. A hypothesis with explicit conditions
 
 For an actuator-response mismatch that the chosen residual interface can represent, and after replay artifacts are controlled, **equal-budget datasets covering relevant command-state regimes should improve calibration on held-out trajectories compared with a dataset selected only for large joint range or uniform repetition**.

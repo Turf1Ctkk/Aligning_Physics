@@ -114,6 +114,10 @@ All 96 trials complete the first second, so its means include every trial. Full-
 
 ASAP does not exceed the continued-training control on completion or first-second tracking. Passive SysID gives a slightly lower first-second global error but lower completion and higher root-relative error. Torque-model fine-tuning matches completion but has higher full-horizon body error: 105.12 versus 94.45 mm, both over 96 completed trials. There is no stable method ranking from one training seed, and no evidence here that a particular data feature caused these differences. [The passive estimator](results/passive_sysid/README.md) also fails to recover the configured gains exactly. A post-hoc replay test finds lower fitting loss at the estimated gains than at the known target gains, implicating the fitting objective or replay conditions as well as finite search; its exact cause remains unresolved.
 
+### CR7 task-policy reuse
+
+The [completed CR7 extension](results/task_extensions/CR7/README.md) reuses the frozen mixed-motion calibrators and trains each task policy for 1000 additional updates. Original/FT-only/ASAP/passive SysID/common torque/active SysID/excitation torque complete **96/96, 96/96, 92/96, 77/96, 70/96, 87/96 and 55/96**, respectively, over 3.92 seconds. FT-only lowers full-horizon global error (134.30→116.53 mm) but raises root-relative error (44.77→51.55 mm); both means cover all 96 trials. Calibrated conditions have no additional completion benefit in this seed. Some fail before one second, so their prefix errors must be read with valid-trial counts. CR7 was included in calibration; this is task-policy reuse, not a calibration-motion holdout.
+
 ## Method comparisons and follow-up
 
 | Controller evaluated in B | Purpose | Status |
@@ -140,7 +144,7 @@ A minimal hypothesis experiment is queued after the task extensions, conditional
 - [Replay corrections and reproduction notes](docs/reproduction.md).
 - [Experiment status](docs/STATUS.md): completed evidence versus planned work.
 
-The matched Squat closed-loop measurements are available. Active acquisition succeeded after a disclosed uniform start-window revision; active-policy evaluation is complete (92/96); the genuine high-rate comparison is complete (unchanged/excitation 34/96 and 95/96). CR7 fine-tuning is running; StepFBL1 and the minimal data-selection test follow. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity or hardware performance.
+The matched Squat closed-loop measurements are available. Active acquisition succeeded after a disclosed uniform start-window revision; active-policy evaluation is complete (92/96); the genuine high-rate comparison is complete (unchanged/excitation 34/96 and 95/96). CR7 training/evaluation is complete; StepFBL1 is running, followed by the minimal data-selection test. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity or hardware performance.
 
 ## References
 
