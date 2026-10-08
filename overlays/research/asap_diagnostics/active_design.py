@@ -9,15 +9,18 @@ from research.asap_diagnostics.dataset_tools import slice_motion
 ANKLES = [4, 5, 10, 11]
 
 
-def group_windows(motions, frames=54):
+def group_windows(motions, frames=54, earliest=False):
     """One central window in the longest segment of each original training group."""
     groups = defaultdict(list)
     for key, motion in motions.items():
         groups[motion["dataset_group"]].append((key, motion))
     result = {}
     for group in sorted(groups):
-        key, motion = max(groups[group], key=lambda item: (len(item[1]["dof"]), item[0]))
-        start = (len(motion["dof"]) - frames) // 2
+        eligible = [item for item in groups[group] if len(item[1]["dof"])>=frames]
+        if not eligible:
+            raise ValueError("Training group has no full command-design window: " + group)
+        key, motion = min(eligible, key=lambda item:item[0]) if earliest else max(eligible, key=lambda item: (len(item[1]["dof"]), item[0]))
+        start = 0 if earliest else (len(motion["dof"]) - frames) // 2
         if start < 0:
             raise ValueError("Training group has no full command-design window: " + group)
         result[key] = slice_motion(motion, start, start + frames)

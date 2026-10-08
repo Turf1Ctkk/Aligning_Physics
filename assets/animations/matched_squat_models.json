@@ -1,0 +1,22 @@
+{
+  "scope": "Derived skeleton visualization of recorded simulator positions; not a Gym render",
+  "recordings": [
+    "ft_only.pkl",
+    "sysid_ft.pkl",
+    "torque_ft.pkl"
+  ],
+  "labels": [
+    "Fine-tuning only",
+    "Passive SysID fine-tuning",
+    "Torque-model fine-tuning"
+  ],
+  "trial": 0,
+  "first_termination_rows": [
+    null,
+    null,
+    null
+  ],
+  "selection": "Fixed trial index; must be disclosed with aggregate metrics",
+  "playback_fps": 25,
+  "record_fps": 50
+}

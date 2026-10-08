@@ -1,0 +1,148 @@
+{
+  "scope": "Archived failed central-window controls; design d000=unchanged,d001=random",
+  "failures": [
+    {
+      "key": "d000_p0__CR7__rollout007__segment0",
+      "gains": [
+        13.512213038091938,
+        10.421220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.3796476721763611,
+      "max_abs_horizontal_gravity": 0.8665497456701882
+    },
+    {
+      "key": "d000_p1__CR7__rollout007__segment0",
+      "gains": [
+        12.512213038091938,
+        10.421220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.3248046338558197,
+      "max_abs_horizontal_gravity": 0.8526838639567677
+    },
+    {
+      "key": "d000_p1__CR7__rollout008__segment0",
+      "gains": [
+        12.512213038091938,
+        10.421220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.42465972900390625,
+      "max_abs_horizontal_gravity": 0.8251652457358226
+    },
+    {
+      "key": "d000_p2__CR7__rollout007__segment0",
+      "gains": [
+        13.012213038091938,
+        10.921220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.3528625965118408,
+      "max_abs_horizontal_gravity": 0.8733955315387739
+    },
+    {
+      "key": "d000_p2__CR7__rollout008__segment0",
+      "gains": [
+        13.012213038091938,
+        10.921220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.41411709785461426,
+      "max_abs_horizontal_gravity": 0.8344347001355554
+    },
+    {
+      "key": "d000_p3__CR7__rollout007__segment0",
+      "gains": [
+        13.012213038091938,
+        9.921220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.36441582441329956,
+      "max_abs_horizontal_gravity": 0.8654892259882996
+    },
+    {
+      "key": "d001_p0__CR7__rollout007__segment0",
+      "gains": [
+        13.512213038091938,
+        10.421220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.3951185941696167,
+      "max_abs_horizontal_gravity": 0.8601484432399433
+    },
+    {
+      "key": "d001_p1__CR7__rollout001__segment0",
+      "gains": [
+        12.512213038091938,
+        10.421220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.49159449338912964,
+      "max_abs_horizontal_gravity": 0.8048829141680023
+    },
+    {
+      "key": "d001_p1__CR7__rollout007__segment0",
+      "gains": [
+        12.512213038091938,
+        10.421220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.34558337926864624,
+      "max_abs_horizontal_gravity": 0.8587468652418158
+    },
+    {
+      "key": "d001_p1__CR7__rollout008__segment0",
+      "gains": [
+        12.512213038091938,
+        10.421220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.4276353418827057,
+      "max_abs_horizontal_gravity": 0.8279581364787992
+    },
+    {
+      "key": "d001_p2__CR7__rollout007__segment0",
+      "gains": [
+        13.012213038091938,
+        10.921220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.3710678219795227,
+      "max_abs_horizontal_gravity": 0.8746861974284554
+    },
+    {
+      "key": "d001_p2__CR7__rollout008__segment0",
+      "gains": [
+        13.012213038091938,
+        10.921220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.4507681131362915,
+      "max_abs_horizontal_gravity": 0.8185203933862002
+    },
+    {
+      "key": "d001_p3__CR7__rollout007__segment0",
+      "gains": [
+        13.012213038091938,
+        9.921220666808713
+      ],
+      "frames": 50,
+      "reset": false,
+      "min_root_height_m": 0.3735824227333069,
+      "max_abs_horizontal_gravity": 0.8697101964873004
+    }
+  ]
+}

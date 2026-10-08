@@ -71,6 +71,8 @@ A retrospective selector can inspect the existing training pool, but that does n
 
 The hypothesis is unsupported if coverage fails to outperform uniform selection within uncertainty. A replay improvement without target-domain policy improvement supports only the replay component. Repeat key comparisons with independent training seeds before claiming a stable ranking. A second mismatch is required to support the claim that useful features depend on the mechanism, rather than merely the current Kp test.
 
+The queued minimal implementation fixes the same 18 original parents, six per motion, across uniform, coverage and joint-range selectors. Each trains one 54-frame window per parent, 954 unique transitions in total. Coverage is greedy max-min selection on 28 robustly scaled window summaries; it is an explicit heuristic, not an optimality claim. Its [actual selection preview](../results/content_selection/README.md) records budgets and feature definitions. Each subset's same-domain floor is measured without replacing windows. Only one training seed is initially budgeted, so differences are descriptive; a stable ranking requires repeats. The queue starts only if at least five hours remain before cutoff.
+
 ## Timing and release
 
 Submission deadline: 2026-10-09 23:59 UTC+03:00, equivalent to 20:59 UTC. Proposed experimental cutoff: 2026-10-09 12:00 UTC+03:00. Prefer a complete one-motion comparison with honest limitations over incomplete three-motion claims. Preserve a reviewable repository before the deadline; do not postpone documentation until all methods finish.

@@ -85,11 +85,11 @@ def run(args):
     shutil.copytree(args.controlled / "datasets", work / "datasets", dirs_exist_ok=True)
     shutil.copy2(args.controlled / "sampling_manifest.json", work / "sampling_manifest.json")
     write(work / "protocol.json", {"method": "UAN-style torque-model adaptation, not original hardware/data reproduction",
-        "target_data": "same mixed30 policy rollouts measured at 50 Hz", "correction_rate_hz": 200,
+        "target_data": getattr(args, "target_data_description", "same mixed30 policy rollouts measured at 50 Hz"), "correction_rate_hz": 200,
         "history": "20 genuine simulator states at 5ms; q target error and zero-target-velocity error",
         "actor": "shared per-joint 40-128-128-1 ELU, four ankles", "torque_scale_nm": 5,
         "calibration_budget": "1000 updates, 96 steps per environment; same simulated duration as 50Hz/24-step action baseline",
-        "limitations": "Different parameter count and four times as many PPO transitions; target reference is interpolated between measured 50Hz states; history is zeroed at reset"})
+        "limitations": getattr(args, "limitations_description", "Different parameter count and four times as many PPO transitions; target reference is interpolated between measured 50Hz states; history is zeroed at reset")})
     launch(work, "train", plan["training_seed"] + 2000, torque_training(work, plan, 4, smoke=True), "torque_smoke", deadline)
     launch(work, "train", plan["training_seed"] + 2000, torque_training(work, plan, args.iterations), "train_torque", deadline)
     candidates = []
@@ -137,6 +137,8 @@ if __name__ == "__main__":
     parser.add_argument("--wait-for", type=Path)
     parser.add_argument("--iterations", type=int, default=1000)
     parser.add_argument("--cutoff", default="2026-10-09T09:00:00+00:00")
+    parser.add_argument("--target-data-description", default="same mixed30 policy rollouts measured at 50 Hz")
+    parser.add_argument("--limitations-description", default="Different parameter count and four times as many PPO transitions; target reference is interpolated between measured 50Hz states; history is zeroed at reset")
     args = parser.parse_args()
     try:
         run(args)

@@ -147,7 +147,10 @@ class TorqueReplayRecorder(TorquePPO):
     def _record_dataset_frame(self):
         # Save at the original target observation rate; never pretend interpolation
         # supplied measured target histories at 200 Hz.
-        if int(self.env.episode_length_buf[0]) % 4:
+        stride = int(self.env.config.get("dataset_record_stride", 4))
+        if stride not in (1, 4):
+            raise ValueError("Recorder supports 200Hz or 50Hz output from 200Hz physics")
+        if int(self.env.episode_length_buf[0]) % stride:
             return
         self.dataset_frames.append(snapshot(self.env))
         if len(self.dataset_frames) < int(self.env.config.dataset_record_steps):
@@ -157,7 +160,7 @@ class TorqueReplayRecorder(TorquePPO):
         fields = {key: np.stack([frame[key] for frame in self.dataset_frames], axis=1) for key in self.dataset_frames[0]}
         motions = {"motion" + str(i): {key: value[i] for key, value in fields.items()} for i in range(self.env.num_envs)}
         for motion in motions.values():
-            motion.update(fps=50., body_names=list(self.env.config.robot.body_names))
+            motion.update(fps=50. if stride == 4 else 200., body_names=list(self.env.config.robot.body_names))
         joblib.dump(motions, output)
         raise SystemExit(0)
 

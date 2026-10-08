@@ -17,7 +17,7 @@ def adapted_training(work, plan, task, label, selected, gains, torque, iteration
         return base
     additions = ["++algo._target_=research.asap_diagnostics.torque_runtime.FreshTaskPPO",
                  "env.config.add_extra_action=False", "++obs.obs_dict.closed_loop_actor_obs=[ref_motion_phase]"]
-    if label == "torque_ft":
+    if label in ("torque_ft", "wave_ft"):
         additions += ["++env._target_=research.asap_diagnostics.torque_runtime.FrozenTorqueTracking",
                       "++env.config.torque_checkpoint=" + str(torque), "++env.config.torque_scale_nm=5.0"]
     else:
@@ -44,6 +44,7 @@ def run(args):
     plan = json.loads((args.controlled / "plan.json").read_text())
     selected = json.loads((args.controlled / "delta_selection.json").read_text())["checkpoint"]
     torque = json.loads((args.torque / "torque_selection.json").read_text())["checkpoint"]
+    wave_model = json.loads((args.wave / "wave/torque_selection.json").read_text())["checkpoint"] if args.wave else None
     passive = json.loads((args.sysid / "identified.json").read_text())
     active = json.loads((args.active / "identified_comparison.json").read_text())["active"]["gains"]
     gains = {"sysid_ft": [passive["ankle_pitch_Kp"], passive["ankle_roll_Kp"]], "active_sysid_ft": active}
@@ -59,12 +60,14 @@ def run(args):
         directory = work / task
         directory.mkdir(exist_ok=True)
         controllers = {"vanilla": plan["tasks"][task]["checkpoint"]}
-        for label in ("ft_only", "asap_ft", "sysid_ft", "torque_ft", "active_sysid_ft"):
+        methods = ["ft_only", "asap_ft", "sysid_ft", "torque_ft", "active_sysid_ft"] + (["wave_ft"] if wave_model else [])
+        for label in methods:
             final = directory / "models" / label / ("model_%d.pt" % args.iterations)
             if not final.exists():
                 if (final.parent / "config.yaml").exists():
                     raise RuntimeError("Incomplete task policy exists; no silent resume")
-                command = adapted_training(directory, plan, task, label, selected, gains, torque, args.iterations)
+                command = adapted_training(directory, plan, task, label, selected, gains,
+                                           wave_model if label == "wave_ft" else torque, args.iterations)
                 launch(directory, "train", plan["training_seed"] + 1000, command, "train_" + label, deadline)
             controllers[label] = str(final)
         results = {}
@@ -85,6 +88,7 @@ if __name__ == "__main__":
     for key in ("controlled", "sysid", "torque", "active", "work-dir", "wait-for"):
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--iterations", type=int, default=1000)
+    parser.add_argument("--wave", type=Path, help="Also reuse the true-rate excitation model on both new tasks")
     parser.add_argument("--cutoff", default="2026-10-09T09:00:00+00:00")
     args = parser.parse_args()
     try:

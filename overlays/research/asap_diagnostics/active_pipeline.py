@@ -115,12 +115,13 @@ def run(args):
     selected = json.loads((args.controlled / "delta_selection.json").read_text())["checkpoint"]
     identified = json.loads((args.sysid / "identified.json").read_text())
     center = [identified["ankle_pitch_Kp"], identified["ankle_roll_Kp"]]
-    windows = group_windows(joblib.load(args.controlled / "datasets/mixed30.pkl"))
+    windows = group_windows(joblib.load(args.controlled / "datasets/mixed30.pkl"), earliest=True)
     weights = hierarchical_weights(windows)
     write(work / "protocol.json", {
         "method": "G1 bounded-command active SysID adaptation; not the original Go2 command interface",
         "initial_estimate": center, "training_groups": len(windows), "window_input_frames": 54,
         "collection": "52 actual post-step frames per group and arm; fixed original commands plus ankle sinusoidal excitation",
+        "window_selection": "Earliest54 frames in each group's first eligible continuous segment; uniform rule after archived central-window feasibility failure, no groups dropped",
         "arms": ["zero", "random", "active"], "target_gain_setting": "Kp16, collection only; never supplied to design or fitting",
         "design": "Four normalized variables: pitch/roll amplitude <= .08 rad and frequencies .5-3 Hz; opposite legs have pi phase",
         "information": "Task/group-weighted ankle-position trajectory Fisher approximation; gain differences +/-.5; assumed noise .005 rad; ridge .001",

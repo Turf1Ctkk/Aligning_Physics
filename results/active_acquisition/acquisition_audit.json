@@ -1,0 +1,812 @@
+[
+  {
+    "key": "zero__CR7__rollout000__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout000__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout001__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout001__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout002__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout002__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout003__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout003__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout004__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout004__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout005__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout005__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout006__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout006__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout007__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout007__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout008__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout008__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__CR7__rollout009__segment0",
+    "arm": "zero",
+    "source_key": "CR7__rollout009__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout000__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout000__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout001__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout001__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout002__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout002__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout003__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout003__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout004__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout004__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout005__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout005__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout006__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout006__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout007__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout007__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout008__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout008__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__SquatL1__rollout009__segment0",
+    "arm": "zero",
+    "source_key": "SquatL1__rollout009__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout000__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout000__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout001__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout001__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout002__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout002__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout003__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout003__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout004__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout004__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout005__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout005__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout006__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout006__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout007__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout007__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout008__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout008__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "zero__StepFBL1__rollout009__segment0",
+    "arm": "zero",
+    "source_key": "StepFBL1__rollout009__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout000__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout000__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout001__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout001__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout002__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout002__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout003__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout003__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout004__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout004__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout005__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout005__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout006__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout006__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout007__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout007__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout008__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout008__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__CR7__rollout009__segment0",
+    "arm": "random",
+    "source_key": "CR7__rollout009__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout000__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout000__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout001__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout001__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout002__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout002__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout003__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout003__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout004__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout004__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout005__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout005__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout006__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout006__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout007__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout007__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout008__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout008__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__SquatL1__rollout009__segment0",
+    "arm": "random",
+    "source_key": "SquatL1__rollout009__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout000__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout000__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout001__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout001__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout002__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout002__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout003__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout003__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout004__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout004__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout005__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout005__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout006__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout006__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout007__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout007__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout008__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout008__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "random__StepFBL1__rollout009__segment0",
+    "arm": "random",
+    "source_key": "StepFBL1__rollout009__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout000__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout000__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout001__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout001__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout002__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout002__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout003__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout003__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout004__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout004__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout005__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout005__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout006__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout006__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout007__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout007__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout008__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout008__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__CR7__rollout009__segment0",
+    "arm": "active",
+    "source_key": "CR7__rollout009__segment0",
+    "task": "CR7",
+    "group": "CR7__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout000__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout000__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout001__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout001__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout002__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout002__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout003__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout003__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout004__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout004__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout005__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout005__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout006__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout006__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout007__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout007__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout008__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout008__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__SquatL1__rollout009__segment0",
+    "arm": "active",
+    "source_key": "SquatL1__rollout009__segment0",
+    "task": "SquatL1",
+    "group": "SquatL1__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout000__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout000__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout000",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout001__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout001__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout001",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout002__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout002__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout002",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout003__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout003__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout003",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout004__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout004__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout004",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout005__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout005__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout005",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout006__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout006__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout006",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout007__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout007__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout007",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout008__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout008__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout008",
+    "frames": 52,
+    "command_max_error": 0.0
+  },
+  {
+    "key": "active__StepFBL1__rollout009__segment0",
+    "arm": "active",
+    "source_key": "StepFBL1__rollout009__segment0",
+    "task": "StepFBL1",
+    "group": "StepFBL1__rollout009",
+    "frames": 52,
+    "command_max_error": 0.0
+  }
+]
