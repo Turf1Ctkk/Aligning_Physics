@@ -1,5 +1,5 @@
 {
-  "scope": "Completed primary uniform condition only; coverage/range pending; no selector ranking",
+  "scope": "Completed primary uniform condition; all three primary selectors complete; conditional repeat in progress. No population ranking.",
   "selected_checkpoint": "model_500.pt",
   "validation_body_mpjpe_mm": 35.25752894695893,
   "test_replay": {

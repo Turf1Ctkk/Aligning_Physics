@@ -1,0 +1,34 @@
+{
+  "scope": "Derived skeleton visualization of recorded simulator positions; not a Gym render",
+  "recordings": [
+    "uniform.pkl",
+    "coverage.pkl",
+    "joint_range.pkl"
+  ],
+  "labels": [
+    "Uniform",
+    "Actuator coverage",
+    "Joint range"
+  ],
+  "trial": 0,
+  "first_termination_rows": [
+    251,
+    null,
+    null
+  ],
+  "selection": "Fixed trial index; must be disclosed with aggregate metrics",
+  "playback_fps": 25,
+  "record_fps": 50,
+  "deployment_seed": 8101,
+  "training_seed_scope": "Primary calibration20305008/policy20306008; one policy per selector, all aggregate outcomes reported",
+  "original_full_recording_sha256": {
+    "uniform": "04f646a3fea518e946bd39f1933d42bafbe5855a9446d3c42cb9e481dfad545d",
+    "coverage": "0926dd7ff83928e0ec4c6dd4fb0037c07b4c6277ef51f8c98b05390545830910",
+    "joint_range": "78e2819b1c101441ecb97c473c0be792212dd8c76afa2e196b55dd8e75229854"
+  },
+  "slim_trial_recording_sha256": {
+    "uniform": "9add2f96cdac3f6f26520347e502d13492ac9a51e7b78d99d46cd3881e069b27",
+    "coverage": "b711369181e0ae8ee49ac0050e38c90cfbbbd2282f9b27de63eff26308e5284e",
+    "joint_range": "e3ba66111ed942a22f44219b5d476e5e425245e375311195154d47a1b4b30a5d"
+  }
+}

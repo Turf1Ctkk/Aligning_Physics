@@ -1,0 +1,40 @@
+{
+  "scope": "Existing completed evaluation logs; optional keyboard listener fails in an ancillary thread, main recorder markers and validated reports remain. No logs or failed artifacts discarded, no physics rerun or listener patch. Launcher rejects nonzero main exits.",
+  "logs": {
+    "same16_zero.log": {
+      "keyboard_nameerror_in_background_thread": true,
+      "completion_marker_present": true,
+      "log_sha256": "230e4b24fe235f007e5d90840b7cc5bee51df08878b5ef4e5e445673a7d9a068"
+    },
+    "delta_500.log": {
+      "keyboard_nameerror_in_background_thread": true,
+      "completion_marker_present": true,
+      "log_sha256": "b342bb34fcc01c14f84c1e4e21ec4eede3b091a063c431564b58e9db4a27232e"
+    },
+    "delta_1000.log": {
+      "keyboard_nameerror_in_background_thread": true,
+      "completion_marker_present": true,
+      "log_sha256": "57cce69a2314cccb058863197cb71a7e0dc2464f1a8c969af880d823c781269b"
+    },
+    "learned.log": {
+      "keyboard_nameerror_in_background_thread": true,
+      "completion_marker_present": true,
+      "log_sha256": "9e60983fa13242443e7058a7f896127b1dff74a590f3e14874da9e47737a17fe"
+    },
+    "asap_ft_seed8101.log": {
+      "keyboard_nameerror_in_background_thread": true,
+      "completion_marker_present": true,
+      "log_sha256": "3b4a4992582a37ca94954a2356065e44810f6c5fb2e51b85d241f99f10aa6372"
+    },
+    "asap_ft_seed8102.log": {
+      "keyboard_nameerror_in_background_thread": true,
+      "completion_marker_present": true,
+      "log_sha256": "a850450e3447ac984ad37f71d838fc33705d129cc1f29070c919c8bff764a5e5"
+    },
+    "asap_ft_seed8103.log": {
+      "keyboard_nameerror_in_background_thread": true,
+      "completion_marker_present": true,
+      "log_sha256": "8d37df9fc5578505fd4f7b55711a0526fa703ad348ab802a69b0cb8752fbdc19"
+    }
+  }
+}

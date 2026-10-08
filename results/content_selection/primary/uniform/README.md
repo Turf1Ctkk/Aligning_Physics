@@ -1,6 +1,6 @@
-# Primary uniform subset: completed condition, other selectors pending
+# Primary uniform subset: completed condition
 
-This is one completed condition of the prespecified18-parent/954-transition selector study. Coverage has also completed; joint-range calibration is running and repeat outcomes remain pending. The complete three-selector reporter is intentionally not run yet; this snapshot does not establish a selector ranking.
+This is one completed condition of the prespecified18-parent/954-transition selector study. All three primary selectors have completed and the full reporter has run; the prespecified repeat is running. [Complete primary comparison](../../README.md). This condition is one training seed, not a population ranking.
 
 ## Calibration and held-out replay
 
@@ -28,4 +28,4 @@ All88 terminations are retained: one at2.56s (seed8101,trial7), the remainder af
 
 The [runtime-log audit](runtime_log_audit.json) retains a background keyboard-listener `NameError` caused by the missing optional keyboard import. All8 existing affected evaluation logs contain recorder completion markers; the error occurs in an ancillary thread before PPO setup, while the main recorder completes. The queue launcher rejects a nonzero main-process exit. No record was discarded and no physics result was rerun or patched. Successful train/test same16 checks reuse one root log name; both split-specific raw records, configs and JSON reports remain, and the audit describes only existing logs.
 
-This uniform result alone supports neither actuator coverage nor joint-range selection. The other selectors retain identical budgets and rules; their outcomes and the conditional second seed must be reported whether positive or negative.
+This uniform result alone supports neither actuator coverage nor joint-range selection. The other primary selectors retained identical budgets and rules and are reported in the complete comparison; the second seed must likewise be reported whether positive or negative.

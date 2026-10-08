@@ -1,0 +1,4 @@
+{
+  "checkpoint": "/root/autodl-tmp/aligning_physics/content_20261008/joint_range/models/delta/model_1000.pt",
+  "validation_body_mpjpe_mm": 55.894537457347106
+}
