@@ -39,6 +39,8 @@ It reuses the isolated mixed30 data, writes a task/group sampling manifest, runs
 
 `verify_torque_contracts.py` checks CPU actuator interfaces. The torque queue first runs a small physical smoke train before its full calibration budget. CPU PASS and smoke completion must not be reported as calibration gains. `seeded_entry.py` limits CPU PyTorch threading to four by default (`ASAP_CPU_THREADS` can override it); this controls runtime contention rather than changing sample budgets.
 
+`active_pipeline.py --controlled /path/to/controlled --sysid /path/to/sysid --work-dir /path/to/new/active --wait-for /path/to/torque/status.json` queues bounded command design, new target acquisition, matched unchanged/random/optimized refitting and an optimized-arm Squat policy comparison. `verify_active.py` checks CPU command and information contracts only. New acquisition must also pass an executed-command alignment check; actor outputs ignored during replay must never be substituted for actual acquisition commands. The active pipeline stops on infeasible controls, failed acquisition groups, subprocess failures or cutoff; it does not discard failed groups silently.
+
 For figures and trajectory animations, install `requirements-analysis.txt` in a separate analysis environment. JSON-only reporting does not require the simulator.
 
 ## Artifact policy

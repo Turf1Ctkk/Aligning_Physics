@@ -8,6 +8,8 @@ Training uses the agreed Kp20→Kp16 mismatch, four ankle physical corrections, 
 
 ## Held-out replay
 
+![Controlled calibration replay](../../assets/figures/controlled_replay.png)
+
 | Test condition | Ankle RMSE (rad) ↓ | All-joint RMSE (rad) ↓ | Joint-velocity RMSE (rad/s) ↓ | Root error (mm) ↓ | Global body MPJPE (mm) ↓ |
 |---|---:|---:|---:|---:|---:|
 | B Kp16, zero correction | 0.01398 | 0.00932 | 0.49133 | 7.03 | 7.40 |

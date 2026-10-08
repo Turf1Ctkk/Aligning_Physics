@@ -100,10 +100,11 @@ The first priority is a complete SquatL1 adaptation comparison:
 | Controller evaluated in B | Purpose | Status |
 |---|---|---|
 | Original pretrained policy | Direct-transfer baseline | One clean trial; systematic evaluation queued |
-| Policy fine-tuned in A without calibration | Equal-budget continued-training control | Training |
-| Policy fine-tuned in A with frozen delta, deployed without delta | ASAP downstream benefit | Queued |
+| Policy fine-tuned in A without calibration | Equal-budget continued-training control | 1000 updates complete; deployment evaluation pending |
+| Policy fine-tuned in A with frozen delta, deployed without delta | ASAP downstream benefit | Training |
 | Policy fine-tuned with identified physical parameters | Structured SysID comparison | Queued |
 | Policy fine-tuned with a learned torque correction | UAN-method comparison | Small integration tests passed; full run queued |
+| Policy fine-tuned after active command acquisition and parameter refitting | G1 active-SysID adaptation | CPU contracts passed; serialized physical queue pending |
 
 Each method must first pass replay and integration checks. Results will be recorded whether or not control improves. The goal is to compare correction mechanisms in a common G1 task, not assume the relative ranking reported on different robots and tasks transfers here.
 

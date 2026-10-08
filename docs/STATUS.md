@@ -16,7 +16,7 @@
 - SquatL1 task-policy fine-tuning: 1000 additional iterations per condition, actor LR 1e-4, critic LR 1e-3, entropy 0, optimizer reset, pretrained weights/std retained.
 - GPU experiment cutoff: 2026-10-09 12:00 UTC+03:00.
 
-New weighted delta training and isolated replay have completed. Installed CPU contracts passed. Validation selects the 500-update checkpoint. Held-out global body MPJPE decreases from 37.66 to 30.51 mm; velocity RMSE slightly worsens (0.87892 to 0.89057 rad/s). All 66 one-second test windows complete. Equal-budget no-calibration policy fine-tuning is now running. A clean initial B-domain standalone SquatL1 evaluation terminated at approximately 3.9 seconds before completing the 5.23-second reference; this is one trial, not a measured aggregate completion rate.
+New weighted delta training and isolated replay have completed. Installed CPU contracts passed. Validation selects the 500-update checkpoint. Held-out global body MPJPE decreases from 37.66 to 30.51 mm; velocity RMSE slightly worsens (0.87892 to 0.89057 rad/s). All 66 one-second test windows complete. Equal-budget no-calibration policy fine-tuning completed 1000 updates; fine-tuning with frozen delta is running. Standalone target evaluation is pending for both. A clean initial B-domain standalone SquatL1 evaluation terminated at approximately 3.9 seconds before completing the 5.23-second reference; this is one trial, not a measured aggregate completion rate.
 
 An additional matched clean source-domain check completed all 261 recorded frames (5.22 seconds), with global body MPJPE 87.07 mm and root-relative body MPJPE 36.10 mm. This one-trial contrast establishes a useful baseline, but is not a statistical estimate of the effect of the domain change.
 
@@ -32,5 +32,7 @@ An additional matched clean source-domain check completed all 261 recorded frame
 The repository's question, argument, hypothesis, pilot evidence and reproducibility overlay have been pushed. A training-pool actuator-feature audit is now available. SPI-style passive SysID and its downstream comparison are queued behind the main ASAP comparison. The UAN-style shared torque model passed CPU interface checks and a 32-environment, four-update physical training smoke run; a same-domain replay smoke test completed all 60 validation windows. No torque-calibration or downstream gain is claimed from these integration checks.
 
 The GPU stages are serialized after an attempted concurrent candidate replay caused CPU contention. An hourly thread follow-up checks artifacts and failures, with the confirmed GPU cutoff retained.
+
+A bounded-command active-acquisition stage is queued after the torque comparison, with matched unchanged/random/optimized acquisition budgets. CPU checks verify command support, a known finite-difference information matrix, and rejection of infeasible trajectories. Physical acquisition, refitting and control results remain pending. This adaptation does not use the original Go2 command interface; its scope and assumptions are described in the methods document.
 
 Missing results remain labelled as missing; this file will be updated from actual artifacts.
