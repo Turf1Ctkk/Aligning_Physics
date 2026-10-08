@@ -118,6 +118,18 @@ The downstream extension is conditional: this benefit should improve target-doma
 
 The conditions prevent an overly broad claim, but must not become post-hoc excuses. Before testing, fix the mismatch, model interface, feature definitions, budgets, and evaluation. Report whether the conditions are met using the same-domain check, measured coverage, independent target trajectories, and adapted-policy feature distributions. If a coverage selector performs no better than uniform selection under these settings, the hypothesis is unsupported for this test.
 
+The experimental unit for a data-selection claim is the entire calibration-and-adaptation run. Write its deployed policy as $\pi(D,z)$, where $z$ contains calibration and policy-training randomness. A population claim would concern
+
+$$
+\Delta J=\mathbb E_z[J_B(\pi(D_{\rm coverage},z))-J_B(\pi(D_{\rm uniform},z))],
+$$
+
+with cost defined consistently so lower is better. The present results retain completion, survival and tracking as separate outcomes; no post-hoc scalar weighting is used to declare a winner. The queued experiment estimates one paired-seed contrast, not this expectation or its training variance. Repeated deployment initializations measure another source of variability. Repeated windows from a trained calibrator do not turn it into multiple trained models. Shared seeds reduce one avoidable difference but do not make optimization trajectories identical across datasets.
+
+Changing a subset or acquisition input is also a bundled intervention. It can change actuator features, their temporal order, support/contact regimes and the optimization landscape together. An observed performance difference identifies an effect of that dataset construction in the tested pipeline; it does not identify a unique causal feature. To test the proposed mechanism later, remove one feature family from the selector or vary temporal excitation while matching parent identities, duration and coarse joint range, using fresh training seeds and an untouched evaluation split. These are follow-up ablations, not selectors adjusted after the present test results.
+
+The minimal selector is deliberately weaker than an optimal information design: its 28 window summaries approximate command-state diversity, while neither controller sensitivity nor future adapted-policy occupancy enters its objective. Consequently, a negative result would reject this heuristic under the tested model, gap and budget. It would not establish that all information-aware selection is ineffective. A positive replay-only result would support the calibration component, while leaving the conditional control component unverified. This separation keeps the hypothesis falsifiable without treating every outcome as confirmation.
+
 ## 6. What would count as evidence
 
 First, establish that calibration can change replay and downstream performance in the common task framework. Compare correction representations and include equal-budget continued policy training without calibration. This establishes the experimental phenomenon; it does not itself prove a data-content explanation.
