@@ -1,0 +1,7 @@
+{
+  "checkpoint": "model_500.pt",
+  "validation_global_body_mpjpe_mm": 30.662840855172295,
+  "selection_scope": "Validation only, 1-second global body MPJPE, 500/1000 candidates",
+  "training_seed": 20301008,
+  "evaluation_seed": 20301108
+}

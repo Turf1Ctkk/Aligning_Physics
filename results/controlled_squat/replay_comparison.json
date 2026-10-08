@@ -1,0 +1,386 @@
+{
+  "same16_zero": {
+    "0.25": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.0030150684431240436,
+        "all_joint_rmse_rad": 0.0041838397440210106,
+        "joint_velocity_rmse_rad_s": 0.35761655639699813,
+        "root_position_mean_error_mm": 0.9304948932249285,
+        "global_body_mpjpe_mm": 1.3871274744580522,
+        "root_relative_body_mpjpe_mm": 1.135027419015731,
+        "feet_position_mean_error_mm": 1.2765094693895387
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.003990418638805451,
+          "all_joint_rmse_rad": 0.007385229805551589,
+          "joint_velocity_rmse_rad_s": 0.4591016436193843,
+          "root_position_mean_error_mm": 1.9131579963198242,
+          "global_body_mpjpe_mm": 2.9088742947157993,
+          "root_relative_body_mpjpe_mm": 2.280049967280077,
+          "feet_position_mean_error_mm": 2.721958186149383
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.0017395540439022223,
+          "all_joint_rmse_rad": 0.0017458748458693007,
+          "joint_velocity_rmse_rad_s": 0.23458483301251776,
+          "root_position_mean_error_mm": 0.2828389090915754,
+          "global_body_mpjpe_mm": 0.509931231417246,
+          "root_relative_body_mpjpe_mm": 0.46158341121843105,
+          "feet_position_mean_error_mm": 0.4195595098325605
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.0033152326466644568,
+          "all_joint_rmse_rad": 0.003420414580642141,
+          "joint_velocity_rmse_rad_s": 0.37916319255909225,
+          "root_position_mean_error_mm": 0.5954877742633857,
+          "global_body_mpjpe_mm": 0.7425768972411112,
+          "root_relative_body_mpjpe_mm": 0.6634488785486852,
+          "feet_position_mean_error_mm": 0.6880107121866723
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    },
+    "0.5": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.0034592559170839392,
+        "all_joint_rmse_rad": 0.004840534405995404,
+        "joint_velocity_rmse_rad_s": 0.3791191860065914,
+        "root_position_mean_error_mm": 2.251998899922041,
+        "global_body_mpjpe_mm": 2.9051011282751573,
+        "root_relative_body_mpjpe_mm": 2.0599666285094815,
+        "feet_position_mean_error_mm": 2.899268733005584
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.003940175827604318,
+          "all_joint_rmse_rad": 0.007128386887550147,
+          "joint_velocity_rmse_rad_s": 0.4136924379832661,
+          "root_position_mean_error_mm": 4.789113083568557,
+          "global_body_mpjpe_mm": 6.23313939209609,
+          "root_relative_body_mpjpe_mm": 4.276522578508035,
+          "feet_position_mean_error_mm": 6.43720674437462
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.0020205853409785194,
+          "all_joint_rmse_rad": 0.0020061450906748678,
+          "joint_velocity_rmse_rad_s": 0.2498870328297739,
+          "root_position_mean_error_mm": 0.5753559409022364,
+          "global_body_mpjpe_mm": 0.9175541444090916,
+          "root_relative_body_mpjpe_mm": 0.7489574784101081,
+          "feet_position_mean_error_mm": 0.772772504038232
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.004417006582668981,
+          "all_joint_rmse_rad": 0.0053870712397611955,
+          "joint_velocity_rmse_rad_s": 0.473778087206734,
+          "root_position_mean_error_mm": 1.391527675295329,
+          "global_body_mpjpe_mm": 1.5646098483202902,
+          "root_relative_body_mpjpe_mm": 1.1544198286103007,
+          "feet_position_mean_error_mm": 1.4878269506038988
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    },
+    "1.0": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.013980140610673071,
+        "all_joint_rmse_rad": 0.009315344057790872,
+        "joint_velocity_rmse_rad_s": 0.49132936052963133,
+        "root_position_mean_error_mm": 7.028785906902594,
+        "global_body_mpjpe_mm": 7.396237630614416,
+        "root_relative_body_mpjpe_mm": 4.638946317893388,
+        "feet_position_mean_error_mm": 5.4589117107392875
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.02585648912323462,
+          "all_joint_rmse_rad": 0.015591638270374528,
+          "joint_velocity_rmse_rad_s": 0.5937061071506863,
+          "root_position_mean_error_mm": 14.152346811519681,
+          "global_body_mpjpe_mm": 14.821465896998827,
+          "root_relative_body_mpjpe_mm": 9.464498020088465,
+          "feet_position_mean_error_mm": 11.483094565826368
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.006814536485469138,
+          "all_joint_rmse_rad": 0.0038150576622097967,
+          "joint_velocity_rmse_rad_s": 0.3004755254359323,
+          "root_position_mean_error_mm": 2.5084325707260766,
+          "global_body_mpjpe_mm": 2.8095648593781464,
+          "root_relative_body_mpjpe_mm": 1.850686147119426,
+          "feet_position_mean_error_mm": 1.5079169879511611
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.009269396223315454,
+          "all_joint_rmse_rad": 0.008539336240788294,
+          "joint_velocity_rmse_rad_s": 0.5798064490022754,
+          "root_position_mean_error_mm": 4.425578338462023,
+          "global_body_mpjpe_mm": 4.557682135466276,
+          "root_relative_body_mpjpe_mm": 2.601654786472273,
+          "feet_position_mean_error_mm": 3.3857235784403334
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    }
+  },
+  "source20_zero": {
+    "0.25": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.015160518115880116,
+        "all_joint_rmse_rad": 0.009720338101118824,
+        "joint_velocity_rmse_rad_s": 0.7312813439559823,
+        "root_position_mean_error_mm": 3.0620759498421015,
+        "global_body_mpjpe_mm": 3.493767105459405,
+        "root_relative_body_mpjpe_mm": 2.2923950795582564,
+        "feet_position_mean_error_mm": 3.4724088513522826
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.010437394325204723,
+          "all_joint_rmse_rad": 0.010638363658499414,
+          "joint_velocity_rmse_rad_s": 0.8070443650541128,
+          "root_position_mean_error_mm": 3.114618560880514,
+          "global_body_mpjpe_mm": 4.187724677911551,
+          "root_relative_body_mpjpe_mm": 3.25367937940631,
+          "feet_position_mean_error_mm": 5.051530204864958
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.011594545367520739,
+          "all_joint_rmse_rad": 0.006582058804610195,
+          "joint_velocity_rmse_rad_s": 0.45723589968219225,
+          "root_position_mean_error_mm": 1.955538387994358,
+          "global_body_mpjpe_mm": 2.00149488085754,
+          "root_relative_body_mpjpe_mm": 1.4112122640150158,
+          "feet_position_mean_error_mm": 1.5653080084378335
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.023449614654914887,
+          "all_joint_rmse_rad": 0.011940591840246862,
+          "joint_velocity_rmse_rad_s": 0.9295637671316419,
+          "root_position_mean_error_mm": 4.116070900651433,
+          "global_body_mpjpe_mm": 4.292081757609123,
+          "root_relative_body_mpjpe_mm": 2.212293595253443,
+          "feet_position_mean_error_mm": 3.8003883407540564
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    },
+    "0.5": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.027155376080051623,
+        "all_joint_rmse_rad": 0.014775068515417147,
+        "joint_velocity_rmse_rad_s": 0.6962336728964167,
+        "root_position_mean_error_mm": 9.211973255955641,
+        "global_body_mpjpe_mm": 9.775386681936814,
+        "root_relative_body_mpjpe_mm": 5.451536561629787,
+        "feet_position_mean_error_mm": 8.256061104705497
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.009748528434736895,
+          "all_joint_rmse_rad": 0.010263765227032127,
+          "joint_velocity_rmse_rad_s": 0.6678222590871556,
+          "root_position_mean_error_mm": 7.433057798789733,
+          "global_body_mpjpe_mm": 9.331469651223594,
+          "root_relative_body_mpjpe_mm": 6.331142874972204,
+          "feet_position_mean_error_mm": 10.949573665506366
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.026423861685623412,
+          "all_joint_rmse_rad": 0.012606624276033433,
+          "joint_velocity_rmse_rad_s": 0.4418138562683014,
+          "root_position_mean_error_mm": 6.795885072278326,
+          "global_body_mpjpe_mm": 6.6733730084671095,
+          "root_relative_body_mpjpe_mm": 3.5976342800904826,
+          "feet_position_mean_error_mm": 4.0950661297494
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.045293738119794556,
+          "all_joint_rmse_rad": 0.02145481604318588,
+          "joint_velocity_rmse_rad_s": 0.979064903333793,
+          "root_position_mean_error_mm": 13.406976896798863,
+          "global_body_mpjpe_mm": 13.32131738611974,
+          "root_relative_body_mpjpe_mm": 6.425832529826674,
+          "feet_position_mean_error_mm": 9.723543518860724
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    },
+    "1.0": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.07499692670400517,
+        "all_joint_rmse_rad": 0.03480237253730758,
+        "joint_velocity_rmse_rad_s": 0.8789198707040787,
+        "root_position_mean_error_mm": 39.31884745523049,
+        "global_body_mpjpe_mm": 37.65898479628715,
+        "root_relative_body_mpjpe_mm": 19.985784592308814,
+        "feet_position_mean_error_mm": 20.21010259892744
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.048683971356679616,
+          "all_joint_rmse_rad": 0.025401373032512865,
+          "joint_velocity_rmse_rad_s": 0.9571603832210815,
+          "root_position_mean_error_mm": 25.959008441394538,
+          "global_body_mpjpe_mm": 26.40154740084562,
+          "root_relative_body_mpjpe_mm": 15.815917895930511,
+          "feet_position_mean_error_mm": 19.64867115679852
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.06693055995906765,
+          "all_joint_rmse_rad": 0.02929183852791164,
+          "joint_velocity_rmse_rad_s": 0.5224224818871381,
+          "root_position_mean_error_mm": 33.10297571325944,
+          "global_body_mpjpe_mm": 30.71554284518296,
+          "root_relative_body_mpjpe_mm": 15.942988712128559,
+          "feet_position_mean_error_mm": 11.855512496290785
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.10937624879626824,
+          "all_joint_rmse_rad": 0.04971390605149824,
+          "joint_velocity_rmse_rad_s": 1.1571767470040164,
+          "root_position_mean_error_mm": 58.89455821103748,
+          "global_body_mpjpe_mm": 55.859864142832876,
+          "root_relative_body_mpjpe_mm": 28.198447168867375,
+          "feet_position_mean_error_mm": 29.126124143693005
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    }
+  },
+  "controlled_delta": {
+    "0.25": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.028642945454812784,
+        "all_joint_rmse_rad": 0.014959717484757747,
+        "joint_velocity_rmse_rad_s": 0.927713681608538,
+        "root_position_mean_error_mm": 2.5782487387787287,
+        "global_body_mpjpe_mm": 3.4122313232497867,
+        "root_relative_body_mpjpe_mm": 2.4441485042831013,
+        "feet_position_mean_error_mm": 3.822337842569263
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.02652764611600005,
+          "all_joint_rmse_rad": 0.016242148515382065,
+          "joint_velocity_rmse_rad_s": 0.9834778754601127,
+          "root_position_mean_error_mm": 2.6474401292510334,
+          "global_body_mpjpe_mm": 3.9053233965613168,
+          "root_relative_body_mpjpe_mm": 3.040569275087583,
+          "feet_position_mean_error_mm": 4.460665699322928
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.020867824742472618,
+          "all_joint_rmse_rad": 0.010345889675640435,
+          "joint_velocity_rmse_rad_s": 0.6583728965847453,
+          "root_position_mean_error_mm": 1.3949408431897816,
+          "global_body_mpjpe_mm": 1.7690426191043684,
+          "root_relative_body_mpjpe_mm": 1.3051772886945627,
+          "feet_position_mean_error_mm": 2.08764527715251
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.03853336550596568,
+          "all_joint_rmse_rad": 0.018291114263250745,
+          "joint_velocity_rmse_rad_s": 1.1412902727807561,
+          "root_position_mean_error_mm": 3.6923652438953702,
+          "global_body_mpjpe_mm": 4.562327954083676,
+          "root_relative_body_mpjpe_mm": 2.9866989490671587,
+          "feet_position_mean_error_mm": 4.918702551232349
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    },
+    "0.5": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.03180119859409092,
+        "all_joint_rmse_rad": 0.01659041101721564,
+        "joint_velocity_rmse_rad_s": 0.8201754969198478,
+        "root_position_mean_error_mm": 8.008396432182307,
+        "global_body_mpjpe_mm": 9.042274153239262,
+        "root_relative_body_mpjpe_mm": 5.36228624481166,
+        "feet_position_mean_error_mm": 8.526666968933378
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.022563667974179764,
+          "all_joint_rmse_rad": 0.014522314275169961,
+          "joint_velocity_rmse_rad_s": 0.8035519194541662,
+          "root_position_mean_error_mm": 6.425522015283077,
+          "global_body_mpjpe_mm": 8.365125853651529,
+          "root_relative_body_mpjpe_mm": 5.6639163775932975,
+          "feet_position_mean_error_mm": 9.317565151697346
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.02114544890505108,
+          "all_joint_rmse_rad": 0.010722309322834665,
+          "joint_velocity_rmse_rad_s": 0.6182617674433964,
+          "root_position_mean_error_mm": 4.4355972394115195,
+          "global_body_mpjpe_mm": 4.796872818341778,
+          "root_relative_body_mpjpe_mm": 2.8677278017882073,
+          "feet_position_mean_error_mm": 3.491106258142917
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.05169447890304191,
+          "all_joint_rmse_rad": 0.024526609453642302,
+          "joint_velocity_rmse_rad_s": 1.0387128038619808,
+          "root_position_mean_error_mm": 13.164070041852327,
+          "global_body_mpjpe_mm": 13.964823787724479,
+          "root_relative_body_mpjpe_mm": 7.555214555053475,
+          "feet_position_mean_error_mm": 12.771329496959876
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    },
+    "1.0": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.06131245432482613,
+        "all_joint_rmse_rad": 0.030026679422225627,
+        "joint_velocity_rmse_rad_s": 0.8905685594188731,
+        "root_position_mean_error_mm": 31.366863784314486,
+        "global_body_mpjpe_mm": 30.509216986391447,
+        "root_relative_body_mpjpe_mm": 16.306514235707407,
+        "feet_position_mean_error_mm": 17.766955172966984
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.040795383768323035,
+          "all_joint_rmse_rad": 0.022214252050179645,
+          "joint_velocity_rmse_rad_s": 1.0035017358253457,
+          "root_position_mean_error_mm": 20.45252196007555,
+          "global_body_mpjpe_mm": 21.228456767727437,
+          "root_relative_body_mpjpe_mm": 13.289746353105295,
+          "feet_position_mean_error_mm": 16.641659616075344
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.041006840666708344,
+          "all_joint_rmse_rad": 0.0192003872405661,
+          "joint_velocity_rmse_rad_s": 0.5773864298503505,
+          "root_position_mean_error_mm": 18.006023296717927,
+          "global_body_mpjpe_mm": 17.823274710198394,
+          "root_relative_body_mpjpe_mm": 10.032974093462949,
+          "feet_position_mean_error_mm": 8.134249296943285
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.102135138539447,
+          "all_joint_rmse_rad": 0.048665398975931126,
+          "joint_velocity_rmse_rad_s": 1.0908175125809234,
+          "root_position_mean_error_mm": 55.642046096149976,
+          "global_body_mpjpe_mm": 52.47591948124851,
+          "root_relative_body_mpjpe_mm": 25.596822260553974,
+          "feet_position_mean_error_mm": 28.524956605882316
+        }
+      },
+      "complete_cases": 66,
+      "total_cases": 66
+    }
+  }
+}

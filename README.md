@@ -4,7 +4,7 @@
 
 An experimental research proposal on calibration data for humanoid control, built on [ASAP / Humanoidverse](https://github.com/LeCAR-Lab/ASAP). The current experiments use a Unitree G1 model in **controlled sim-to-sim transfer**. They do not constitute hardware validation.
 
-**Current evidence:** multi-motion delta-action training improves several held-out replay metrics. Closed-loop policy adaptation and the proposed data-content hypothesis have not yet been validated. All results below are measured results; proposed experiments are labelled separately.
+**Current evidence:** multi-motion delta-action training improves several held-out replay metrics. The new task/group-weighted mixed30 run reduces test global body position error by 19.0%, while velocity error remains slightly worse. Closed-loop policy adaptation is running, and the proposed data-content hypothesis has not yet been validated. Measured results and proposed experiments are labelled separately.
 
 ## How I arrived at the question
 
@@ -89,17 +89,21 @@ The learned corrections reduce global position error by approximately 18.5%, 23.
 
 Raw summary evidence and a detailed audit are in [results/pilot_multimotion](results/pilot_multimotion/README.md).
 
+### New controlled run
+
+The agreed mixed30 run has completed calibration and isolated validation/test replay with corrected task/group sampling. Validation selects the 500-update checkpoint. On the held-out test, global body MPJPE changes from **37.66 to 30.51 mm** and ankle RMSE from **0.07500 to 0.06131 rad**. Joint-velocity RMSE changes from **0.87892 to 0.89057 rad/s**, a regression. All 66 one-second test windows complete; same-domain body replay error is 7.40 mm. These outcomes support a partial replay benefit, not the downstream hypothesis. [Settings, raw evidence and an actual-motion baseline animation](results/controlled_squat/README.md).
+
 ## Next experiments: planned, not completed
 
 The first priority is a complete SquatL1 adaptation comparison:
 
 | Controller evaluated in B | Purpose | Status |
 |---|---|---|
-| Original pretrained policy | Direct-transfer baseline | Planned systematic evaluation |
-| Policy fine-tuned in A without calibration | Equal-budget continued-training control | Not run |
-| Policy fine-tuned in A with frozen delta, deployed without delta | ASAP downstream benefit | Not run |
-| Policy fine-tuned with identified physical parameters | Structured SysID comparison | Not run |
-| Policy fine-tuned with a learned torque correction | UAN-method comparison | Not run |
+| Original pretrained policy | Direct-transfer baseline | One clean trial; systematic evaluation queued |
+| Policy fine-tuned in A without calibration | Equal-budget continued-training control | Training |
+| Policy fine-tuned in A with frozen delta, deployed without delta | ASAP downstream benefit | Queued |
+| Policy fine-tuned with identified physical parameters | Structured SysID comparison | Queued |
+| Policy fine-tuned with a learned torque correction | UAN-method comparison | Small integration tests passed; full run queued |
 
 Each method must first pass replay and integration checks. Results will be recorded whether or not control improves. The goal is to compare correction mechanisms in a common G1 task, not assume the relative ranking reported on different robots and tasks transfers here.
 

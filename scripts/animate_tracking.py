@@ -50,7 +50,7 @@ def main():
     low, high = valid.min(0), valid.max(0)
     center = (low + high) / 2
     half = max(.7, float((high - low).max()) / 2 + .12)
-    fig = plt.figure(figsize=(4 * len(records), 4.4))
+    fig = plt.figure(figsize=(max(6, 4.6 * len(records)), 4.8))
     colors = ("#436CA5", "#C4882F", "#289175", "#8D56A0")
     lines, references, annotations, axes = [], [], [], []
     for i, (record, label) in enumerate(zip(records, args.labels)):
@@ -66,9 +66,9 @@ def main():
         references.append(panel_refs)
         annotations.append(ax.text2D(.03, .92, "", transform=ax.transAxes, fontsize=9))
         axes.append(ax)
-    fig.text(.5, .015, "Recorded rigid-body skeletons • dashed: reference when available • fixed trial %d • motion stops at first termination" % args.trial,
+    fig.text(.5, .015, "Recorded rigid-body skeletons • dashed: reference when available\nFixed trial %d • motion stops at first termination" % args.trial,
              ha="center", fontsize=8)
-    fig.tight_layout(rect=(0, .045, 1, 1))
+    fig.tight_layout(rect=(0, .08, .98, .98))
     frames = np.arange(0, max(len(r["body_pos"]) for r in records), 2)
 
     def update(frame):

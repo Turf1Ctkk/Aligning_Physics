@@ -16,13 +16,13 @@
 - SquatL1 task-policy fine-tuning: 1000 additional iterations per condition, actor LR 1e-4, critic LR 1e-3, entropy 0, optimizer reset, pretrained weights/std retained.
 - GPU experiment cutoff: 2026-10-09 12:00 UTC+03:00.
 
-New weighted delta training is now running. Installed CPU contracts passed. A clean initial B-domain standalone SquatL1 evaluation terminated at approximately 3.9 seconds before completing the 5.23-second reference; this is one trial, not a measured aggregate completion rate.
+New weighted delta training and isolated replay have completed. Installed CPU contracts passed. Validation selects the 500-update checkpoint. Held-out global body MPJPE decreases from 37.66 to 30.51 mm; velocity RMSE slightly worsens (0.87892 to 0.89057 rad/s). All 66 one-second test windows complete. Equal-budget no-calibration policy fine-tuning is now running. A clean initial B-domain standalone SquatL1 evaluation terminated at approximately 3.9 seconds before completing the 5.23-second reference; this is one trial, not a measured aggregate completion rate.
 
 An additional matched clean source-domain check completed all 261 recorded frames (5.22 seconds), with global body MPJPE 87.07 mm and root-relative body MPJPE 36.10 mm. This one-trial contrast establishes a useful baseline, but is not a statistical estimate of the effect of the domain change.
 
 ## Not yet completed
 
-- Corrected task/group-weighted calibration run: in progress.
+- Corrected task/group-weighted calibration: completed; downstream comparison pending.
 - Full closed-loop SquatL1 fine-tuning and target deployment comparison.
 - SPI-style parameter-identification baseline; full active exploration is a separate stage.
 - UAN torque-residual adaptation and genuine high-rate excitation collection.
