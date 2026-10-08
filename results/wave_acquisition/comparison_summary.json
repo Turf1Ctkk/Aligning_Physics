@@ -1,0 +1,101 @@
+{
+  "scope": "Actual 200 Hz target training; matched acquisition arms; one training seed per arm",
+  "pending_arms": [
+    "excitation"
+  ],
+  "ft_only_baseline": {
+    "complete_trials": 96,
+    "total_trials": 96,
+    "completion_rate": 1.0,
+    "mean_survival_s": 5.219999883323908,
+    "complete_trial_global_body_mpjpe_mm": 94.44999257723491,
+    "complete_trial_root_relative_body_mpjpe_mm": 39.30700981616974,
+    "prefix_metrics": {
+      "1.0": {
+        "complete_trials": 96,
+        "total_trials": 96,
+        "global_body_mpjpe_mm": 92.62466923395793,
+        "root_relative_body_mpjpe_mm": 29.059959689776104
+      },
+      "3.0": {
+        "complete_trials": 96,
+        "total_trials": 96,
+        "global_body_mpjpe_mm": 92.61686046918233,
+        "root_relative_body_mpjpe_mm": 40.23622500896454
+      }
+    }
+  },
+  "error_scope": "Prefix errors condition on prefix completion; full-horizon errors condition on full completion; counts remain explicit",
+  "results": {
+    "unchanged": {
+      "test_replay": {
+        "equal_task_mean": {
+          "ankle_rmse_rad": 0.062229474941404926,
+          "all_joint_rmse_rad": 0.03030534639517655,
+          "joint_velocity_rmse_rad_s": 0.9986177077508577,
+          "root_position_mean_error_mm": 32.58913673788663,
+          "global_body_mpjpe_mm": 31.80043769460957,
+          "root_relative_body_mpjpe_mm": 17.43805489121834,
+          "feet_position_mean_error_mm": 18.72988369921448
+        },
+        "per_task": {
+          "CR7": {
+            "ankle_rmse_rad": 0.0484996363394823,
+            "all_joint_rmse_rad": 0.026727350885292683,
+            "joint_velocity_rmse_rad_s": 1.118749169889837,
+            "root_position_mean_error_mm": 26.64230362639057,
+            "global_body_mpjpe_mm": 27.6062892832711,
+            "root_relative_body_mpjpe_mm": 16.95847090574185,
+            "feet_position_mean_error_mm": 21.226411681843246
+          },
+          "SquatL1": {
+            "ankle_rmse_rad": 0.058077973787827294,
+            "all_joint_rmse_rad": 0.02654426971327802,
+            "joint_velocity_rmse_rad_s": 0.5855098432995123,
+            "root_position_mean_error_mm": 23.979321697583924,
+            "global_body_mpjpe_mm": 23.557771299184026,
+            "root_relative_body_mpjpe_mm": 13.70885166824218,
+            "feet_position_mean_error_mm": 11.596343471592212
+          },
+          "StepFBL1": {
+            "ankle_rmse_rad": 0.08011081469690517,
+            "all_joint_rmse_rad": 0.03764441858695895,
+            "joint_velocity_rmse_rad_s": 1.2915941100632236,
+            "root_position_mean_error_mm": 47.145784889685395,
+            "global_body_mpjpe_mm": 44.23725250137359,
+            "root_relative_body_mpjpe_mm": 21.646842099670987,
+            "feet_position_mean_error_mm": 23.366895944207972
+          }
+        },
+        "complete_cases": 66,
+        "total_cases": 66
+      },
+      "tracking": {
+        "complete_trials": 34,
+        "total_trials": 96,
+        "completion_rate": 0.3541666666666667,
+        "mean_survival_s": 5.046041553878847,
+        "complete_trial_global_body_mpjpe_mm": 130.88007983039407,
+        "complete_trial_root_relative_body_mpjpe_mm": 51.631623660816864,
+        "prefix_metrics": {
+          "1.0": {
+            "complete_trials": 96,
+            "total_trials": 96,
+            "global_body_mpjpe_mm": 92.96116495132446,
+            "root_relative_body_mpjpe_mm": 32.80763729413351
+          },
+          "3.0": {
+            "complete_trials": 96,
+            "total_trials": 96,
+            "global_body_mpjpe_mm": 92.51061455408733,
+            "root_relative_body_mpjpe_mm": 42.988332430521645
+          }
+        }
+      },
+      "selection": {
+        "checkpoint": "/root/autodl-tmp/aligning_physics/wave_20261008/unchanged/models/torque/model_1000.pt",
+        "validation_global_body_mpjpe_mm": 41.940840175066185
+      }
+    }
+  }
+}

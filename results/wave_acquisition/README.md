@@ -1,6 +1,6 @@
 # Actual 200 Hz target acquisition: unchanged versus excitation
 
-**Status:** physical acquisition, rate/command/feasibility audits and zero-correction replay checks complete. Unchanged-arm shared-torque calibration and held-out replay are complete; its policy fine-tuning is running. The excitation-trained model and matched policy comparisons remain pending.
+**Status:** physical acquisition, rate/command/feasibility audits and zero-correction replay checks complete. Both calibration arms and held-out replay are complete. Unchanged-arm policy evaluation is complete (34/96); excitation-arm policy fine-tuning is running, so the paired downstream comparison remains pending.
 
 Both arms use the same 30 original mixed30 parents, ten per task, initialized from their first eligible continuous windows. Unchanged input holds recorded nominal position commands for four physics steps. The excitation arm adds sine, square or clipped Gaussian offsets at 200 Hz, bounded by ±0.04 rad on four ankles; sine/square frequencies are 1–3 Hz. [Actual excitation manifest](excitation_manifest.json). This is a G1 adaptation of UAN's excitation-data idea, with prerecorded task inputs plus offsets rather than the original robot/command interface.
 
@@ -40,4 +40,35 @@ Both arms now receive the same shared 40→128→128→1 torque actor, 20-sample
 
 Validation selects the unchanged-input model at 1000 updates, with body MPJPE 41.94 mm. [Selection](unchanged_selection.json). On the original isolated 66-window test, all cases complete: body error decreases from 36.69 to 31.80 mm and ankle RMSE from 0.07657 to 0.06223 rad, while joint-velocity error increases from 0.86174 to 0.99862 rad/s. [Full held-out summaries](unchanged_replay_comparison.json) retain shorter horizons and per-task metrics.
 
-This is a partial replay benefit, approximately 13.3% in body position, with a 15.9% velocity regression. The new acquisition has shorter duration and narrower phase coverage than the older common-data run. It cannot isolate measurement rate or establish a data-content ranking before the matched excitation arm finishes. Downstream policy outcomes remain pending.
+This is a partial replay benefit, approximately 13.3% in body position, with a 15.9% velocity regression. The new acquisition has shorter duration and narrower phase coverage than the older common-data run. It cannot isolate measurement rate or establish a data-content ranking before the matched excitation arm finishes. The unchanged-arm downstream result is reported below; excitation-arm outcomes remain pending.
+
+
+## Matched calibration-content comparison
+
+Both arms trained for 1000 updates with the same architecture, sampler hierarchy, seed and 6210 unique target transitions. The same validation rule selects update 1000 for unchanged inputs and 500 for excitation. Their actual zero-correction test summaries match exactly. [Excitation selection](excitation_selection.json), [excitation held-out replay](excitation_replay_comparison.json).
+
+| Test condition | Body MPJPE (mm) | Ankle RMSE (rad) | Joint-velocity RMSE (rad/s) | Complete / 66 |
+|---|---:|---:|---:|---:|
+| Source 20, zero correction | 36.685 | 0.076569 | 0.861741 | 66 |
+| Unchanged-input torque model | 31.800 | 0.062229 | 0.998618 | 66 |
+| Excitation-input torque model | 30.350 | 0.065406 | 0.943374 | 66 |
+
+![Matched acquisition replay](../../assets/figures/true_rate_replay.png)
+
+Relative to unchanged input, excitation lowers global body error by 4.6% and velocity error by 5.5%, but raises ankle error by 5.1%. Both models regress velocity relative to zero correction. The intervention changes commands and resulting states with acquisition amount fixed; it is not a stable feature-utility ranking from one training seed. Similar joint ranges coexist with different error tradeoffs, motivating a more controlled selection/replication test rather than proving the hypothesis.
+
+## First completed downstream arm
+
+All 96 unchanged-arm trials complete the first three seconds, but only 34 complete the full 5.22-second reference. The 62 terminations occur between 4.56 and 5.16 seconds. These are observed simulator terminations; their causes are not classified as falls from the saved summaries alone.
+
+| Policy | Full completion / 96 | Mean survival (s) | First-second body error (mm) | Three-second body error (mm) | Full-horizon body error, completed trials only (mm) |
+|---|---:|---:|---:|---:|---:|
+| Equal-budget FT only | 96 | 5.220 | 92.625 | 92.617 | 94.450 (96 trials) |
+| 200 Hz unchanged-data torque FT | 34 | 5.046 | 92.961 | 92.511 | 130.880 (34 trials) |
+| 200 Hz excitation-data torque FT | Pending | Pending | Pending | Pending | Pending |
+
+![Completed downstream evidence](../../assets/figures/true_rate_tracking.png)
+
+The similar early tracking errors do not capture the late completion deficit. The full-horizon means condition on different successful subsets and must be read with completion/survival. [Raw unchanged trials](unchanged_tracking_comparison.json), [failure timing and summary](unchanged_tracking_summary.json), [partial comparison report](comparison_summary.json).
+
+The [stored-state/configuration audit](unchanged_matched_state_config_audit.json) verifies exactly matching first stored joint/root states and actions relative to FT-only for all 96 trials across all three seeds. Task noise is zero, dynamics are target Kp16, termination criteria are shared, the final 1000-update policy is fixed, and deployment attaches no torque model. One training seed remains the inference limit. Neither high-rate measurement nor a replay-position improvement establishes control benefit here.

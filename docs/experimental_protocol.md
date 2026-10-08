@@ -54,7 +54,7 @@ Closed-loop: full-reference motion tracking in the target domain, including glob
 
 All standalone Squat evaluations explicitly share the original policy's gravity thresholds (0.8 for projected gravity x/y) and motion-deviation threshold (1.5 m), with the motion-deviation threshold curriculum disabled. Termination by contact, minimum height, and proximity to joint/torque limits is disabled, and motion-end timeout is enabled. These overrides prevent fine-tuning checkpoints from silently inheriting a different success criterion. A termination count is reported as termination, not automatically as a fall without inspecting its cause.
 
-Task actor/history observation noise is explicitly zero for every checkpoint. The initial original-policy evaluation inherited nonzero observation noise and is retained only as an audited historical artifact; a common-noise repeat is queued. Initialization noise remains at 0.2. The first stored joint/root states and executed actions were verified identical across all 32 trials of seed 8101 for FT-only, ASAP FT and passive SysID FT.
+Task actor/history observation noise is explicitly zero for every checkpoint. The initial original-policy evaluation inherited nonzero observation noise and is retained only as an audited historical artifact; the matched common-noise comparison has completed. Initialization noise remains at 0.2. The first stored joint/root states and executed actions were verified identical across all 32 trials of seed 8101 across the six core comparison policies. The first high-rate-data policy also matches all 96 initial stored states/actions across the three seeds.
 
 ## Minimal test of data content
 
@@ -72,6 +72,8 @@ A retrospective selector can inspect the existing training pool, but that does n
 The hypothesis is unsupported if coverage fails to outperform uniform selection within uncertainty. A replay improvement without target-domain policy improvement supports only the replay component. Repeat key comparisons with independent training seeds before claiming a stable ranking. A second mismatch is required to support the claim that useful features depend on the mechanism, rather than merely the current Kp test.
 
 The queued minimal implementation fixes the same 18 original parents, six per motion, across uniform, coverage and joint-range selectors. Each trains one 54-frame window per parent, 954 unique transitions in total. Coverage is greedy max-min selection on 28 robustly scaled window summaries; it is an explicit heuristic, not an optimality claim. Its [actual selection preview](../results/content_selection/README.md) records budgets and feature definitions. Each subset's same-domain floor is measured without replacing windows. Only one training seed is initially budgeted, so differences are descriptive; a stable ranking requires repeats. The queue starts only if at least five hours remain before cutoff.
+
+The minimal subset test evaluates one actuator-coverage heuristic and its downstream consequence. It does not optimize closed-loop sensitivity or explicitly enforce future policy occupancy; the latter remains an observed condition and a separate mechanism question. Its parent identities, features, scaler, budgets and checkpoint rules stay fixed after the exploratory deployment audit and high-rate results.
 
 ## Timing and release
 

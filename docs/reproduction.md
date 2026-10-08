@@ -66,3 +66,5 @@ Keep large checkpoints, robot/motion assets, and trusted joblib datasets outside
 These hashes were computed directly on the server files. Checkpoint filenames alone are not sufficient provenance.
 
 `report_matched_tracking.py --input /path/to/matched/tracking_comparison.json --active /path/to/active/tracking_comparison.json` adds the completed active-arm policy to the common deployment report. The separately published feature-support audit uses training-only scaling and all 96 first-second deployment prefixes; it does not change queued selectors or checkpoint choices.
+
+`plot_true_rate_replay.py` plots both completed acquisition arms after validating their common zero-correction baselines. `report_wave_comparison.py --unchanged /path/to/wave/unchanged` reports the completed unchanged-input policy; add `--excitation /path/to/wave/wave` only after its policy evaluation completes. Pending arms remain explicitly absent from the plot and report rather than being rendered as zero performance.
