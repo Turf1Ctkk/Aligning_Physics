@@ -1,0 +1,11 @@
+{
+  "scope": "Termination timing; no fall classification",
+  "terminations": [
+    {
+      "seed": "8101",
+      "trial": 7,
+      "survival_s": 4.599999897181988,
+      "first_reset_row": 230
+    }
+  ]
+}

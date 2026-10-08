@@ -1,0 +1,75 @@
+{
+  "scope": "Completed uniform arm only; coverage and range pending. Historical24-body metrics.",
+  "calibration_seed": 20305009,
+  "policy_seed": 20306009,
+  "replay_evaluation_seed": 20305109,
+  "tracking": {
+    "complete_trials": 95,
+    "total_trials": 96,
+    "completion_rate": 0.9895833333333334,
+    "mean_survival_s": 5.21354155013493,
+    "complete_trial_global_body_mpjpe_mm": 110.60850789923417,
+    "complete_trial_root_relative_body_mpjpe_mm": 41.09381934718082,
+    "prefix_metrics": {
+      "1.0": {
+        "complete_trials": 96,
+        "total_trials": 96,
+        "global_body_mpjpe_mm": 98.30953979492188,
+        "root_relative_body_mpjpe_mm": 29.729692081610363
+      },
+      "3.0": {
+        "complete_trials": 96,
+        "total_trials": 96,
+        "global_body_mpjpe_mm": 113.2014570236206,
+        "root_relative_body_mpjpe_mm": 44.31137355168661
+      }
+    }
+  },
+  "test_replay": {
+    "equal_task_mean": {
+      "ankle_rmse_rad": 0.09451299551557694,
+      "all_joint_rmse_rad": 0.04394333786411694,
+      "joint_velocity_rmse_rad_s": 1.173377821515882,
+      "root_position_mean_error_mm": 46.08053403959085,
+      "global_body_mpjpe_mm": 43.959230664671814,
+      "root_relative_body_mpjpe_mm": 22.511457478811895,
+      "feet_position_mean_error_mm": 22.723622425050888
+    },
+    "per_task": {
+      "CR7": {
+        "ankle_rmse_rad": 0.10290936107056037,
+        "all_joint_rmse_rad": 0.049829505945547636,
+        "joint_velocity_rmse_rad_s": 1.6422011464774093,
+        "root_position_mean_error_mm": 53.312383751507,
+        "global_body_mpjpe_mm": 51.6395843171666,
+        "root_relative_body_mpjpe_mm": 28.694986140431922,
+        "feet_position_mean_error_mm": 28.604762812970296
+      },
+      "SquatL1": {
+        "ankle_rmse_rad": 0.06115998182077742,
+        "all_joint_rmse_rad": 0.027873857580273553,
+        "joint_velocity_rmse_rad_s": 0.6303672208186175,
+        "root_position_mean_error_mm": 32.721763318947374,
+        "global_body_mpjpe_mm": 28.885409008926047,
+        "root_relative_body_mpjpe_mm": 13.429770985174176,
+        "feet_position_mean_error_mm": 7.561441551845259
+      },
+      "StepFBL1": {
+        "ankle_rmse_rad": 0.11946964365539303,
+        "all_joint_rmse_rad": 0.05412665006652963,
+        "joint_velocity_rmse_rad_s": 1.247565097251619,
+        "root_position_mean_error_mm": 52.20745504831818,
+        "global_body_mpjpe_mm": 51.3526986679228,
+        "root_relative_body_mpjpe_mm": 25.409615310829594,
+        "feet_position_mean_error_mm": 32.00466291033711
+      }
+    },
+    "complete_cases": 66,
+    "total_cases": 66
+  },
+  "selection": {
+    "checkpoint": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/uniform/models/delta/model_500.pt",
+    "validation_body_mpjpe_mm": 42.71476665355373
+  },
+  "replay_baseline_scope": "Fresh repeat-seed zero controls pending; copied primary controls are not matched baselines"
+}
