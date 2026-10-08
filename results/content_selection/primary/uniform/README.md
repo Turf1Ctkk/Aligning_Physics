@@ -1,6 +1,6 @@
 # Primary uniform subset: completed condition, other selectors pending
 
-This is one completed condition of the prespecified18-parent/954-transition selector study. Coverage is training and joint-range selection is pending. The complete three-selector reporter is intentionally not run yet; this snapshot does not establish a selector ranking.
+This is one completed condition of the prespecified18-parent/954-transition selector study. Coverage has also completed; joint-range calibration is running and repeat outcomes remain pending. The complete three-selector reporter is intentionally not run yet; this snapshot does not establish a selector ranking.
 
 ## Calibration and held-out replay
 

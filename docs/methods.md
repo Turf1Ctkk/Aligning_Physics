@@ -1,8 +1,8 @@
 # Correction mechanisms and adaptation plan
 
-These formulations specify the comparison. Action, passive/active parameter and shared-torque calibration comparisons have measured replay and Squat deployment results; the shared-calibrator CR7 task extension is also complete. A G1/IsaacGym adaptation must not be presented as a reproduction of another paper's entire hardware and task pipeline.
+These formulations specify the comparison. Action, passive/active parameter and shared-torque calibration comparisons have measured replay and Squat deployment results; shared-calibrator CR7 and StepFBL1 task extensions are complete. The fixed-budget subset study is in progress. A G1/IsaacGym adaptation must not be presented as a reproduction of another paper's entire hardware and task pipeline.
 
-## Delta action: calibration, Squat and CR7 downstream comparisons complete
+## Delta action: calibration and three-task downstream comparisons complete
 
 For a nominal position-target action a, learn
 

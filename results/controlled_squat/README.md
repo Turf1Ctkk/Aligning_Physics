@@ -1,6 +1,6 @@
 # Controlled mixed30 calibration and Squat adaptation
 
-**Status:** calibration, both task-policy fine-tuning conditions and standalone deployment evaluation have completed. ASAP does not outperform equal-budget continued training in the first comparison. [The completed common-observation-noise reevaluation](../matched_squat/README.md) extends the comparison to five checkpoints and supersedes the historical original-policy baseline.
+**Status:** calibration, both task-policy fine-tuning conditions and standalone deployment evaluation have completed. ASAP does not outperform equal-budget continued training in the first comparison. [The completed common-observation-noise reevaluation](../matched_squat/README.md) extends the core comparison to six checkpoints and supersedes the historical original-policy baseline. The separate excitation-trained torque policy appears in the [three-task overview](../task_extensions/README.md).
 
 The calibration data contain 30 original target recording groups: ten CR7, ten SquatL1, and ten StepFBL1. The sampler gives equal probability to tasks, to groups within a task, and to continuous segments within a group. Its [sampling manifest](sampling_manifest.json) records these probabilities. The first draw into 2048 parallel environments was CR7 687, SquatL1 657, and StepFBL1 704; expected task weights are 1/3, while a finite draw is approximate.
 
