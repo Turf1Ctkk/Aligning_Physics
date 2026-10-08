@@ -1,0 +1,67 @@
+{
+  "complete_trials": 95,
+  "total_trials": 96,
+  "completion_rate": 0.9895833333333334,
+  "mean_survival_s": 5.19124988396652,
+  "complete_trial_global_body_mpjpe_mm": 100.42097095690275,
+  "complete_trial_root_relative_body_mpjpe_mm": 42.35417360004626,
+  "prefix_metrics": {
+    "1.0": {
+      "complete_trials": 96,
+      "total_trials": 96,
+      "global_body_mpjpe_mm": 94.76457802454631,
+      "root_relative_body_mpjpe_mm": 28.483949601650238
+    },
+    "3.0": {
+      "complete_trials": 95,
+      "total_trials": 96,
+      "global_body_mpjpe_mm": 98.30409891228926,
+      "root_relative_body_mpjpe_mm": 38.63664446379009
+    }
+  },
+  "terminated_trials": [
+    {
+      "seed": 8102,
+      "trial": 18,
+      "complete": false,
+      "first_reset_row": 123,
+      "valid_frames": 123,
+      "survival_s": 2.459999945014715,
+      "global_body_mpjpe_mm": 178.48374938964844,
+      "root_relative_body_mpjpe_mm": 73.266845703125,
+      "prefix_metrics": {
+        "0.25": {
+          "complete": true,
+          "frames": 12,
+          "global_body_mpjpe_mm": 74.12142944335938,
+          "root_relative_body_mpjpe_mm": 26.273717880249023
+        },
+        "0.5": {
+          "complete": true,
+          "frames": 25,
+          "global_body_mpjpe_mm": 91.1722640991211,
+          "root_relative_body_mpjpe_mm": 30.303306579589844
+        },
+        "1.0": {
+          "complete": true,
+          "frames": 50,
+          "global_body_mpjpe_mm": 109.98393249511719,
+          "root_relative_body_mpjpe_mm": 40.48053741455078
+        },
+        "2.0": {
+          "complete": true,
+          "frames": 100,
+          "global_body_mpjpe_mm": 131.08546447753906,
+          "root_relative_body_mpjpe_mm": 53.24180603027344
+        },
+        "3.0": {
+          "complete": false,
+          "frames": 123,
+          "global_body_mpjpe_mm": 178.48374938964844,
+          "root_relative_body_mpjpe_mm": 73.266845703125
+        }
+      }
+    }
+  ],
+  "scope": "One training seed; three evaluation seeds; simulator terminations not classified as falls"
+}
