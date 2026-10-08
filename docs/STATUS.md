@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 8, 2026, 19:08 UTC.
+Updated October 8, 2026, 20:29 UTC.
 
 ## Completed
 
@@ -9,16 +9,15 @@ Updated October 8, 2026, 19:08 UTC.
 - Passive and active SysID adaptations.
 - Common-data and measured-200-Hz torque adaptations.
 - Seven-policy comparisons for Squat, CR7 and StepFBL1.
-- First training seed of the three-rule data-content test.
+- Both training seeds of the three-rule data-content test and fresh repeat-seed replay controls.
+- Fresh 27-point policy evaluations and checks of all stored starts and effective settings.
+- Fresh 24-body calibration replays, with metrics recomputed from recorded trajectories.
 
-## Running or queued
+## Server queue
 
-- Second data-content seed: uniform and coverage complete. Range policy fine-tuning is running.
-- Replay controls at its evaluation seed: queued after the repeat.
-- Fresh 27-point policy evaluations: queued after those controls.
-- Fresh 24-body calibration replays with velocity and acceleration: queued next.
+All planned training and evaluation queues are complete. The GPU is idle. No new training is scheduled.
 
-The new evaluation reports position, velocity and acceleration errors. Completion and paper tracking success will be separate percentages. CPU formula checks have passed. New physical results are not yet available.
+Policy and replay evaluations report position, velocity and acceleration errors. Completion and tracking success are separate percentages. Policy evaluation uses 27 points; replay uses the 24 bodies measured in the target recordings.
 
 ## Document repair
 
@@ -26,6 +25,8 @@ Reader-facing documents now use short explanations. The main report follows the 
 
 ## Main finding so far
 
-Calibration helps StepFBL1 relative to ordinary fine-tuning. Squat and CR7 do not show extra completion gains. In the first data-content run, coverage improves replay more, while range gives higher completion. This does not confirm the combined hypothesis. On identical data, second-run completion changes from 8.3% to 99.0% for uniform and from 41.7% to 77.1% for coverage. Range is pending, and the first-run ranking is uncertain.
+Calibration helps StepFBL1 relative to ordinary fine-tuning. Squat and CR7 do not show extra completion gains. Coverage gives smaller replay errors in both data-content runs, but it does not consistently give better control. Uniform completion changes from 8.3% to 99.0%, coverage from 41.7% to 77.1%, and range from 77.1% to 95.8%. These two seeds do not establish a stable ranking.
 
-GPU cutoff: October 9 at 09:00 UTC. Submission deadline: October 9 at 20:59 UTC. Failures and negative outcomes remain part of the evidence.
+Raw results, historical reports and failed acquisition records are preserved. Final repository cleanup and author-supplied IsaacGym visuals follow review.
+
+GPU cutoff: October 9 at 09:00 UTC. Submission deadline: October 9 at 20:59 UTC.

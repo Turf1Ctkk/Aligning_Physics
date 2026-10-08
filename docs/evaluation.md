@@ -1,6 +1,6 @@
 # Evaluation metrics
 
-Fresh physical evaluations are queued. They reuse the trained checkpoints and collect new trajectories. No policy is retrained for this metric update.
+Fresh physical evaluations of all 28 policies and all 26 calibration replay conditions are complete. They reuse the trained checkpoints and collect new trajectories. No policy is retrained for this metric update.
 
 ## Whole-body errors
 
@@ -30,7 +30,9 @@ The paper's tracking criterion uses average body distance: a trial is unsuccessf
 
 ## Failure handling
 
-The first stored frame comes from the setup warm step. It is kept for initialization checks and excluded from error means. The success check still includes this state. A reset row belongs to the next episode. It and all later rows are excluded. Derivatives never cross a reset.
+For policy evaluation, the first stored frame comes from the setup warm step. It is kept for initialization checks and excluded from error means. The success check still includes this state. A reset row belongs to the next episode. It and all later rows are excluded. Derivatives never cross a reset.
+
+Replay also excludes its first stored frame. Torque replay saves only every fourth 200 Hz step. Its model has already acted before the first saved frame at 20 ms. Those states differ from zero correction, so torque results include the startup procedure. Action replay and the six data-selection models have matching first stored states against their controls.
 
 Reports show completion, tracking success and survival. They also distinguish errors over available frames, completed trials and successful trials. Prefix means use only trials that reach that prefix. This prevents a small error over early surviving frames from being presented as full-motion success.
 
@@ -40,4 +42,4 @@ Earlier position reports use 24 actual rigid bodies. Earlier velocity reports ar
 
 The new queue is `paper_eval_20261008`. It waits for the second data-content run and its replay controls. It then checks one complete physical rollout before evaluating the remaining policies. A separate fresh replay queue, `paper_replay_20261008`, follows policy evaluation. It replays the existing held-out records with frozen calibration models. Those target records contain 24 physical bodies, so replay reports keep that point set. They use the same position and difference formulas and do not invent hand/head measurements.
 
-The CPU metric checks have passed; both new physics queues are still pending. The GPU cutoff remains 09:00 UTC on October 9.
+Both physics queues and their configuration audits are complete. All fresh stored starts match the historical records. Replay metrics were recomputed from the actual recordings. [Squat](../results/paper_evaluation/SquatL1.md), [CR7](../results/paper_evaluation/CR7.md), [Step](../results/paper_evaluation/StepFBL1.md) and [calibration replay](../results/paper_replay/metrics.md) tables report the measured results.

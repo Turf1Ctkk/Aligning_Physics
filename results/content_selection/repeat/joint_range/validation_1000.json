@@ -1,0 +1,2897 @@
+{
+  "checkpoint": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/joint_range/models/delta/model_1000.pt",
+  "split": "val",
+  "kp": 20,
+  "zero_delta": false,
+  "scope": "Replay errors on recorded Kp16 trajectories; 24 actual rigid bodies; no policy fine-tuning",
+  "summary": {
+    "0.25": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.04898270794909123,
+        "all_joint_rmse_rad": 0.02414750182642499,
+        "joint_velocity_rmse_rad_s": 1.2430909249064837,
+        "root_position_mean_error_mm": 5.437590554217633,
+        "global_body_mpjpe_mm": 6.524185252733747,
+        "root_relative_body_mpjpe_mm": 4.322975863945775,
+        "feet_position_mean_error_mm": 7.117024410881853
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.0369596612852201,
+          "all_joint_rmse_rad": 0.020621009401446167,
+          "joint_velocity_rmse_rad_s": 1.275433803226662,
+          "root_position_mean_error_mm": 4.36146647628374,
+          "global_body_mpjpe_mm": 5.9584099844684975,
+          "root_relative_body_mpjpe_mm": 4.457425587344439,
+          "feet_position_mean_error_mm": 7.16839820289253
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.05676031354358235,
+          "all_joint_rmse_rad": 0.026757374432356283,
+          "joint_velocity_rmse_rad_s": 0.9540301046642575,
+          "root_position_mean_error_mm": 3.8389976856808388,
+          "global_body_mpjpe_mm": 5.312700086774061,
+          "root_relative_body_mpjpe_mm": 4.249227647292146,
+          "feet_position_mean_error_mm": 6.043312244600047
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.05322814901847121,
+          "all_joint_rmse_rad": 0.025064121645472514,
+          "joint_velocity_rmse_rad_s": 1.499808866828531,
+          "root_position_mean_error_mm": 8.112307500688319,
+          "global_body_mpjpe_mm": 8.301445686958681,
+          "root_relative_body_mpjpe_mm": 4.26227435720074,
+          "feet_position_mean_error_mm": 8.13936278515298
+        }
+      },
+      "complete_cases": 60,
+      "total_cases": 60
+    },
+    "0.5": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.06205187139011284,
+        "all_joint_rmse_rad": 0.029688369360691597,
+        "joint_velocity_rmse_rad_s": 1.0578884362705407,
+        "root_position_mean_error_mm": 16.341594337387054,
+        "global_body_mpjpe_mm": 17.120027656462828,
+        "root_relative_body_mpjpe_mm": 9.416506019225727,
+        "feet_position_mean_error_mm": 13.682788143075063
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.03703946836678316,
+          "all_joint_rmse_rad": 0.020333529723636157,
+          "joint_velocity_rmse_rad_s": 1.0687720750231995,
+          "root_position_mean_error_mm": 9.966010999727947,
+          "global_body_mpjpe_mm": 12.455096676470399,
+          "root_relative_body_mpjpe_mm": 7.763137410366499,
+          "feet_position_mean_error_mm": 14.274759245160078
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.06234299961398054,
+          "all_joint_rmse_rad": 0.02956406051074583,
+          "joint_velocity_rmse_rad_s": 0.7903865210554739,
+          "root_position_mean_error_mm": 13.467085433406861,
+          "global_body_mpjpe_mm": 13.872876278127947,
+          "root_relative_body_mpjpe_mm": 8.451867608456503,
+          "feet_position_mean_error_mm": 8.880210579672877
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.08677314618957482,
+          "all_joint_rmse_rad": 0.0391675178476928,
+          "joint_velocity_rmse_rad_s": 1.3145067127329488,
+          "root_position_mean_error_mm": 25.59168657902635,
+          "global_body_mpjpe_mm": 25.032110014790142,
+          "root_relative_body_mpjpe_mm": 12.034513038854177,
+          "feet_position_mean_error_mm": 17.893394604392235
+        }
+      },
+      "complete_cases": 60,
+      "total_cases": 60
+    },
+    "1.0": {
+      "equal_task_mean": {
+        "ankle_rmse_rad": 0.12253294824277557,
+        "all_joint_rmse_rad": 0.05613134962050995,
+        "joint_velocity_rmse_rad_s": 1.2109957246307028,
+        "root_position_mean_error_mm": 67.99053959718852,
+        "global_body_mpjpe_mm": 63.21579815917906,
+        "root_relative_body_mpjpe_mm": 30.715494060475425,
+        "feet_position_mean_error_mm": 27.65965912486911
+      },
+      "per_task": {
+        "CR7": {
+          "ankle_rmse_rad": 0.06666397536175561,
+          "all_joint_rmse_rad": 0.0336275349004745,
+          "joint_velocity_rmse_rad_s": 1.3180009374656052,
+          "root_position_mean_error_mm": 32.53844370233877,
+          "global_body_mpjpe_mm": 33.60405103627025,
+          "root_relative_body_mpjpe_mm": 19.420981031993264,
+          "feet_position_mean_error_mm": 25.16570214059227
+        },
+        "SquatL1": {
+          "ankle_rmse_rad": 0.1209412362427464,
+          "all_joint_rmse_rad": 0.05603069229316784,
+          "joint_velocity_rmse_rad_s": 0.835049241452678,
+          "root_position_mean_error_mm": 56.46965887968804,
+          "global_body_mpjpe_mm": 52.063278606308224,
+          "root_relative_body_mpjpe_mm": 23.812523282650314,
+          "feet_position_mean_error_mm": 20.057679515075638
+        },
+        "StepFBL1": {
+          "ankle_rmse_rad": 0.17999363312382471,
+          "all_joint_rmse_rad": 0.07873582166788753,
+          "joint_velocity_rmse_rad_s": 1.4799369949738252,
+          "root_position_mean_error_mm": 114.96351620953874,
+          "global_body_mpjpe_mm": 103.98006483495871,
+          "root_relative_body_mpjpe_mm": 48.91297786678269,
+          "feet_position_mean_error_mm": 37.75559571893942
+        }
+      },
+      "complete_cases": 60,
+      "total_cases": 60
+    }
+  },
+  "cases": [
+    {
+      "key": "CR7__rollout030__segment0__start0000",
+      "task": "CR7",
+      "group": "CR7__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08621032165451609,
+          "all_joint_rmse_rad": 0.03640706169138412,
+          "joint_velocity_rmse_rad_s": 2.0287654141622014,
+          "root_position_mean_error_mm": 1.542609089792071,
+          "global_body_mpjpe_mm": 2.556485224581575,
+          "root_relative_body_mpjpe_mm": 2.1665011526097806,
+          "feet_position_mean_error_mm": 5.591247526870125
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05985270074039091,
+          "all_joint_rmse_rad": 0.025736130964764268,
+          "joint_velocity_rmse_rad_s": 1.4155774073144516,
+          "root_position_mean_error_mm": 5.231258392364217,
+          "global_body_mpjpe_mm": 5.6564612980807905,
+          "root_relative_body_mpjpe_mm": 2.7983938381468274,
+          "feet_position_mean_error_mm": 7.35838305119646
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.062140755452197764,
+          "all_joint_rmse_rad": 0.02773798709374691,
+          "joint_velocity_rmse_rad_s": 1.0255066296348405,
+          "root_position_mean_error_mm": 29.64154907080243,
+          "global_body_mpjpe_mm": 26.311511224630877,
+          "root_relative_body_mpjpe_mm": 10.86580215093832,
+          "feet_position_mean_error_mm": 9.347143024530835
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout030__segment0__start0070",
+      "task": "CR7",
+      "group": "CR7__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.008746835962717166,
+          "all_joint_rmse_rad": 0.004651729123776574,
+          "joint_velocity_rmse_rad_s": 0.2837734125160176,
+          "root_position_mean_error_mm": 3.005641831030513,
+          "global_body_mpjpe_mm": 3.66063136823692,
+          "root_relative_body_mpjpe_mm": 2.1080839404117366,
+          "feet_position_mean_error_mm": 6.1952417239657
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.04923213645988424,
+          "all_joint_rmse_rad": 0.021056136213409866,
+          "joint_velocity_rmse_rad_s": 0.6285656142300834,
+          "root_position_mean_error_mm": 6.750490858156353,
+          "global_body_mpjpe_mm": 7.973494239300341,
+          "root_relative_body_mpjpe_mm": 4.41605676338383,
+          "feet_position_mean_error_mm": 12.266307146399768
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0616301451893866,
+          "all_joint_rmse_rad": 0.028967371526032525,
+          "joint_velocity_rmse_rad_s": 1.641211248047802,
+          "root_position_mean_error_mm": 14.739955099246922,
+          "global_body_mpjpe_mm": 17.258474288368202,
+          "root_relative_body_mpjpe_mm": 11.947310398258782,
+          "feet_position_mean_error_mm": 24.53534078019874
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout030__segment0__start0140",
+      "task": "CR7",
+      "group": "CR7__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.001449485670691975,
+          "all_joint_rmse_rad": 0.003675840120020997,
+          "joint_velocity_rmse_rad_s": 0.2157815048209475,
+          "root_position_mean_error_mm": 0.5558184296539382,
+          "global_body_mpjpe_mm": 0.47801760603860854,
+          "root_relative_body_mpjpe_mm": 0.3016510789577772,
+          "feet_position_mean_error_mm": 0.03484019899439596
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.007051375242896501,
+          "all_joint_rmse_rad": 0.004909405132388394,
+          "joint_velocity_rmse_rad_s": 0.3986026224974677,
+          "root_position_mean_error_mm": 2.0840431760274822,
+          "global_body_mpjpe_mm": 1.798274609793306,
+          "root_relative_body_mpjpe_mm": 0.6210420750920157,
+          "feet_position_mean_error_mm": 0.7151890810512177
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.012065618000200371,
+          "all_joint_rmse_rad": 0.009725364579602021,
+          "joint_velocity_rmse_rad_s": 0.3195535283596408,
+          "root_position_mean_error_mm": 9.954802486983773,
+          "global_body_mpjpe_mm": 8.531785599966648,
+          "root_relative_body_mpjpe_mm": 2.838458075033572,
+          "feet_position_mean_error_mm": 2.470834112861281
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout031__segment0__start0000",
+      "task": "CR7",
+      "group": "CR7__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08033564266119685,
+          "all_joint_rmse_rad": 0.033865884893501494,
+          "joint_velocity_rmse_rad_s": 1.807530938326928,
+          "root_position_mean_error_mm": 1.4013874344424913,
+          "global_body_mpjpe_mm": 1.8100635027175982,
+          "root_relative_body_mpjpe_mm": 1.39611919923081,
+          "feet_position_mean_error_mm": 3.506460890498444
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.056423755797658307,
+          "all_joint_rmse_rad": 0.024156144008934614,
+          "joint_velocity_rmse_rad_s": 1.260336173452882,
+          "root_position_mean_error_mm": 6.6208827656103155,
+          "global_body_mpjpe_mm": 6.088015274328376,
+          "root_relative_body_mpjpe_mm": 2.8622034927363726,
+          "feet_position_mean_error_mm": 4.390463047326777
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0680437238218687,
+          "all_joint_rmse_rad": 0.028998075439000386,
+          "joint_velocity_rmse_rad_s": 0.910886777297029,
+          "root_position_mean_error_mm": 38.236772433239146,
+          "global_body_mpjpe_mm": 32.875114983329546,
+          "root_relative_body_mpjpe_mm": 14.597552857347539,
+          "feet_position_mean_error_mm": 5.4087912361838235
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout031__segment0__start0070",
+      "task": "CR7",
+      "group": "CR7__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.01093922607251501,
+          "all_joint_rmse_rad": 0.012685543770731044,
+          "joint_velocity_rmse_rad_s": 0.738337671674511,
+          "root_position_mean_error_mm": 9.426302694625033,
+          "global_body_mpjpe_mm": 13.634476780949138,
+          "root_relative_body_mpjpe_mm": 10.702245615519725,
+          "feet_position_mean_error_mm": 14.861776044362992
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.028135168402723187,
+          "all_joint_rmse_rad": 0.01548420676119545,
+          "joint_velocity_rmse_rad_s": 0.7079448417101055,
+          "root_position_mean_error_mm": 21.31370020007144,
+          "global_body_mpjpe_mm": 27.926655034183103,
+          "root_relative_body_mpjpe_mm": 19.292453878904603,
+          "feet_position_mean_error_mm": 32.18839884148079
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.12286468360627316,
+          "all_joint_rmse_rad": 0.055606547753011874,
+          "joint_velocity_rmse_rad_s": 1.9216876936895555,
+          "root_position_mean_error_mm": 72.64159758234247,
+          "global_body_mpjpe_mm": 73.90389104964157,
+          "root_relative_body_mpjpe_mm": 44.577679786125294,
+          "feet_position_mean_error_mm": 53.6419031595869
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout031__segment0__start0140",
+      "task": "CR7",
+      "group": "CR7__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.019419899825759136,
+          "all_joint_rmse_rad": 0.021876446291804928,
+          "joint_velocity_rmse_rad_s": 1.257191061300006,
+          "root_position_mean_error_mm": 4.353753247605295,
+          "global_body_mpjpe_mm": 5.720628733314769,
+          "root_relative_body_mpjpe_mm": 3.98793358389989,
+          "feet_position_mean_error_mm": 2.6000053623134374
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.02440220283873802,
+          "all_joint_rmse_rad": 0.027222027129553402,
+          "joint_velocity_rmse_rad_s": 1.2513187020431074,
+          "root_position_mean_error_mm": 12.558269377800777,
+          "global_body_mpjpe_mm": 12.912772163287377,
+          "root_relative_body_mpjpe_mm": 6.179410443010489,
+          "feet_position_mean_error_mm": 5.842432655014162
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.030190601346240423,
+          "all_joint_rmse_rad": 0.02705790310987193,
+          "joint_velocity_rmse_rad_s": 1.1185076012830348,
+          "root_position_mean_error_mm": 18.764174371000415,
+          "global_body_mpjpe_mm": 18.540287050230155,
+          "root_relative_body_mpjpe_mm": 8.468011473039459,
+          "feet_position_mean_error_mm": 8.022620853567185
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout032__segment0__start0000",
+      "task": "CR7",
+      "group": "CR7__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0842523928890393,
+          "all_joint_rmse_rad": 0.0356788236268966,
+          "joint_velocity_rmse_rad_s": 2.28466253131447,
+          "root_position_mean_error_mm": 1.61914859509588,
+          "global_body_mpjpe_mm": 2.3277573281319017,
+          "root_relative_body_mpjpe_mm": 1.9507486059725851,
+          "feet_position_mean_error_mm": 4.2647648448638735
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0588506058346622,
+          "all_joint_rmse_rad": 0.02532923091944645,
+          "joint_velocity_rmse_rad_s": 1.5894984098898806,
+          "root_position_mean_error_mm": 6.051117106678269,
+          "global_body_mpjpe_mm": 5.933131390998268,
+          "root_relative_body_mpjpe_mm": 3.152568485780758,
+          "feet_position_mean_error_mm": 4.944754042085798
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06406296657709995,
+          "all_joint_rmse_rad": 0.027506840280913054,
+          "joint_velocity_rmse_rad_s": 1.1477194249817484,
+          "root_position_mean_error_mm": 34.178570563347186,
+          "global_body_mpjpe_mm": 29.77988107495878,
+          "root_relative_body_mpjpe_mm": 13.201220823602862,
+          "feet_position_mean_error_mm": 6.431342568091139
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout032__segment0__start0070",
+      "task": "CR7",
+      "group": "CR7__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.011558949674582066,
+          "all_joint_rmse_rad": 0.014059468311240516,
+          "joint_velocity_rmse_rad_s": 0.8345665543259103,
+          "root_position_mean_error_mm": 10.413877170267513,
+          "global_body_mpjpe_mm": 15.78082142372407,
+          "root_relative_body_mpjpe_mm": 12.854337621465913,
+          "feet_position_mean_error_mm": 18.322920165523747
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.02932395901885617,
+          "all_joint_rmse_rad": 0.01670529595214186,
+          "joint_velocity_rmse_rad_s": 0.8100579151965555,
+          "root_position_mean_error_mm": 23.561987362930843,
+          "global_body_mpjpe_mm": 33.194308261654456,
+          "root_relative_body_mpjpe_mm": 24.666673428722223,
+          "feet_position_mean_error_mm": 42.5688249475372
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.175116482256136,
+          "all_joint_rmse_rad": 0.08547038593200944,
+          "joint_velocity_rmse_rad_s": 2.842494273059978,
+          "root_position_mean_error_mm": 98.86445014602526,
+          "global_body_mpjpe_mm": 105.38657078961916,
+          "root_relative_body_mpjpe_mm": 72.8080692129065,
+          "feet_position_mean_error_mm": 98.13923318459734
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout032__segment0__start0140",
+      "task": "CR7",
+      "group": "CR7__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.016118174312277578,
+          "all_joint_rmse_rad": 0.018143168688217047,
+          "joint_velocity_rmse_rad_s": 1.0202222862661559,
+          "root_position_mean_error_mm": 3.3861363640741313,
+          "global_body_mpjpe_mm": 4.098881208820652,
+          "root_relative_body_mpjpe_mm": 3.2214145490136836,
+          "feet_position_mean_error_mm": 1.7248557488085203
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.020178727136312653,
+          "all_joint_rmse_rad": 0.023209735944723493,
+          "joint_velocity_rmse_rad_s": 1.188313367616507,
+          "root_position_mean_error_mm": 7.306583079250163,
+          "global_body_mpjpe_mm": 7.914473140195324,
+          "root_relative_body_mpjpe_mm": 4.839024401830208,
+          "feet_position_mean_error_mm": 3.191291759943168
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.018696869028271217,
+          "all_joint_rmse_rad": 0.02303297675101073,
+          "joint_velocity_rmse_rad_s": 1.0249732184849425,
+          "root_position_mean_error_mm": 10.207234699206806,
+          "global_body_mpjpe_mm": 10.655820663481306,
+          "root_relative_body_mpjpe_mm": 6.329035854467776,
+          "feet_position_mean_error_mm": 6.005148364470772
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout033__segment0__start0000",
+      "task": "CR7",
+      "group": "CR7__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.09529057593325442,
+          "all_joint_rmse_rad": 0.040207446402668795,
+          "joint_velocity_rmse_rad_s": 1.8077376385414596,
+          "root_position_mean_error_mm": 1.437203578994106,
+          "global_body_mpjpe_mm": 3.333723573774183,
+          "root_relative_body_mpjpe_mm": 3.0280134823037375,
+          "feet_position_mean_error_mm": 8.023181232921626
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0661048987375752,
+          "all_joint_rmse_rad": 0.028471099777043377,
+          "joint_velocity_rmse_rad_s": 1.2553220426210203,
+          "root_position_mean_error_mm": 2.7562340091602566,
+          "global_body_mpjpe_mm": 4.964536580805651,
+          "root_relative_body_mpjpe_mm": 3.946881959083672,
+          "feet_position_mean_error_mm": 9.05512291086231
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05016828675935827,
+          "all_joint_rmse_rad": 0.022384670210268656,
+          "joint_velocity_rmse_rad_s": 0.9181583019873214,
+          "root_position_mean_error_mm": 15.201913926952422,
+          "global_body_mpjpe_mm": 14.927183322974948,
+          "root_relative_body_mpjpe_mm": 6.329513239520562,
+          "feet_position_mean_error_mm": 9.746590667700373
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout033__segment0__start0070",
+      "task": "CR7",
+      "group": "CR7__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.02154353454705796,
+          "all_joint_rmse_rad": 0.01290407452871121,
+          "joint_velocity_rmse_rad_s": 1.9214083092219867,
+          "root_position_mean_error_mm": 8.907131820910328,
+          "global_body_mpjpe_mm": 10.4267402660477,
+          "root_relative_body_mpjpe_mm": 6.305866182584058,
+          "feet_position_mean_error_mm": 12.341892683156825
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.03653527247384212,
+          "all_joint_rmse_rad": 0.017378545810103476,
+          "joint_velocity_rmse_rad_s": 1.4369261159272433,
+          "root_position_mean_error_mm": 16.12963080475074,
+          "global_body_mpjpe_mm": 20.50214885128843,
+          "root_relative_body_mpjpe_mm": 10.549606148924862,
+          "feet_position_mean_error_mm": 29.244027504775936
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08048630425202732,
+          "all_joint_rmse_rad": 0.038139460282460166,
+          "joint_velocity_rmse_rad_s": 1.9389064557600952,
+          "root_position_mean_error_mm": 34.58938768679023,
+          "global_body_mpjpe_mm": 41.31498731589088,
+          "root_relative_body_mpjpe_mm": 23.733059131475024,
+          "feet_position_mean_error_mm": 48.15631048965989
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout033__segment0__start0140",
+      "task": "CR7",
+      "group": "CR7__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0049533311493767445,
+          "all_joint_rmse_rad": 0.004813387835050183,
+          "joint_velocity_rmse_rad_s": 0.34096657823638205,
+          "root_position_mean_error_mm": 0.8833482241718534,
+          "global_body_mpjpe_mm": 1.1852820871666971,
+          "root_relative_body_mpjpe_mm": 0.9327297865485388,
+          "feet_position_mean_error_mm": 0.8700278776691325
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.008181459104587374,
+          "all_joint_rmse_rad": 0.006453339044505835,
+          "joint_velocity_rmse_rad_s": 0.39900145224574735,
+          "root_position_mean_error_mm": 2.6677108211740728,
+          "global_body_mpjpe_mm": 2.7459292989810566,
+          "root_relative_body_mpjpe_mm": 1.5462058725055328,
+          "feet_position_mean_error_mm": 1.2760058406733281
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.02588371658406894,
+          "all_joint_rmse_rad": 0.013031024359559973,
+          "joint_velocity_rmse_rad_s": 0.3939461805387662,
+          "root_position_mean_error_mm": 15.543488589768108,
+          "global_body_mpjpe_mm": 13.383386823169237,
+          "root_relative_body_mpjpe_mm": 6.092953130130199,
+          "feet_position_mean_error_mm": 1.1441110933969256
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout034__segment0__start0000",
+      "task": "CR7",
+      "group": "CR7__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.07820248737159081,
+          "all_joint_rmse_rad": 0.033504368470391704,
+          "joint_velocity_rmse_rad_s": 1.7761739795845504,
+          "root_position_mean_error_mm": 1.4524010312390232,
+          "global_body_mpjpe_mm": 1.8963134293592725,
+          "root_relative_body_mpjpe_mm": 1.5766229997332373,
+          "feet_position_mean_error_mm": 3.63625075707068
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.054546580045270285,
+          "all_joint_rmse_rad": 0.0241927437315436,
+          "joint_velocity_rmse_rad_s": 1.2650795003595219,
+          "root_position_mean_error_mm": 5.318401758132497,
+          "global_body_mpjpe_mm": 5.228928672940326,
+          "root_relative_body_mpjpe_mm": 2.8041452218131946,
+          "feet_position_mean_error_mm": 4.6992015822822895
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05857618320331408,
+          "all_joint_rmse_rad": 0.025528963137755385,
+          "joint_velocity_rmse_rad_s": 0.9222069603540679,
+          "root_position_mean_error_mm": 30.85934279170835,
+          "global_body_mpjpe_mm": 27.004641585581012,
+          "root_relative_body_mpjpe_mm": 12.14450571886938,
+          "feet_position_mean_error_mm": 6.338540810134501
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout034__segment0__start0070",
+      "task": "CR7",
+      "group": "CR7__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.016641019242834856,
+          "all_joint_rmse_rad": 0.014197555634524805,
+          "joint_velocity_rmse_rad_s": 1.643007789287044,
+          "root_position_mean_error_mm": 11.752153516967796,
+          "global_body_mpjpe_mm": 14.954965413076282,
+          "root_relative_body_mpjpe_mm": 11.131145499552291,
+          "feet_position_mean_error_mm": 22.08245072254016
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.033631974925027605,
+          "all_joint_rmse_rad": 0.018271148051973003,
+          "joint_velocity_rmse_rad_s": 1.248101793854924,
+          "root_position_mean_error_mm": 16.296052030761736,
+          "global_body_mpjpe_mm": 28.738796752419596,
+          "root_relative_body_mpjpe_mm": 21.437385953564217,
+          "feet_position_mean_error_mm": 51.447991243827076
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.12804010189100765,
+          "all_joint_rmse_rad": 0.060845386315232564,
+          "joint_velocity_rmse_rad_s": 2.4364894759640974,
+          "root_position_mean_error_mm": 38.24052852846806,
+          "global_body_mpjpe_mm": 59.43678985852832,
+          "root_relative_body_mpjpe_mm": 45.93750640012281,
+          "feet_position_mean_error_mm": 93.122082991948
+        }
+      }
+    },
+    {
+      "key": "CR7__rollout034__segment0__start0140",
+      "task": "CR7",
+      "group": "CR7__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.018733042310891696,
+          "all_joint_rmse_rad": 0.022644341632772454,
+          "joint_velocity_rmse_rad_s": 1.1713813788213598,
+          "root_position_mean_error_mm": 5.285084115386131,
+          "global_body_mpjpe_mm": 7.511361821088084,
+          "root_relative_body_mpjpe_mm": 5.197970512362805,
+          "feet_position_mean_error_mm": 3.470057263828277
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.023141208743322605,
+          "all_joint_rmse_rad": 0.026427756412815237,
+          "joint_velocity_rmse_rad_s": 1.1769351663884944,
+          "root_position_mean_error_mm": 14.843803253050048,
+          "global_body_mpjpe_mm": 15.248524578799554,
+          "root_relative_body_mpjpe_mm": 7.335009191998703,
+          "feet_position_mean_error_mm": 4.932995022944854
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.041993192458883784,
+          "all_joint_rmse_rad": 0.030380066736641946,
+          "joint_velocity_rmse_rad_s": 1.2077662925411592,
+          "root_position_mean_error_mm": 26.412887559199877,
+          "global_body_mpjpe_mm": 24.750439913683056,
+          "root_relative_body_mpjpe_mm": 11.444037228060873,
+          "feet_position_mean_error_mm": 4.975538771956345
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout030__segment0__start0000",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.07941285384444907,
+          "all_joint_rmse_rad": 0.034169677702990765,
+          "joint_velocity_rmse_rad_s": 1.5474078423925401,
+          "root_position_mean_error_mm": 1.6796377823272859,
+          "global_body_mpjpe_mm": 4.179943098538353,
+          "root_relative_body_mpjpe_mm": 3.6963770973543597,
+          "feet_position_mean_error_mm": 9.416514768930213
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05817695412911329,
+          "all_joint_rmse_rad": 0.026195038370401574,
+          "joint_velocity_rmse_rad_s": 1.0964796533413954,
+          "root_position_mean_error_mm": 10.069016369373063,
+          "global_body_mpjpe_mm": 11.227326231374933,
+          "root_relative_body_mpjpe_mm": 5.803556819891913,
+          "feet_position_mean_error_mm": 12.217045613605896
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.12360456671463961,
+          "all_joint_rmse_rad": 0.053600947450375074,
+          "joint_velocity_rmse_rad_s": 0.8640716059239661,
+          "root_position_mean_error_mm": 53.93620098019454,
+          "global_body_mpjpe_mm": 48.4966339796233,
+          "root_relative_body_mpjpe_mm": 19.545051108858758,
+          "feet_position_mean_error_mm": 18.284968320635947
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout030__segment0__start0102",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.07470562258475612,
+          "all_joint_rmse_rad": 0.03420510255555462,
+          "joint_velocity_rmse_rad_s": 0.3978110320113206,
+          "root_position_mean_error_mm": 5.174860206689599,
+          "global_body_mpjpe_mm": 5.95805032231079,
+          "root_relative_body_mpjpe_mm": 5.337975149613946,
+          "feet_position_mean_error_mm": 5.653258145167691
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08652074350169389,
+          "all_joint_rmse_rad": 0.04099923470820119,
+          "joint_velocity_rmse_rad_s": 0.32356234590922367,
+          "root_position_mean_error_mm": 11.747911597432847,
+          "global_body_mpjpe_mm": 11.562381021541386,
+          "root_relative_body_mpjpe_mm": 9.394608256706118,
+          "feet_position_mean_error_mm": 7.366947485708233
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.1360530480540888,
+          "all_joint_rmse_rad": 0.06074801678971237,
+          "joint_velocity_rmse_rad_s": 0.35698130800442485,
+          "root_position_mean_error_mm": 39.442945781717434,
+          "global_body_mpjpe_mm": 35.576136655262154,
+          "root_relative_body_mpjpe_mm": 15.759472068242163,
+          "feet_position_mean_error_mm": 14.26611694323813
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout030__segment0__start0205",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.028274823530178482,
+          "all_joint_rmse_rad": 0.014953545611717347,
+          "joint_velocity_rmse_rad_s": 0.4577889951642247,
+          "root_position_mean_error_mm": 5.1945677560205725,
+          "global_body_mpjpe_mm": 5.99244358655282,
+          "root_relative_body_mpjpe_mm": 3.4342738211693393,
+          "feet_position_mean_error_mm": 4.95487219634231
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.04855069297486029,
+          "all_joint_rmse_rad": 0.02186247749875602,
+          "joint_velocity_rmse_rad_s": 0.36555206959165515,
+          "root_position_mean_error_mm": 17.224370528451942,
+          "global_body_mpjpe_mm": 16.567982464129717,
+          "root_relative_body_mpjpe_mm": 7.99209865854651,
+          "feet_position_mean_error_mm": 7.529920316071407
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.10836217096847371,
+          "all_joint_rmse_rad": 0.05295301820535369,
+          "joint_velocity_rmse_rad_s": 1.2179388365808883,
+          "root_position_mean_error_mm": 84.24668265178697,
+          "global_body_mpjpe_mm": 77.45123448984467,
+          "root_relative_body_mpjpe_mm": 26.118814783426057,
+          "feet_position_mean_error_mm": 35.71610922011875
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout031__segment0__start0000",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08255737419864136,
+          "all_joint_rmse_rad": 0.035061612859226036,
+          "joint_velocity_rmse_rad_s": 1.249451914338617,
+          "root_position_mean_error_mm": 1.4005538452875348,
+          "global_body_mpjpe_mm": 3.0997088924419485,
+          "root_relative_body_mpjpe_mm": 2.6314572937494156,
+          "feet_position_mean_error_mm": 6.890405857360712
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06064233048701905,
+          "all_joint_rmse_rad": 0.026580519006217333,
+          "joint_velocity_rmse_rad_s": 0.9000888619842773,
+          "root_position_mean_error_mm": 9.507216089899636,
+          "global_body_mpjpe_mm": 9.533374217324356,
+          "root_relative_body_mpjpe_mm": 4.292538245275085,
+          "feet_position_mean_error_mm": 8.773252689874784
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.12119350957752213,
+          "all_joint_rmse_rad": 0.052274761701793404,
+          "joint_velocity_rmse_rad_s": 0.7190707210301174,
+          "root_position_mean_error_mm": 52.43668800146605,
+          "global_body_mpjpe_mm": 46.43309442405306,
+          "root_relative_body_mpjpe_mm": 19.10480063097205,
+          "feet_position_mean_error_mm": 14.346892292633488
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout031__segment0__start0102",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.10353761149868987,
+          "all_joint_rmse_rad": 0.0469788311798006,
+          "joint_velocity_rmse_rad_s": 0.39850604232700343,
+          "root_position_mean_error_mm": 7.856663501348454,
+          "global_body_mpjpe_mm": 9.213155783888146,
+          "root_relative_body_mpjpe_mm": 8.595508884542294,
+          "feet_position_mean_error_mm": 7.833294639740559
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.11280852949300112,
+          "all_joint_rmse_rad": 0.05124308470041967,
+          "joint_velocity_rmse_rad_s": 0.33156722098982083,
+          "root_position_mean_error_mm": 17.737298308323393,
+          "global_body_mpjpe_mm": 15.839029849971098,
+          "root_relative_body_mpjpe_mm": 12.166437703287507,
+          "feet_position_mean_error_mm": 7.901804986233847
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.16117833926272296,
+          "all_joint_rmse_rad": 0.07167930547461795,
+          "joint_velocity_rmse_rad_s": 0.5056531256000507,
+          "root_position_mean_error_mm": 56.5524350956883,
+          "global_body_mpjpe_mm": 50.483663027041565,
+          "root_relative_body_mpjpe_mm": 23.956559500452677,
+          "feet_position_mean_error_mm": 12.678249326838436
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout031__segment0__start0205",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.01856658193625881,
+          "all_joint_rmse_rad": 0.010144643682112644,
+          "joint_velocity_rmse_rad_s": 0.42987425963692916,
+          "root_position_mean_error_mm": 3.0899443877081025,
+          "global_body_mpjpe_mm": 4.5662942619897295,
+          "root_relative_body_mpjpe_mm": 3.6666148614844736,
+          "feet_position_mean_error_mm": 3.9518160166272875
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.03675945500794956,
+          "all_joint_rmse_rad": 0.016522338005355963,
+          "joint_velocity_rmse_rad_s": 0.3793762047827095,
+          "root_position_mean_error_mm": 12.276089221891361,
+          "global_body_mpjpe_mm": 12.420603562640274,
+          "root_relative_body_mpjpe_mm": 7.371264504043955,
+          "feet_position_mean_error_mm": 5.61884220178575
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.13170242478005623,
+          "all_joint_rmse_rad": 0.05656088721593599,
+          "joint_velocity_rmse_rad_s": 0.465463172719195,
+          "root_position_mean_error_mm": 57.55682331723604,
+          "global_body_mpjpe_mm": 51.245547915220335,
+          "root_relative_body_mpjpe_mm": 22.729999168219486,
+          "feet_position_mean_error_mm": 13.618592345738012
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout032__segment0__start0000",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.11488926143525581,
+          "all_joint_rmse_rad": 0.04927548291234195,
+          "joint_velocity_rmse_rad_s": 1.4879186348107465,
+          "root_position_mean_error_mm": 2.810489317515513,
+          "global_body_mpjpe_mm": 4.477462778725007,
+          "root_relative_body_mpjpe_mm": 3.418635421936024,
+          "feet_position_mean_error_mm": 7.874000461502056
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08572752219709417,
+          "all_joint_rmse_rad": 0.038388288609770345,
+          "joint_velocity_rmse_rad_s": 1.1014856076451776,
+          "root_position_mean_error_mm": 14.126223020314729,
+          "global_body_mpjpe_mm": 14.253115242556998,
+          "root_relative_body_mpjpe_mm": 7.572595792641314,
+          "feet_position_mean_error_mm": 11.115634363100957
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.15071641075764403,
+          "all_joint_rmse_rad": 0.06539347488544305,
+          "joint_velocity_rmse_rad_s": 0.8708234648813341,
+          "root_position_mean_error_mm": 62.96250565173836,
+          "global_body_mpjpe_mm": 56.36982449237446,
+          "root_relative_body_mpjpe_mm": 26.137513744304464,
+          "feet_position_mean_error_mm": 18.987074049689156
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout032__segment0__start0102",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.009273071027595602,
+          "all_joint_rmse_rad": 0.00784214306037034,
+          "joint_velocity_rmse_rad_s": 0.6932472716710023,
+          "root_position_mean_error_mm": 2.516304898142551,
+          "global_body_mpjpe_mm": 3.13023296756224,
+          "root_relative_body_mpjpe_mm": 2.48031822493864,
+          "feet_position_mean_error_mm": 3.0246753832895457
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.01781188958204934,
+          "all_joint_rmse_rad": 0.011218271477010567,
+          "joint_velocity_rmse_rad_s": 0.5635460998717141,
+          "root_position_mean_error_mm": 8.86187581793998,
+          "global_body_mpjpe_mm": 8.093841447162848,
+          "root_relative_body_mpjpe_mm": 4.837920750285651,
+          "feet_position_mean_error_mm": 4.061321428012034
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05336459899163341,
+          "all_joint_rmse_rad": 0.02403167126840327,
+          "joint_velocity_rmse_rad_s": 0.4937296209326627,
+          "root_position_mean_error_mm": 40.531758481821406,
+          "global_body_mpjpe_mm": 35.079147396360426,
+          "root_relative_body_mpjpe_mm": 17.017525996741924,
+          "feet_position_mean_error_mm": 4.886827334289676
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout032__segment0__start0205",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.016810460665843067,
+          "all_joint_rmse_rad": 0.013601375061724295,
+          "joint_velocity_rmse_rad_s": 1.0323503319174543,
+          "root_position_mean_error_mm": 3.9323295914668592,
+          "global_body_mpjpe_mm": 5.9423807869306575,
+          "root_relative_body_mpjpe_mm": 4.845060020950863,
+          "feet_position_mean_error_mm": 5.283103763365777
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.024831620446341827,
+          "all_joint_rmse_rad": 0.021437694285105047,
+          "joint_velocity_rmse_rad_s": 1.4133994059978512,
+          "root_position_mean_error_mm": 10.552857684080484,
+          "global_body_mpjpe_mm": 13.190994076602397,
+          "root_relative_body_mpjpe_mm": 9.375736187495184,
+          "feet_position_mean_error_mm": 7.797306622765699
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.052275485224306556,
+          "all_joint_rmse_rad": 0.04113198932170022,
+          "joint_velocity_rmse_rad_s": 1.5673758022158752,
+          "root_position_mean_error_mm": 24.511311848257407,
+          "global_body_mpjpe_mm": 27.27480404324643,
+          "root_relative_body_mpjpe_mm": 21.00179630305649,
+          "feet_position_mean_error_mm": 15.582263057323054
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout033__segment0__start0000",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.11157477053473067,
+          "all_joint_rmse_rad": 0.047757209723999126,
+          "joint_velocity_rmse_rad_s": 1.7064485377584246,
+          "root_position_mean_error_mm": 2.666823949326311,
+          "global_body_mpjpe_mm": 4.780376069554007,
+          "root_relative_body_mpjpe_mm": 3.8143165564815935,
+          "feet_position_mean_error_mm": 9.55345395039488
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08419219918960406,
+          "all_joint_rmse_rad": 0.037285666965218275,
+          "joint_velocity_rmse_rad_s": 1.250414464976893,
+          "root_position_mean_error_mm": 14.140977629303103,
+          "global_body_mpjpe_mm": 14.726593614267717,
+          "root_relative_body_mpjpe_mm": 7.782544239967053,
+          "feet_position_mean_error_mm": 12.890752267655197
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.160537605499475,
+          "all_joint_rmse_rad": 0.07145591259760416,
+          "joint_velocity_rmse_rad_s": 1.1696129229888392,
+          "root_position_mean_error_mm": 74.30339256406788,
+          "global_body_mpjpe_mm": 68.2634692374012,
+          "root_relative_body_mpjpe_mm": 34.350878324940766,
+          "feet_position_mean_error_mm": 26.67724640913524
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout033__segment0__start0030",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.042628248762999546,
+          "all_joint_rmse_rad": 0.026433781695317123,
+          "joint_velocity_rmse_rad_s": 0.8917135656994215,
+          "root_position_mean_error_mm": 7.94705048031571,
+          "global_body_mpjpe_mm": 14.008972332327746,
+          "root_relative_body_mpjpe_mm": 12.073468201865623,
+          "feet_position_mean_error_mm": 13.716759496215458
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.09484717848727947,
+          "all_joint_rmse_rad": 0.04858070019192576,
+          "joint_velocity_rmse_rad_s": 0.7439281310515861,
+          "root_position_mean_error_mm": 28.192116660708976,
+          "global_body_mpjpe_mm": 36.96326054456186,
+          "root_relative_body_mpjpe_mm": 29.60639191041838,
+          "feet_position_mean_error_mm": 26.906269443677118
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.18687010327263429,
+          "all_joint_rmse_rad": 0.10601362093911831,
+          "joint_velocity_rmse_rad_s": 1.1307860825216642,
+          "root_position_mean_error_mm": 110.45186727118443,
+          "global_body_mpjpe_mm": 115.71586152869696,
+          "root_relative_body_mpjpe_mm": 74.33115664020299,
+          "feet_position_mean_error_mm": 60.112573665748826
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout033__segment0__start0061",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.013262925279098411,
+          "all_joint_rmse_rad": 0.009327347720599365,
+          "joint_velocity_rmse_rad_s": 0.5561483102254511,
+          "root_position_mean_error_mm": 2.4102608456599,
+          "global_body_mpjpe_mm": 3.8048287039038895,
+          "root_relative_body_mpjpe_mm": 3.1856490291109107,
+          "feet_position_mean_error_mm": 2.9049092473153983
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.027386425360577223,
+          "all_joint_rmse_rad": 0.013374168291286294,
+          "joint_velocity_rmse_rad_s": 0.7316222278264873,
+          "root_position_mean_error_mm": 8.96584845538631,
+          "global_body_mpjpe_mm": 9.00980483740132,
+          "root_relative_body_mpjpe_mm": 4.189814572909729,
+          "feet_position_mean_error_mm": 4.873973194220832
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.043855295538312744,
+          "all_joint_rmse_rad": 0.022681899732522614,
+          "joint_velocity_rmse_rad_s": 1.3578480020540629,
+          "root_position_mean_error_mm": 28.663937088440125,
+          "global_body_mpjpe_mm": 29.06110915401804,
+          "root_relative_body_mpjpe_mm": 8.013138364008146,
+          "feet_position_mean_error_mm": 22.216822536594965
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout033__segment1__start0000",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08974257178922691,
+          "all_joint_rmse_rad": 0.038120906899932326,
+          "joint_velocity_rmse_rad_s": 1.9576445167416607,
+          "root_position_mean_error_mm": 1.7968678047939268,
+          "global_body_mpjpe_mm": 2.898086278352336,
+          "root_relative_body_mpjpe_mm": 2.2086354107256763,
+          "feet_position_mean_error_mm": 5.9779788261986715
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06989281453029014,
+          "all_joint_rmse_rad": 0.030205174807075835,
+          "joint_velocity_rmse_rad_s": 1.4067128255021024,
+          "root_position_mean_error_mm": 13.604632186921881,
+          "global_body_mpjpe_mm": 12.58943956077403,
+          "root_relative_body_mpjpe_mm": 4.8372505447423935,
+          "feet_position_mean_error_mm": 7.847468690602328
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.14357379584208152,
+          "all_joint_rmse_rad": 0.06096856129201339,
+          "joint_velocity_rmse_rad_s": 1.023165468221184,
+          "root_position_mean_error_mm": 64.62960882449681,
+          "global_body_mpjpe_mm": 56.307265788399604,
+          "root_relative_body_mpjpe_mm": 24.00459711675844,
+          "feet_position_mean_error_mm": 12.56436479256159
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout033__segment1__start0045",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.035735199994924235,
+          "all_joint_rmse_rad": 0.017237211265106977,
+          "joint_velocity_rmse_rad_s": 0.5217366078263995,
+          "root_position_mean_error_mm": 7.0483259514041965,
+          "global_body_mpjpe_mm": 9.03346683770913,
+          "root_relative_body_mpjpe_mm": 6.968619492782312,
+          "feet_position_mean_error_mm": 6.66740767954635
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08991960661419422,
+          "all_joint_rmse_rad": 0.039955938208390794,
+          "joint_velocity_rmse_rad_s": 0.4937649305208277,
+          "root_position_mean_error_mm": 27.879940079370744,
+          "global_body_mpjpe_mm": 28.58405819062108,
+          "root_relative_body_mpjpe_mm": 18.22656889941589,
+          "feet_position_mean_error_mm": 13.558672337349767
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.13494665381348006,
+          "all_joint_rmse_rad": 0.06600734953907286,
+          "joint_velocity_rmse_rad_s": 0.5748893913138953,
+          "root_position_mean_error_mm": 84.08284244399678,
+          "global_body_mpjpe_mm": 78.75153957361736,
+          "root_relative_body_mpjpe_mm": 32.63789625186241,
+          "feet_position_mean_error_mm": 36.240543662735696
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout033__segment1__start0091",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.12246840244837469,
+          "all_joint_rmse_rad": 0.052692984282252504,
+          "joint_velocity_rmse_rad_s": 0.4922630247747559,
+          "root_position_mean_error_mm": 5.82042793714,
+          "global_body_mpjpe_mm": 6.241746513682088,
+          "root_relative_body_mpjpe_mm": 4.847807807226133,
+          "feet_position_mean_error_mm": 4.825988654389188
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.14187178656652594,
+          "all_joint_rmse_rad": 0.06216849259444772,
+          "joint_velocity_rmse_rad_s": 0.45438100423586153,
+          "root_position_mean_error_mm": 10.348974021419988,
+          "global_body_mpjpe_mm": 12.917717717932264,
+          "root_relative_body_mpjpe_mm": 9.687365229518518,
+          "feet_position_mean_error_mm": 9.079518966915213
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.1705103332926424,
+          "all_joint_rmse_rad": 0.07348251666449988,
+          "joint_velocity_rmse_rad_s": 0.3816694658831491,
+          "root_position_mean_error_mm": 45.20112570487504,
+          "global_body_mpjpe_mm": 42.35454536733163,
+          "root_relative_body_mpjpe_mm": 16.218300041486348,
+          "feet_position_mean_error_mm": 18.596004741057648
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout034__segment0__start0000",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08544434947698802,
+          "all_joint_rmse_rad": 0.036282767201572245,
+          "joint_velocity_rmse_rad_s": 1.3708409379899689,
+          "root_position_mean_error_mm": 1.5665872086811308,
+          "global_body_mpjpe_mm": 3.4448712871823117,
+          "root_relative_body_mpjpe_mm": 2.92995323421311,
+          "feet_position_mean_error_mm": 7.846713199806001
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06490190820055888,
+          "all_joint_rmse_rad": 0.028812845450061065,
+          "joint_velocity_rmse_rad_s": 1.0266524755399917,
+          "root_position_mean_error_mm": 9.958068180833772,
+          "global_body_mpjpe_mm": 10.746779325911467,
+          "root_relative_body_mpjpe_mm": 6.050344737429058,
+          "feet_position_mean_error_mm": 10.634517263020758
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.14657209825910575,
+          "all_joint_rmse_rad": 0.06418217718596508,
+          "joint_velocity_rmse_rad_s": 0.8237624107997508,
+          "root_position_mean_error_mm": 62.81174397978985,
+          "global_body_mpjpe_mm": 57.736277796917435,
+          "root_relative_body_mpjpe_mm": 27.791646561632707,
+          "feet_position_mean_error_mm": 22.517371096408244
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout034__segment0__start0102",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.014495185479900013,
+          "all_joint_rmse_rad": 0.009473663850119525,
+          "joint_velocity_rmse_rad_s": 0.4007860110120581,
+          "root_position_mean_error_mm": 4.456477483650085,
+          "global_body_mpjpe_mm": 3.7913596845535977,
+          "root_relative_body_mpjpe_mm": 2.0364952605414026,
+          "feet_position_mean_error_mm": 1.7066021489195042
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.040663820792349516,
+          "all_joint_rmse_rad": 0.019993928293203116,
+          "joint_velocity_rmse_rad_s": 0.3354785828559439,
+          "root_position_mean_error_mm": 13.468716558734592,
+          "global_body_mpjpe_mm": 11.278568178635854,
+          "root_relative_body_mpjpe_mm": 4.848358835921435,
+          "feet_position_mean_error_mm": 2.0980078198979126
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0873624792887491,
+          "all_joint_rmse_rad": 0.0397351918621688,
+          "joint_velocity_rmse_rad_s": 0.2902624579173744,
+          "root_position_mean_error_mm": 39.8869901272738,
+          "global_body_mpjpe_mm": 34.4550694130704,
+          "root_relative_body_mpjpe_mm": 16.10669695024119,
+          "feet_position_mean_error_mm": 4.497607894595779
+        }
+      }
+    },
+    {
+      "key": "SquatL1__rollout034__segment0__start0205",
+      "task": "SquatL1",
+      "group": "SquatL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.015731448070501784,
+          "all_joint_rmse_rad": 0.013587050014210237,
+          "joint_velocity_rmse_rad_s": 1.781491015178939,
+          "root_position_mean_error_mm": 4.061670822054875,
+          "global_body_mpjpe_mm": 5.510859483170722,
+          "root_relative_body_mpjpe_mm": 4.11649718979221,
+          "feet_position_mean_error_mm": 4.391178160919082
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.04369452202344181,
+          "all_joint_rmse_rad": 0.024422116727513286,
+          "joint_velocity_rmse_rad_s": 1.4781974952654693,
+          "root_position_mean_error_mm": 14.91039360727162,
+          "global_body_mpjpe_mm": 15.983711321288764,
+          "root_relative_body_mpjpe_mm": 9.907585936837831,
+          "feet_position_mean_error_mm": 10.510230454805642
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.12158651813294072,
+          "all_joint_rmse_rad": 0.05786401265363317,
+          "joint_velocity_rmse_rad_s": 1.5316204286931323,
+          "root_position_mean_error_mm": 68.50241032981991,
+          "global_body_mpjpe_mm": 65.12085013687653,
+          "root_relative_body_mpjpe_mm": 27.139989053977214,
+          "feet_position_mean_error_mm": 37.279342940708936
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout030__segment0__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.04763073090111085,
+          "all_joint_rmse_rad": 0.02568808566516527,
+          "joint_velocity_rmse_rad_s": 2.416645112125709,
+          "root_position_mean_error_mm": 3.51481280526512,
+          "global_body_mpjpe_mm": 6.018387321477035,
+          "root_relative_body_mpjpe_mm": 5.72274376028221,
+          "feet_position_mean_error_mm": 10.040892058907383
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.038168052056924355,
+          "all_joint_rmse_rad": 0.022086172259986558,
+          "joint_velocity_rmse_rad_s": 1.6830653289975726,
+          "root_position_mean_error_mm": 9.302382741645806,
+          "global_body_mpjpe_mm": 10.602508824819974,
+          "root_relative_body_mpjpe_mm": 7.704397216352117,
+          "feet_position_mean_error_mm": 12.130698029484261
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.11117159433173882,
+          "all_joint_rmse_rad": 0.048801973019457864,
+          "joint_velocity_rmse_rad_s": 1.2329195652351481,
+          "root_position_mean_error_mm": 75.16913601994943,
+          "global_body_mpjpe_mm": 65.61529168759,
+          "root_relative_body_mpjpe_mm": 32.561524130143695,
+          "feet_position_mean_error_mm": 12.95580568552458
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout030__segment0__start0070",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.020107986128756927,
+          "all_joint_rmse_rad": 0.012548724413652868,
+          "joint_velocity_rmse_rad_s": 0.46937156933574203,
+          "root_position_mean_error_mm": 5.2441499377424154,
+          "global_body_mpjpe_mm": 4.616114733159714,
+          "root_relative_body_mpjpe_mm": 2.3670119754136243,
+          "feet_position_mean_error_mm": 2.770990561944167
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08006539309375386,
+          "all_joint_rmse_rad": 0.035529670642171086,
+          "joint_velocity_rmse_rad_s": 0.46431967702236643,
+          "root_position_mean_error_mm": 19.713456279499205,
+          "global_body_mpjpe_mm": 16.35510573374887,
+          "root_relative_body_mpjpe_mm": 6.174545086635195,
+          "feet_position_mean_error_mm": 3.9362397472580914
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.23085833908025458,
+          "all_joint_rmse_rad": 0.09905485298981667,
+          "joint_velocity_rmse_rad_s": 0.5856893525717225,
+          "root_position_mean_error_mm": 91.21795673731832,
+          "global_body_mpjpe_mm": 78.5836425636284,
+          "root_relative_body_mpjpe_mm": 37.62722554467643,
+          "feet_position_mean_error_mm": 20.217786075517
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout030__segment0__start0140",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout030",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.026293915680817487,
+          "all_joint_rmse_rad": 0.011711806047408416,
+          "joint_velocity_rmse_rad_s": 0.2139508539148551,
+          "root_position_mean_error_mm": 2.215747080924942,
+          "global_body_mpjpe_mm": 3.296656556613828,
+          "root_relative_body_mpjpe_mm": 2.6647456456731162,
+          "feet_position_mean_error_mm": 2.6763750587449344
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.02795854387049322,
+          "all_joint_rmse_rad": 0.012540470825727719,
+          "joint_velocity_rmse_rad_s": 0.2380404624715313,
+          "root_position_mean_error_mm": 5.96180349019314,
+          "global_body_mpjpe_mm": 6.261144391719313,
+          "root_relative_body_mpjpe_mm": 4.044096941331219,
+          "feet_position_mean_error_mm": 4.014286160054828
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.12607164448081842,
+          "all_joint_rmse_rad": 0.053071317969248175,
+          "joint_velocity_rmse_rad_s": 0.3134437941304934,
+          "root_position_mean_error_mm": 30.43735706744915,
+          "global_body_mpjpe_mm": 28.49708341142999,
+          "root_relative_body_mpjpe_mm": 14.792955250718732,
+          "feet_position_mean_error_mm": 12.830982693869968
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout031__segment0__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.056137672518465874,
+          "all_joint_rmse_rad": 0.027428140194453235,
+          "joint_velocity_rmse_rad_s": 1.8693235659220624,
+          "root_position_mean_error_mm": 4.158025202786744,
+          "global_body_mpjpe_mm": 7.957008116277484,
+          "root_relative_body_mpjpe_mm": 7.0022897470619085,
+          "feet_position_mean_error_mm": 17.778052301252234
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06215720649496973,
+          "all_joint_rmse_rad": 0.03132432153890848,
+          "joint_velocity_rmse_rad_s": 1.326405398078477,
+          "root_position_mean_error_mm": 18.18477315686863,
+          "global_body_mpjpe_mm": 19.988333761289066,
+          "root_relative_body_mpjpe_mm": 12.56834806383969,
+          "feet_position_mean_error_mm": 20.60993344133863
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.11488255305161975,
+          "all_joint_rmse_rad": 0.05161031712155544,
+          "joint_velocity_rmse_rad_s": 1.128476147162624,
+          "root_position_mean_error_mm": 94.90457983931381,
+          "global_body_mpjpe_mm": 84.79042676204126,
+          "root_relative_body_mpjpe_mm": 37.678310243650884,
+          "feet_position_mean_error_mm": 27.716801462539582
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout031__segment0__start0022",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08468959728757984,
+          "all_joint_rmse_rad": 0.037169407066313005,
+          "joint_velocity_rmse_rad_s": 1.7938415807410166,
+          "root_position_mean_error_mm": 9.998762201229363,
+          "global_body_mpjpe_mm": 10.395251733104033,
+          "root_relative_body_mpjpe_mm": 4.088500282777209,
+          "feet_position_mean_error_mm": 10.883545922385842
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.10419333196729935,
+          "all_joint_rmse_rad": 0.04570481918937881,
+          "joint_velocity_rmse_rad_s": 2.2340720340104068,
+          "root_position_mean_error_mm": 21.270905440921176,
+          "global_body_mpjpe_mm": 23.625015096372266,
+          "root_relative_body_mpjpe_mm": 12.425129138499281,
+          "feet_position_mean_error_mm": 22.415189608407175
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.2562820786909987,
+          "all_joint_rmse_rad": 0.11066258081012756,
+          "joint_velocity_rmse_rad_s": 2.4671308767153706,
+          "root_position_mean_error_mm": 90.85683967845888,
+          "global_body_mpjpe_mm": 92.15025866390314,
+          "root_relative_body_mpjpe_mm": 50.876461535821754,
+          "feet_position_mean_error_mm": 68.94460437211562
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout031__segment0__start0045",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.15026708534707667,
+          "all_joint_rmse_rad": 0.06494541495201073,
+          "joint_velocity_rmse_rad_s": 2.251854688326362,
+          "root_position_mean_error_mm": 22.469318086716196,
+          "global_body_mpjpe_mm": 22.662477360737235,
+          "root_relative_body_mpjpe_mm": 6.310532472636653,
+          "feet_position_mean_error_mm": 22.39785805218397
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.2187491606366831,
+          "all_joint_rmse_rad": 0.09644317860326251,
+          "joint_velocity_rmse_rad_s": 2.288225940613203,
+          "root_position_mean_error_mm": 53.12362392808526,
+          "global_body_mpjpe_mm": 63.860194979575816,
+          "root_relative_body_mpjpe_mm": 32.46785115971266,
+          "feet_position_mean_error_mm": 81.6767394030842
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.2779296790760764,
+          "all_joint_rmse_rad": 0.1360871298654591,
+          "joint_velocity_rmse_rad_s": 4.2633917135103765,
+          "root_position_mean_error_mm": 211.0442296387632,
+          "global_body_mpjpe_mm": 205.19818906597453,
+          "root_relative_body_mpjpe_mm": 98.19884355113962,
+          "feet_position_mean_error_mm": 141.55241010771994
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout031__segment1__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0548074495370285,
+          "all_joint_rmse_rad": 0.025705365950249588,
+          "joint_velocity_rmse_rad_s": 3.0243452419723535,
+          "root_position_mean_error_mm": 6.600572747344131,
+          "global_body_mpjpe_mm": 6.916424311131643,
+          "root_relative_body_mpjpe_mm": 4.841421553236344,
+          "feet_position_mean_error_mm": 8.136204755160113
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.04940239764313292,
+          "all_joint_rmse_rad": 0.023681932051835178,
+          "joint_velocity_rmse_rad_s": 2.1020283342997317,
+          "root_position_mean_error_mm": 26.12692779788301,
+          "global_body_mpjpe_mm": 22.632410589736985,
+          "root_relative_body_mpjpe_mm": 9.898149236248383,
+          "feet_position_mean_error_mm": 8.724002354688169
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.16912673067789094,
+          "all_joint_rmse_rad": 0.07158959416725584,
+          "joint_velocity_rmse_rad_s": 1.6107417064685676,
+          "root_position_mean_error_mm": 138.5332250810581,
+          "global_body_mpjpe_mm": 116.78110028183713,
+          "root_relative_body_mpjpe_mm": 50.80361118775828,
+          "feet_position_mean_error_mm": 9.35747318245389
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout031__segment1__start0021",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.02901993994570649,
+          "all_joint_rmse_rad": 0.015519728801300571,
+          "joint_velocity_rmse_rad_s": 0.9059345036896598,
+          "root_position_mean_error_mm": 8.996098956207792,
+          "global_body_mpjpe_mm": 7.352179162187282,
+          "root_relative_body_mpjpe_mm": 4.865322173467587,
+          "feet_position_mean_error_mm": 2.6268384438158536
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.07626404181368367,
+          "all_joint_rmse_rad": 0.033307318918452476,
+          "joint_velocity_rmse_rad_s": 1.2162454509305936,
+          "root_position_mean_error_mm": 29.768744692738434,
+          "global_body_mpjpe_mm": 25.629190520242194,
+          "root_relative_body_mpjpe_mm": 12.580069734100505,
+          "feet_position_mean_error_mm": 6.300925852266844
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.14648560781768408,
+          "all_joint_rmse_rad": 0.06332294698105584,
+          "joint_velocity_rmse_rad_s": 1.2018490054267221,
+          "root_position_mean_error_mm": 131.93367925683725,
+          "global_body_mpjpe_mm": 114.41625806605788,
+          "root_relative_body_mpjpe_mm": 48.317295120245696,
+          "feet_position_mean_error_mm": 22.831832286348583
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout031__segment1__start0042",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout031",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.019203651257531908,
+          "all_joint_rmse_rad": 0.01012708060121053,
+          "joint_velocity_rmse_rad_s": 1.122560323420731,
+          "root_position_mean_error_mm": 4.072762018304679,
+          "global_body_mpjpe_mm": 3.802074228583425,
+          "root_relative_body_mpjpe_mm": 2.555049863226653,
+          "feet_position_mean_error_mm": 4.011642413457387
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.039863166489206146,
+          "all_joint_rmse_rad": 0.019312951053747224,
+          "joint_velocity_rmse_rad_s": 1.7055296766752852,
+          "root_position_mean_error_mm": 15.82747786361333,
+          "global_body_mpjpe_mm": 14.307011458205539,
+          "root_relative_body_mpjpe_mm": 7.280555987723977,
+          "feet_position_mean_error_mm": 8.397686268906803
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.14120286074591834,
+          "all_joint_rmse_rad": 0.06058443635322009,
+          "joint_velocity_rmse_rad_s": 1.4593218275495583,
+          "root_position_mean_error_mm": 97.81401098710931,
+          "global_body_mpjpe_mm": 84.46336652775867,
+          "root_relative_body_mpjpe_mm": 39.660429771787605,
+          "feet_position_mean_error_mm": 23.322581581681845
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout032__segment0__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05909178300933173,
+          "all_joint_rmse_rad": 0.027684345221940583,
+          "joint_velocity_rmse_rad_s": 1.4788193802248557,
+          "root_position_mean_error_mm": 5.053920340905998,
+          "global_body_mpjpe_mm": 6.644171242367681,
+          "root_relative_body_mpjpe_mm": 5.443169690281729,
+          "feet_position_mean_error_mm": 12.496680366260437
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.07732130481036283,
+          "all_joint_rmse_rad": 0.03592947732572614,
+          "joint_velocity_rmse_rad_s": 1.0693146990126694,
+          "root_position_mean_error_mm": 23.758288753243836,
+          "global_body_mpjpe_mm": 22.65333696552352,
+          "root_relative_body_mpjpe_mm": 12.629387568356385,
+          "feet_position_mean_error_mm": 16.195472468727598
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.1824411595102833,
+          "all_joint_rmse_rad": 0.07818322025710993,
+          "joint_velocity_rmse_rad_s": 1.01283795281269,
+          "root_position_mean_error_mm": 125.50054874283798,
+          "global_body_mpjpe_mm": 109.52798977182255,
+          "root_relative_body_mpjpe_mm": 50.88074631778218,
+          "feet_position_mean_error_mm": 25.051430461097905
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout032__segment0__start0021",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.1272537545015856,
+          "all_joint_rmse_rad": 0.05413780127658138,
+          "joint_velocity_rmse_rad_s": 2.201771745170727,
+          "root_position_mean_error_mm": 15.166889513495189,
+          "global_body_mpjpe_mm": 15.587059403067226,
+          "root_relative_body_mpjpe_mm": 4.414645252613903,
+          "feet_position_mean_error_mm": 16.3686779873197
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.2310700246420675,
+          "all_joint_rmse_rad": 0.0973383900697776,
+          "joint_velocity_rmse_rad_s": 2.214405583039173,
+          "root_position_mean_error_mm": 34.68203866134548,
+          "global_body_mpjpe_mm": 37.622206956552546,
+          "root_relative_body_mpjpe_mm": 14.149395344739746,
+          "feet_position_mean_error_mm": 40.76471495063488
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.3440715220718891,
+          "all_joint_rmse_rad": 0.1497001133557214,
+          "joint_velocity_rmse_rad_s": 2.1863669776432144,
+          "root_position_mean_error_mm": 77.30277077249417,
+          "global_body_mpjpe_mm": 93.57108382956231,
+          "root_relative_body_mpjpe_mm": 55.39048796359312,
+          "feet_position_mean_error_mm": 105.96390002436316
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout032__segment0__start0043",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.13031790267271687,
+          "all_joint_rmse_rad": 0.05556535747165582,
+          "joint_velocity_rmse_rad_s": 2.7988243579021357,
+          "root_position_mean_error_mm": 21.625816868056617,
+          "global_body_mpjpe_mm": 21.946093437291896,
+          "root_relative_body_mpjpe_mm": 5.61724735329398,
+          "feet_position_mean_error_mm": 21.150212204113995
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.2875935747684847,
+          "all_joint_rmse_rad": 0.12469466481018014,
+          "joint_velocity_rmse_rad_s": 2.663560889425743,
+          "root_position_mean_error_mm": 54.58951291790308,
+          "global_body_mpjpe_mm": 67.90671146874348,
+          "root_relative_body_mpjpe_mm": 33.799203553512385,
+          "feet_position_mean_error_mm": 92.17255101081508
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.3158678001821643,
+          "all_joint_rmse_rad": 0.14512912132766223,
+          "joint_velocity_rmse_rad_s": 6.428016705110402,
+          "root_position_mean_error_mm": 190.93189317091844,
+          "global_body_mpjpe_mm": 192.99946139695643,
+          "root_relative_body_mpjpe_mm": 102.11098813434256,
+          "feet_position_mean_error_mm": 159.0465224145057
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout032__segment1__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06480306219644083,
+          "all_joint_rmse_rad": 0.029820589068866376,
+          "joint_velocity_rmse_rad_s": 2.3876559353476616,
+          "root_position_mean_error_mm": 7.015426989713721,
+          "global_body_mpjpe_mm": 8.183049934421348,
+          "root_relative_body_mpjpe_mm": 5.9948256709996715,
+          "feet_position_mean_error_mm": 9.207587502554139
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.057633873827177884,
+          "all_joint_rmse_rad": 0.02717345900268436,
+          "joint_velocity_rmse_rad_s": 1.6635827088038448,
+          "root_position_mean_error_mm": 28.17031369842793,
+          "global_body_mpjpe_mm": 25.00999033505099,
+          "root_relative_body_mpjpe_mm": 11.900470799202411,
+          "feet_position_mean_error_mm": 10.17947614512495
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.19606144388016075,
+          "all_joint_rmse_rad": 0.08258560195615654,
+          "joint_velocity_rmse_rad_s": 1.2323480950354975,
+          "root_position_mean_error_mm": 144.46378665968524,
+          "global_body_mpjpe_mm": 122.3276879261018,
+          "root_relative_body_mpjpe_mm": 55.10664868427638,
+          "feet_position_mean_error_mm": 10.657330399038877
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout032__segment1__start0022",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.014199697268469404,
+          "all_joint_rmse_rad": 0.010857584728970254,
+          "joint_velocity_rmse_rad_s": 0.18079648364496473,
+          "root_position_mean_error_mm": 8.936035573600956,
+          "global_body_mpjpe_mm": 6.376302141488713,
+          "root_relative_body_mpjpe_mm": 3.7423596526753604,
+          "feet_position_mean_error_mm": 1.0126166610344332
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.04325874258423864,
+          "all_joint_rmse_rad": 0.019936008502829256,
+          "joint_velocity_rmse_rad_s": 0.32553488755520393,
+          "root_position_mean_error_mm": 31.37141913984822,
+          "global_body_mpjpe_mm": 25.2185104044373,
+          "root_relative_body_mpjpe_mm": 11.238103701475273,
+          "feet_position_mean_error_mm": 1.349085502891275
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.15732694273807535,
+          "all_joint_rmse_rad": 0.06682446909761398,
+          "joint_velocity_rmse_rad_s": 0.46181802573344427,
+          "root_position_mean_error_mm": 150.6130274213566,
+          "global_body_mpjpe_mm": 128.40334867538115,
+          "root_relative_body_mpjpe_mm": 53.652922657699,
+          "feet_position_mean_error_mm": 17.62533054892604
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout032__segment1__start0044",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout032",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.01891810869114226,
+          "all_joint_rmse_rad": 0.009615956639521006,
+          "joint_velocity_rmse_rad_s": 0.6575283013718042,
+          "root_position_mean_error_mm": 3.7792898991761588,
+          "global_body_mpjpe_mm": 3.076688829879888,
+          "root_relative_body_mpjpe_mm": 1.7729284751944567,
+          "feet_position_mean_error_mm": 1.841634201491224
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.027922854310449448,
+          "all_joint_rmse_rad": 0.013229277759630445,
+          "joint_velocity_rmse_rad_s": 0.5734575109943338,
+          "root_position_mean_error_mm": 14.39022319626561,
+          "global_body_mpjpe_mm": 12.081798468371549,
+          "root_relative_body_mpjpe_mm": 5.04459412694961,
+          "feet_position_mean_error_mm": 2.5244824510055572
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08857077742319167,
+          "all_joint_rmse_rad": 0.040568436838603256,
+          "joint_velocity_rmse_rad_s": 1.0697158938096916,
+          "root_position_mean_error_mm": 73.32568591121567,
+          "global_body_mpjpe_mm": 63.53311309288129,
+          "root_relative_body_mpjpe_mm": 25.276880619498883,
+          "feet_position_mean_error_mm": 10.86984996369573
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout033__segment0__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.051346059757979984,
+          "all_joint_rmse_rad": 0.023926193429745446,
+          "joint_velocity_rmse_rad_s": 1.099148829662454,
+          "root_position_mean_error_mm": 8.425244944948256,
+          "global_body_mpjpe_mm": 11.349648227975464,
+          "root_relative_body_mpjpe_mm": 8.071990709858818,
+          "feet_position_mean_error_mm": 16.038263215720384
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0806516178494699,
+          "all_joint_rmse_rad": 0.03670882576642462,
+          "joint_velocity_rmse_rad_s": 0.810466433024965,
+          "root_position_mean_error_mm": 41.5857974209426,
+          "global_body_mpjpe_mm": 38.44155460410369,
+          "root_relative_body_mpjpe_mm": 20.233627075680236,
+          "feet_position_mean_error_mm": 19.727473668084734
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.2214782496609875,
+          "all_joint_rmse_rad": 0.09460075482292431,
+          "joint_velocity_rmse_rad_s": 0.8621117674228483,
+          "root_position_mean_error_mm": 205.85030440719765,
+          "global_body_mpjpe_mm": 177.29659999077313,
+          "root_relative_body_mpjpe_mm": 81.61055875300632,
+          "feet_position_mean_error_mm": 26.151099000752858
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout033__segment0__start0021",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.10797323908930753,
+          "all_joint_rmse_rad": 0.046621522148914435,
+          "joint_velocity_rmse_rad_s": 2.12490213441017,
+          "root_position_mean_error_mm": 12.410254541972739,
+          "global_body_mpjpe_mm": 12.824619288454972,
+          "root_relative_body_mpjpe_mm": 4.4647883445425744,
+          "feet_position_mean_error_mm": 13.895289222207655
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.19399655299715446,
+          "all_joint_rmse_rad": 0.08214511960302226,
+          "joint_velocity_rmse_rad_s": 2.0088987896502237,
+          "root_position_mean_error_mm": 29.88385858436231,
+          "global_body_mpjpe_mm": 32.12984904602042,
+          "root_relative_body_mpjpe_mm": 12.975778603505365,
+          "feet_position_mean_error_mm": 32.06612328083822
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.32837468455177726,
+          "all_joint_rmse_rad": 0.1429198687623212,
+          "joint_velocity_rmse_rad_s": 2.6170139286677583,
+          "root_position_mean_error_mm": 78.45109139268249,
+          "global_body_mpjpe_mm": 90.48720777361567,
+          "root_relative_body_mpjpe_mm": 54.35649952876039,
+          "feet_position_mean_error_mm": 90.98326823285963
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout033__segment0__start0043",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.10568315776712989,
+          "all_joint_rmse_rad": 0.045694835728795256,
+          "joint_velocity_rmse_rad_s": 3.023846915382018,
+          "root_position_mean_error_mm": 18.222670844423053,
+          "global_body_mpjpe_mm": 18.592451865958136,
+          "root_relative_body_mpjpe_mm": 5.038290657356864,
+          "feet_position_mean_error_mm": 17.793973560865943
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.28794046648189503,
+          "all_joint_rmse_rad": 0.12264876885023765,
+          "joint_velocity_rmse_rad_s": 2.7987724910439042,
+          "root_position_mean_error_mm": 50.29394451774169,
+          "global_body_mpjpe_mm": 61.57571923553452,
+          "root_relative_body_mpjpe_mm": 28.966070902710108,
+          "feet_position_mean_error_mm": 79.79170544909168
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.3109747492157172,
+          "all_joint_rmse_rad": 0.1398059886218688,
+          "joint_velocity_rmse_rad_s": 2.9066867559750156,
+          "root_position_mean_error_mm": 173.76888980429888,
+          "global_body_mpjpe_mm": 182.01213226820266,
+          "root_relative_body_mpjpe_mm": 97.51774998332715,
+          "feet_position_mean_error_mm": 159.05012460271058
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout033__segment1__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05408387437902727,
+          "all_joint_rmse_rad": 0.024538003059954374,
+          "joint_velocity_rmse_rad_s": 2.2131542845649275,
+          "root_position_mean_error_mm": 6.93974215932381,
+          "global_body_mpjpe_mm": 6.295676680875511,
+          "root_relative_body_mpjpe_mm": 3.4678355721903307,
+          "feet_position_mean_error_mm": 6.403472550512394
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05262836936694064,
+          "all_joint_rmse_rad": 0.02483318037118792,
+          "joint_velocity_rmse_rad_s": 1.5430471473346166,
+          "root_position_mean_error_mm": 28.54003447505805,
+          "global_body_mpjpe_mm": 24.060117139516148,
+          "root_relative_body_mpjpe_mm": 10.521075663814619,
+          "feet_position_mean_error_mm": 7.438609411463876
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.19008989308768182,
+          "all_joint_rmse_rad": 0.08012552359722123,
+          "joint_velocity_rmse_rad_s": 1.151492653766079,
+          "root_position_mean_error_mm": 144.4453419001679,
+          "global_body_mpjpe_mm": 121.52958063208179,
+          "root_relative_body_mpjpe_mm": 54.364963072821396,
+          "feet_position_mean_error_mm": 8.151219774987817
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout033__segment1__start0022",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.012814858717878472,
+          "all_joint_rmse_rad": 0.00964514003171641,
+          "joint_velocity_rmse_rad_s": 0.4434736622652176,
+          "root_position_mean_error_mm": 8.148367117487835,
+          "global_body_mpjpe_mm": 5.960768530547873,
+          "root_relative_body_mpjpe_mm": 3.624347835320389,
+          "feet_position_mean_error_mm": 1.0231842886652889
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.03863870507063757,
+          "all_joint_rmse_rad": 0.017785432337204893,
+          "joint_velocity_rmse_rad_s": 0.4281359404671948,
+          "root_position_mean_error_mm": 29.08234852847875,
+          "global_body_mpjpe_mm": 23.603801432145183,
+          "root_relative_body_mpjpe_mm": 10.83170481263008,
+          "feet_position_mean_error_mm": 1.524300972201772
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.14506862404009857,
+          "all_joint_rmse_rad": 0.06151372654082094,
+          "joint_velocity_rmse_rad_s": 0.527411108921209,
+          "root_position_mean_error_mm": 140.3463003850058,
+          "global_body_mpjpe_mm": 119.69963951455556,
+          "root_relative_body_mpjpe_mm": 50.19696605502751,
+          "feet_position_mean_error_mm": 15.976585509296568
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout033__segment1__start0044",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout033",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.013323750361539712,
+          "all_joint_rmse_rad": 0.005980572578465801,
+          "joint_velocity_rmse_rad_s": 0.4409136861287891,
+          "root_position_mean_error_mm": 3.212197460546571,
+          "global_body_mpjpe_mm": 2.589078874488352,
+          "root_relative_body_mpjpe_mm": 1.239807073862101,
+          "feet_position_mean_error_mm": 1.0942427122242826
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.025402017144208935,
+          "all_joint_rmse_rad": 0.011638260588169911,
+          "joint_velocity_rmse_rad_s": 0.4349089938353742,
+          "root_position_mean_error_mm": 13.56275400355786,
+          "global_body_mpjpe_mm": 11.284575746216744,
+          "root_relative_body_mpjpe_mm": 4.496304755374377,
+          "feet_position_mean_error_mm": 2.252344403857
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0850677104636899,
+          "all_joint_rmse_rad": 0.0382393640803717,
+          "joint_velocity_rmse_rad_s": 0.8491025825506208,
+          "root_position_mean_error_mm": 68.32739099207429,
+          "global_body_mpjpe_mm": 59.45703447606781,
+          "root_relative_body_mpjpe_mm": 23.196960753247662,
+          "feet_position_mean_error_mm": 11.383910363104752
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout034__segment0__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.04790529124446393,
+          "all_joint_rmse_rad": 0.021793491595089223,
+          "joint_velocity_rmse_rad_s": 2.110227295135157,
+          "root_position_mean_error_mm": 6.99477093615345,
+          "global_body_mpjpe_mm": 7.161494149852825,
+          "root_relative_body_mpjpe_mm": 5.354504175468265,
+          "feet_position_mean_error_mm": 5.080075713296425
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.0603355880208778,
+          "all_joint_rmse_rad": 0.029472874113614975,
+          "joint_velocity_rmse_rad_s": 1.476451456300932,
+          "root_position_mean_error_mm": 33.36734670269393,
+          "global_body_mpjpe_mm": 28.483514409157493,
+          "root_relative_body_mpjpe_mm": 14.027898678265375,
+          "feet_position_mean_error_mm": 7.658111574697242
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.18613957326555988,
+          "all_joint_rmse_rad": 0.07941646708670023,
+          "joint_velocity_rmse_rad_s": 1.1402114755678208,
+          "root_position_mean_error_mm": 169.53746458875682,
+          "global_body_mpjpe_mm": 143.4405955435118,
+          "root_relative_body_mpjpe_mm": 64.22180214412047,
+          "feet_position_mean_error_mm": 12.010363006818855
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout034__segment0__start0030",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.011218019735405068,
+          "all_joint_rmse_rad": 0.009459774417674904,
+          "joint_velocity_rmse_rad_s": 0.5708794143297007,
+          "root_position_mean_error_mm": 2.495449335409952,
+          "global_body_mpjpe_mm": 2.7657725337932075,
+          "root_relative_body_mpjpe_mm": 2.16167309640679,
+          "feet_position_mean_error_mm": 1.3533676386700961
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.019951596794831203,
+          "all_joint_rmse_rad": 0.012659675506246056,
+          "joint_velocity_rmse_rad_s": 0.44185267053774674,
+          "root_position_mean_error_mm": 10.95572078996995,
+          "global_body_mpjpe_mm": 10.204493560677953,
+          "root_relative_body_mpjpe_mm": 5.622550989038419,
+          "feet_position_mean_error_mm": 2.955899908297379
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06704521620573202,
+          "all_joint_rmse_rad": 0.030272077714387835,
+          "joint_velocity_rmse_rad_s": 0.6722132828290722,
+          "root_position_mean_error_mm": 63.96956644032119,
+          "global_body_mpjpe_mm": 55.15076567499005,
+          "root_relative_body_mpjpe_mm": 21.444346787487422,
+          "feet_position_mean_error_mm": 11.114951756454358
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout034__segment0__start0061",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.03666374129015563,
+          "all_joint_rmse_rad": 0.019166030700485198,
+          "joint_velocity_rmse_rad_s": 1.8238998892630447,
+          "root_position_mean_error_mm": 9.482243494223734,
+          "global_body_mpjpe_mm": 8.487581653684776,
+          "root_relative_body_mpjpe_mm": 3.390340324872049,
+          "feet_position_mean_error_mm": 5.970842034859339
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05737975369167368,
+          "all_joint_rmse_rad": 0.026790688834179524,
+          "joint_velocity_rmse_rad_s": 1.2869401356420438,
+          "root_position_mean_error_mm": 27.847875060468024,
+          "global_body_mpjpe_mm": 24.051105458649776,
+          "root_relative_body_mpjpe_mm": 10.00786221010153,
+          "feet_position_mean_error_mm": 7.320306222255892
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.07277873647505659,
+          "all_joint_rmse_rad": 0.035214656706824186,
+          "joint_velocity_rmse_rad_s": 1.3330486251237503,
+          "root_position_mean_error_mm": 118.25739747683915,
+          "global_body_mpjpe_mm": 103.2450463500164,
+          "root_relative_body_mpjpe_mm": 42.43276615973886,
+          "feet_position_mean_error_mm": 27.79053963184557
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout034__segment1__start0000",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.05421814044144436,
+          "all_joint_rmse_rad": 0.025336704987042304,
+          "joint_velocity_rmse_rad_s": 2.4361444705670903,
+          "root_position_mean_error_mm": 6.103579219702195,
+          "global_body_mpjpe_mm": 6.521656189399009,
+          "root_relative_body_mpjpe_mm": 4.814328897634575,
+          "feet_position_mean_error_mm": 5.058482045133011
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.050826788342234565,
+          "all_joint_rmse_rad": 0.025299326624801072,
+          "joint_velocity_rmse_rad_s": 1.7114620654456607,
+          "root_position_mean_error_mm": 26.140714554317974,
+          "global_body_mpjpe_mm": 22.243522794708134,
+          "root_relative_body_mpjpe_mm": 10.003184032827443,
+          "feet_position_mean_error_mm": 6.042353579637458
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.1687294007560445,
+          "all_joint_rmse_rad": 0.0719622609774158,
+          "joint_velocity_rmse_rad_s": 1.4226661368781528,
+          "root_position_mean_error_mm": 139.82622675212198,
+          "global_body_mpjpe_mm": 117.96515090333457,
+          "root_relative_body_mpjpe_mm": 51.49695466052591,
+          "feet_position_mean_error_mm": 9.927284799864404
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout034__segment1__start0013",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.017387902596769988,
+          "all_joint_rmse_rad": 0.01345860412125826,
+          "joint_velocity_rmse_rad_s": 0.3024909237581854,
+          "root_position_mean_error_mm": 10.078876031719243,
+          "global_body_mpjpe_mm": 7.214762039634923,
+          "root_relative_body_mpjpe_mm": 4.48668219746002,
+          "feet_position_mean_error_mm": 1.7784667885338452
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.06883290156602477,
+          "all_joint_rmse_rad": 0.03343005072376438,
+          "joint_velocity_rmse_rad_s": 0.9270958079461313,
+          "root_position_mean_error_mm": 34.21509205724272,
+          "global_body_mpjpe_mm": 27.574941425044884,
+          "root_relative_body_mpjpe_mm": 12.680357950877868,
+          "feet_position_mean_error_mm": 3.7477064639409843
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.16304966252892214,
+          "all_joint_rmse_rad": 0.07039516382565084,
+          "joint_velocity_rmse_rad_s": 0.9186254884584278,
+          "root_position_mean_error_mm": 154.7847285485749,
+          "global_body_mpjpe_mm": 131.8926037592871,
+          "root_relative_body_mpjpe_mm": 56.123156062275136,
+          "feet_position_mean_error_mm": 19.173449603663585
+        }
+      }
+    },
+    {
+      "key": "StepFBL1__rollout034__segment1__start0026",
+      "task": "StepFBL1",
+      "group": "StepFBL1__rollout034",
+      "metrics": {
+        "0.25": {
+          "frames": 12,
+          "expected_frames": 12,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.08745146551858801,
+          "all_joint_rmse_rad": 0.037828772339507655,
+          "joint_velocity_rmse_rad_s": 1.531993320902223,
+          "root_position_mean_error_mm": 11.03349088933625,
+          "global_body_mpjpe_mm": 10.518763451056365,
+          "root_relative_body_mpjpe_mm": 3.5963468808460384,
+          "feet_position_mean_error_mm": 9.803157613678387
+        },
+        "0.5": {
+          "frames": 25,
+          "expected_frames": 25,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.09879637033119751,
+          "all_joint_rmse_rad": 0.04322490582974725,
+          "joint_velocity_rmse_rad_s": 1.413955400338062,
+          "root_position_mean_error_mm": 21.055576406136424,
+          "global_body_mpjpe_mm": 20.337876687251722,
+          "root_relative_body_mpjpe_mm": 8.84163858780254,
+          "feet_position_mean_error_mm": 14.804195865915238
+        },
+        "1.0": {
+          "frames": 50,
+          "expected_frames": 50,
+          "complete": true,
+          "first_reset_row": 51,
+          "ankle_rmse_rad": 0.13456018181189763,
+          "all_joint_rmse_rad": 0.05890454121153248,
+          "joint_velocity_rmse_rad_s": 1.2114056922011145,
+          "root_position_mean_error_mm": 70.46760678863889,
+          "global_body_mpjpe_mm": 63.67126877675004,
+          "root_relative_body_mpjpe_mm": 32.50957640446873,
+          "feet_position_mean_error_mm": 26.00585957151358
+        }
+      }
+    }
+  ]
+}

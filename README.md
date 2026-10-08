@@ -46,22 +46,24 @@ The implemented methods are delta action, passive SysID, active SysID and torque
 | Active SysID | 95.8 | 90.6 | 90.6 |
 | Excitation-data torque correction | 99.0 | 57.3 | 86.5 |
 
-These are completed evaluations with one training seed per method. Calibration helps Step, but shows no extra completion benefit over ordinary fine-tuning on Squat or CR7. All three motions occur in calibration. This is not an unseen-motion test.
+These completion results come from fresh physical evaluations. Each method has one training seed. Calibration helps Step, but shows no extra completion benefit over ordinary fine-tuning on Squat or CR7. All three motions occur in calibration. This is not an unseen-motion test.
 
-![Historical completion by task](results/task_extensions/completion.png)
+![Fresh tracking success, position, velocity and acceleration](results/paper_evaluation/overview.png)
 
-**Evaluation update:** fresh rollouts are queued to report ASAP-style whole-body position, velocity and acceleration errors over 27 points. Completion and the paper's tracking-success criterion will be separate percentages. The table above reports existing completion results, not the new tracking-success score. [Metric definitions and status](docs/evaluation.md).
+The figure reports 27-point tracking errors and tracking success. Errors use the first second; some CR7 trials end earlier and are excluded from those means. Tracking success also checks the paper's 0.5 m mean body-distance criterion. Velocity and acceleration use mm/frame and mm/frame² at 50 Hz. [Squat](results/paper_evaluation/SquatL1.md), [CR7](results/paper_evaluation/CR7.md), [Step](results/paper_evaluation/StepFBL1.md) and [metric definitions](docs/evaluation.md) give the details.
 
 ## 6. Minimum hypothesis test
 
 I select equal-size subsets from the same 18 training rollouts. Each contains 954 transitions. The rules are uniform selection, actuator-feature coverage and large ankle range. Models and training budgets stay the same.
 
-| Selection rule | Historical replay position error (mm) | Squat completion (%) |
-|---|---:|---:|
-| Uniform | 32.96 | 8.3 |
-| Actuator coverage | 28.42 | 41.7 |
-| Large joint range | 45.73 | 77.1 |
+| Selection rule | First-run replay error (mm) | Repeat replay error (mm) | First-run completion (%) | Repeat completion (%) |
+|---|---:|---:|---:|---:|
+| Uniform | 33.62 | 44.88 | 8.3 | 99.0 |
+| Actuator coverage | 28.99 | 35.72 | 41.7 | 77.1 |
+| Large joint range | 46.66 | 49.17 | 77.1 | 95.8 |
 
-Coverage gives better replay, while range gives higher completion in this first run. **The combined hypothesis is not confirmed.** In the second run, uniform and coverage completion rise to 99.0% and 77.1%. Range is still running. These changes make the first-run ranking uncertain. Selection also changes motion phase and contact conditions, so these results do not isolate one causal feature. [Data-content experiment](results/content_selection/README.md).
+Fresh replay uses 24 measured target bodies. Coverage gives smaller replay errors in both runs, but it does not consistently give better control. **The combined hypothesis is not confirmed.** Completion changes substantially between training seeds. Selection also changes motion phase and contact conditions, so the results do not isolate one causal feature. The budget fixes selected training data, rather than the cost of acquiring the larger pool. [Data-content experiment](results/content_selection/README.md).
+
+![Data selection: fresh replay and downstream tracking success](results/paper_replay/content_selection.png)
 
 [Experiment details](docs/experimental_protocol.md) · [Reproduction](docs/reproduction.md) · [Reading guide](docs/reading_guide.md)

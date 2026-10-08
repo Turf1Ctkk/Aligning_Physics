@@ -12,6 +12,8 @@ For more detail:
 
 The `results` folders hold measured evidence. Their short reports explain the experiment; JSON files hold individual trials, settings and audits. Raw counts remain in those files. Reader-facing tables use percentages.
 
+The latest policy metrics are in [Squat](../results/paper_evaluation/SquatL1.md), [CR7](../results/paper_evaluation/CR7.md) and [Step](../results/paper_evaluation/StepFBL1.md). The [calibration replay table](../results/paper_replay/metrics.md) reports 24-body errors. The [data-content report](../results/content_selection/README.md) compares both training runs separately.
+
 The `overlays` folder contains code installed into ASAP. `scripts` contains analysis and reporting tools. Large checkpoints and recordings stay on the experiment server. Historical records are retained while experiments finish; a final cleanup will reduce the repository further.
 
 Existing GIFs have been removed. IsaacGym visualizations will be added by the author later.

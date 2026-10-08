@@ -46,7 +46,7 @@ From this report repository, run the independent CPU metric checks:
 python scripts/verify_paper_metrics.py
 ```
 
-See [metric definitions](evaluation.md) for units and failure handling. The scheduled queue waits for the existing repeat and replay-control jobs. Its first job is also the physical smoke check. No new learning is required. `audit_paper_evaluation.py` checks the actual fresh records and configurations. `report_paper_evaluation.py` creates percentage tables and whole-body plots only after the full queue completes.
+See [metric definitions](evaluation.md) for units and failure handling. The completed queues ran after the repeat and its replay controls. The first policy job also served as the physical smoke check. No new learning was required. `audit_paper_evaluation.py` checks fresh policy records and settings. `audit_paper_replay.py` checks replay inputs, settings and recomputed metrics. The two `report_paper_*` scripts create tables and plots only after their queues complete.
 
 ## Artifacts and analysis
 

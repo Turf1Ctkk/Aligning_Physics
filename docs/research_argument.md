@@ -66,12 +66,12 @@ At equal data and training budgets, coverage should reduce held-out replay error
 
 Both claims matter. A replay gain without a control gain supports only the first. A negative result for this selector does not rule out every form of information-aware collection.
 
-The first subset experiment shows this distinction. Coverage has lower replay position error, but range has higher policy completion. The combined hypothesis is not confirmed in that run. Different selected phases also have different same-domain replay errors. These are retained rather than subtracted or used to replace windows.
+Both subset runs show this distinction. Coverage has lower replay position error, but it does not consistently produce better policy control. Completion changes substantially between seeds. The combined hypothesis is not confirmed. Different selected phases also have different same-domain replay errors. These are retained rather than subtracted or used to replace windows.
 
 ## What the current study can establish
 
 The data-content experiment compares three complete pipelines using the same recorded parents. It measures the effect of a selection rule, which may change several data properties at once. It does not isolate the causal effect of one feature.
 
-A second seed repeats training on the same selected data. This checks sensitivity to the pipeline seed. It does not repeat acquisition, and two seeds cannot establish a reliable population ranking. Replay evaluation seed also changes between runs. Policy deployment seeds remain fixed.
+A completed second seed repeats training on the same selected data. This checks sensitivity to the pipeline seed. It does not repeat acquisition, and two seeds cannot establish a reliable population ranking. Replay evaluation seed also changes between runs. Policy deployment seeds remain fixed.
 
 A stronger follow-up would repeat acquisition and training, vary one data property at a time, and record the conditions visited during fine-tuning. It should also test a harder dynamics mismatch, since ordinary fine-tuning already reaches full completion on two tasks here.

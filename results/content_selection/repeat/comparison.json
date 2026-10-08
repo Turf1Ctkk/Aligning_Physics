@@ -1,0 +1,18 @@
+{
+  "scope": "Separate metrics from one fixed-data training run; no pooled-seed population ranking",
+  "summary": "results/content_selection/repeat/paired_summary.json",
+  "run": "repeat",
+  "calibration_seed": 20305009,
+  "policy_seed": 20306009,
+  "replay_complete_counts": [
+    66,
+    66,
+    66
+  ],
+  "first_second_valid_counts": [
+    96,
+    96,
+    96
+  ],
+  "zero_reference": "Seed-matched controls"
+}

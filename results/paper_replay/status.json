@@ -1,4 +1,5 @@
 {
-  "status": "waiting",
-  "stage": "fresh_policy_evaluation_completion"
+  "status": "complete",
+  "stage": "fresh_replay_metrics",
+  "total_jobs": 26
 }

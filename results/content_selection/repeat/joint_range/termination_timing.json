@@ -1,0 +1,29 @@
+{
+  "scope": "Termination timing; no fall classification",
+  "terminations": [
+    {
+      "seed": "8101",
+      "trial": 7,
+      "survival_s": 3.1199999302625656,
+      "first_reset_row": 156
+    },
+    {
+      "seed": "8101",
+      "trial": 15,
+      "survival_s": 2.7199999392032623,
+      "first_reset_row": 136
+    },
+    {
+      "seed": "8101",
+      "trial": 17,
+      "survival_s": 3.63999991863966,
+      "first_reset_row": 182
+    },
+    {
+      "seed": "8103",
+      "trial": 19,
+      "survival_s": 3.519999921321869,
+      "first_reset_row": 176
+    }
+  ]
+}
