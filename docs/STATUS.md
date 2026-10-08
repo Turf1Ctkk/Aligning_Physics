@@ -22,6 +22,8 @@ The original-policy evaluation inherited nonzero task-observation noise, while t
 
 An additional matched clean source-domain check completed all 261 recorded frames (5.22 seconds), with global body MPJPE 87.07 mm and root-relative body MPJPE 36.10 mm. This one-trial contrast establishes a useful baseline, but is not a statistical estimate of the effect of the domain change.
 
+A post-hoc first-second deployment-feature audit has also completed for all 96 trials per method. It observes different actuator regimes relative to mixed30 calibration support, but does not establish that feature distance explains control ranking. Calibration-only scaling/reference, per-trial measures and the one-training-seed boundary are documented in [the audit](../results/policy_regimes/README.md). The queued selectors are unchanged.
+
 ## Not yet completed
 
 - Active-arm policy comparison; design, acquisition, refitting and replay completed.

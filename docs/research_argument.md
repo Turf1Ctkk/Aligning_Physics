@@ -76,6 +76,8 @@ Velocity and command change are candidate conditioning/coverage features. They a
 
 Training data originate from π0 in B; fine-tuning creates πD in the calibrated A. Their state-action occupancy distributions can differ. A low average replay loss under the former does not guarantee an accurate correction under the latter.
 
+A [post-hoc support audit](../results/policy_regimes/README.md) queries the first 49 transitions of all 96 target deployment trials per policy against mixed30 calibration data in 12 training-scaled actuator coordinates. Mean nearest-feature distance is 0.736 for the original policy, 0.959 for FT-only, 1.351 for ASAP, 1.467 for passive SysID and 1.318 for torque-model FT. This measures a change in visited feature regimes, not a probability-density ratio or model error. SysID has the largest distance but higher completion than ASAP, so the observed distance does not explain the ranking on its own. Only B deployment is observed; calibrated-A training occupancy and correction errors on those states remain unmeasured. The queued selection protocol is unchanged by this exploratory test-set analysis.
+
 There is also a difference in error propagation. Within a locally smooth contact regime, a first-order closed-loop error has the schematic form
 
 $$

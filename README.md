@@ -55,6 +55,8 @@ Torque clipping further complicates “more excitation”: when both systems sat
 
 Closed-loop adaptation adds another condition. The fine-tuned policy generates its own actions and visits its own states. A correction accurate on recorded inputs may be inaccurate on this changed distribution, or a policy may exploit its errors. Therefore, low average replay error need not be a sufficient proxy for downstream control quality. [The full research argument](docs/research_argument.md) derives these distinctions and lists competing explanations; [the experimental protocol](docs/experimental_protocol.md) makes them testable.
 
+A [post-hoc deployment-feature audit](results/policy_regimes/README.md) now makes one part measurable: ASAP's first-second actuator states are farther from mixed30 calibration support than FT-only's. Passive SysID is farther still but has higher completion than ASAP. Thus distribution change is observable, while nearest-feature distance alone does not explain the control ranking. This descriptive audit does not replace the queued data intervention or measure calibrated-A training occupancy.
+
 ## What has actually been run
 
 The completed pilot uses the same IsaacGym implementation in both domains:
