@@ -34,6 +34,8 @@ Optimizing this criterion over a fixed dataset is data selection; it is not by i
 
 The inspected [official active-SysID guide](https://github.com/LeCAR-Lab/SPI-Active/blob/main/active_sysid.md) uses a Go2 command-conditioned multi-behavior controller. Our saved G1 policies are phase-conditioned single-motion trackers. A complete active-exploration comparison therefore requires a disclosed command/interface adaptation and new collection. The initial parameter-estimation comparison should be labelled **SPI-style SysID** until that stage is implemented and evaluated. Official source inspected at commit `edc07d0b957bce9a430aa5a48b71a266a0a9f635`.
 
+The queued passive estimator searches separate pitch/roll ankle gains in [8,30], starting at source gains [20,20]. It uses CMA-ES with 12 candidates per generation and eight generations. Each candidate runs in parallel on one central full-second window per continuous mixed30 segment; the fixed fitting objective uses the first 0.25 seconds of joint position and velocity error, scaled by 0.1 rad and 1 rad/s. Task/group/segment weights match the declared hierarchy. Thus it consumes a subset of the calibration pool, unlike action-model training across valid starts; these initial methods are not a matched-unique-data mechanism ranking. The fitted gains are selected by training error, with isolated validation/test used only to report replay, before the equal-budget downstream comparison.
+
 ## Unsupervised actuator torque correction
 
 Learn a corrective torque from actuator history:
@@ -54,6 +56,8 @@ The existing 50 Hz rollout files cannot recover measured 200 Hz histories throug
 The second experiment also changes the data source; it cannot isolate model representation unless matched-data controls are added. Neither full calibration comparison has completed yet.
 
 The implemented matched-data adaptation uses a shared 40→128→128→1 ELU network independently on four ankles. Its inputs are 20 samples of position-command error and zero-target-velocity error, measured from simulator states every 5 ms. The model starts with zero deterministic correction, learns through PPO, adds a scaled torque residual (5 Nm per normalized output) to the nominal PD torque, and clips the sum at the existing torque limits. History is zeroed at replay resets.
+
+The 5 Nm scale equals the source action residual's nominal torque scale, $K_p\alpha=20\times0.25$. The two interfaces still differ in history, sharing, update rate and clipping interactions; this unit match does not make them identical models.
 
 Target recordings remain measured at 50 Hz. Nominal inputs are held for four physics steps using the verified next-transition action convention; the reference between measured states is interpolated. We do not claim the files provide measured target histories at 200 Hz. Calibration uses 96 rollout steps per update at 200 Hz to match the simulated duration of the action model's 24 steps at 50 Hz, with discount factors converted to the shorter step. This produces four times as many PPO transitions and a different parameter count, so the comparison cannot isolate model representation alone. The downstream task policy remains at 50 Hz while frozen torque inference runs at 200 Hz.
 
