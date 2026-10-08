@@ -1,4 +1,5 @@
 """Build the report's four ASAP-style error charts from verified artifacts."""
+import argparse
 import json
 from pathlib import Path
 import matplotlib
@@ -27,9 +28,27 @@ def style(ax, unit):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--repair-root', type=Path, help='Use repaired delta policies only after all three tasks pass audit')
+    args = parser.parse_args()
     output = ROOT / 'results/method_comparison'
     output.mkdir(exist_ok=True)
     policy = {task: json.loads((ROOT / 'results/paper_evaluation' / (task + '.json')).read_text()) for task in TASKS}
+    repair_sources = {}
+    if args.repair_root:
+        if json.loads((args.repair_root / 'status.json').read_text())['status'] != 'complete':
+            raise ValueError('All three noise repairs must be complete before replacing main delta bars')
+        for task in TASKS:
+            work = args.repair_root / task
+            if json.loads((work / 'status.json').read_text())['status'] != 'complete':
+                raise ValueError('Missing completed repair task')
+            audit = json.loads((work / 'publication_audit.json').read_text())
+            repaired = json.loads((work / 'comparison.json').read_text())
+            if audit['task'] != task or audit['final_checkpoint_sha256'] != repaired['checkpoint_sha256'] or len(audit['evaluation_audit']) != 3:
+                raise ValueError('Missing repair publication audit')
+            check_policy(repaired)
+            policy[task]['asap_ft'] = repaired
+            repair_sources[task] = {'checkpoint': repaired['checkpoint'], 'sha256': repaired['checkpoint_sha256']}
     replay = json.loads((ROOT / 'results/paper_replay/comparison.json').read_text())
     sources = ('controlled_squat_20261008__source20_zero',)*2 + (
         'controlled_squat_20261008__controlled_delta', 'sysid_serial_20261008__identified_test',
@@ -64,8 +83,9 @@ def main():
     handles, labels = axes.flat[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5, .95), ncol=4, frameon=False, fontsize=9)
     fig.suptitle('Closed-loop target tracking — first second, 27 points')
-    fig.text(.5, .014, 'CR7 excludes trials that end before one second; inclusion percentages are in the numeric report.\n'
-             'Other task prefixes include all trials. Errors do not describe full-motion performance.', ha='center', fontsize=9)
+    caption = 'Error means include only trials that reach one second; see the table for inclusion percentages.\n'
+    caption += 'Delta uses the preset input-noise repair; other policies are unchanged.' if repair_sources else 'These are the original policies before the delta input-noise repair.'
+    fig.text(.5, .014, caption, ha='center', fontsize=9)
     fig.tight_layout(rect=(0, .065, 1, .85))
     fig.savefig(output / 'closed_loop.png', dpi=180)
     plt.close(fig)
@@ -82,8 +102,9 @@ def main():
     fig.tight_layout()
     fig.savefig(output / 'success.png', dpi=180, bbox_inches='tight')
     plt.close(fig)
-    rows = ['# Method comparison', '',
-            'These are the measured results before the training-setting repair. Delta policy training contains the noise mismatch described in the [setting audit](../../docs/settings_audit.md).', '',
+    scope = ('Delta uses the preset height/foot-force noise repair on all three tasks. Other policies and all calibration models are unchanged. [Before/after results](../noise_repair/metrics.md) retain both versions. No test-based checkpoint choice was made.'
+             if repair_sources else 'These are the measured results before the training-setting repair. Delta policy training contains the noise mismatch described in the [setting audit](../../docs/settings_audit.md).')
+    rows = ['# Method comparison', '', scope, '',
             '## Open-loop replay', '',
             'One second, 24 measured bodies. All replay cases reach the horizon. Means give equal weight to tasks and original rollouts. Original and FT-only use the same uncalibrated dynamics; task policy weights do not enter fixed-action replay.', '',
             '| Method | E_g-mpjpe (mm) | E_mpjpe (mm) | E_acc (mm/frame²) | E_vel, root (mm/frame) |',
@@ -108,7 +129,7 @@ def main():
         rows.append('')
     (output/'metrics.md').write_text('\n'.join(rows)+'\n')
     (output/'chart_data.json').write_text(json.dumps({'open_sources':list(sources),'open_metrics':open_rows,
-                'closed_summary':closed,'E_vel_definition':'root first-difference error','rate_hz':50},indent=2)+'\n')
+                'closed_summary':closed,'repaired_delta_sources':repair_sources,'E_vel_definition':'root first-difference error','rate_hz':50},indent=2)+'\n')
     print('Verified all trial identities and replay weights; generated four-error figures and closed-loop success.')
 
 

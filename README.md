@@ -36,7 +36,7 @@ I test G1 in IsaacGym: ankle stiffness is 20 in source A and 16 in target B. Oth
 
 Methods are FT-only, ASAP delta action, two SysID variants and two torque corrections. Each adapted policy gets 1,000 further updates and runs alone in B. FT-only continues training in A. SPI-Active and UAN ideas are adapted to G1; a state-transition residual is not implemented. [Methods](docs/methods.md).
 
-**These are measured results before a setting repair.** Delta fine-tuning added input noise absent from calibration. A three-motion repair comparison is running. [Audit](docs/settings_audit.md).
+**These charts show the original comparison.** Delta fine-tuning added input noise absent from calibration. After repair, Squat success falls from 89.6% to 70.8%, while CR7 rises from 91.7% to 99.0%. Step is running. [Repair results](results/noise_repair/metrics.md) · [Setting audit](docs/settings_audit.md).
 
 Open-loop evaluation replays fixed B commands in calibrated A. The original and FT-only share the uncalibrated replay baseline, since policy weights do not enter this test.
 
@@ -54,7 +54,7 @@ Both tests report $E_{g-mpjpe}$, $E_{mpjpe}$, $E_{acc}$ and root $E_{vel}$. Unit
 
 ## 6. Observations that motivate the question
 
-Delta action reduces replay position error from 38.42 to 31.12 mm. Its current Squat and CR7 policies do not exceed FT-only success, while calibration helps Step. Each main method has one training seed; delta conclusions await the noise-repair check. The two torque datasets differ, so their contrast does not isolate excitation.
+Delta action reduces replay position error from 38.42 to 31.12 mm. Its original Squat and CR7 policies do not exceed FT-only success, while calibration helps Step. Each main method has one training seed. The noise repair helps CR7 success but hurts Squat success. Neither exceeds FT-only. Step is pending. The two torque datasets differ, so their contrast does not isolate excitation.
 
 The original Step policy succeeds at 90.6% in A and 1.0% in B. It learned the motion, but transfers poorly. CR7 already has 100% B success. [Source check](results/source_quality/metrics.md).
 

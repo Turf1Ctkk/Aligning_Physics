@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 8, 2026, 21:08 UTC.
+Updated October 8, 2026, 22:00 UTC.
 
 ## Completed
 
@@ -17,7 +17,7 @@ Updated October 8, 2026, 21:08 UTC.
 
 ## Server queue
 
-The earlier queues are complete. A new noise-repair queue is training SquatL1, then CR7 and StepFBL1. It fixes only height and foot-force noise entering the frozen delta during policy fine-tuning. Data, model checkpoints, seeds and 1,000-update budgets are unchanged. One GPU job runs at a time; the cutoff remains in force. Results are pending.
+The earlier queues are complete. SquatL1 and CR7 noise repairs are complete and independently audited. Success falls from 89.6% to 70.8% for Squat and rises from 91.7% to 99.0% for CR7. StepFBL1 is training. The repair changes only height and foot-force noise entering the frozen delta during fine-tuning. Data, input checkpoints, seeds and 1,000-update budgets stay the same. One GPU job runs at a time. [Repair results](../results/noise_repair/metrics.md).
 
 Policy and replay evaluations report position, velocity and acceleration errors. Completion and tracking success are separate percentages. Policy evaluation uses 27 points; replay uses the 24 bodies measured in the target recordings.
 

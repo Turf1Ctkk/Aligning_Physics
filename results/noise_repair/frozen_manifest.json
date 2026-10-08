@@ -10,5 +10,29 @@
     "key": "algo.config.policy_checkpoint",
     "path": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/delta/model_500.pt",
     "sha256": "2100df153eaf87818642460bf5790feebf601e726d1ccd4fa7dcf8480c4303fa"
+  },
+  {
+    "task": "CR7",
+    "key": "checkpoint",
+    "path": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+    "sha256": "c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7"
+  },
+  {
+    "task": "CR7",
+    "key": "algo.config.policy_checkpoint",
+    "path": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/delta/model_500.pt",
+    "sha256": "2100df153eaf87818642460bf5790feebf601e726d1ccd4fa7dcf8480c4303fa"
+  },
+  {
+    "task": "StepFBL1",
+    "key": "checkpoint",
+    "path": "/root/ASAP/logs/MotionTracking/20261007_142152-MotionTracking_StepFBL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+    "sha256": "9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b"
+  },
+  {
+    "task": "StepFBL1",
+    "key": "algo.config.policy_checkpoint",
+    "path": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/delta/model_500.pt",
+    "sha256": "2100df153eaf87818642460bf5790feebf601e726d1ccd4fa7dcf8480c4303fa"
   }
 ]

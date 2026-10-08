@@ -46,4 +46,6 @@ Replay uses 24 measured target bodies; policy evaluation uses 27 points. Both re
 
 The original and FT-only source-domain checks use the same frozen checkpoints and evaluation protocol, with only ankle gains changed from 16 to 20. Physics and the config audit are complete. Original Step succeeds at 90.6% in A and 1.0% in B. [Source quality](../results/source_quality/metrics.md).
 
-The author chose a minimal repair comparison on all three motions. It zeros only the two frozen-delta noise channels. It reuses the same calibrator, source checkpoint, training seed and 1,000-update budget, then evaluates the fixed final policy in B. Squat is running; CR7 and Step follow. Rewards and curricula are retained so this comparison can test the noise mismatch separately. There is no repaired result yet.
+The author chose a minimal repair comparison on all three motions. It zeros only the two frozen-delta noise channels. It reuses the same calibrator, source checkpoint, training seed and 1,000-update budget. Rewards and curricula stay the same.
+
+Squat success falls from 89.6% to 70.8%, although first-second global position, velocity and acceleration errors decrease. CR7 success rises from 91.7% to 99.0%; first-second acceleration error increases. Both tasks pass the saved-setting checks and exact stored-start comparison. All metrics were recomputed. The mismatch is confirmed, but repair does not uniformly improve control in this training seed. Step is running. [Repair results](../results/noise_repair/metrics.md).
