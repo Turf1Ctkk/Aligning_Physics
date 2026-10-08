@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 8, 2026, 18:02 UTC.
+Updated October 8, 2026, 19:08 UTC.
 
 ## Completed
 
@@ -13,7 +13,7 @@ Updated October 8, 2026, 18:02 UTC.
 
 ## Running or queued
 
-- Second data-content seed: uniform complete; coverage training is running. Range follows.
+- Second data-content seed: uniform and coverage complete. Range policy fine-tuning is running.
 - Replay controls at its evaluation seed: queued after the repeat.
 - Fresh 27-point policy evaluations: queued after those controls.
 - Fresh 24-body calibration replays with velocity and acceleration: queued next.
@@ -26,6 +26,6 @@ Reader-facing documents now use short explanations. The main report follows the 
 
 ## Main finding so far
 
-Calibration helps StepFBL1 relative to ordinary fine-tuning. Squat and CR7 do not show extra completion gains. In the first data-content run, coverage improves replay more, while range gives higher completion. This does not confirm the combined hypothesis. Uniform completion changes from 8.3% to 99.0% in the second run on identical data. The remaining second-run arms are pending, so the first-run ranking is uncertain.
+Calibration helps StepFBL1 relative to ordinary fine-tuning. Squat and CR7 do not show extra completion gains. In the first data-content run, coverage improves replay more, while range gives higher completion. This does not confirm the combined hypothesis. On identical data, second-run completion changes from 8.3% to 99.0% for uniform and from 41.7% to 77.1% for coverage. Range is pending, and the first-run ranking is uncertain.
 
 GPU cutoff: October 9 at 09:00 UTC. Submission deadline: October 9 at 20:59 UTC. Failures and negative outcomes remain part of the evidence.

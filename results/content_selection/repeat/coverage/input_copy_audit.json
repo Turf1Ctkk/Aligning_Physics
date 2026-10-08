@@ -1,0 +1,11 @@
+{
+  "scope": "Independently hashed completed coverage arm; same-domain floor is reused, not fresh physics",
+  "matches_primary": true,
+  "sha256": {
+    "datasets/mixed30.pkl": "d3fdae7dee1e008f9e7ee581244e50de51282ed1917062c70a05603ad4dc3476",
+    "datasets/val_cases.pkl": "8c3065dff02eaca5cc486e486bcf3dea0a2a6167c0beaa2a35276ae48b6a6607",
+    "datasets/test_cases.pkl": "86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491",
+    "sampling_manifest.json": "8cbf46af4429652d20c9f1bc8d41c29499a8f0b431fb5a60bd3b72fb3670dae7",
+    "selected_subset_replay_floor.json": "6fca28a4c9cd175ae76bef49737222a0e282b457f2d28b9c59152ecd5ef66377"
+  }
+}

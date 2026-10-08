@@ -2,7 +2,7 @@
 
 ## 1. Open research question
 
-**For humanoid motion tracking with learned simulator correction, which calibration data improves both trajectory replay and the control of a fine-tuned policy at a fixed data budget?**
+**For humanoid motion tracking with learned simulator correction, which calibration trajectory features improve replay at a fixed data budget? Do these improvements lead to better control after policy fine-tuning?**
 
 ## 2. How I arrived at this question
 
@@ -62,6 +62,6 @@ I select equal-size subsets from the same 18 training rollouts. Each contains 95
 | Actuator coverage | 28.42 | 41.7 |
 | Large joint range | 45.73 | 77.1 |
 
-Coverage gives better replay, while range gives higher completion in this first run. **The combined hypothesis is not confirmed.** In the second run, uniform completion rises to 99.0%. The other rules are still running. This large change makes the first-run ranking uncertain. Selection also changes motion phase and contact conditions, so these results do not isolate one causal feature. [Data-content experiment](results/content_selection/README.md).
+Coverage gives better replay, while range gives higher completion in this first run. **The combined hypothesis is not confirmed.** In the second run, uniform and coverage completion rise to 99.0% and 77.1%. Range is still running. These changes make the first-run ranking uncertain. Selection also changes motion phase and contact conditions, so these results do not isolate one causal feature. [Data-content experiment](results/content_selection/README.md).
 
 [Experiment details](docs/experimental_protocol.md) · [Reproduction](docs/reproduction.md) · [Reading guide](docs/reading_guide.md)

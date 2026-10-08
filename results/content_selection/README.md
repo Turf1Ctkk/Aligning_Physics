@@ -12,4 +12,16 @@ Coverage gives smaller replay errors, while range gives higher completion. The c
 
 Selected windows have different same-domain replay errors. We retain those floors without subtraction or replacement. Selection can change motion phase, contacts and initialization as well as the intended feature. Equal selected data size also does not equalize the cost of acquiring the original pool.
 
-The second run uses byte-identical selected data. Its uniform arm is complete: completion is 99.0%, compared with 8.3% in the first run. Coverage and range remain pending. This shows strong sensitivity to the training seed. Both runs will be reported separately. [First-run report](primary/metrics.md), [selection manifest](selection_manifest_actual.json) and [raw summary](primary/summary.json) preserve the evidence. [Uniform repeat evidence](repeat/uniform/summary.json) includes initialization and input-copy audits. Its fresh zero-correction replay controls are still pending; copied first-run controls are not matched repeat baselines. Fresh whole-body policy evaluations are queued.
+The second run uses byte-identical selected data. Two arms are complete; range is still running.
+
+| Rule | First-run completion (%) | Second-run completion (%) | Second-run historical replay position error (mm) |
+|---|---:|---:|---:|
+| Uniform | 8.3 | 99.0 | 43.96 |
+| Actuator coverage | 41.7 | 77.1 | 35.02 |
+| Large joint range | 77.1 | Pending | Pending |
+
+These changes show strong sensitivity to the training seed. Both runs will be reported separately. Replay evaluation also changes seed between runs, so its variation is not due to training alone. Fresh second-run zero-correction controls are pending. Copied first-run controls are not matched baselines.
+
+Coverage's second-run mean survival is 4.991 s. Its first-second body error is 93.40 mm, using every trial. The first-three-second mean uses 99.0% of trials, and full-motion errors use only completed trials. Terminations occur from 2.42 to 5.18 s; their cause is not classified. These are historical 24-body metrics. Fresh whole-body evaluations remain queued.
+
+[First-run report](primary/metrics.md), [selection manifest](selection_manifest_actual.json) and [raw summary](primary/summary.json) preserve the evidence. The completed [uniform](repeat/uniform/summary.json) and [coverage](repeat/coverage/summary.json) repeat results include separate state/settings and input-copy audits. Both retain all trials and validation candidates.
