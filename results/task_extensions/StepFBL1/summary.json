@@ -1,0 +1,164 @@
+{
+  "task": "StepFBL1",
+  "evaluation_horizon_s": 3.92,
+  "source_report_sha256": "5b265e11d757f08d01f2b87e7f2cc5478759eab9964a4fb88145917778076744",
+  "scope": "One training seed per adapted method; three evaluation seeds,32 trials each; no test checkpoint selection",
+  "calibration_scope": "Shared mixed-motion calibrators include this task; not a calibration-motion holdout",
+  "error_scope": "Prefix means condition on prefix completion; full-horizon means on full completion",
+  "summary": {
+    "vanilla": {
+      "complete_trials": 1,
+      "total_trials": 96,
+      "completion_rate": 0.010416666666666666,
+      "mean_survival_s": 1.9641666227641206,
+      "complete_trial_global_body_mpjpe_mm": 92.36351013183594,
+      "complete_trial_root_relative_body_mpjpe_mm": 36.76711654663086,
+      "prefix_metrics": {
+        "1.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 89.77273122469585,
+          "root_relative_body_mpjpe_mm": 39.35306898752848
+        },
+        "3.0": {
+          "complete_trials": 1,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 94.16374969482422,
+          "root_relative_body_mpjpe_mm": 37.29045486450195
+        }
+      }
+    },
+    "ft_only": {
+      "complete_trials": 39,
+      "total_trials": 96,
+      "completion_rate": 0.40625,
+      "mean_survival_s": 3.3595832582407943,
+      "complete_trial_global_body_mpjpe_mm": 127.50273210574419,
+      "complete_trial_root_relative_body_mpjpe_mm": 44.66365696833684,
+      "prefix_metrics": {
+        "1.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 76.43723567326863,
+          "root_relative_body_mpjpe_mm": 38.68174342314402
+        },
+        "3.0": {
+          "complete_trials": 67,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 139.51798134419457,
+          "root_relative_body_mpjpe_mm": 48.65800942947615
+        }
+      }
+    },
+    "asap_ft": {
+      "complete_trials": 76,
+      "total_trials": 96,
+      "completion_rate": 0.7916666666666666,
+      "mean_survival_s": 3.4837499221321195,
+      "complete_trial_global_body_mpjpe_mm": 88.16528882478413,
+      "complete_trial_root_relative_body_mpjpe_mm": 41.478538011249746,
+      "prefix_metrics": {
+        "1.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 75.78661390145619,
+          "root_relative_body_mpjpe_mm": 38.75795992215475
+        },
+        "3.0": {
+          "complete_trials": 76,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 88.04790657445004,
+          "root_relative_body_mpjpe_mm": 40.50806211170397
+        }
+      }
+    },
+    "sysid_ft": {
+      "complete_trials": 96,
+      "total_trials": 96,
+      "completion_rate": 1.0,
+      "mean_survival_s": 3.919999912381172,
+      "complete_trial_global_body_mpjpe_mm": 85.57611544926961,
+      "complete_trial_root_relative_body_mpjpe_mm": 42.46178249518076,
+      "prefix_metrics": {
+        "1.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 62.87445366382599,
+          "root_relative_body_mpjpe_mm": 34.91051975886027
+        },
+        "3.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 82.48569329579671,
+          "root_relative_body_mpjpe_mm": 41.00686832269033
+        }
+      }
+    },
+    "torque_ft": {
+      "complete_trials": 82,
+      "total_trials": 96,
+      "completion_rate": 0.8541666666666666,
+      "mean_survival_s": 3.7549999160692096,
+      "complete_trial_global_body_mpjpe_mm": 94.19329061740783,
+      "complete_trial_root_relative_body_mpjpe_mm": 41.000565366047184,
+      "prefix_metrics": {
+        "1.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 66.45595518747966,
+          "root_relative_body_mpjpe_mm": 31.718836585680645
+        },
+        "3.0": {
+          "complete_trials": 85,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 96.18151792638442,
+          "root_relative_body_mpjpe_mm": 41.41682734769933
+        }
+      }
+    },
+    "active_sysid_ft": {
+      "complete_trials": 87,
+      "total_trials": 96,
+      "completion_rate": 0.90625,
+      "mean_survival_s": 3.718333250222107,
+      "complete_trial_global_body_mpjpe_mm": 96.58903634959253,
+      "complete_trial_root_relative_body_mpjpe_mm": 42.880485403126684,
+      "prefix_metrics": {
+        "1.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 76.10068313280742,
+          "root_relative_body_mpjpe_mm": 38.80621667702993
+        },
+        "3.0": {
+          "complete_trials": 87,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 101.44560460934694,
+          "root_relative_body_mpjpe_mm": 45.71716198976012
+        }
+      }
+    },
+    "wave_ft": {
+      "complete_trials": 83,
+      "total_trials": 96,
+      "completion_rate": 0.8645833333333334,
+      "mean_survival_s": 3.759999915957451,
+      "complete_trial_global_body_mpjpe_mm": 114.00321372158557,
+      "complete_trial_root_relative_body_mpjpe_mm": 51.004823799592906,
+      "prefix_metrics": {
+        "1.0": {
+          "complete_trials": 96,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 83.49343427022298,
+          "root_relative_body_mpjpe_mm": 39.775828878084816
+        },
+        "3.0": {
+          "complete_trials": 88,
+          "total_trials": 96,
+          "global_body_mpjpe_mm": 121.47360541603781,
+          "root_relative_body_mpjpe_mm": 52.37287274273959
+        }
+      }
+    }
+  }
+}

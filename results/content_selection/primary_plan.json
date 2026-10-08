@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "tasks": {
+    "CR7": {
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "source_config": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "reference": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl",
+      "reference_duration_s": 3.933333333333333,
+      "record_steps": 192
+    },
+    "SquatL1": {
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "source_config": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "reference": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_squat_level1_filter_amass.pkl",
+      "reference_duration_s": 5.233333333333333,
+      "record_steps": 257
+    },
+    "StepFBL1": {
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_142152-MotionTracking_StepFBL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "source_config": "/root/ASAP/logs/MotionTracking/20261007_142152-MotionTracking_StepFBL1-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "reference": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_step_forward_back_level1_filter_amass.pkl",
+      "reference_duration_s": 3.933333333333333,
+      "record_steps": 192
+    }
+  },
+  "rollouts_per_motion": 40,
+  "collection_seed": 20261008,
+  "training_seed": 20305008,
+  "initial_noise_level": 0.2,
+  "horizon_s": 1.0,
+  "iterations": 1000,
+  "training_num_envs": 2048,
+  "validation_checkpoints": [
+    500,
+    1000
+  ],
+  "source_kp": 20,
+  "target_kp": 16,
+  "selection_metric": "validation equal-task/equal-rollout global_body_mpjpe_mm at 1 s",
+  "protocol": "Fixed18 parent groups,954 unique transitions, uniform/coverage/joint-range windows",
+  "cutoff_utc": "2026-10-09T09:00:00+00:00"
+}

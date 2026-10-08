@@ -4,7 +4,7 @@
 
 An experimental research proposal on calibration data for humanoid control, built on [ASAP / Humanoidverse](https://github.com/LeCAR-Lab/ASAP). The current experiments use a Unitree G1 model in **controlled sim-to-sim transfer**. They do not constitute hardware validation.
 
-**Current evidence:** task/group-weighted mixed30 calibration reduces held-out body replay error by 19.0%, while velocity error slightly worsens. In the first completed Squat comparison, the resulting ASAP policy completes 87/96 target trials versus 96/96 for equal-budget fine-tuning without calibration. Replay benefit has therefore not produced an additional control benefit in this run. A matched high-rate acquisition intervention changes Squat completion from 34/96 to 95/96, with mixed tracking metrics and no additional completion benefit over FT-only. The direct coverage-versus-range subset test remains pending. Measured results and proposed experiments are labelled separately.
+**Current evidence:** task/group-weighted mixed30 calibration reduces held-out body replay error by 19.0%, while velocity error slightly worsens. In the first completed Squat comparison, the resulting ASAP policy completes 87/96 target trials versus 96/96 for equal-budget fine-tuning without calibration. Replay benefit has therefore not produced an additional control benefit in this run. A matched high-rate acquisition intervention changes Squat completion from 34/96 to 95/96, with mixed tracking metrics and no additional completion benefit over FT-only. StepFBL1 supplies a positive task-dependent contrast: ASAP/passive SysID complete76/96 and96/96 versus FT-only39/96, with lower passive first-second global/root-relative errors. The direct coverage-versus-range subset test is now running; its learning outcomes remain pending. Measured results and proposed experiments are labelled separately.
 
 ## How I arrived at the question
 
@@ -87,7 +87,7 @@ These are 1-second prefixes, using 24 actual simulated rigid-body positions. Mea
 
 The learned corrections reduce global position error by approximately 18.5%, 23.8%, and 21.1% relative to zero correction. More data does not improve every metric: velocity error remains worse than the mismatch baseline for all three learned models.
 
-**Two limitations prevent a clean data-scaling conclusion.** First, the original loader samples segmented clips uniformly. The CR7/Squat/Step sampling proportions change from 20/40/40% to approximately 24/27/49% and 23/30/47% across subsets. Data amount and task weighting are therefore confounded. Second, same-domain replay error is non-negligible, particularly for CR7; arbitrary-window initialization and configuration need further audit. The next calibration run will explicitly control task and recording-group weights. These results are an exploratory pilot, not confirmation of saturation or of the hypothesis.
+**Two limitations prevent a clean data-scaling conclusion.** First, the original loader samples segmented clips uniformly. The CR7/Squat/Step sampling proportions change from 20/40/40% to approximately 24/27/49% and 23/30/47% across subsets. Data amount and task weighting are therefore confounded. Second, same-domain replay error is non-negligible, particularly for CR7; arbitrary-window initialization and configuration need further audit. The completed mixed30 run below explicitly controls task and recording-group weights. These results are an exploratory pilot, not confirmation of saturation or of the hypothesis.
 
 Raw summary evidence and a detailed audit are in [results/pilot_multimotion](results/pilot_multimotion/README.md).
 
@@ -118,7 +118,19 @@ ASAP does not exceed the continued-training control on completion or first-secon
 
 The [completed CR7 extension](results/task_extensions/CR7/README.md) reuses the frozen mixed-motion calibrators and trains each task policy for 1000 additional updates. Original/FT-only/ASAP/passive SysID/common torque/active SysID/excitation torque complete **96/96, 96/96, 92/96, 77/96, 70/96, 87/96 and 55/96**, respectively, over 3.92 seconds. FT-only lowers full-horizon global error (134.30→116.53 mm) but raises root-relative error (44.77→51.55 mm); both means cover all 96 trials. Calibrated conditions have no additional completion benefit in this seed. Some fail before one second, so their prefix errors must be read with valid-trial counts. CR7 was included in calibration; this is task-policy reuse, not a calibration-motion holdout.
 
+### StepFBL1 task-policy reuse
+
+The [completed StepFBL1 extension](results/task_extensions/StepFBL1/README.md) uses the same frozen calibrators and fresh equal-budget policies over3.92s. Original/FT-only/ASAP/passive/common torque/active/excitation complete **1/96,39/96,76/96,96/96,82/96,87/96 and83/96**. Passive SysID improves completion and first-second global/root-relative error versus FT-only (62.87/34.91 versus76.44/38.68mm, all96 valid). This is a positive closed-loop observation in one training seed, alongside the Squat/CR7 negative additional-benefit results. Later tracking means condition on different surviving subsets; no overall method ranking or causal data-feature explanation follows. All96 first stored states/actions per method and effective settings match; actual motion illustrations and raw audits accompany the results.
+
+### Task dependence across completed comparisons
+
+![Completion across three tasks](results/task_extensions/completion.png)
+
+The same calibrators give different downstream outcomes across task policies. The columns retain each method; task horizons and pretrained policies differ, so tasks are not pooled into an overall score. [Counts, source hashes and limits](results/task_extensions/README.md). Every motion was present in calibration. Positive Step observations and negative additional-benefit observations on Squat/CR7 are both retained.
+
 ## Method comparisons and follow-up
+
+The following status table refers to the original Squat comparison.
 
 | Controller evaluated in B | Purpose | Status |
 |---|---|---|
@@ -135,7 +147,7 @@ The [method adaptation plan](docs/methods.md) distinguishes SPI parameter estima
 
 The [completed torque-model replay](results/torque_adaptation/README.md) reduces body error from 36.69 to 24.48 mm, while velocity error increases from 0.862 to 0.951 rad/s. Its calibration architecture, rate and PPO transition count differ from the action model, so this is not a controlled representation ranking. A separate matched true-200Hz acquisition experiment has completed physical collection, same-domain replay checks and calibration: unchanged recorded inputs versus bounded wave/noise excitation, with identical torque models, unique-transition counts and optimization budgets. Its unchanged-input and excitation-trained policies complete 34/96 and 95/96, respectively, versus FT-only 96/96. Replay and tracking metrics show mixed tradeoffs. This is an observed acquisition-content effect in one training seed, without identifying which data feature caused it. [Measured high-rate comparison](results/wave_acquisition/README.md).
 
-A minimal hypothesis experiment is queued after the task extensions, conditional on a five-hour margin before GPU cutoff. It fixes the same 18 parent recordings and 954 unique transitions per uniform, actuator-coverage and joint-range arm. [The selector preview](results/content_selection/README.md) documents the training-only features and selection budget; it is not a learning result. A second paired training seed is conditionally queued after the primary comparison, reusing exact selected data. Inspecting a larger previously acquired pool controls the selected training budget, not acquisition cost. Complete-motion holdout remains a separate proposed experiment; the current pilot and queued test do not provide it.
+The minimal hypothesis experiment started after the completed task extensions with the required five-hour margin before GPU cutoff. Its first uniform-subset calibration is running; learning outcomes remain pending. It fixes the same 18 parent recordings and 954 unique transitions per uniform, actuator-coverage and joint-range arm. [The selector preview](results/content_selection/README.md) documents the training-only features and selection budget; it is not a learning result. A second paired training seed is conditionally queued after the primary comparison, reusing exact selected data. Inspecting a larger previously acquired pool controls the selected training budget, not acquisition cost. Complete-motion holdout remains a separate proposed experiment; the current pilot and queued test do not provide it.
 
 ## Reproducibility and interpretation
 
@@ -144,7 +156,7 @@ A minimal hypothesis experiment is queued after the task extensions, conditional
 - [Replay corrections and reproduction notes](docs/reproduction.md).
 - [Experiment status](docs/STATUS.md): completed evidence versus planned work.
 
-The matched Squat closed-loop measurements are available. Active acquisition succeeded after a disclosed uniform start-window revision; active-policy evaluation is complete (92/96); the genuine high-rate comparison is complete (unchanged/excitation 34/96 and 95/96). CR7 training/evaluation is complete; StepFBL1 is running, followed by the minimal data-selection test. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity or hardware performance.
+The matched Squat closed-loop measurements are available. Active acquisition succeeded after a disclosed uniform start-window revision; active-policy evaluation is complete (92/96); the genuine high-rate comparison is complete (unchanged/excitation 34/96 and 95/96). CR7 and StepFBL1 training/evaluation are complete; the minimal data-selection test is running. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity or hardware performance.
 
 ## References
 
