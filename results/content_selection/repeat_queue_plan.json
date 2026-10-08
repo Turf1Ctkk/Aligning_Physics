@@ -1,0 +1,14 @@
+{
+  "planned_utc": "2026-10-08T09:51:00.018586+00:00",
+  "primary": "/root/autodl-tmp/aligning_physics/content_20261008",
+  "seed_offset": 1,
+  "methods": [
+    "uniform",
+    "coverage",
+    "joint_range"
+  ],
+  "iterations_per_stage": 1000,
+  "minimum_margin_hours": 4,
+  "cutoff_utc": "2026-10-09T09:00:00+00:00",
+  "scope": "One additional paired training seed after primary completion; exact data reuse; no acquisition or selector changes"
+}

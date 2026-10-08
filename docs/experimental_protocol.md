@@ -75,6 +75,8 @@ The queued minimal implementation fixes the same 18 original parents, six per mo
 
 The minimal subset test evaluates one actuator-coverage heuristic and its downstream consequence. It does not optimize closed-loop sensitivity or explicitly enforce future policy occupancy; the latter remains an observed condition and a separate mechanism question. Its parent identities, features, scaler, budgets and checkpoint rules stay fixed after the exploratory deployment audit and high-rate results.
 
+A second paired content-study training seed was queued before primary learning outcomes. It runs only after the primary completes and at least four hours remain before cutoff. Reuse all three exact selected datasets and sampler manifests, check file hashes, and change both training seeds by +1. Keep the same validation selection, final policy update and evaluation seeds. Copied primary same-domain floors are labelled as reused measurements. This repeats training on fixed data; it is not an independent acquisition replicate or a fresh FT-only control at the content-study seed. The original method comparisons retain their one-training-seed scope.
+
 ## Timing and release
 
 Submission deadline: 2026-10-09 23:59 UTC+03:00, equivalent to 20:59 UTC. Proposed experimental cutoff: 2026-10-09 12:00 UTC+03:00. Prefer a complete one-motion comparison with honest limitations over incomplete three-motion claims. Preserve a reviewable repository before the deadline; do not postpone documentation until all methods finish.
