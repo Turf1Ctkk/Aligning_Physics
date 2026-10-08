@@ -1,84 +1,59 @@
-# Replay implementation and reproduction notes
+# Reproduction
 
-This repository is a research report and an overlay for ASAP, not a replacement implementation of its simulator and assets. The pilot used [ASAP](https://github.com/LeCAR-Lab/ASAP) with local corrections. The inspected base commit is `df5320cc47dd8cad97961bdfabfe402dd62ad999`; later experiment manifests must record their actual commit and source diff.
+This repository provides a report and an overlay for [ASAP](https://github.com/LeCAR-Lab/ASAP). It does not include the simulator, motion assets or large model files. The inspected upstream commit is `df5320cc47dd8cad97961bdfabfe402dd62ad999`.
 
-## Corrections required by the pilot
+## Install the corrections
 
-| Contract | Reason |
-|---|---|
-| Recorded state/action time | The post-step recorder stores the action that produced that frame; the next transition uses the following action row. |
-| Reference time after stepping | Delta replay compares the simulated post-step state to the recorded state at the corresponding time, avoiding a second one-step offset. |
-| Action lookup on the 50 Hz grid | Float rounding must not select the preceding action at an integer frame boundary. |
-| Recorded initial velocities | Replay must read saved joint and world-frame root velocities instead of reconstructing them from poses. |
-| Frozen-delta units | An action-space residual must be multiplied by the same action scale before it modifies the PD position target. |
-| Frozen-delta conditioning | The correction must receive the current nominal action, not a cached previous action. |
-| Valid window starts | Replay episodes must fit entirely inside the selected continuous clip. |
-| Batch evaluation order | Evaluated motion IDs must correspond to the order used to score reference cases. |
+Copy `overlays/research/asap_diagnostics` into the ASAP checkout. On a pristine checkout, inspect and apply `installed_core.patch` from that folder. It is the complete five-file patch. Do not apply the two older overlapping patches as well. An already-patched checkout should be checked rather than patched again.
 
-Saved joint/root state does not restore contact-solver history. Same-domain replay remains a required physical check for arbitrary window starts. CPU contract checks alone cannot establish physical fidelity or a successful RL result.
+The fixes address action/frame timing, action lookup at floating-point frame boundaries, saved initialization velocities, residual units and current-action conditioning. Grid starts also prevent replay episodes from running past a clip's end. These changes make the pipeline interpretable; they do not validate the research hypothesis.
 
-The diagnostic overlay and patches are provided under [overlays/research/asap_diagnostics](../overlays/research/asap_diagnostics). Copy the overlay into an ASAP checkout and inspect the patches before applying them. If equivalent fixes are already installed, do not apply patches twice. The diagnostic scripts infer their root from their installed path inside ASAP; running them from this report repository is not the intended layout.
-
-`installed_core.patch` is the complete five-file diff captured from the server for the controlled run. It applies to the inspected upstream commit and includes the timing, action lookup, saved-velocity and frozen-delta fixes. Use this **instead of** the two overlapping historical patches on a pristine checkout. Its applicability was checked with `git apply --check` against the local pristine checkout; installed CPU contracts were checked on the server.
-
-The pilot's `verify_multi_motion.py` is a CPU check. Collection/training/evaluation commands are described in its `MULTI_MOTION.md`. Those commands reproduce the **original clip-uniform pilot**, including its sampling limitation; they are not yet the corrected data-content protocol.
-
-`verify_contracts.py` demonstrates a patch against pristine source. On an already-patched checkout, use `verify_installed_contracts.py` to inspect the installed methods directly; do not reapply a patch for a preflight check.
-
-The controlled first experiment is launched from the ASAP root with:
+Run CPU checks from the ASAP root:
 
 ```bash
-python -m research.asap_diagnostics.controlled_pipeline \
-  --pilot /path/to/completed/multi_motion_pilot \
-  --work-dir /path/to/new/controlled_experiment
+python research/asap_diagnostics/verify_installed_contracts.py
+python research/asap_diagnostics/verify_multi_motion.py
 ```
 
-It reuses the isolated mixed30 data, writes a task/group sampling manifest, runs delta validation, and queues both SquatL1 fine-tuning conditions and standalone target evaluation serially. It stops on subprocess failure and enforces the configured UTC cutoff. Existing incomplete model runs are preserved and cause an explicit stop, rather than a silent resume. Run it under a detached process supervisor for long jobs; inspect `status.json` and stage logs.
+Set the three policy paths in the multi-motion plan or its command-line overrides. Use the recorded `model_6000.pt` checkpoints for the comparisons reported here. CPU checks do not run physics or train a model.
 
-`sysid_pipeline.py` runs bounded two-parameter CMA-ES using `cma==4.4.0`, initially centered on source Kp20 with bounds [8,30], 12 candidates per generation and eight generations. `--controlled` adds held-out replay and an equal-budget Squat policy comparison; `--wait-for` serializes it after the preceding experiment's `status.json`. `torque_pipeline.py` queues the shared actuator-model comparison with the same failure/cutoff behavior. Both methods remain adaptations with the boundaries described in the methods document.
+## Experiment tools
 
-`verify_torque_contracts.py` checks CPU actuator interfaces. The torque queue first runs a small physical smoke train before its full calibration budget. CPU PASS and smoke completion must not be reported as calibration gains. `seeded_entry.py` limits CPU PyTorch threading to four by default (`ASAP_CPU_THREADS` can override it); this controls runtime contention rather than changing sample budgets.
+| Tool | Purpose |
+|---|---|
+| `multi_motion_pipeline.py` | Original data-size pilot |
+| `controlled_pipeline.py` | Weighted mixed30 delta and policy comparison |
+| `sysid_pipeline.py` | Passive gain fitting |
+| `active_pipeline.py` | Command design, new collection and gain refitting |
+| `torque_pipeline.py` | Shared torque correction on common records |
+| `wave_pipeline.py` | New measured 200 Hz data and paired torque training |
+| `extend_tasks.py` | CR7 and Step policy comparisons |
+| `content_pipeline.py` | Three fixed-budget data selectors |
+| `repeat_content.py` | Second seed on the same selected data |
+| `repeat_replay_controls.py` | Replay controls at the second run's seed |
+| `paper_eval_queue.py` | Fresh 27-point policy evaluations |
+| `paper_replay_queue.py` | Fresh calibration replays on measured 24-body targets |
 
-`active_pipeline.py --controlled /path/to/controlled --sysid /path/to/sysid --work-dir /path/to/new/active --wait-for /path/to/torque/status.json` queues bounded command design, new target acquisition, matched unchanged/random/optimized refitting and an optimized-arm Squat policy comparison. `verify_active.py` checks CPU command and information contracts only. New acquisition must also pass an executed-command alignment check; actor outputs ignored during replay must never be substituted for actual acquisition commands. The active pipeline stops on infeasible controls, failed acquisition groups, subprocess failures or cutoff; it does not discard failed groups silently.
+Launch these modules from an ASAP checkout. The published command JSON files and plans provide the exact settings for each completed experiment. Queue tools enforce the cutoff and stop on subprocess failure. They do not silently resume incomplete training.
 
-`tracking_overrides` now explicitly disables task-observation noise for all checkpoints, in addition to fixing shared termination and initialization settings. The first original-policy evaluation inherited nonzero noise absent from the fine-tuned models; it is retained as an audited historical artifact, not used as a matched baseline. `matched_evaluation.py` serializes a new standalone evaluation of all final checkpoints, without changing weights, then runs a post-hoc known-gain SysID diagnostic. The known target gains enter that diagnostic only, not fitting or active-design selection.
+## New evaluation
 
-`extend_tasks.py` serializes CR7 and StepFBL1 fine-tuning after the true-rate wave comparison. It reuses the selected shared corrections and fitted gains; each task starts from its own recorded pretrained checkpoint and uses the same 1000-update policy budget. Incomplete runs stop explicitly. It is an extension of the same controlled test, not a cross-motion calibration holdout because all three motions contributed calibration data.
+`paper_metrics.py` computes body position and finite-difference errors. `paper_tracking_runtime.py` records 27 points during a new physics rollout. `paper_eval_queue.py` copies the saved evaluation overrides, changing only the recorder and output paths. It freezes checkpoint hashes before running and checks each first stored state against the old record.
 
-`wave_pipeline.py --controlled /path/to/controlled --torque /path/to/torque --work-dir /path/to/new/wave --wait-for /path/to/active/status.json` queues actual 200Hz target collection, alignment/rate checks, same-domain replay, and two matched torque-model/policy comparisons. `verify_wave.py` checks bounded wave support, four-step nominal holding and command-corruption detection on CPU fixtures only. The recorder's explicit `dataset_record_stride=1` preserves 200Hz replay output; the common-data pipeline retains its default stride4 and 50Hz output. `extend_tasks.py --wave /path/to/wave` also reuses the selected excitation-trained torque model on CR7 and StepFBL1.
+From this report repository, run the independent CPU metric checks:
 
-`select_content.py` implements the fixed-parent retrospective selectors. `content_pipeline.py --controlled /path/to/controlled --pool /path/to/training/balanced_full.pkl --work-dir /path/to/new/content --wait-for /path/to/extensions/status.json` queues three 954-transition calibration/policy comparisons, with isolated checkpoint validation and common target evaluation. It reports each subset's replay floor, preserves parent identities across selectors and enforces a five-hour start margin before cutoff. The underlying dataset filename `mixed30.pkl` is reused for compatibility with the common launcher; this optional test contains 18 parents as explicitly recorded in its manifest, not 30.
+```bash
+python scripts/verify_paper_metrics.py
+```
 
-For figures and trajectory animations, install `requirements-analysis.txt` in a separate analysis environment. JSON-only reporting does not require the simulator.
+See [metric definitions](evaluation.md) for units and failure handling. The scheduled queue waits for the existing repeat and replay-control jobs. Its first job is also the physical smoke check. No new learning is required. `audit_paper_evaluation.py` checks the actual fresh records and configurations. `report_paper_evaluation.py` creates percentage tables and whole-body plots only after the full queue completes.
 
-## Artifact policy
+## Artifacts and analysis
 
-Keep large checkpoints, robot/motion assets, and trusted joblib datasets outside Git. Publish metrics, dataset manifests, final effective settings, source diffs, hashes, plotting scripts, and compact derived visualizations. Never commit SSH credentials or cloud access details. Load pickle/joblib artifacts only from trusted experiment sources.
+Install `requirements-analysis.txt` in an analysis environment to regenerate plots and reports. Scripts verify complete inputs before reporting results. Publication audits check stored starts, effective settings, horizons and checkpoint hashes. They do not prove equality of hidden contact-solver state.
 
-## Pilot policy provenance
+Large checkpoints and trusted joblib recordings stay outside Git. Public artifacts include metrics, trial reports, manifests, hashes and patches. Existing logs preserve an optional keyboard-listener thread error where the main recorder still completed. No failed main process was ignored.
 
-| Task | Recorded source checkpoint | SHA-256 |
-|---|---|---|
-| CR7 | `model_6000.pt` | `c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7` |
-| SquatL1 | `model_6000.pt` | `b58e04d49ce2c46773af4400be83d7d6af44163f1c98ae47e0e2933c57433000` |
-| StepFBL1 | `model_6000.pt` | `9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b` |
+Known-gain analytic replay is an opt-in implementation diagnostic. Ordinary learning queues do not use its privileged gain ratio. It is not a learned method or a training label.
 
-These hashes were computed directly on the server files. Checkpoint filenames alone are not sufficient provenance.
-
-`report_matched_tracking.py --input /path/to/matched/tracking_comparison.json --active /path/to/active/tracking_comparison.json` adds the completed active-arm policy to the common deployment report. The separately published feature-support audit uses training-only scaling and all 96 first-second deployment prefixes; it does not change queued selectors or checkpoint choices.
-
-`plot_true_rate_replay.py` plots both completed acquisition arms after validating their common zero-correction baselines. `report_wave_comparison.py --unchanged /path/to/wave/unchanged --excitation /path/to/wave/wave` regenerates the completed paired downstream report. Pending arms remain explicitly absent from the plot and report rather than being rendered as zero performance.
-
-`report_task_extensions.py --task CR7 --input /path/to/CR7/tracking_comparison.json --horizon 3.92` prepares the seven-controller task report once all three evaluation seeds exist for every condition. Verify the horizon against that task's recorded evaluation command (`dataset_record_steps / 50`); do not substitute the Squat horizon. The report checks trial identities and completion durations, and includes valid-prefix counts alongside conditional errors. It has been exercised with the completed seven-controller Squat, CR7 and StepFBL1 reports. `audit_task_evaluations.py --directory /path/to/completed_task --output /path/to/publication` checks all96 stored initial states/actions per method, effective actor noise and enabled termination settings, task-only deployment commands, frame counts and checkpoint hashes. Raw unused-setting differences remain in the audit.
-
-
-`python -m research.asap_diagnostics.repeat_content --primary /path/to/content_primary --work-dir /path/to/new_repeat_root` runs the conditional second paired content-study seed. It requires completed primary artifacts, refuses automatic resume, copies exact data/sampling files with hash checks and retains the common GPU cutoff. `--verify-manifest /path/to/selection_manifest.json` performs CPU-only parent/window/task checks without starting training.
-
-
-The opt-in `analytic_replay.py` overlay is a historical known-gain timing diagnostic. Its 50/200Hz comparison is documented with source/configuration hashes in [the diagnostic report](../results/control_rate_diagnostic/README.md). Ordinary learning pipelines do not invoke this environment; do not use its privileged ratio as a training label or count it as a learned baseline.
-
-`report_content_selection.py --primary /path/to/completed_content --preview /path/to/public/selection_manifest_preview.json --horizon 5.22 --output /path/to/report` validates and reports the completed primary content comparison. Add `--repeat /path/to/completed_repeat` only after it completes; exact repeated data/sampler/floor hashes are checked against the primary. The report keeps each training seed and its signed selector contrasts separate, displays completion counts beside conditional tracking errors and includes selected-subset floors. Pending or failed runs are rejected. Preserve the raw reports and publish actual-command, initial-state and effective-setting audits alongside the summary; the reporter alone does not verify simulator execution.
-
-For a completed individual content condition, `audit_task_evaluations.py --directory /path/to/content/uniform --methods asap_ft --baseline-directory /path/to/matched_eval --output /path/to/publication` checks all96 stored starts and effective target settings against the recorded FT-only reference. This initialization/settings comparison does not equalize training seeds. The audit now records baseline recording hashes; its default seven-method task audit remains available.
-
-`python -m research.asap_diagnostics.repeat_replay_controls --repeat /path/to/content_repeat --work-dir /path/to/new_repeat_controls` queues fresh source20/same16 test replay only after repeat completion and with15minutes remaining before cutoff. It uses repeat replay seed20305109 and verifies source20 learned/control stored first samples. Failure or skipped repeat stops/skips this stage; no automatic restart. The reporter's optional `--repeat-controls /path/to/completed_controls` includes those fresh measurements separately from copied primary controls. CPU failed/skipped/cutoff gates passed; no fresh repeat physics result exists yet.
+Source policy hashes are retained in the task evaluation audits. All three comparisons use each task's own `model_6000.pt`; a checkpoint name alone is not sufficient provenance.

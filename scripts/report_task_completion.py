@@ -42,12 +42,12 @@ def main():
     ax.set_yticks(range(3), ["SquatL1 (5.22s)", "CR7 (3.92s)", "StepFBL1 (3.92s)"])
     for i in range(3):
         for j in range(len(METHODS)):
-            ax.text(j, i, f"{values[i,j]}/96", ha="center", va="center",
+            ax.text(j, i, f"{100 * values[i,j] / 96:.1f}%", ha="center", va="center",
                     color="white" if values[i,j] > 55 else "#163552", fontsize=11)
-    ax.set_title("Completion depends on the task in these trained-policy samples", pad=12)
+    ax.set_title("Completion by task", pad=12)
     ax.spines[:].set_visible(False)
-    fig.text(.5, .02, "Different task horizons/source policies • one training seed per method • no cross-task pooled ranking\n"
-             "All three motions were present in calibration; this is not a motion-holdout test", ha="center", fontsize=8)
+    fig.text(.5, .02, "Each task has its own horizon and starting policy. One training seed per method.\n"
+             "All three motions occur in calibration.", ha="center", fontsize=8)
     fig.tight_layout(rect=(0, .12, 1, 1))
     fig.savefig(output / "completion.png", dpi=180)
     print(json.dumps(evidence["completion_counts"]))

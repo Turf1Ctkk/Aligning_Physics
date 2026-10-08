@@ -1,88 +1,39 @@
 # Experimental protocol
 
-This protocol specifies the confirmed first experiment and proposed follow-up studies. Mixed-motion 30-group data, same-engine Kp20→Kp16 mismatch, and the initial calibration budget have been confirmed. Previously completed pilot results are recorded separately.
+## Controlled mismatch
 
-## Primary comparison and budgets
+Both domains use IsaacGym and G1. A has ankle pitch and roll stiffness 20; B has stiffness 16. Other physics stays fixed and domain randomization is off. This isolates a simple dynamics difference before testing more complex gaps.
 
-Use the same pretrained task policy, source simulator, target dynamics, reference motion, evaluation initial states, and evaluation seeds for all downstream comparisons. Train in the calibrated source simulator and deploy in the target without the calibration mechanism attached. Include both the original policy and an equal-budget source-domain fine-tuning control.
+## Calibration data
 
-The confirmed first calibration dataset is 10 original training recording groups per motion, for CR7, SquatL1, and StepFBL1. Keep the existing held-out recording groups isolated. Group counts do not imply identical clip or transition counts; report all three measures and useful target-domain duration.
+The main dataset contains ten B rollouts from each of CR7, SquatL1 and StepFBL1. A rollout can contain several continuous clips because of resets. Splits are made by the original rollout before clips or evaluation windows are formed. Training, validation and test parents remain separate.
 
-Fix sampling by task, then original recording group, then valid continuous clip/window. When using clip weights to implement this hierarchy, assign
+Sampling gives equal weight to tasks, then to rollouts, then to their continuous clips. Delta training uses one-second episodes, 2,048 environments and 1,000 PPO updates. Only ankle residuals affect physics. Validation chooses between calibration checkpoints; test results do not choose a model.
 
-$$
-p(c)=\frac{1}{N_{\mathrm{tasks}}}\frac{1}{N_{\mathrm{groups},m}}\frac{1}{N_{\mathrm{clips},g}}.
-$$
+## Policy training and deployment
 
-Sample a valid grid-aligned start within the chosen clip. This gives equal task and group weights, while avoiding reset-induced clip-count overweighting. Verify the actual loaded batch distribution as well as nominal probabilities. Resampling the motion library must preserve these probabilities.
+Each task starts from its own recorded pretrained policy. Every adaptation receives 1,000 further updates. A fine-tuning-only arm controls for extra training. Calibration models remain frozen. The final policy runs alone in B.
 
-## Integrity checks
+Evaluation uses seeds 8101–8103 and 32 trials per seed. Squat is recorded for 5.22 seconds; CR7 and Step for 3.92 seconds. Initialization, used observation noise and enabled termination settings are matched. One training seed per method limits conclusions about the reliability of method rankings.
 
-1. Split by original recording group before segmentation or overlapping-window creation.
-2. Exclude reset rows and windows crossing time discontinuities. Record rejected durations and reasons; do not select clips by downstream success.
-3. Respect the recorder's post-step convention: state[i] transitions under action[i+1] to state[i+1].
-4. Restore recorded joint velocities and world-frame root velocities. Normalize environment origins consistently.
-5. Reserve enough frames for the full episode, including the implementation's extra timeout step.
-6. Compare same-domain zero-correction replay before interpreting cross-domain improvement. Diagnose substantial residual error; do not subtract it linearly from cross-domain metrics.
-7. Freeze the calibration network during task-policy fine-tuning; condition it on the current nominal action, with the same observation scaling and action units used during calibration.
-8. Verify that target deployment invokes the task policy only, with the original observation/history contract and no residual hook.
+[Metric definitions](evaluation.md) explain the new whole-body evaluation. Old physical records remain available for comparison.
 
-## Confirmed action-calibration settings
+## Data-content test
 
-| Item | Initial proposal |
+The three rules use the same 18 training parents, six per task. Each selects one 54-state window per parent, giving 954 transitions. Candidate windows and the feature scaler use training data only.
+
+| Rule | Selection |
 |---|---|
-| Robot | G1, 23 actuated joints |
-| Simulator | IsaacGym in both domains |
-| Source / target gap | ankle pitch and roll Kp20 / Kp16 |
-| Physics / nominal policy rate | 200 Hz / 50 Hz |
-| Delta-action update rate | 50 Hz |
-| Delta physical support | four ankle joints; retain existing masked interface initially |
-| Replay training horizon | 1 second |
-| Parallel environments | 2048 |
-| Calibration PPO iterations | 1000 initially; validation chooses checkpoint |
-| Minimal-action-norm reward scale | -0.1 |
-| Domain randomization | disabled for the mechanism comparison |
-| Independent training seeds | one pilot first, additional seeds for key comparisons if feasible |
+| Uniform | Seeded random window per parent |
+| Actuator coverage | Windows that cover servo error, velocity, command changes and torque regimes |
+| Joint range | Window with large mean ankle excursion |
 
-Task-policy fine-tuning starts from SquatL1 `model_6000.pt`, retains the learned policy weights and standard deviation, resets optimizer state, and uses 1000 **additional** iterations. Initial actor LR is 1e-4, critic LR 1e-3, and entropy coefficient 0; the inherited adaptive KL schedule can subsequently change the actor LR. Apply the same choice to both downstream conditions. The first comparison uses fixed final-iteration policy checkpoints, rather than selecting them on the evaluation seeds.
+Each rule receives the same action model, sampler and 1,000 calibration plus 1,000 policy updates. The manifest was published before outcomes and remains unchanged. Same-domain replay errors are reported without subtraction or window replacement.
 
-## Metrics
+The first seed is complete. The second uses byte-identical datasets with new training seeds. Replay evaluation seed also changes, so its new zero-correction controls are measured separately. Deployment seeds stay fixed. Both runs will be reported, without selecting a favorable seed.
 
-Replay: global and root-relative body MPJPE, ankle/all-joint position RMSE, joint-velocity RMSE, root and foot position errors, and complete-window fraction at 0.25, 0.5, and 1 second. Include failure/termination accounting rather than averaging only surviving trials.
+This is retrospective selection from an existing pool. Equal selected transition counts do not mean equal total acquisition cost. Motion phase, contact and initialization may change with the selected window. The test compares selection rules, not the causal effect of a single feature.
 
-Closed-loop: full-reference motion tracking in the target domain, including global/root-relative body errors, completion/fall rate, and survival duration. Fix the evaluation horizon and termination rules. Multiple windows or evaluation seeds from one trained model are not independent training replications.
+## Run policy
 
-All standalone Squat evaluations explicitly share the original policy's gravity thresholds (0.8 for projected gravity x/y) and motion-deviation threshold (1.5 m), with the motion-deviation threshold curriculum disabled. Termination by contact, minimum height, and proximity to joint/torque limits is disabled, and motion-end timeout is enabled. These overrides prevent fine-tuning checkpoints from silently inheriting a different success criterion. A termination count is reported as termination, not automatically as a fall without inspecting its cause.
-
-Task actor/history observation noise is explicitly zero for every checkpoint. The initial original-policy evaluation inherited nonzero observation noise and is retained only as an audited historical artifact; the matched common-noise comparison has completed. Initialization noise remains at 0.2. The first stored joint/root states and executed actions were verified identical across all 32 trials of seed 8101 across the six core comparison policies. Both high-rate-data policies also match all 96 initial stored states/actions across the three seeds, with matching recorded evaluation configurations.
-
-## Minimal test of data content
-
-Create equal-budget continuous-window subsets from one training pool:
-
-- **Uniform:** sample without using error or coverage scores.
-- **Actuator coverage:** cover signed servo errors, joint velocities, and nominal-command changes. Fit feature scaling and bins on the training pool only.
-- **Joint range:** select for broad joint-position excursion as the competing explanation.
-- **High replay error, optional:** select for uncorrected short-horizon trajectory discrepancy, checking whether it enriches initialization/contact artifacts.
-
-Use the same number of unique target transitions and the same PPO budget. Limit overlapping windows; record any history prefix as part of the data budget. Keep motion and parent-group distributions matched where possible, and show remaining imbalances explicitly.
-
-A retrospective selector can inspect the existing training pool, but that does not reduce the cost of acquiring the pool. Report the pool's inspection/acquisition budget separately from the selected training-transition budget. Claims about cheaper target-data collection require prospective acquisition or a transferable selector learned on other data. The first subset test isolates training-data content, not overall acquisition cost.
-
-The hypothesis is unsupported if coverage fails to outperform uniform selection within uncertainty. A replay improvement without target-domain policy improvement supports only the replay component. Repeat key comparisons with independent training seeds before claiming a stable ranking. A second mismatch is required to support the claim that useful features depend on the mechanism, rather than merely the current Kp test.
-
-The running minimal implementation fixes the same 18 original parents, six per motion, across uniform, coverage and joint-range selectors. Each trains one 54-frame window per parent, 954 unique transitions in total. Coverage is greedy max-min selection on 28 robustly scaled window summaries; it is an explicit heuristic, not an optimality claim. Its [actual selection preview](../results/content_selection/README.md) records budgets and feature definitions. Each subset's same-domain floor is measured without replacing windows. Only one training seed is initially budgeted, so differences are descriptive; a stable ranking requires repeats. The queue starts only if at least five hours remain before cutoff.
-
-The minimal subset test evaluates one actuator-coverage heuristic and its downstream consequence. It does not optimize closed-loop sensitivity or explicitly enforce future policy occupancy; the latter remains an observed condition and a separate mechanism question. Its parent identities, features, scaler, budgets and checkpoint rules stay fixed after the exploratory deployment audit and high-rate results.
-
-A second paired content-study training seed was queued before primary learning outcomes. It runs only after the primary completes and at least four hours remain before cutoff. Reuse all three exact selected datasets and sampler manifests, check file hashes, and change both training seeds by +1. Keep the same validation selection, final policy update and evaluation seeds. Copied primary same-domain floors are labelled as reused measurements. This repeats training on fixed data; it is not an independent acquisition replicate or a fresh FT-only control at the content-study seed. The original method comparisons retain their one-training-seed scope.
-
-## Timing and release
-
-Submission deadline: 2026-10-09 23:59 UTC+03:00, equivalent to 20:59 UTC. Proposed experimental cutoff: 2026-10-09 12:00 UTC+03:00. Prefer a complete one-motion comparison with honest limitations over incomplete three-motion claims. Preserve a reviewable repository before the deadline; do not postpone documentation until all methods finish.
-
-## Replay initialization and seed scope
-
-In the saved implementation, batched replay uses calibration seed+100, including validation. Primary/repeat seeds are20305108/20305109, while standalone policy deployment retains8101–8103. The fixed-data repeat therefore varies full calibration/selection training-run randomness and replay evaluation initialization; it is not a pure optimizer-only variance estimate. Compare selectors within each run and retain their counts separately. Fresh repeat-seed zero-correction replay controls are queued after all repeat work, preserve copied primary controls and change no selection/training rule. If they fail or miss cutoff, that limitation remains explicit.
-
-`reset_all` advances physics under zero residual before the first recorded replay sample (clock0.02s); first stored states are post-warm-step states rather than the assigned pre-step states. The uniform learned/source20 control starts match, while older mixed30 and primary starts differ despite byte-identical test records. The exact source of the cross-run difference is not isolated. Same-domain selected-window floors also differ by selector; they remain diagnostics without subtracting errors or replacing data after inspection.
+Heavy stages are serialized. A failed stage stops dependent work. Checkpoints and failed acquisition groups are preserved. Existing incomplete runs are not silently resumed. GPU experiments stop at 09:00 UTC on October 9, leaving time to prepare the submission.

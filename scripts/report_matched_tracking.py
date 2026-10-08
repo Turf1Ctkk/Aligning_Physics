@@ -51,7 +51,7 @@ def main():
         ax.grid(axis="y",alpha=.18)
         ax.set_axisbelow(True)
     counts=[summary[k]["prefix_metrics"]["1.0"]["complete_trials"] for k in labels]
-    fig.text(.5,.015,"Three evaluation seeds × 32 trials • first-second valid counts: "+"/".join(map(str,counts))+" of 96 each\nOne trained policy per condition; evaluation seeds do not estimate training variance",ha="center",fontsize=8)
+    fig.text(.5,.015,"All first-second trials included. Historical 24-body errors.\nOne training seed per method; three deployment seeds.",ha="center",fontsize=8)
     fig.tight_layout(rect=(0,.075,1,1))
     fig.savefig(ROOT/"assets/figures/matched_squat_tracking.png",dpi=180)
     print(json.dumps(summary,indent=2))

@@ -1,0 +1,191 @@
+{
+  "created_utc": "2026-10-08T17:26:08.771922+00:00",
+  "cutoff_utc": "2026-10-09T09:00:00+00:00",
+  "predecessor": "/root/autodl-tmp/aligning_physics/repeat_controls_20261008/status.json",
+  "seeds": [
+    8101,
+    8102,
+    8103
+  ],
+  "trials_per_seed": 32,
+  "purpose": "Fresh 27-point ASAP metrics; no training/checkpoint changes",
+  "metrics": [
+    "global_position_mm",
+    "root_relative_position_mm",
+    "body_velocity_mm_frame",
+    "root_velocity_mm_frame",
+    "body_acceleration_mm_frame2"
+  ],
+  "success_rule": "Full horizon and mean point error never exceeds 0.5 m",
+  "runtime_termination": "Copied unchanged from each matched evaluation command",
+  "conditions": [
+    {
+      "task": "SquatL1",
+      "method": "ft_only",
+      "source": "/root/autodl-tmp/aligning_physics/matched_eval_20261008",
+      "source_method": "ft_only"
+    },
+    {
+      "task": "CR7",
+      "method": "active_sysid_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7",
+      "source_method": "active_sysid_ft"
+    },
+    {
+      "task": "CR7",
+      "method": "asap_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "CR7",
+      "method": "ft_only",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7",
+      "source_method": "ft_only"
+    },
+    {
+      "task": "CR7",
+      "method": "sysid_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7",
+      "source_method": "sysid_ft"
+    },
+    {
+      "task": "CR7",
+      "method": "torque_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7",
+      "source_method": "torque_ft"
+    },
+    {
+      "task": "CR7",
+      "method": "vanilla",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7",
+      "source_method": "vanilla"
+    },
+    {
+      "task": "CR7",
+      "method": "wave_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7",
+      "source_method": "wave_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "active_sysid_ft",
+      "source": "/root/autodl-tmp/aligning_physics/active_20261008",
+      "source_method": "active_sysid_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "asap_ft",
+      "source": "/root/autodl-tmp/aligning_physics/matched_eval_20261008",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "native_unchanged_torque",
+      "source": "/root/autodl-tmp/aligning_physics/wave_20261008/unchanged",
+      "source_method": "torque_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "primary_coverage",
+      "source": "/root/autodl-tmp/aligning_physics/content_20261008/coverage",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "primary_joint_range",
+      "source": "/root/autodl-tmp/aligning_physics/content_20261008/joint_range",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "primary_uniform",
+      "source": "/root/autodl-tmp/aligning_physics/content_20261008/uniform",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "repeat_coverage",
+      "source": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/coverage",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "repeat_joint_range",
+      "source": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/joint_range",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "repeat_uniform",
+      "source": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/uniform",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "sysid_ft",
+      "source": "/root/autodl-tmp/aligning_physics/matched_eval_20261008",
+      "source_method": "sysid_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "torque_ft",
+      "source": "/root/autodl-tmp/aligning_physics/matched_eval_20261008",
+      "source_method": "torque_ft"
+    },
+    {
+      "task": "SquatL1",
+      "method": "vanilla",
+      "source": "/root/autodl-tmp/aligning_physics/matched_eval_20261008",
+      "source_method": "vanilla"
+    },
+    {
+      "task": "SquatL1",
+      "method": "wave_ft",
+      "source": "/root/autodl-tmp/aligning_physics/wave_20261008/wave",
+      "source_method": "torque_ft"
+    },
+    {
+      "task": "StepFBL1",
+      "method": "active_sysid_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1",
+      "source_method": "active_sysid_ft"
+    },
+    {
+      "task": "StepFBL1",
+      "method": "asap_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1",
+      "source_method": "asap_ft"
+    },
+    {
+      "task": "StepFBL1",
+      "method": "ft_only",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1",
+      "source_method": "ft_only"
+    },
+    {
+      "task": "StepFBL1",
+      "method": "sysid_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1",
+      "source_method": "sysid_ft"
+    },
+    {
+      "task": "StepFBL1",
+      "method": "torque_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1",
+      "source_method": "torque_ft"
+    },
+    {
+      "task": "StepFBL1",
+      "method": "vanilla",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1",
+      "source_method": "vanilla"
+    },
+    {
+      "task": "StepFBL1",
+      "method": "wave_ft",
+      "source": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1",
+      "source_method": "wave_ft"
+    }
+  ]
+}

@@ -57,16 +57,17 @@ def main():
               "error_scope": "Prefix means condition on prefix completion; full-horizon means on full completion",
               "summary": summaries}
     (output / "summary.json").write_text(json.dumps(report, indent=2))
-    rows = ["| Policy | Full completion /96 | Survival (s) | 1s body / root-relative (mm; valid n) | 3s body / root-relative (mm; valid n) | Full body / root-relative (mm; successful n) |",
+    rows = ["Historical 24-body metrics. Error cells show global / root-relative error and the percentage of trials included.\n",
+            "| Policy | Completion (%) | Survival (s) | First second (mm; included %) | First three seconds (mm; included %) | Full motion (mm; included %) |",
             "|---|---:|---:|---|---|---|"]
     def error_pair(body, relative, count):
-        return "Unavailable (0)" if not count else f"{body:.2f} / {relative:.2f} ({count})"
+        return "Unavailable (0.0%)" if not count else f"{body:.2f} / {relative:.2f} ({100 * count / 96:.1f}%)"
     for key, name in METHODS.items():
         row = summaries[key]
         prefixes = [row["prefix_metrics"][str(h)] for h in (1., 3.)]
         cells = [error_pair(p["global_body_mpjpe_mm"], p["root_relative_body_mpjpe_mm"], p["complete_trials"]) for p in prefixes]
         full = error_pair(row["complete_trial_global_body_mpjpe_mm"], row["complete_trial_root_relative_body_mpjpe_mm"], row["complete_trials"])
-        rows.append(f"| {name} | {row['complete_trials']} | {row['mean_survival_s']:.3f} | {cells[0]} | {cells[1]} | {full} |")
+        rows.append(f"| {name} | {100 * row['completion_rate']:.1f} | {row['mean_survival_s']:.3f} | {cells[0]} | {cells[1]} | {full} |")
     (output / "metrics.md").write_text("\n".join(rows) + "\n")
     names = [name.replace(" ", "\n", 1) for name in METHODS.values()]
     fig, axes = plt.subplots(1, 4, figsize=(16.8, 4.6))
@@ -94,9 +95,9 @@ def main():
         ax.set(title=title, ylabel=ylabel, ylim=(0, 110 if panel == 0 else maximum * 1.22))
         ax.spines[["top", "right"]].set_visible(False)
         ax.tick_params(axis="x", labelsize=7, rotation=25)
-    valid = "/".join(str(s["prefix_metrics"]["1.0"]["complete_trials"]) for s in summaries.values())
-    fig.text(.5, .015, f"{args.task}: {args.horizon:.2f}s reference • first-second valid trials: {valid} of 96 each\n"
-             "Shared mixed-motion calibrators • fixed final 1000 task updates • one training seed per method",
+    valid = ", ".join(f"{100 * s['prefix_metrics']['1.0']['complete_trials'] / 96:.1f}%" for s in summaries.values())
+    fig.text(.5, .015, f"{args.task}: {args.horizon:.2f}s reference • First-second inclusion: {valid}\n"
+             "Historical 24-body errors. One training seed; three deployment seeds.",
              ha="center", fontsize=8)
     fig.tight_layout(rect=(0, .09, 1, 1))
     fig.savefig(output / "tracking.png", dpi=180)

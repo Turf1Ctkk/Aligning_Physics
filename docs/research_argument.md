@@ -1,170 +1,77 @@
-# Research argument: from calibration data to control
+# Why study calibration data?
 
-## 1. The object being learned
+## The problem
 
-The question concerns data-driven calibration for humanoid motion tracking. It does not ask which human reference motions are easiest to imitate. Those reference motions define the task; calibration trajectories describe how the target system actually responds to actions, including imperfect responses before a failure.
+A motion reference tells the robot what to do. A calibration rollout records what it actually did after receiving commands. These are different kinds of data. This study concerns the second kind.
 
-Let A be the source simulator and B the target system. In a controlled sim-to-sim test, B is another configured simulator. Let D be target recordings collected with the original policy π0. A learned correction changes the command channel of A, producing an approximate calibrated transition model. A task policy is then fine-tuned in that model and deployed in B without the correction.
-
-This creates two distinct experimental outcomes:
+Let $f_A$ describe the source simulator and $f_B$ the target dynamics. ASAP learns an action correction $\Delta a$ so that
 
 $$
-R_{\mathrm{replay}}(\psi;D_{\mathrm{test}})
-=\mathbb E\big[\|y^B_{t:t+H}-\hat y^{A,\psi}_{t:t+H}\|_W^2\big],
+f_A(s,a+\Delta a(s,a))\approx f_B(s,a).
 $$
 
-where nominal inputs are the recorded actions, and
+The correction is then frozen during policy fine-tuning. The final policy runs in B without the correction. A useful dataset must therefore support more than accurate replay. It must help train a policy that works in B.
+
+## What previous work suggests
+
+ASAP collects task-policy rollouts. SPI-Active chooses commands that reveal physical parameters. UAN uses wave and noise inputs to learn actuator corrections. These are different ways to obtain informative responses. Informative collection is already an established research topic.
+
+The proposed contribution is a more specific test: compare data choices for learned calibration, then measure their effect on policy control. I do not assume that a data rule successful for parameter identification will also be successful for a flexible residual model.
+
+[ASAP](https://arxiv.org/html/2502.01143v3), [SPI-Active](https://github.com/LeCAR-Lab/SPI-Active), [UAN](https://arxiv.org/abs/2502.10894v1).
+
+## Why joint range may be insufficient
+
+Consider a PD actuator with command error $e=q_{cmd}-q$:
 
 $$
-J_B(\pi_D)=\mathbb E_B\big[\text{task tracking cost and failure cost under }\pi_D\big],
+\tau=K_pe-K_d\dot q.
 $$
 
-where the adapted policy generates its own actions. The observer y specifies what is measured, such as body positions or joint states. A position metric alone does not determine force accuracy or stability.
-
-The recorded state may be incomplete: actuator memory, contact-solver history, and support interactions need not be recoverable from joint/root position and velocity. In that case, replay error contains more than the intended dynamics mismatch. Same-domain replay and interface checks are therefore part of the measurement design, not optional implementation housekeeping.
-
-## 2. The research gap is narrower than “data matters”
-
-Three established ideas already constrain the proposal. Task-policy rollouts can train a reusable action correction; structured identification benefits from targeted excitation; actuator learning can use non-task wave/noise excitation. These are supported respectively by [ASAP](https://arxiv.org/html/2502.01143v3), [SPI-Active](https://arxiv.org/html/2505.14266v1), and [UAN](https://arxiv.org/html/2502.10894v1).
-
-Recent [Contact-UAN's author project page](https://contact-uan.csail.mit.edu/) also reports reuse of walking calibration for other behaviors and emphasizes contact-consistent replay. That directly rules out the premise that the downstream motion's own successful rollout is always necessary. Its project-page evidence is related context, not a reproduction performed here.
-
-The proposed study instead asks whether measurable content of an existing target calibration pool predicts usefulness for **both** replay and policy adaptation, with data amount and optimization held fixed. It is a controlled diagnosis within one architecture. A claim of methodological novelty would require a broader literature comparison than this initial proposal.
-
-## 3. Why joint range is not enough
-
-For a nominal PD position target,
+At the same state and command, an unsaturated stiffness mismatch produces
 
 $$
-q_{\rm cmd}=q_{\rm default}+\alpha a,
-\qquad \tau=K_p(q_{\rm cmd}-q)-K_d\dot q.
+\tau_B-\tau_A=(K_p^B-K_p^A)e.
 $$
 
-With only stiffness changed and before saturation, the instantaneous difference is
+This gives a reason to measure servo error. A joint can move through a large range while following its command closely. Another joint can move little but have a large command error. Their ranges do not tell us which response reveals a stiffness mismatch.
+
+Torque limits complicate the picture. If both systems clip to the same torque, increasing command error may reveal little extra information. Delay and friction would require different features. I therefore treat actuator coverage as a testable heuristic, not a universal rule.
+
+The current selector uses servo error, velocity, command changes and torque-limit statistics. It does not optimize the future policy's sensitivity. Such a method would be a separate research step.
+
+## Why replay may not predict control
+
+Replay uses a fixed nominal action sequence. Fine-tuning changes the policy, so it can change both commands and visited states. Three possible problems follow:
+
+- The policy may visit conditions that the calibration data rarely covers.
+- The model may reduce errors that have little effect on task control.
+- The policy may exploit an inaccurate part of the calibrated simulator.
+
+These are hypotheses, not explanations established by the present results. A feature-distance audit finds changed actuator conditions, but distance alone does not explain the ranking of policies.
+
+Other explanations also matter. Optimization can vary across training seeds. Model capacity may limit calibration. Replay initialization may not restore contact history. Correction rate may also matter: PD torque updates at 200 Hz, while the action correction is held at 50 Hz.
+
+For unsaturated actuators with equal damping and no delay, a command chosen to match torque at state $q_k$ leaves the following discrepancy at a later shared state $q_t$:
 
 $$
-\tau_B-\tau_A=(K_p^B-K_p^A)e,
-\qquad e=q_{\rm cmd}-q.
+\tau_A-\tau_B=(K_p^B-K_p^A)(q_k-q_t).
 $$
 
-Thus, the actuator error e is directly relevant to this particular mismatch. A joint can move through a wide range while staying close to its commanded position. Conversely, a relatively small excursion can occur under a large commanded error or load. Range alone does not identify which situation the data contain.
+This is a same-state identity. It is not a bound on the best learned correction or a proof of why a policy failed. A known-gain replay diagnostic checks the interface separately from learning.
 
-This is a mechanistic argument for a feature, not a guarantee that an e-diverse dataset produces a better neural model. An estimator with the correct one-parameter structure may need very little data. A residual model may instead be limited by optimization, regularization, finite update frequency, or other state-dependent effects. The Kp experiment is deliberately favorable to structured SysID and should be described that way.
+## What would support the hypothesis?
 
-The actual controller clips ankle torque at ±50 Nm. Its instantaneous mismatch is therefore
+At equal data and training budgets, coverage should reduce held-out replay error compared with uniform selection and range selection. The resulting policy should also improve target control after the same fine-tuning budget.
 
-$$
-\Delta\tau=\operatorname{clip}(K_p^B e-K_d\dot q,\pm L)
--\operatorname{clip}(K_p^A e-K_d\dot q,\pm L).
-$$
+Both claims matter. A replay gain without a control gain supports only the first. A negative result for this selector does not rule out every form of information-aware collection.
 
-Away from a clipping boundary, the local source sensitivity to stiffness is $e\,\mathbf 1(|K_p^A e-K_d\dot q|<L)$. A large error can thus have zero local sensitivity when the torque is already saturated. When both source and target saturate in the same direction, their instantaneous torques coincide. Near a boundary, a finite gain change can alter the active regime, so the local derivative alone is insufficient. This makes source torque headroom and coverage around saturation boundaries meaningful candidates alongside e. Neither formula is used to supply corrective-action training labels.
+The first subset experiment shows this distinction. Coverage has lower replay position error, but range has higher policy completion. The combined hypothesis is not confirmed in that run. Different selected phases also have different same-domain replay errors. These are retained rather than subtracted or used to replace windows.
 
-A [descriptive training-pool audit](../results/calibration_features/README.md) illustrates this distinction. Evaluating the source PD law at recorded target states gives weighted nominal saturation fractions of approximately 18.94% for CR7, 0.009% for SquatL1, and 3.65% for StepFBL1. These are modeled source commands, not measured target torques. Clip-level joint range and servo-error RMS also have task-dependent associations. All three fixed-budget primary selector conditions have since completed; the prespecified repeat is running. The descriptive audit itself does not establish which feature caused those learning outcomes; it motivated the prespecified intervention.
+## What the current study can establish
 
-For the actual post-step data format, compute transition features using
+The data-content experiment compares three complete pipelines using the same recorded parents. It measures the effect of a selection rule, which may change several data properties at once. It does not isolate the causal effect of one feature.
 
-$$
-e_i=q_{\rm default}+\alpha a[i+1]-q[i].
-$$
+A second seed repeats training on the same selected data. This checks sensitivity to the pipeline seed. It does not repeat acquisition, and two seeds cannot establish a reliable population ranking. Replay evaluation seed also changes between runs. Policy deployment seeds remain fixed.
 
-Using action[i] with state[i] would measure the preceding command, rather than the next recorded transition. This matters when judging which data excite the mechanism.
-
-Velocity and command change are candidate conditioning/coverage features. They are directly relevant to other mechanisms, such as damping, friction, and response delay; they are not automatically independent sources of information about a pure Kp change. The proposed selector uses them to describe actuator regimes and tests their value, rather than declaring that every additional feature must help.
-
-### A correction interface can also limit equivalence
-
-The action correction is computed at 50 Hz and held across four 200 Hz physics steps. The nominal PD torque is recomputed from updated joint states at each physics step. Before torque clipping, with equal damping and no delay, an instantaneous known-gain correction at the start of a control interval would be
-
-$$
-\alpha\Delta a_t=(K_B/K_A-1)(q_{\rm cmd,t}-q_t).
-$$
-
-It matches the two torques at the same initial state. At a later substep, compare both laws at the **same** joint position $q_k$ and velocity, with that correction still held:
-
-$$
-\tau_A^{\Delta}(q_k)-\tau_B(q_k)
-=(K_B-K_A)(q_k-q_t).
-$$
-
-Thus a correction that matches instantaneous torque need not remain equivalent as the joint moves. This identity concerns unsaturated torque laws evaluated at a common state, not the difference between two already-diverged trajectories. Clipping, differing damping or delay require another expression. It also does not prove that an optimally learned 50 Hz correction cannot improve sampled positions or task control: it may trade off substep errors, and instantaneous matching is not necessarily the best finite-horizon objective.
-
-An [earlier single-recording rate diagnostic](../results/control_rate_diagnostic/README.md), now verified from saved configs and raw comparisons, illustrates the distinction. Known-parameter correction recomputed at 200 Hz reproduces that prefix much more closely than the same rule held at 50 Hz. It uses the known gain ratio only as an implementation control, not as a learned baseline or training label. Neither this diagnostic nor the unmatched action/torque model comparison isolates the cause of current closed-loop failures. It establishes update timing as a concrete competing mechanism that must be considered before attributing every residual error to data content.
-
-## 4. Why replay and control can disagree
-
-Training data originate from π0 in B; fine-tuning creates πD in the calibrated A. Their state-action occupancy distributions can differ. A low average replay loss under the former does not guarantee an accurate correction under the latter.
-
-A [post-hoc support audit](../results/policy_regimes/README.md) queries the first 49 transitions of all 96 target deployment trials per policy against mixed30 calibration data in 12 training-scaled actuator coordinates. Mean nearest-feature distance is 0.736 for the original policy, 0.959 for FT-only, 1.351 for ASAP, 1.467 for passive SysID and 1.318 for torque-model FT. This measures a change in visited feature regimes, not a probability-density ratio or model error. SysID has the largest distance but higher completion than ASAP, so the observed distance does not explain the ranking on its own. Only B deployment is observed; calibrated-A training occupancy and correction errors on those states remain unmeasured. The queued selection protocol is unchanged by this exploratory test-set analysis.
-
-There is also a difference in error propagation. Within a locally smooth contact regime, a first-order closed-loop error has the schematic form
-
-$$
-\xi_{t+1}\approx
-\left(\frac{\partial f}{\partial x}
-+\frac{\partial f}{\partial a}\frac{\partial\pi}{\partial x}\right)\xi_t
-+\varepsilon_\psi(x_t,\pi(x_t)).
-$$
-
-This expression is a local explanatory approximation, not a global stability guarantee for contact-rich motion. It shows why the effect of a model error depends on controller sensitivity and feedback. Some errors can be attenuated; others can affect balance, contact timing, or failure. A uniformly averaged kinematic replay score does not encode all of these consequences.
-
-Consequently, an apparent closed-loop plateau has multiple possible causes:
-
-| Explanation | Discriminating evidence |
-|---|---|
-| Repeated data cover already-observed regimes | Additional groups add little measured feature coverage; equal-budget coverage selection changes results. |
-| Improvement occurs in control-insensitive regions | Replay improves while target failures and task tracking do not; phase-resolved errors differ. |
-| Policy-induced distribution shift | Adapted-policy features occupy poorly covered calibration regions. |
-| Residual representation/rate limitation | Increasing data does not help, while a suitable model/history/update rate does. |
-| Optimization or fine-tuning budget limitation | Longer or independently repeated optimization changes the ranking. |
-| Replay initialization artifact | Same-domain error is large or depends strongly on window starts. |
-
-The current pilot distinguishes none of these conclusively. In particular, 30 versus 90 recording groups cannot establish saturation because task weights changed and only one training seed was run.
-
-The [matched Squat result](../results/matched_squat/README.md) now provides a concrete disagreement: the weighted mixed30 action correction lowers held-out replay body error by 19.0%, yet its adapted policy completes 87/96 trials compared with 96/96 for equal-budget continued training without calibration. Its first-second global and root-relative tracking errors are also higher. A shared torque correction similarly improves replay but does not exceed FT-only completion and has higher full-horizon position error. This establishes that the chosen replay improvement is insufficient for an additional downstream benefit in these runs. It does not prove that calibration data are deficient, or that dataset scaling caused a plateau. A controlled selector comparison remains necessary to test the proposed coverage explanation.
-
-The [structured estimator's post-hoc diagnostic](../results/passive_sysid/README.md) adds a measurement caution. On the same training windows, known target gains 16/16 produce a larger short-horizon fitting loss than the fitted 13.01/10.42. Thus optimizing the present trajectory objective can favor surrogate parameters that compensate for replay conditions or other unmodeled effects. Recovery error cannot be attributed solely to insufficient search. The precise mechanism is not resolved; neither the fitted gains nor the target-gain control supplies labels to a learned correction. This is another reason to report same-domain floors and window-start sensitivity alongside data-selection outcomes.
-
-The [actual 200 Hz acquisition comparison](../results/wave_acquisition/README.md) separates another pair of claims. Its new training records have sub-millimeter same-domain position replay, yet the unchanged-input calibrated policy completes only 34/96 target trials. All 96 survive the first three seconds; the 62 terminations occur at 4.56–5.16 seconds. Early tracking means therefore miss the late stability deficit. This does not identify a cause: collection phase coverage, correction extrapolation, optimization and reward tradeoffs remain competing explanations. A finer measurement rate alone is not evidence of useful calibration data. The matched excitation arm improves some held-out replay metrics and worsens another; its policy completes 95/96, compared with 34/96 for unchanged data and 96/96 for FT-only. Collection amount, parent identities, architecture, training seed, update budgets and selection rule are held fixed, and evaluation settings/first stored states match. Thus changing acquisition inputs and resulting trajectories changes the outcome of this training pipeline in this seed. Nearly unchanged joint-range summaries coexist with a large completion difference, so range alone does not describe the intervention. This neither identifies a causal feature nor excludes optimization variability: independent training repetitions and targeted temporal/regime ablations are needed. Excitation also has higher first-second global error than unchanged data, despite better root-relative error and completion; the measurements cannot be collapsed into a universal improvement.
-
-The Squat FT-only control completes96/96 in this sample, leaving a completion ceiling for demonstrating extra benefit in that task. Tracking error and survival must accompany completion, and independently trained policies are needed to judge small differences. A harder mismatch or evaluation distribution could provide additional headroom in a later study; the current thresholds and budgets are retained rather than changed after seeing these outcomes.
-
-The [CR7 task-policy extension](../results/task_extensions/CR7/README.md) adds a task-dependent constraint. The same frozen calibrators are reused, with fresh equal-budget policies from CR7 model6000. Original and FT-only both complete96/96, while all calibrated conditions complete fewer trials (55–92/96). FT-only improves global body error but worsens root-relative error over the same96 successes, illustrating that even the task-error metric is not a single notion of improved control. Some calibrated policies terminate before the first second; their prefix means condition on survivors. CR7 was present in calibration, so these results cannot be labelled out-of-distribution motion generalization. They motivate the controlled within-model data comparison without proving a data bottleneck.
-
-The [StepFBL1 extension](../results/task_extensions/StepFBL1/README.md) prevents interpreting the earlier negative results as a universal failure of calibration. Using those same frozen calibrators with fresh equal-budget task policies, ASAP and passive SysID complete76/96 and96/96 versus FT-only39/96. Passive SysID also lowers first-second global/root-relative errors over all96 valid trials; initial stored states/actions and effective evaluation settings match. These observations supply task-dependent positive downstream evidence in one training seed, while the original source checkpoint, task dynamics and reward behavior also differ between motions. They do not establish a data-feature mechanism, training robustness, or a universal ranking. Full-reference errors over differing success sets must remain conditional. A useful fitted surrogate need not recover the actual physical parameters.
-
-## 5. A hypothesis with explicit conditions
-
-For an actuator-response mismatch that the chosen residual interface can represent, and after replay artifacts are controlled, **equal-budget datasets covering relevant command-state regimes should improve calibration on held-out trajectories compared with a dataset selected only for large joint range or uniform repetition**.
-
-The downstream extension is conditional: this benefit should improve target-domain control when those regimes overlap the adapted policy's behavior and the calibrated simulator does not introduce exploitable errors. This is the difficult part of the question, not an assumed consequence of the first result.
-
-The conditions prevent an overly broad claim, but must not become post-hoc excuses. Before testing, fix the mismatch, model interface, feature definitions, budgets, and evaluation. Report whether the conditions are met using the same-domain check, measured coverage, independent target trajectories, and adapted-policy feature distributions. If a coverage selector performs no better than uniform selection under these settings, the hypothesis is unsupported for this test.
-
-The experimental unit for a data-selection claim is the entire calibration-and-adaptation run. Write its deployed policy as $\pi(D,z)$, where $z$ contains calibration and policy-training randomness. A population claim would concern
-
-$$
-\Delta J=\mathbb E_z[J_B(\pi(D_{\rm coverage},z))-J_B(\pi(D_{\rm uniform},z))],
-$$
-
-with cost defined consistently so lower is better. The present results retain completion, survival and tracking as separate outcomes; no post-hoc scalar weighting is used to declare a winner. The primary experiment estimates one paired-seed contrast, not this expectation or its training variance. The conditional second paired seed is now running with identical selected data; if completed, it provides a small pipeline-sensitivity check rather than a reliable population estimate. Its replay-validation/test seed also changes, so replay differences between runs do not isolate optimizer-only variance. Repeated deployment initializations measure another source of variability. Repeated windows from a trained calibrator do not turn it into multiple trained models. Shared seeds reduce one avoidable difference but do not make optimization trajectories identical across datasets.
-
-Changing a subset or acquisition input is also a bundled intervention. It can change actuator features, their temporal order, support/contact regimes and the optimization landscape together. An observed performance difference identifies an effect of that dataset construction in the tested pipeline; it does not identify a unique causal feature. To test the proposed mechanism later, remove one feature family from the selector or vary temporal excitation while matching parent identities, duration and coarse joint range, using fresh training seeds and an untouched evaluation split. These are follow-up ablations, not selectors adjusted after the present test results.
-
-The completed primary selector study makes this distinction concrete. Uniform/coverage/range test replay body errors are32.96/28.42/45.73mm, while their Squat policies complete8/96,40/96 and74/96. Mean survival is4.99/3.92/5.12s. Coverage has lower replay body, ankle and velocity errors than uniform/range, but range has higher completion, longer survival and lower first-second errors than coverage in this seed. The observed ordering supplies a counterexample to using average recorded-trajectory replay accuracy as a sufficient model-selection proxy for the downstream policy. It does not identify model exploitation, occupancy shift, or another unique cause.
-
-Completion counts and survival remain separate: many late terminations can yield long survival but low full-motion completion. Selected-training-record same-domain body floors10.14/17.11/26.39mm also differ. Those differences expose an initialization/phase limitation bundled with the subset intervention; they are retained without subtraction or replacing windows. The replay component has descriptive support for this coverage heuristic in the primary run, while the combined replay-and-control prediction is not confirmed. One training seed and incomplete control-relevant occupancy measurements prevent establishing a robust causal feature or population ordering. The prespecified second seed is running and must be reported independently. [Complete primary evidence and controls](../results/content_selection/README.md).
-
-The minimal selector is deliberately weaker than an optimal information design: its 28 window summaries approximate command-state diversity, while neither controller sensitivity nor future adapted-policy occupancy enters its objective. Consequently, a negative result would reject this heuristic under the tested model, gap and budget. It would not establish that all information-aware selection is ineffective. A positive replay-only result would support the calibration component, while leaving the conditional control component unverified. This separation keeps the hypothesis falsifiable without treating every outcome as confirmation.
-
-## 6. What would count as evidence
-
-First, establish that calibration can change replay and downstream performance in the common task framework. Compare correction representations and include equal-budget continued policy training without calibration. This establishes the experimental phenomenon; it does not itself prove a data-content explanation.
-
-Second, change only the calibration subset at a fixed unique-transition budget. Compare uniform, command-state coverage, and joint-range selection. Keep parent groups, task mixture, residual architecture, training budget, and checkpoint selection controlled. Record overlap between windows and the data needed for history prefixes.
-
-Third, measure both held-out replay and target policy control. A same-motion held-out rollout tests trajectory generalization. A motion excluded from calibration tests a different claim; report it separately. Independent training seeds, rather than many correlated windows from one trained model, are needed for a stable method ranking.
-
-Finally, test a second mismatch if claiming mechanism dependence. For example, data useful for a linear stiffness change need not be useful for a saturation mechanism. This experiment is secondary to finishing one complete downstream comparison before the submission deadline.
-
-The practical contribution is a falsifiable diagnostic protocol connecting data content, learned calibration, and target-domain control. A negative result can narrow the hypothesis or identify a stronger bottleneck; it should remain visible in the submission.
+A stronger follow-up would repeat acquisition and training, vary one data property at a time, and record the conditions visited during fine-tuning. It should also test a harder dynamics mismatch, since ordinary fine-tuning already reaches full completion on two tasks here.

@@ -1,52 +1,31 @@
-# Experiment status
+# Current work
 
-## Completed evidence
+Updated October 8, 2026, 17:45 UTC.
 
-- Source policies for CR7, SquatL1, and StepFBL1 exist.
-- Recorder/replay timing, saved-velocity initialization, and frozen-delta interface corrections have been exercised in the earlier diagnostics.
-- Multi-motion target collection, three delta dataset sizes, validation checkpoint selection, and held-out trajectory replay completed.
-- The pilot shows position-metric improvements, velocity-metric regressions, and non-monotonic data-scale results. Its sampler and same-domain replay limitations are documented.
-- Existing server artifacts and source checkpoints have been inspected read-only. The saved pilot plan uses CR7 `model_6000.pt`, not the available `model_8800.pt`; all three collection checkpoints are `model_6000.pt`.
+## Completed
 
-## Confirmed first experiment
+- Replay and frozen-correction interface fixes.
+- Mixed-motion delta calibration and policy comparisons.
+- Passive and active SysID adaptations.
+- Common-data and measured-200-Hz torque adaptations.
+- Seven-policy comparisons for Squat, CR7 and StepFBL1.
+- First training seed of the three-rule data-content test.
 
-- Mixed-motion 30-group calibration baseline: 10 original recording groups per task.
-- Same-engine Kp20 to Kp16 ankle mismatch; other dynamics fixed, domain randomization disabled.
-- 1-second calibration, four ankle physical corrections, 200/50 Hz physics/control, 2048 environments, 1000 PPO iterations, one initial training seed.
-- SquatL1 task-policy fine-tuning: 1000 additional iterations per condition, actor LR 1e-4, critic LR 1e-3, entropy 0, optimizer reset, pretrained weights/std retained.
-- GPU experiment cutoff: 2026-10-09 12:00 UTC+03:00.
+## Running or queued
 
-New weighted delta training and isolated replay have completed. Validation selects the 500-update checkpoint. Held-out global body MPJPE decreases from 37.66 to 30.51 mm; velocity RMSE slightly worsens (0.87892 to 0.89057 rad/s). All 66 one-second test windows complete. Both equal-budget task-policy runs and B deployment comparisons have completed: FT-only completes 96/96 trials, ASAP FT 87/96, and passive SysID FT 93/96. ASAP has no additional benefit over the FT-only control in this training seed. First-second tracking, survival, raw trials and fixed-trial animations are published.
+- Second data-content seed: running, with unchanged selected data.
+- Replay controls at its evaluation seed: queued after the repeat.
+- Fresh 27-point policy evaluations: queued after those controls.
+- Fresh 24-body calibration replays with velocity and acceleration: queued next.
 
-The original-policy evaluation inherited nonzero task-observation noise, while the fine-tuned policies used zero noise. Its 37/96 completion is retained as an audited historical artifact. The completed explicit common-noise reevaluation gives 51/96 for the original policy, 96/96 FT-only, 87/96 ASAP, 93/96 passive SysID, and 96/96 torque-model FT, and 92/96 active-acquisition SysID FT. No weights were retrained. All evaluations preserve original Squat termination criteria. The first stored states/actions match exactly across all six conditions for all 32 seed8101 trials. [Matched evidence](../results/matched_squat/README.md).
+The new evaluation reports position, velocity and acceleration errors. Completion and paper tracking success will be separate percentages. CPU formula checks have passed. New physical results are not yet available.
 
-An additional matched clean source-domain check completed all 261 recorded frames (5.22 seconds), with global body MPJPE 87.07 mm and root-relative body MPJPE 36.10 mm. This one-trial contrast establishes a useful baseline, but is not a statistical estimate of the effect of the domain change.
+## Document repair
 
-A post-hoc first-second deployment-feature audit has also completed for all 96 trials per method. It observes different actuator regimes relative to mixed30 calibration support, but does not establish that feature distance explains control ranking. Calibration-only scaling/reference, per-trial measures and the one-training-seed boundary are documented in [the audit](../results/policy_regimes/README.md). The queued selectors are unchanged.
+Reader-facing documents now use short explanations. The main report follows the six-part question-to-evidence structure. Existing GIFs and their references are removed. Historical tables use completion percentages; old raw JSON counts are preserved.
 
-Historical known-gain 50/200Hz replay controls have been verified from saved configurations and raw single-recording comparisons. They illustrate correction-rate dependence and are used only to support the same-state torque derivation, not as learned baselines, training labels or a causal explanation of policy failures. No new GPU stage was launched. [Timing diagnostic and scope](../results/control_rate_diagnostic/README.md).
+## Main finding so far
 
-## Not yet completed
+Calibration helps StepFBL1 relative to ordinary fine-tuning. Squat and CR7 do not show extra completion gains. In the first data-content run, coverage improves replay more, while range gives higher completion. This does not confirm the combined hypothesis.
 
-- Second paired seed of the completed first data-content comparison, currently running.
-- Fresh replay controls at the repeat seed, queued after repeat completion.
-
-Passive SysID selected pitch/roll gains 13.0122/10.4212 rather than the configured target 16/16. Test replay body error is 30.87 mm and velocity RMSE 0.80029 rad/s; all 66 windows complete. This is trajectory fitting, not demonstrated parameter recovery. Post-hoc training-window loss is 1.11580 for source20, 0.48918 for known 16, and 0.27028 for fitted gains: the current objective itself prefers the fitted surrogate. The precise cause remains unresolved. The UAN-style shared torque calibration, replay and policy comparison are complete: replay body error 36.69→24.48 mm, velocity 0.862→0.951 rad/s; all 66 windows complete. Validation chooses its 1000-update checkpoint. Its policy completes 96/96 trials but has higher full-horizon body error than FT-only (105.12 versus 94.45 mm, both 96 completed).
-
-The GPU stages are serialized after an attempted concurrent candidate replay caused CPU contention. An hourly thread follow-up checks artifacts and failures, with the confirmed GPU cutoff retained.
-
-A bounded-command active-acquisition stage has completed design and new target acquisition, with matched unchanged/random/optimized acquisition budgets. The initial central-window unchanged controls violated feasibility limits in two CR7 parent recordings; the random control additionally failed in a third before optimization. All failed artifacts were archived. The revised run uniformly uses the first 54 states of each parent's first eligible segment, keeps all 30 parents and the original limits, and passes all 90 acquisition command-alignment checks (52 recorded frames each). All three refits, held-out replay and optimized-arm policy evaluation are complete. The policy completes 92/96 versus FT-only 96/96; first-second body error is 93.54 versus 92.62 mm. No extra control benefit is established. This adaptation does not use the original Go2 command interface; its scope, revision and assumptions are described in the methods document.
-
-True-200Hz target acquisition is complete, with matched unchanged-input and bounded-wave/noise arms. All 60 groups supply 208 actual 5 ms states with exactly zero executed-command discrepancy. Each arm uses 30 groups and 6210 unique transitions, the same torque model and calibration/policy budget. Both same-domain checks complete 30/30 cases; body errors are 0.349/0.376 mm for unchanged/wave data. Both calibration arms and held-out replay are complete: unchanged/excitation body 31.80/30.35 mm, velocity 0.999/0.943 rad/s versus source-zero 36.69 mm/.862 rad/s. Unchanged-data policy completes 34/96; all 96 survive 3s but 62 terminate at 4.56–5.16s. Excitation-arm policy completes 95/96 (survival 5.191s); first-second body/root-relative errors are 94.765/28.484mm. Its one termination occurs at 2.46s, so three-second errors average 95 valid trials. All96 first stored states/actions per arm and the recorded evaluation settings match FT-only. The paired data-content contrast is observed in one training seed; extra benefit over FT-only is not established. [Measured acquisition and replay](../results/wave_acquisition/README.md). This is a closer UAN data adaptation, with its G1 command-interface boundary disclosed.
-
-CR7 extension training and all seven deployment comparisons are complete. Completion is original96/96, FT-only96/96, ASAP92/96, passive77/96, commonTorque70/96, active87/96 and excitationTorque55/96. The actual evaluation horizon is 196 frames (3.92s). FT-only global/root-relative full errors are116.53/51.55mm versus original134.30/44.77mm, all96 successful trials. All96 first stored states/actions per method and effective evaluation settings match; unused raw configuration differences are retained. [Full CR7 evidence](../results/task_extensions/CR7/README.md). StepFBL1 all six1000-update task trainings and seven standalone target evaluations are complete. Original/FT-only/ASAP/passive/commonTorque/active/excitation complete1/96,39/96,76/96,96/96,82/96,87/96 and83/96. The actual horizon is196 frames/3.92s. Passive SysID first-second body/root-relative errors62.87/34.91mm improve on FT-only76.44/38.68mm, all96 valid; this supplies a positive matched downstream observation in one training seed. All96 first stored states/actions per method and effective settings match, and the original source checkpoint hash is verified. [Full Step evidence](../results/task_extensions/StepFBL1/README.md). They reuse the frozen multi-motion corrections and fitted gains, including the wave model, with fresh equal-budget fine-tuning from each task's recorded `model_6000.pt`. Their original termination flags and thresholds were inspected and match the common evaluation overrides. Both extensions are seen-calibration-motion reuse experiments, not motion holdouts.
-
-The fixed-budget primary content experiment is COMPLETE, with all three prespecified selectors and the exact public preview/scaler preserved. Each uses the same18 parents/954 unique transitions,1000 calibration and1000 Squat policy updates, calibration seed20305008/policy20306008. Validation selects500/1000/1000 for uniform/coverage/range; all candidates finish60/60. Test66/66 body32.9622/28.4211/45.7327mm and velocity0.989788/0.845004/1.052676rad/s versus shared primary zero36.9190mm/0.853221rad/s. Policies complete8/40/74 out of96, with survival4.9929/3.9206/5.1173s. All first-second prefixes complete96/96; three-second counts95/61/95 and full-success counts8/40/74 remain explicit. Every termination is retained, without automatic fall classification.
-
-All96 first stored deployment states/actions per selector and effective noise/termination/init/physics/horizon match contextual historical FT-only, which has another training seed. All66 learned replay first samples match the shared primary Source20 zero control exactly; test files are byte-identical. Same-domain selected-record floors10.1366/17.1059/26.3861mm differ and remain unsubtracted; no window is replaced. Complete primary metrics, per-seed signed contrasts, raw trials/validation/replay/audits, six-panel figure and fixedseed8101 trial0 actual-body GIF are published. Coverage gives smaller replay errors, while range has better completion/survival/first-second tracking in this seed. The combined hypothesis is not confirmed; causal actuator features and population ordering remain unresolved. [Complete evidence](../results/content_selection/README.md).
-
-The primary manager49016 exited complete. The prespecified repeat manager81475 passed its four-hour margin and started uniform delta training16:49:51Z on2026-10-08; it is the only GPU stage at the16:57Z check (PID114646). It verifies byte-identical primary train/validation/test/sampler files as each selector starts, uses calibration20305009/policy20306009, unchanged1000+1000 budgets and validation500/1000/fixed-final rules. Primary floors and controls are copied with explicit reused provenance. Replay validation/test seed also advances20305108→20305109; deployment8101–8103 remains fixed. No repeat outcome is available yet. Both seeds must be reported separately; fixed-data repetition is not acquisition replication or optimizer-only replay variance.
-
-Post-repeat manager107103 waits for repeat completion before fresh Source20/Same16 test controls at20305109, with its15-minute margin. These physics measurements are still pending. Copied controls remain provenance rather than a matched repeat-zero comparison. The full reporter passed actual complete primary inputs, exact preview and96 unique trial identities per selector. Actual deployment and replay-start audits accompany it separately. A [reading guide](reading_guide.md) distinguishes research argument, measured experiments and supporting files.
-
-Missing results remain labelled as missing; this file will be updated from actual artifacts. Evaluation runtime logs retain the ancillary keyboard-listener NameError and recorder completion markers; records/configs validate, and no main-process failure was ignored.
+GPU cutoff: October 9 at 09:00 UTC. Submission deadline: October 9 at 20:59 UTC. Failures and negative outcomes remain part of the evidence.

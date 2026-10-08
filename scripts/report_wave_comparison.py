@@ -57,7 +57,7 @@ def main():
         ax.tick_params(axis="x", labelsize=8)
     counts = [row["prefix_metrics"]["3.0"]["complete_trials"] for row in summaries]
     note = "Excitation-arm outcomes pending; missing results are not plotted" if not args.excitation else "Matched unchanged/excitation acquisition and optimization budgets"
-    fig.text(.5, .015, "Three-second valid trials: " + "/".join(map(str, counts)) + " of 96 each • one training seed per arm\n" + note,
+    fig.text(.5, .015, "Three-second inclusion: " + ", ".join(f"{100 * c / 96:.1f}%" for c in counts) + "\nHistorical 24-body errors. One training seed per arm.",
              ha="center", fontsize=8)
     fig.tight_layout(rect=(0, .08, 1, 1))
     fig.savefig(ROOT / "assets/figures/true_rate_tracking.png", dpi=180)

@@ -31,10 +31,10 @@ def main():
          "Held-out body replay", "Body MPJPE (mm)", zero["global_body_mpjpe_mm"] if zero else None),
         ([results[m]["test_replay"]["equal_task_mean"]["joint_velocity_rmse_rad_s"] for m in METHODS],
          "Held-out joint velocity", "RMSE (rad/s)", zero["joint_velocity_rmse_rad_s"] if zero else None),
-        ([results[m]["tracking"]["complete_trials"] for m in METHODS],
-         "Standalone B:5.22s", "Completed trials /96", None),
+        ([100 * results[m]["tracking"]["completion_rate"] for m in METHODS],
+         "Target control: 5.22 s", "Completion (%)", None),
         ([results[m]["tracking"]["mean_survival_s"] for m in METHODS],
-         "All96 deployment trials", "Mean survival (s)", None),
+         "All deployment trials", "Mean survival (s)", None),
         ([results[m]["tracking"]["prefix_metrics"]["1.0"]["global_body_mpjpe_mm"] for m in METHODS],
          "First-second global tracking", "Body MPJPE (mm)", None),
         ([results[m]["tracking"]["prefix_metrics"]["1.0"]["root_relative_body_mpjpe_mm"] for m in METHODS],
@@ -47,7 +47,7 @@ def main():
         if any(v is None for v in values):
             raise ValueError("A prefix with no valid trials requires an unavailable-data plot")
         bars = ax.bar(NAMES, values, color=COLORS, width=.65)
-        labels = [str(int(v)) if i == 2 else f"{v:.3f}" if i in (1, 3) else f"{v:.2f}" for v in values]
+        labels = [f"{v:.1f}%" if i == 2 else f"{v:.3f}" if i in (1, 3) else f"{v:.2f}" for v in values]
         ax.bar_label(bars, labels=labels, padding=3, fontsize=9)
         if reference is not None:
             ax.axhline(reference, color="#555555", linestyle="--", linewidth=1.2,
@@ -55,7 +55,7 @@ def main():
             ax.legend(fontsize=7, loc="upper left")
         top = max(values + ([reference] if reference is not None else [])) * 1.24
         if i == 2:
-            top = 96
+            top = 112
         elif i == 3:
             top = 5.22 * 1.18
         ax.set(title=title, ylabel=ylabel, ylim=(0, top))
@@ -63,10 +63,10 @@ def main():
         ax.spines[["top", "right"]].set_visible(False)
         ax.grid(axis="y", alpha=.18)
         ax.set_axisbelow(True)
-    fig.suptitle(f"Fixed-budget content selection: {args.run} training seed", fontsize=13)
+    fig.suptitle(f"Data selection — {args.run} training run", fontsize=13)
     fig.text(.5, .015,
-             f"Same18 parents /954 selected transitions • replay complete counts:{replay_counts}/66 • first1s valid counts:{prefix_counts}/96\n"
-             "One calibration/policy training seed in this figure; deployment trials are not training replications. No floor subtraction or composite ranking.",
+             "Same 18 parents and 954 transitions per rule. All first-second trials included.\n"
+             "One training seed. Historical 24-body metrics; no replay-floor subtraction.",
              ha="center", fontsize=8)
     fig.tight_layout(rect=(0, .065, 1, .96))
     args.output.parent.mkdir(parents=True, exist_ok=True)

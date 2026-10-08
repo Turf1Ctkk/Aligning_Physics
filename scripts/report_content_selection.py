@@ -193,10 +193,11 @@ def main():
               "audit_scope": "Artifact/identity/budget/hash checks here; actual command, state and effective-setting audits must accompany publication separately",
               "inference_limit": "One or two fixed-data training seeds are not acquisition replication or a population ranking. Existing FT-only uses another training seed and is contextual, not a same-seed control.",
               "runs": runs, "contrasts": {name: contrasts(run) for name, run in runs.items()}}
-    rows = ["| Run | Selector | Replay body / velocity (mm / rad/s; complete /66) | Subset floor body (mm; complete /18) | Policy completion /96 | Survival (s) | First1s body / root-relative (mm; valid n) | Full body / root-relative (mm; successful n) |",
+    rows = ["Historical 24-body metrics. Parentheses show the percentage of cases or trials included.\n",
+            "| Run | Rule | Replay position / joint velocity (mm / rad/s) | Same-domain floor (mm) | Completion (%) | Survival (s) | First second: global / relative (mm) | Full motion: global / relative (mm) |",
             "|---|---|---|---|---:|---:|---|---|"]
     def pair(a, b, n):
-        return "Unavailable (0)" if not n else f"{a:.2f} / {b:.2f} ({n})"
+        return "Unavailable (0.0%)" if not n else f"{a:.2f} / {b:.2f} ({100 * n / 96:.1f}%)"
     for name, run in runs.items():
         for method in METHODS:
             row = run["results"][method]
@@ -205,7 +206,7 @@ def main():
             r, f = replay["equal_task_mean"], floor["equal_task_mean"]
             prefix = pair(p["global_body_mpjpe_mm"], p["root_relative_body_mpjpe_mm"], p["complete_trials"])
             full = pair(tracking["complete_trial_global_body_mpjpe_mm"], tracking["complete_trial_root_relative_body_mpjpe_mm"], tracking["complete_trials"])
-            rows.append(f"| {name} | {method} | {r['global_body_mpjpe_mm']:.2f} / {r['joint_velocity_rmse_rad_s']:.3f} ({replay['complete_cases']}) | {f['global_body_mpjpe_mm']:.2f} ({floor['complete_cases']}) | {tracking['complete_trials']} | {tracking['mean_survival_s']:.3f} | {prefix} | {full} |")
+            rows.append(f"| {name} | {method.replace('_', ' ')} | {r['global_body_mpjpe_mm']:.2f} / {r['joint_velocity_rmse_rad_s']:.3f} ({100 * replay['complete_cases'] / replay['total_cases']:.1f}%) | {f['global_body_mpjpe_mm']:.2f} ({100 * floor['complete_cases'] / floor['total_cases']:.1f}%) | {100 * tracking['complete_trials'] / tracking['total_trials']:.1f} | {tracking['mean_survival_s']:.3f} | {prefix} | {full} |")
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "summary.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
     (args.output / "metrics.md").write_text("\n".join(rows) + "\n")
