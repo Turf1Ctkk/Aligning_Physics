@@ -1,0 +1,962 @@
+[
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout000__segment0",
+    "unique_key": "unchanged__CR7__rollout000__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4832719564437866,
+      "servo_error_rms_rad": 1.5748263295950131,
+      "ankle_velocity_rms_rad_s": 3.4584169387817383,
+      "command_change_rms_rad": 0.04363961145281792,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout001__segment0",
+    "unique_key": "unchanged__CR7__rollout001__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4978202283382416,
+      "servo_error_rms_rad": 1.5811958505441868,
+      "ankle_velocity_rms_rad_s": 3.223525047302246,
+      "command_change_rms_rad": 0.04142392426729202,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout002__segment0",
+    "unique_key": "unchanged__CR7__rollout002__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.48786696791648865,
+      "servo_error_rms_rad": 1.601756981845512,
+      "ankle_velocity_rms_rad_s": 3.376957893371582,
+      "command_change_rms_rad": 0.04700427129864693,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout003__segment0",
+    "unique_key": "unchanged__CR7__rollout003__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4830685257911682,
+      "servo_error_rms_rad": 1.5878173115123924,
+      "ankle_velocity_rms_rad_s": 3.395841360092163,
+      "command_change_rms_rad": 0.045278891921043396,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout004__segment0",
+    "unique_key": "unchanged__CR7__rollout004__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.48548710346221924,
+      "servo_error_rms_rad": 1.572739476050188,
+      "ankle_velocity_rms_rad_s": 3.4659950733184814,
+      "command_change_rms_rad": 0.045788925141096115,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout005__segment0",
+    "unique_key": "unchanged__CR7__rollout005__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.49298444390296936,
+      "servo_error_rms_rad": 1.5845394703873927,
+      "ankle_velocity_rms_rad_s": 3.49999737739563,
+      "command_change_rms_rad": 0.0422714427113533,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout006__segment0",
+    "unique_key": "unchanged__CR7__rollout006__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.5014293193817139,
+      "servo_error_rms_rad": 1.6065142655339248,
+      "ankle_velocity_rms_rad_s": 3.2688019275665283,
+      "command_change_rms_rad": 0.04276048392057419,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout007__segment0",
+    "unique_key": "unchanged__CR7__rollout007__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4976252317428589,
+      "servo_error_rms_rad": 1.5600846141953844,
+      "ankle_velocity_rms_rad_s": 3.2939414978027344,
+      "command_change_rms_rad": 0.03874858096241951,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout008__segment0",
+    "unique_key": "unchanged__CR7__rollout008__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.47998887300491333,
+      "servo_error_rms_rad": 1.5648505191562414,
+      "ankle_velocity_rms_rad_s": 3.224318742752075,
+      "command_change_rms_rad": 0.04608401283621788,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "CR7__rollout009__segment0",
+    "unique_key": "unchanged__CR7__rollout009__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4793344736099243,
+      "servo_error_rms_rad": 1.5465591989768048,
+      "ankle_velocity_rms_rad_s": 3.245025157928467,
+      "command_change_rms_rad": 0.04478457570075989,
+      "source_nominal_saturation_fraction": 0.15942028985507245
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout000__segment0",
+    "unique_key": "unchanged__SquatL1__rollout000__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2742829918861389,
+      "servo_error_rms_rad": 0.5026227498052224,
+      "ankle_velocity_rms_rad_s": 2.298431634902954,
+      "command_change_rms_rad": 0.020561939105391502,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout001__segment0",
+    "unique_key": "unchanged__SquatL1__rollout001__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2581692337989807,
+      "servo_error_rms_rad": 0.47224239965861836,
+      "ankle_velocity_rms_rad_s": 2.5739917755126953,
+      "command_change_rms_rad": 0.020969999954104424,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout002__segment0",
+    "unique_key": "unchanged__SquatL1__rollout002__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.24014604091644287,
+      "servo_error_rms_rad": 0.5726720514446129,
+      "ankle_velocity_rms_rad_s": 2.550095558166504,
+      "command_change_rms_rad": 0.02076856978237629,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout003__segment0",
+    "unique_key": "unchanged__SquatL1__rollout003__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.25606489181518555,
+      "servo_error_rms_rad": 0.493727388986336,
+      "ankle_velocity_rms_rad_s": 2.4238007068634033,
+      "command_change_rms_rad": 0.022704770788550377,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout004__segment0",
+    "unique_key": "unchanged__SquatL1__rollout004__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.26234033703804016,
+      "servo_error_rms_rad": 0.3335977705563582,
+      "ankle_velocity_rms_rad_s": 2.454925537109375,
+      "command_change_rms_rad": 0.020829370245337486,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout005__segment0",
+    "unique_key": "unchanged__SquatL1__rollout005__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.271911084651947,
+      "servo_error_rms_rad": 0.3762994227572384,
+      "ankle_velocity_rms_rad_s": 2.526066303253174,
+      "command_change_rms_rad": 0.01983669213950634,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout006__segment0",
+    "unique_key": "unchanged__SquatL1__rollout006__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2773783206939697,
+      "servo_error_rms_rad": 0.35802424905408137,
+      "ankle_velocity_rms_rad_s": 2.2241504192352295,
+      "command_change_rms_rad": 0.019352175295352936,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout007__segment0",
+    "unique_key": "unchanged__SquatL1__rollout007__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.25929558277130127,
+      "servo_error_rms_rad": 0.41975966653440777,
+      "ankle_velocity_rms_rad_s": 2.3859009742736816,
+      "command_change_rms_rad": 0.020211728289723396,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout008__segment0",
+    "unique_key": "unchanged__SquatL1__rollout008__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2582482099533081,
+      "servo_error_rms_rad": 0.36102584408322136,
+      "ankle_velocity_rms_rad_s": 2.4725260734558105,
+      "command_change_rms_rad": 0.018236342817544937,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "SquatL1__rollout009__segment0",
+    "unique_key": "unchanged__SquatL1__rollout009__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2671404480934143,
+      "servo_error_rms_rad": 0.36713770581928157,
+      "ankle_velocity_rms_rad_s": 2.4312949180603027,
+      "command_change_rms_rad": 0.01864423044025898,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout000__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout000__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.27638596296310425,
+      "servo_error_rms_rad": 0.7859024981700087,
+      "ankle_velocity_rms_rad_s": 2.555023431777954,
+      "command_change_rms_rad": 0.022862225770950317,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout001__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout001__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2902064323425293,
+      "servo_error_rms_rad": 0.9476241115973376,
+      "ankle_velocity_rms_rad_s": 3.1685688495635986,
+      "command_change_rms_rad": 0.024983102455735207,
+      "source_nominal_saturation_fraction": 0.03864734299516908
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout002__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout002__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.29670873284339905,
+      "servo_error_rms_rad": 0.9109102181152717,
+      "ankle_velocity_rms_rad_s": 3.0370166301727295,
+      "command_change_rms_rad": 0.025367427617311478,
+      "source_nominal_saturation_fraction": 0.025362318840579712
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout003__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout003__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2587730884552002,
+      "servo_error_rms_rad": 0.7463877090271491,
+      "ankle_velocity_rms_rad_s": 2.418724775314331,
+      "command_change_rms_rad": 0.02156032808125019,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout004__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout004__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.22387295961380005,
+      "servo_error_rms_rad": 0.6510058143152794,
+      "ankle_velocity_rms_rad_s": 2.4468069076538086,
+      "command_change_rms_rad": 0.020272374153137207,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout005__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout005__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2904384732246399,
+      "servo_error_rms_rad": 0.8354074284364559,
+      "ankle_velocity_rms_rad_s": 2.553407907485962,
+      "command_change_rms_rad": 0.022754058241844177,
+      "source_nominal_saturation_fraction": 0.006038647342995169
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout006__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout006__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2477448284626007,
+      "servo_error_rms_rad": 0.6622345567720234,
+      "ankle_velocity_rms_rad_s": 2.6086275577545166,
+      "command_change_rms_rad": 0.02068747952580452,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout007__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout007__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2352169305086136,
+      "servo_error_rms_rad": 0.5903340278361842,
+      "ankle_velocity_rms_rad_s": 2.7292606830596924,
+      "command_change_rms_rad": 0.01912839524447918,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout008__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout008__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.24593669176101685,
+      "servo_error_rms_rad": 0.6585988088608868,
+      "ankle_velocity_rms_rad_s": 2.649527072906494,
+      "command_change_rms_rad": 0.022304074838757515,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "unchanged",
+    "key": "StepFBL1__rollout009__segment0",
+    "unique_key": "unchanged__StepFBL1__rollout009__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.3704918622970581,
+      "servo_error_rms_rad": 0.9098972079172584,
+      "ankle_velocity_rms_rad_s": 3.33414363861084,
+      "command_change_rms_rad": 0.036341819912195206,
+      "source_nominal_saturation_fraction": 0.033816425120772944
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout000__segment0",
+    "unique_key": "wave__CR7__rollout000__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.5147508978843689,
+      "servo_error_rms_rad": 1.5809157420523055,
+      "ankle_velocity_rms_rad_s": 3.4441001415252686,
+      "command_change_rms_rad": 0.04383920133113861,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout001__segment0",
+    "unique_key": "wave__CR7__rollout001__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.5003570914268494,
+      "servo_error_rms_rad": 1.5846014118685081,
+      "ankle_velocity_rms_rad_s": 3.308043956756592,
+      "command_change_rms_rad": 0.04248501732945442,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout002__segment0",
+    "unique_key": "wave__CR7__rollout002__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4748660624027252,
+      "servo_error_rms_rad": 1.6009794381930864,
+      "ankle_velocity_rms_rad_s": 3.3658480644226074,
+      "command_change_rms_rad": 0.05531061813235283,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout003__segment0",
+    "unique_key": "wave__CR7__rollout003__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4805437922477722,
+      "servo_error_rms_rad": 1.5884543098154358,
+      "ankle_velocity_rms_rad_s": 3.2980031967163086,
+      "command_change_rms_rad": 0.04520726948976517,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout004__segment0",
+    "unique_key": "wave__CR7__rollout004__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.5194373726844788,
+      "servo_error_rms_rad": 1.5759918663857202,
+      "ankle_velocity_rms_rad_s": 3.4415552616119385,
+      "command_change_rms_rad": 0.04707203805446625,
+      "source_nominal_saturation_fraction": 0.17149758454106281
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout005__segment0",
+    "unique_key": "wave__CR7__rollout005__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.5097237229347229,
+      "servo_error_rms_rad": 1.585818965409593,
+      "ankle_velocity_rms_rad_s": 3.567700147628784,
+      "command_change_rms_rad": 0.04943861812353134,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout006__segment0",
+    "unique_key": "wave__CR7__rollout006__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.49559536576271057,
+      "servo_error_rms_rad": 1.6031631737830931,
+      "ankle_velocity_rms_rad_s": 3.272165536880493,
+      "command_change_rms_rad": 0.042702529579401016,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout007__segment0",
+    "unique_key": "wave__CR7__rollout007__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.5532296299934387,
+      "servo_error_rms_rad": 1.5602097622168558,
+      "ankle_velocity_rms_rad_s": 3.389190673828125,
+      "command_change_rms_rad": 0.04034750163555145,
+      "source_nominal_saturation_fraction": 0.16908212560386474
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout008__segment0",
+    "unique_key": "wave__CR7__rollout008__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4804815351963043,
+      "servo_error_rms_rad": 1.5642591914325121,
+      "ankle_velocity_rms_rad_s": 3.222595453262329,
+      "command_change_rms_rad": 0.0516609251499176,
+      "source_nominal_saturation_fraction": 0.1642512077294686
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "CR7__rollout009__segment0",
+    "unique_key": "wave__CR7__rollout009__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.4742259085178375,
+      "servo_error_rms_rad": 1.5486089153048497,
+      "ankle_velocity_rms_rad_s": 3.2062106132507324,
+      "command_change_rms_rad": 0.04478393867611885,
+      "source_nominal_saturation_fraction": 0.15942028985507245
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout000__segment0",
+    "unique_key": "wave__SquatL1__rollout000__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.25935906171798706,
+      "servo_error_rms_rad": 0.5003776022446994,
+      "ankle_velocity_rms_rad_s": 2.347031593322754,
+      "command_change_rms_rad": 0.020527301356196404,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout001__segment0",
+    "unique_key": "wave__SquatL1__rollout001__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.24576884508132935,
+      "servo_error_rms_rad": 0.48266807135120315,
+      "ankle_velocity_rms_rad_s": 2.331774950027466,
+      "command_change_rms_rad": 0.024494221433997154,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout002__segment0",
+    "unique_key": "wave__SquatL1__rollout002__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.24834413826465607,
+      "servo_error_rms_rad": 0.5699307606242736,
+      "ankle_velocity_rms_rad_s": 2.7179782390594482,
+      "command_change_rms_rad": 0.03488529101014137,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout003__segment0",
+    "unique_key": "wave__SquatL1__rollout003__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2451101392507553,
+      "servo_error_rms_rad": 0.48986038396080334,
+      "ankle_velocity_rms_rad_s": 2.1739861965179443,
+      "command_change_rms_rad": 0.022838639095425606,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout004__segment0",
+    "unique_key": "wave__SquatL1__rollout004__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2618253827095032,
+      "servo_error_rms_rad": 0.3376174482198806,
+      "ankle_velocity_rms_rad_s": 2.493860960006714,
+      "command_change_rms_rad": 0.023570982739329338,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout005__segment0",
+    "unique_key": "wave__SquatL1__rollout005__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.274474561214447,
+      "servo_error_rms_rad": 0.3792444341422713,
+      "ankle_velocity_rms_rad_s": 2.5448033809661865,
+      "command_change_rms_rad": 0.03308778628706932,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout006__segment0",
+    "unique_key": "wave__SquatL1__rollout006__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.26416462659835815,
+      "servo_error_rms_rad": 0.35819652424187665,
+      "ankle_velocity_rms_rad_s": 2.2197506427764893,
+      "command_change_rms_rad": 0.01935887336730957,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout007__segment0",
+    "unique_key": "wave__SquatL1__rollout007__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2408217489719391,
+      "servo_error_rms_rad": 0.4267591547008083,
+      "ankle_velocity_rms_rad_s": 2.2756850719451904,
+      "command_change_rms_rad": 0.02251928113400936,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout008__segment0",
+    "unique_key": "wave__SquatL1__rollout008__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2589174509048462,
+      "servo_error_rms_rad": 0.3616264908731111,
+      "ankle_velocity_rms_rad_s": 2.50264573097229,
+      "command_change_rms_rad": 0.03199063614010811,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "SquatL1__rollout009__segment0",
+    "unique_key": "wave__SquatL1__rollout009__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2534005641937256,
+      "servo_error_rms_rad": 0.36441927650784733,
+      "ankle_velocity_rms_rad_s": 2.410187244415283,
+      "command_change_rms_rad": 0.01868475414812565,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout000__segment0",
+    "unique_key": "wave__StepFBL1__rollout000__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.23285594582557678,
+      "servo_error_rms_rad": 0.7486328819128697,
+      "ankle_velocity_rms_rad_s": 2.644892692565918,
+      "command_change_rms_rad": 0.022999048233032227,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout001__segment0",
+    "unique_key": "wave__StepFBL1__rollout001__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.3120602071285248,
+      "servo_error_rms_rad": 0.9412275645840207,
+      "ankle_velocity_rms_rad_s": 3.204413414001465,
+      "command_change_rms_rad": 0.026853598654270172,
+      "source_nominal_saturation_fraction": 0.03743961352657005
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout002__segment0",
+    "unique_key": "wave__StepFBL1__rollout002__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.29660144448280334,
+      "servo_error_rms_rad": 0.9131449524013403,
+      "ankle_velocity_rms_rad_s": 2.996373414993286,
+      "command_change_rms_rad": 0.037264633923769,
+      "source_nominal_saturation_fraction": 0.026570048309178744
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout003__segment0",
+    "unique_key": "wave__StepFBL1__rollout003__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.25437769293785095,
+      "servo_error_rms_rad": 0.746427177610348,
+      "ankle_velocity_rms_rad_s": 2.4314846992492676,
+      "command_change_rms_rad": 0.021451540291309357,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout004__segment0",
+    "unique_key": "wave__StepFBL1__rollout004__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.22958984971046448,
+      "servo_error_rms_rad": 0.640395781383048,
+      "ankle_velocity_rms_rad_s": 2.5694501399993896,
+      "command_change_rms_rad": 0.02281438373029232,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout005__segment0",
+    "unique_key": "wave__StepFBL1__rollout005__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.27645784616470337,
+      "servo_error_rms_rad": 0.8299322073484687,
+      "ankle_velocity_rms_rad_s": 2.5909974575042725,
+      "command_change_rms_rad": 0.034783605486154556,
+      "source_nominal_saturation_fraction": 0.0036231884057971015
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout006__segment0",
+    "unique_key": "wave__StepFBL1__rollout006__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.24886511266231537,
+      "servo_error_rms_rad": 0.6559713880517993,
+      "ankle_velocity_rms_rad_s": 2.654238224029541,
+      "command_change_rms_rad": 0.020779157057404518,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout007__segment0",
+    "unique_key": "wave__StepFBL1__rollout007__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.2941198945045471,
+      "servo_error_rms_rad": 0.6392559382683572,
+      "ankle_velocity_rms_rad_s": 2.702092170715332,
+      "command_change_rms_rad": 0.021561603993177414,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout008__segment0",
+    "unique_key": "wave__StepFBL1__rollout008__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.23709483444690704,
+      "servo_error_rms_rad": 0.6505564463175542,
+      "ankle_velocity_rms_rad_s": 2.6107609272003174,
+      "command_change_rms_rad": 0.03646675869822502,
+      "source_nominal_saturation_fraction": 0.0
+    }
+  },
+  {
+    "frames": 208,
+    "transitions": 207,
+    "recorded_fps": 200.00000447034847,
+    "command_max_absolute_error": 0.0,
+    "arm": "wave",
+    "key": "StepFBL1__rollout009__segment0",
+    "unique_key": "wave__StepFBL1__rollout009__segment0",
+    "actuator_features": {
+      "mean_ankle_range_rad": 0.3152218759059906,
+      "servo_error_rms_rad": 0.8878124522797141,
+      "ankle_velocity_rms_rad_s": 3.2159769535064697,
+      "command_change_rms_rad": 0.03631460294127464,
+      "source_nominal_saturation_fraction": 0.033816425120772944
+    }
+  }
+]

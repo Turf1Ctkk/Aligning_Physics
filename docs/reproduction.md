@@ -64,3 +64,5 @@ Keep large checkpoints, robot/motion assets, and trusted joblib datasets outside
 | StepFBL1 | `model_6000.pt` | `9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b` |
 
 These hashes were computed directly on the server files. Checkpoint filenames alone are not sufficient provenance.
+
+`report_matched_tracking.py --input /path/to/matched/tracking_comparison.json --active /path/to/active/tracking_comparison.json` adds the completed active-arm policy to the common deployment report. The separately published feature-support audit uses training-only scaling and all 96 first-second deployment prefixes; it does not change queued selectors or checkpoint choices.

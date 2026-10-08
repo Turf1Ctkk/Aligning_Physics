@@ -1,0 +1,452 @@
+{
+  "CR7__rollout000__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      1.2962694316621604,
+      1.5263985573330474,
+      1.5343615789643517,
+      1.7018286724134812
+    ],
+    "phase_rad": [
+      5.941509612421189,
+      1.773206711041765,
+      1.5053672182629294,
+      3.8396657672622485
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout000",
+    "task": "CR7"
+  },
+  "CR7__rollout001__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      1.0972646570779574,
+      2.0001958154595045,
+      2.0727410029636015,
+      2.5483739845710396
+    ],
+    "phase_rad": [
+      3.1733423768408113,
+      4.794823958532384,
+      0.7901291192273114,
+      5.186751980288083
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout001",
+    "task": "CR7"
+  },
+  "CR7__rollout002__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout002",
+    "task": "CR7"
+  },
+  "CR7__rollout003__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      2.6055590712178818,
+      1.8200265066929926,
+      1.506181918851311,
+      1.649165552799534
+    ],
+    "phase_rad": [
+      2.3161533424888825,
+      2.6247440361994614,
+      3.579132982146999,
+      5.239255084674925
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout003",
+    "task": "CR7"
+  },
+  "CR7__rollout004__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      2.700877624208921,
+      1.1090432150518073,
+      1.5439441496899775,
+      2.66750029862912
+    ],
+    "phase_rad": [
+      3.091151089026624,
+      1.5052484030598114,
+      1.738483674443949,
+      5.031849998847529
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout004",
+    "task": "CR7"
+  },
+  "CR7__rollout005__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout005",
+    "task": "CR7"
+  },
+  "CR7__rollout006__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      2.5271803780572446,
+      1.631278805858159,
+      1.8049231890722026,
+      2.1646398083831766
+    ],
+    "phase_rad": [
+      0.9928874117417064,
+      5.2007709054668,
+      2.8829491556190767,
+      3.964507572607193
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout006",
+    "task": "CR7"
+  },
+  "CR7__rollout007__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      1.3640125367816751,
+      1.6299655078052688,
+      1.545514607471011,
+      2.693720215388148
+    ],
+    "phase_rad": [
+      1.629911691464938,
+      0.34631120502074936,
+      1.8686474172928786,
+      1.018889540972826
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout007",
+    "task": "CR7"
+  },
+  "CR7__rollout008__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout008",
+    "task": "CR7"
+  },
+  "CR7__rollout009__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      1.4854348165646827,
+      1.1070242078427976,
+      1.0094745355178667,
+      2.6015115466469108
+    ],
+    "phase_rad": [
+      4.6693825461997225,
+      5.721394466147392,
+      5.998357486884295,
+      5.1806397915869
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "CR7__rollout009",
+    "task": "CR7"
+  },
+  "SquatL1__rollout000__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      2.472407591519411,
+      1.593520121724974,
+      2.862968064538167,
+      1.3890087536633118
+    ],
+    "phase_rad": [
+      1.1550619346770232,
+      5.354984957553895,
+      5.19069497450271,
+      4.295997287517845
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout000",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout001__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      2.0701797440468086,
+      2.7740985506760385,
+      2.240102356705072,
+      2.3768225123691216
+    ],
+    "phase_rad": [
+      5.896945222404317,
+      4.500015444237777,
+      0.8021269421027708,
+      5.772636840661885
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout001",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout002__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout002",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout003__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      2.4589198402109647,
+      1.8073719189591577,
+      2.903407831258706,
+      1.6918899560258642
+    ],
+    "phase_rad": [
+      4.626480972846816,
+      3.967907766543304,
+      0.4413905444261483,
+      4.3357356099554485
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout003",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout004__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      1.7241206708380943,
+      2.315767246042865,
+      1.7019359075163514,
+      2.6781901389112956
+    ],
+    "phase_rad": [
+      4.6688096625169475,
+      5.759376217800074,
+      4.533063224811743,
+      3.2339513792095698
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout004",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout005__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout005",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout006__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      2.707664731429711,
+      1.0144646003509574,
+      2.8000620912237135,
+      2.0595635423504275
+    ],
+    "phase_rad": [
+      3.0486107003342378,
+      4.126754670753042,
+      1.321593772089298,
+      5.668044465831845
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout006",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout007__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      2.059260810828847,
+      2.073127364463404,
+      1.017551294147532,
+      1.6085641641603652
+    ],
+    "phase_rad": [
+      4.298891282734666,
+      3.324387333213899,
+      0.56982497239043,
+      4.786396142630333
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout007",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout008__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout008",
+    "task": "SquatL1"
+  },
+  "SquatL1__rollout009__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      1.775889371687995,
+      2.9052408764096658,
+      2.8284931024412407,
+      1.1494237166161576
+    ],
+    "phase_rad": [
+      3.0156436924938776,
+      4.084908337369799,
+      2.71718917025436,
+      4.950067667053218
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "SquatL1__rollout009",
+    "task": "SquatL1"
+  },
+  "StepFBL1__rollout000__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      1.624982994167913,
+      1.1393015614893254,
+      2.4352530355726616,
+      1.2623018056459916
+    ],
+    "phase_rad": [
+      2.2326022551719977,
+      1.8599441870355695,
+      5.2916046728015695,
+      2.350368241144458
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout000",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout001__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      2.105632119667993,
+      1.3776412523755146,
+      1.4125072479989804,
+      1.464391118731874
+    ],
+    "phase_rad": [
+      0.8714337253802751,
+      4.387702076517493,
+      1.856118914400941,
+      4.909698733219644
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout001",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout002__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout002",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout003__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      2.089862684424787,
+      1.1893949320288528,
+      1.1848843396714717,
+      2.043776004022055
+    ],
+    "phase_rad": [
+      0.0323155924321018,
+      5.675487772108586,
+      1.0259011097319082,
+      3.1013292586842685
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout003",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout004__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      1.2442863186000739,
+      1.7421849948462973,
+      1.3420949572951095,
+      2.5631485241657463
+    ],
+    "phase_rad": [
+      0.8254451645641232,
+      2.3468576146049704,
+      0.5209974571817089,
+      3.8221808197962575
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout004",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout005__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout005",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout006__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      2.120695309834189,
+      1.4317403923612484,
+      2.668227674660553,
+      1.949872017635804
+    ],
+    "phase_rad": [
+      4.750087008917048,
+      3.7376160662309603,
+      0.27649338606135887,
+      4.314779174023066
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout006",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout007__segment0": {
+    "type": "square",
+    "frequency_hz": [
+      1.8339788448982142,
+      1.190981946477512,
+      1.5800600289892417,
+      1.9469254801210154
+    ],
+    "phase_rad": [
+      3.782718030227298,
+      4.489143143591558,
+      0.5884292543398629,
+      2.106950297966318
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout007",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout008__segment0": {
+    "type": "bounded_gaussian",
+    "frequency_hz": null,
+    "phase_rad": null,
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout008",
+    "task": "StepFBL1"
+  },
+  "StepFBL1__rollout009__segment0": {
+    "type": "sine",
+    "frequency_hz": [
+      1.4427601006350999,
+      2.599844729592653,
+      1.2777360443344281,
+      2.6031385634801083
+    ],
+    "phase_rad": [
+      0.4216504472394374,
+      6.158352028612511,
+      0.16441072569585222,
+      3.302690881836088
+    ],
+    "max_position_offset_rad": 0.04,
+    "group": "StepFBL1__rollout009",
+    "task": "StepFBL1"
+  }
+}

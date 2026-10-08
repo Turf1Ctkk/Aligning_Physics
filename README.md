@@ -106,8 +106,9 @@ The task policies start from the same pretrained Squat checkpoint and receive 10
 | ASAP fine-tuning with frozen delta | 87 | 4.984 | 97.14 | 33.52 |
 | Fine-tuning with passive identified gains | 93 | 5.173 | 91.41 | 30.87 |
 | Fine-tuning with shared torque model | 96 | 5.220 | 91.85 | 30.39 |
+| Fine-tuning after active-acquisition SysID | 92 | 5.127 | 93.54 | 33.41 |
 
-All 96 trials complete the first second, so its means include every trial. Full-horizon means over successful trials are reported separately. These conditions share zero task-observation noise, initialization noise and termination settings. The earlier original-policy evaluation inherited nonzero observation noise and is retained as a historical artifact; the table uses the completed common-noise reevaluation of all five checkpoints. [Raw trials, configuration/state audits, plots and actual-motion comparisons](results/matched_squat/README.md).
+All 96 trials complete the first second, so its means include every trial. Full-horizon means over successful trials are reported separately. These conditions share zero task-observation noise, initialization noise and termination settings. The earlier original-policy evaluation inherited nonzero observation noise and is retained as a historical artifact; the table uses the completed common-noise reevaluation of all six checkpoints. [Raw trials, configuration/state audits, plots and actual-motion comparisons](results/matched_squat/README.md).
 
 ![Matched Squat deployment](assets/figures/matched_squat_tracking.png)
 
@@ -122,13 +123,13 @@ ASAP does not exceed the continued-training control on completion or first-secon
 | Policy fine-tuned in A with frozen delta, deployed without delta | ASAP downstream benefit | Completed; 87/96 target trials |
 | Policy fine-tuned with identified physical parameters | Structured SysID comparison | Completed; 93/96 target trials |
 | Policy fine-tuned with a learned torque correction | UAN-method comparison | Replay and policy comparison complete; 96/96 target trials |
-| Policy fine-tuned after active command acquisition and parameter refitting | G1 active-SysID adaptation | Acquisition, refitting and replay complete; policy fine-tuning running |
+| Policy fine-tuned after active command acquisition and parameter refitting | G1 active-SysID adaptation | Completed; 92/96 target trials |
 
 Each method must first pass replay and integration checks. Results will be recorded whether or not control improves. The goal is to compare correction mechanisms in a common G1 task, not assume the relative ranking reported on different robots and tasks transfers here.
 
 The [method adaptation plan](docs/methods.md) distinguishes SPI parameter estimation from the additional active-exploration stage, and distinguishes an actuator torque model from an action residual. Adapted experiments will disclose differences in robot, data source, horizon, update rate, and model architecture. A parameter search alone will not be labelled a full SPI-Active reproduction.
 
-The [completed torque-model replay](results/torque_adaptation/README.md) reduces body error from 36.69 to 24.48 mm, while velocity error increases from 0.862 to 0.951 rad/s. Its calibration architecture, rate and PPO transition count differ from the action model, so this is not a controlled representation ranking. A separate matched true-200Hz acquisition experiment is queued: unchanged recorded inputs versus bounded wave/noise excitation, with identical torque models, unique-transition counts and optimization budgets. Both replay and downstream policy outcomes remain required.
+The [completed torque-model replay](results/torque_adaptation/README.md) reduces body error from 36.69 to 24.48 mm, while velocity error increases from 0.862 to 0.951 rad/s. Its calibration architecture, rate and PPO transition count differ from the action model, so this is not a controlled representation ranking. A separate matched true-200Hz acquisition experiment has passed physical collection and same-domain replay checks and begun calibration: unchanged recorded inputs versus bounded wave/noise excitation, with identical torque models, unique-transition counts and optimization budgets. Both replay and downstream policy outcomes remain required.
 
 A minimal hypothesis experiment is queued after the task extensions, conditional on a five-hour margin before GPU cutoff. It fixes the same 18 parent recordings and 954 unique transitions per uniform, actuator-coverage and joint-range arm. [The selector preview](results/content_selection/README.md) documents the training-only features and selection budget; it is not a learning result. Inspecting a larger previously acquired pool controls the selected training budget, not acquisition cost. Complete-motion holdout remains a separate proposed experiment; the current pilot and queued test do not provide it.
 
@@ -139,7 +140,7 @@ A minimal hypothesis experiment is queued after the task extensions, conditional
 - [Replay corrections and reproduction notes](docs/reproduction.md).
 - [Experiment status](docs/STATUS.md): completed evidence versus planned work.
 
-The matched Squat closed-loop measurements are available. Active acquisition succeeded after a disclosed uniform start-window revision; active-policy evaluation, genuine high-rate excitation learning, task extensions and data-selection results remain pending. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity or hardware performance.
+The matched Squat closed-loop measurements are available. Active acquisition succeeded after a disclosed uniform start-window revision; active-policy evaluation is complete (92/96); genuine high-rate excitation learning, task extensions and data-selection results remain pending. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity or hardware performance.
 
 ## References
 

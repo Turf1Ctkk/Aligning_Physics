@@ -3,5 +3,5 @@
   "change": "First54 states of the first eligible continuous segment for every parent in active and wave stages",
   "unchanged": "All30 parent groups and original root-height/gravity limits retained",
   "failed_artifact_archive": "failed_stages/20261008T041706Z/active_20261008; all original inputs, gains, replay and logs retained on server",
-  "status": "Revised design, acquisition, refitting and held-out replay complete; optimized-arm policy fine-tuning running"
+  "status": "Revised active stage complete, including refitting, replay and optimized-arm policy evaluation"
 }

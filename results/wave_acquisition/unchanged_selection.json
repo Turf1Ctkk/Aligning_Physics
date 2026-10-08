@@ -1,0 +1,4 @@
+{
+  "checkpoint": "/root/autodl-tmp/aligning_physics/wave_20261008/unchanged/models/torque/model_1000.pt",
+  "validation_global_body_mpjpe_mm": 41.940840175066185
+}

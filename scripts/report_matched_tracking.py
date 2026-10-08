@@ -1,4 +1,4 @@
-"""Report the five final checkpoints under explicit common evaluation settings."""
+"""Report the final checkpoints under explicit common evaluation settings."""
 import argparse
 import json
 from pathlib import Path
@@ -15,10 +15,16 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--input",type=Path,required=True)
+    parser.add_argument("--active",type=Path,help="Add the completed active-acquisition policy reports")
     args=parser.parse_args()
     raw=json.loads(args.input.read_text())
     labels=("vanilla","ft_only","asap_ft","sysid_ft","torque_ft")
     names=("Original","FT only","ASAP FT","Passive\nSysID FT","Torque FT")
+    if args.active:
+        extra=json.loads(args.active.read_text())
+        raw["results"].update(extra["results"])
+        labels+=("active_sysid_ft",)
+        names+=("Active\nSysID FT",)
     summary={label:aggregate(raw["results"],label) for label in labels}
     directory=ROOT/"results/matched_squat"
     directory.mkdir(parents=True,exist_ok=True)
@@ -27,7 +33,7 @@ def main():
         "scope":"Explicit zero task-observation noise; shared termination and initialization settings; one training seed per method",
         "error_scope":"First-second completion counts accompany prefix errors; full-horizon errors condition on completion"},indent=2))
     fig,axes=plt.subplots(1,3,figsize=(13,4))
-    colors=("#808C9C","#DC7F37","#355C99","#32836F","#8D56A0")
+    colors=("#808C9C","#DC7F37","#355C99","#32836F","#8D56A0","#B34C61")
     for i,ax in enumerate(axes):
         if i==0:
             values=[100*summary[k]["completion_rate"] for k in labels]

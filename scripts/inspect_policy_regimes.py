@@ -46,7 +46,7 @@ def load_evaluations(path):
             for trial in range(32):
                 record = records["motion%d" % trial]
                 if not np.isclose(record["fps"], 50) or len(record["dof"]) < 50 or np.asarray(record["terminate"])[:50].any():
-                    raise ValueError("Every matched trial must complete the first50 stored states at50Hz")
+                    raise ValueError("Every matched trial must complete the first 50 stored states at 50 Hz")
                 case = {key: np.asarray(record[key])[:50].copy()
                         for key in ("dof", "dof_vel", "action", "motion_times")}
                 case.update(seed=seed, trial=trial, fps=float(record["fps"]))
