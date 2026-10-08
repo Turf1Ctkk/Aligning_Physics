@@ -52,6 +52,8 @@ Replay: global and root-relative body MPJPE, ankle/all-joint position RMSE, join
 
 Closed-loop: full-reference motion tracking in the target domain, including global/root-relative body errors, completion/fall rate, and survival duration. Fix the evaluation horizon and termination rules. Multiple windows or evaluation seeds from one trained model are not independent training replications.
 
+All standalone Squat evaluations explicitly share the original policy's gravity thresholds (0.8 for projected gravity x/y) and motion-deviation threshold (1.5 m), with the motion-deviation threshold curriculum disabled. Termination by contact, minimum height, and proximity to joint/torque limits is disabled, and motion-end timeout is enabled. These overrides prevent fine-tuning checkpoints from silently inheriting a different success criterion. A termination count is reported as termination, not automatically as a fall without inspecting its cause.
+
 ## Minimal test of data content
 
 Create equal-budget continuous-window subsets from one training pool:

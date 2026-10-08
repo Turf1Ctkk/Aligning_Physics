@@ -115,6 +115,20 @@ def tracking_overrides(work, checkpoint, label, task, plan, noise, seed, num_env
         "++env.config.add_extra_action=False", "++env.config.save_motion=False",
         "++env.config.dataset_record_steps=" + str(frames),
         "++env.config.dataset_record_path=" + str(work / "tracking" / (label + ".pkl")),
+        # Match the original Squat evaluation criteria for every checkpoint.
+        # Fine-tuning configs otherwise inherit motion_far=False.
+        "++env.config.termination.terminate_by_contact=False",
+        "++env.config.termination.terminate_by_gravity=True",
+        "++env.config.termination.terminate_by_low_height=False",
+        "++env.config.termination.terminate_when_motion_end=True",
+        "++env.config.termination.terminate_when_motion_far=True",
+        "++env.config.termination.terminate_when_close_to_dof_pos_limit=False",
+        "++env.config.termination.terminate_when_close_to_dof_vel_limit=False",
+        "++env.config.termination.terminate_when_close_to_torque_limit=False",
+        "++env.config.termination_scales.termination_gravity_x=0.8",
+        "++env.config.termination_scales.termination_gravity_y=0.8",
+        "++env.config.termination_scales.termination_motion_far_threshold=1.5",
+        "++env.config.termination_curriculum.terminate_when_motion_far_curriculum=False",
     ]
 
 

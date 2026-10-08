@@ -19,6 +19,8 @@ Saved joint/root state does not restore contact-solver history. Same-domain repl
 
 The diagnostic overlay and patches are provided under [overlays/research/asap_diagnostics](../overlays/research/asap_diagnostics). Copy the overlay into an ASAP checkout and inspect the patches before applying them. If equivalent fixes are already installed, do not apply patches twice. The diagnostic scripts infer their root from their installed path inside ASAP; running them from this report repository is not the intended layout.
 
+`installed_core.patch` is the complete five-file diff captured from the server for the controlled run. It applies to the inspected upstream commit and includes the timing, action lookup, saved-velocity and frozen-delta fixes. Use this **instead of** the two overlapping historical patches on a pristine checkout. Its applicability was checked with `git apply --check` against the local pristine checkout; installed CPU contracts were checked on the server.
+
 The pilot's `verify_multi_motion.py` is a CPU check. Collection/training/evaluation commands are described in its `MULTI_MOTION.md`. Those commands reproduce the **original clip-uniform pilot**, including its sampling limitation; they are not yet the corrected data-content protocol.
 
 `verify_contracts.py` demonstrates a patch against pristine source. On an already-patched checkout, use `verify_installed_contracts.py` to inspect the installed methods directly; do not reapply a patch for a preflight check.
@@ -32,6 +34,10 @@ python -m research.asap_diagnostics.controlled_pipeline \
 ```
 
 It reuses the isolated mixed30 data, writes a task/group sampling manifest, runs delta validation, and queues both SquatL1 fine-tuning conditions and standalone target evaluation serially. It stops on subprocess failure and enforces the configured UTC cutoff. Existing incomplete model runs are preserved and cause an explicit stop, rather than a silent resume. Run it under a detached process supervisor for long jobs; inspect `status.json` and stage logs.
+
+`sysid_pipeline.py` runs bounded two-parameter CMA-ES using `cma==4.4.0`, initially centered on source Kp20 with bounds [8,30], 12 candidates per generation and eight generations. `--controlled` adds held-out replay and an equal-budget Squat policy comparison; `--wait-for` serializes it after the preceding experiment's `status.json`. `torque_pipeline.py` queues the shared actuator-model comparison with the same failure/cutoff behavior. Both methods remain adaptations with the boundaries described in the methods document.
+
+`verify_torque_contracts.py` checks CPU actuator interfaces. The torque queue first runs a small physical smoke train before its full calibration budget. CPU PASS and smoke completion must not be reported as calibration gains. `seeded_entry.py` limits CPU PyTorch threading to four by default (`ASAP_CPU_THREADS` can override it); this controls runtime contention rather than changing sample budgets.
 
 For figures and trajectory animations, install `requirements-analysis.txt` in a separate analysis environment. JSON-only reporting does not require the simulator.
 

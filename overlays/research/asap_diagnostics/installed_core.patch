@@ -1,0 +1,199 @@
+diff --git a/humanoidverse/agents/delta_a/train_delta_a.py b/humanoidverse/agents/delta_a/train_delta_a.py
+index 3bcb1ec..12bca54 100644
+--- a/humanoidverse/agents/delta_a/train_delta_a.py
++++ b/humanoidverse/agents/delta_a/train_delta_a.py
+@@ -83,6 +83,29 @@ class PPODeltaA(PPO):
+ 
+ 
+ 
++    def _infer_delta_for_current_action(self, obs_dict, nominal_actions):
++        # The post-step observation contains the previous nominal action.
++        # Replace just this feature; preserve the previous delta action and state.
++        delta_obs = obs_dict['closed_loop_actor_obs'].clone()
++        obs_config = self.env.config.obs
++        cursor = 0
++        found = False
++        for key in sorted(obs_config.obs_dict['closed_loop_actor_obs']):
++            width = int(obs_config.obs_dims[key])
++            if key == 'actions_sim2real_policy':
++                if width != nominal_actions.shape[-1]:
++                    raise ValueError('Nominal action observation dimension mismatch')
++                limit = self.env.config.robot.control.action_clip_value
++                action = torch.clip(nominal_actions, -limit, limit)
++                action = action * obs_config.obs_scales[key]
++                obs_limit = self.env.config.normalization.clip_observations
++                delta_obs[:, cursor:cursor + width] = torch.clip(action, -obs_limit, obs_limit)
++                found = True
++            cursor += width
++        if not found or cursor != delta_obs.shape[-1]:
++            raise ValueError('Unsupported delta observation layout')
++        return self.loaded_policy.eval_policy(delta_obs).detach()
++
+     def _rollout_step(self, obs_dict):
+         # import ipdb; ipdb.set_trace()
+         # self._eval_mode()
+@@ -108,7 +131,7 @@ class PPODeltaA(PPO):
+                 actor_state["actions"] = actions
+                 
+                 ################ inference the policy ################
+-                policy_output = self.loaded_policy.eval_policy(obs_dict['closed_loop_actor_obs']).detach()
++                policy_output = self._infer_delta_for_current_action(obs_dict, actions)
+                 actor_state["actions_closed_loop"] = policy_output
+ 
+                 ######################################################
+@@ -162,7 +185,7 @@ class PPODeltaA(PPO):
+ 
+     def _pre_eval_env_step(self, actor_state: dict):
+         actions = self.eval_policy(actor_state["obs"]['actor_obs'])
+-        actions_closed_loop = self.loaded_policy.eval_policy(actor_state['obs']['closed_loop_actor_obs']).detach()
++        actions_closed_loop = self._infer_delta_for_current_action(actor_state['obs'], actions)
+ 
+         actor_state.update({"actions": actions, "actions_closed_loop": actions_closed_loop})
+         for c in self.eval_callbacks:
+diff --git a/humanoidverse/envs/delta_a/delta_a_closed_loop.py b/humanoidverse/envs/delta_a/delta_a_closed_loop.py
+index c4cbc3d..e7a7f9a 100644
+--- a/humanoidverse/envs/delta_a/delta_a_closed_loop.py
++++ b/humanoidverse/envs/delta_a/delta_a_closed_loop.py
+@@ -65,7 +65,8 @@ class DeltaA_ClosedLoop(LeggedRobotMotionTracking):
+         actions_scaled = actions * self.config.robot.control.action_scale
+         control_type = self.config.robot.control.control_type
+         if self.config['add_extra_action']:
+-            motion_action = self.get_closed_loop_action_at_current_timestep()
++            # Frozen delta outputs use the same action units as in open-loop training.
++            motion_action = self.get_closed_loop_action_at_current_timestep() * self.config.robot.control.action_scale
+         else:
+             motion_action = torch.zeros_like(actions_scaled)
+         
+@@ -155,7 +156,7 @@ class DeltaA_ClosedLoop(LeggedRobotMotionTracking):
+         if hasattr(self.config, 'anklePR'):
+             if self.config.anklePR:
+                 motion_action[:, [i for i in range(actions_scaled.shape[1]) if i not in [4,5,10,11]]] *= 0
+-                print("zeroing out non-anklePR actions")
++                #print("zeroing out non-anklePR actions")
+ 
+ 
+ 
+diff --git a/humanoidverse/envs/delta_a/delta_a_open_loop.py b/humanoidverse/envs/delta_a/delta_a_open_loop.py
+index d88ace2..ecd67fc 100644
+--- a/humanoidverse/envs/delta_a/delta_a_open_loop.py
++++ b/humanoidverse/envs/delta_a/delta_a_open_loop.py
+@@ -32,6 +32,11 @@ class DeltaA_OpenLoop(LeggedRobotMotionTracking):
+         self.detla_action_percentage_heatmaps = torch.zeros((self.simulator.num_envs, self.num_dofs)).to(device)
+         self.delta_action_cnt = 1
+ 
++    def _get_reference_motion_times(self):
++        # A post-step record pairs state[i] with the action that produced it.
++        # Replay applies action[i+1]; after stepping, compare with state[i+1].
++        return self.episode_length_buf * self.dt + self.motion_start_times
++
+     def _compute_torques(self, actions):
+         """ Compute torques from actions.
+             Actions can be interpreted as position or velocity targets given to a PD controller, or directly as scaled torques.
+@@ -68,13 +73,13 @@ class DeltaA_OpenLoop(LeggedRobotMotionTracking):
+         
+         # add action_to_delta_a_heatmap
+         
+-        self.delta_action_dof_heatmaps = self.delta_action_dof_heatmaps * self.delta_action_cnt / (1+self.delta_action_cnt) + 1/(1+self.delta_action_cnt) * torch.abs(actions_scaled)
+-        self.detla_action_percentage_heatmaps = self.detla_action_percentage_heatmaps * self.delta_action_cnt / (1+self.delta_action_cnt) + 1/(1+self.delta_action_cnt) *  torch.abs(actions_scaled / motion_action)
+-        self.delta_action_cnt += 1
++        #self.delta_action_dof_heatmaps = self.delta_action_dof_heatmaps * self.delta_action_cnt / (1+self.delta_action_cnt) + 1/(1+self.delta_action_cnt) * torch.abs(actions_scaled)
++        #self.detla_action_percentage_heatmaps = self.detla_action_percentage_heatmaps * self.delta_action_cnt / (1+self.delta_action_cnt) + 1/(1+self.delta_action_cnt) *  torch.abs(actions_scaled / motion_action)
++        #self.delta_action_cnt += 1
+ 
+ 
+-        print("self.delta_action_dof_heatmaps", self.delta_action_dof_heatmaps)
+-        print("self.detla_action_percentage_heatmaps", self.detla_action_percentage_heatmaps)
++        #print("self.delta_action_dof_heatmaps", self.delta_action_dof_heatmaps)
++        #print("self.detla_action_percentage_heatmaps", self.detla_action_percentage_heatmaps)
+         # import ipdb; ipdb.set_trace()
+         # print("motion_action", motion_action)
+         # print("motion_action", motion_action)
+diff --git a/humanoidverse/envs/motion_tracking/motion_tracking.py b/humanoidverse/envs/motion_tracking/motion_tracking.py
+index 24559fb..3d734b9 100644
+--- a/humanoidverse/envs/motion_tracking/motion_tracking.py
++++ b/humanoidverse/envs/motion_tracking/motion_tracking.py
+@@ -228,12 +228,15 @@ class LeggedRobotMotionTracking(LeggedRobotBase):
+         self.reset_envs_idx(torch.arange(self.num_envs, device=self.device))
+ 
+ 
++    def _get_reference_motion_times(self):
++        return (self.episode_length_buf + 1) * self.dt + self.motion_start_times
++
+     def _pre_compute_observations_callback(self):
+         super()._pre_compute_observations_callback()
+         
+         offset = self.env_origins
+         B = self.motion_ids.shape[0]
+-        motion_times = (self.episode_length_buf + 1) * self.dt + self.motion_start_times # next frames so +1
++        motion_times = self._get_reference_motion_times()
+         # motion_res = self._get_state_from_motionlib_cache_trimesh(self.motion_ids, motion_times, offset= offset)
+         motion_res = self._motion_lib.get_motion_state(self.motion_ids, motion_times, offset=offset)
+ 
+diff --git a/humanoidverse/utils/motion_lib/motion_lib_base.py b/humanoidverse/utils/motion_lib/motion_lib_base.py
+index 68acdbb..ebd72ac 100644
+--- a/humanoidverse/utils/motion_lib/motion_lib_base.py
++++ b/humanoidverse/utils/motion_lib/motion_lib_base.py
+@@ -105,9 +105,13 @@ class MotionLibBase():
+         num_frames = self._motion_num_frames[motion_ids]
+         dt = self._motion_dt[motion_ids]
+         # import ipdb; ipdb.set_trace()
+-        frame_idx0, frame_idx1, blend = self._calc_frame_blend(motion_times, motion_len, num_frames, dt)
++        # At an exact recorded frame, float32 round-off must not select the
++        # previous action. Away from frame boundaries preserve zero-order hold.
++        frame = torch.clamp(motion_times, min=0.0) / dt
++        nearest_frame = torch.round(frame)
++        frame = torch.where((frame - nearest_frame).abs() < 1e-4, nearest_frame, frame)
++        frame_idx0 = torch.minimum(torch.floor(frame).long(), num_frames - 1)
+         f0l = frame_idx0 + self.length_starts[motion_ids]
+-        f1l = frame_idx1 + self.length_starts[motion_ids]
+ 
+         action = self._motion_actions[f0l]
+         return action
+@@ -403,12 +407,47 @@ class MotionLibBase():
+                 # add "action" to curr_motion
+                 if self.has_action:
+                     curr_motion.action = to_torch(curr_file['action']).clone()[start:end]
++                self._apply_recorded_velocities(curr_motion, curr_file, start, end, target_heading)
+                 res[f] = (curr_file, curr_motion)
+             else:
+                 logger.error("No mesh parser found")
+         return res
+     
+ 
++    def _apply_recorded_velocities(self, curr_motion, curr_file, start, end, target_heading):
++        # Opt-in for the stock IsaacGym recorder: root velocities are in world
++        # coordinates. Retargeted task references retain their original behavior.
++        if not self.m_cfg.get('use_recorded_velocities', False):
++            return
++        if target_heading is not None:
++            raise ValueError('Recorded world velocities require target_heading=None')
++        expected_shapes = {
++            'dof_vel': (end - start, curr_motion.dof_pos.shape[-1]),
++            'root_lin_vel': (end - start, 3),
++            'root_ang_vel': (end - start, 3),
++        }
++        recorded = {}
++        for key, shape in expected_shapes.items():
++            if key not in curr_file:
++                raise ValueError('Missing recorded velocity field: ' + key)
++            value = to_torch(curr_file[key]).clone()[start:end].float()
++            if tuple(value.shape) != shape or not torch.isfinite(value).all():
++                raise ValueError('Invalid recorded velocity field: ' + key)
++            recorded[key] = value
++        curr_motion.dof_vels = recorded['dof_vel']
++        curr_motion.global_root_velocity = recorded['root_lin_vel']
++        curr_motion.global_root_angular_velocity = recorded['root_ang_vel']
++        # get_motion_state reads root velocities from these body tensors.
++        curr_motion.global_velocity = curr_motion.global_velocity.clone()
++        curr_motion.global_angular_velocity = curr_motion.global_angular_velocity.clone()
++        curr_motion.global_velocity[:, 0, :] = recorded['root_lin_vel']
++        curr_motion.global_angular_velocity[:, 0, :] = recorded['root_ang_vel']
++        if 'global_velocity_extend' in curr_motion:
++            curr_motion.global_velocity_extend = curr_motion.global_velocity_extend.clone()
++            curr_motion.global_angular_velocity_extend = curr_motion.global_angular_velocity_extend.clone()
++            curr_motion.global_velocity_extend[:, 0, :] = recorded['root_lin_vel']
++            curr_motion.global_angular_velocity_extend[:, 0, :] = recorded['root_ang_vel']
++
+     def num_motions(self):
+         return self._num_motions
+ 
