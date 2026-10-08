@@ -72,6 +72,25 @@ Using action[i] with state[i] would measure the preceding command, rather than t
 
 Velocity and command change are candidate conditioning/coverage features. They are directly relevant to other mechanisms, such as damping, friction, and response delay; they are not automatically independent sources of information about a pure Kp change. The proposed selector uses them to describe actuator regimes and tests their value, rather than declaring that every additional feature must help.
 
+### A correction interface can also limit equivalence
+
+The action correction is computed at 50 Hz and held across four 200 Hz physics steps. The nominal PD torque is recomputed from updated joint states at each physics step. Before torque clipping, with equal damping and no delay, an instantaneous known-gain correction at the start of a control interval would be
+
+$$
+\alpha\Delta a_t=(K_B/K_A-1)(q_{\rm cmd,t}-q_t).
+$$
+
+It matches the two torques at the same initial state. At a later substep, compare both laws at the **same** joint position $q_k$ and velocity, with that correction still held:
+
+$$
+\tau_A^{\Delta}(q_k)-\tau_B(q_k)
+=(K_B-K_A)(q_k-q_t).
+$$
+
+Thus a correction that matches instantaneous torque need not remain equivalent as the joint moves. This identity concerns unsaturated torque laws evaluated at a common state, not the difference between two already-diverged trajectories. Clipping, differing damping or delay require another expression. It also does not prove that an optimally learned 50 Hz correction cannot improve sampled positions or task control: it may trade off substep errors, and instantaneous matching is not necessarily the best finite-horizon objective.
+
+An [earlier single-recording rate diagnostic](../results/control_rate_diagnostic/README.md), now verified from saved configs and raw comparisons, illustrates the distinction. Known-parameter correction recomputed at 200 Hz reproduces that prefix much more closely than the same rule held at 50 Hz. It uses the known gain ratio only as an implementation control, not as a learned baseline or training label. Neither this diagnostic nor the unmatched action/torque model comparison isolates the cause of current closed-loop failures. It establishes update timing as a concrete competing mechanism that must be considered before attributing every residual error to data content.
+
 ## 4. Why replay and control can disagree
 
 Training data originate from π0 in B; fine-tuning creates πD in the calibrated A. Their state-action occupancy distributions can differ. A low average replay loss under the former does not guarantee an accurate correction under the latter.
@@ -102,7 +121,7 @@ Consequently, an apparent closed-loop plateau has multiple possible causes:
 
 The current pilot distinguishes none of these conclusively. In particular, 30 versus 90 recording groups cannot establish saturation because task weights changed and only one training seed was run.
 
-The [matched Squat result](../results/matched_squat/README.md) now provides a concrete disagreement: the weighted mixed30 action correction lowers held-out replay body error by 19.0%, yet its adapted policy completes 87/96 trials compared with 96/96 for equal-budget continued training without calibration. Its first-second global and root-relative tracking errors are also higher. A shared torque correction similarly improves replay but does not exceed FT-only completion and has higher full-horizon position error. This establishes that the chosen replay improvement is insufficient for an additional downstream benefit in these runs. It does not prove that calibration data are deficient, or that dataset scaling caused a plateau. The same data-content intervention remains necessary to test the proposed explanation.
+The [matched Squat result](../results/matched_squat/README.md) now provides a concrete disagreement: the weighted mixed30 action correction lowers held-out replay body error by 19.0%, yet its adapted policy completes 87/96 trials compared with 96/96 for equal-budget continued training without calibration. Its first-second global and root-relative tracking errors are also higher. A shared torque correction similarly improves replay but does not exceed FT-only completion and has higher full-horizon position error. This establishes that the chosen replay improvement is insufficient for an additional downstream benefit in these runs. It does not prove that calibration data are deficient, or that dataset scaling caused a plateau. A controlled selector comparison remains necessary to test the proposed coverage explanation.
 
 The [structured estimator's post-hoc diagnostic](../results/passive_sysid/README.md) adds a measurement caution. On the same training windows, known target gains 16/16 produce a larger short-horizon fitting loss than the fitted 13.01/10.42. Thus optimizing the present trajectory objective can favor surrogate parameters that compensate for replay conditions or other unmodeled effects. Recovery error cannot be attributed solely to insufficient search. The precise mechanism is not resolved; neither the fitted gains nor the target-gain control supplies labels to a learned correction. This is another reason to report same-domain floors and window-start sensitivity alongside data-selection outcomes.
 

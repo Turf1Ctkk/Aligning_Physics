@@ -24,6 +24,8 @@ An additional matched clean source-domain check completed all 261 recorded frame
 
 A post-hoc first-second deployment-feature audit has also completed for all 96 trials per method. It observes different actuator regimes relative to mixed30 calibration support, but does not establish that feature distance explains control ranking. Calibration-only scaling/reference, per-trial measures and the one-training-seed boundary are documented in [the audit](../results/policy_regimes/README.md). The queued selectors are unchanged.
 
+Historical known-gain 50/200Hz replay controls have been verified from saved configurations and raw single-recording comparisons. They illustrate correction-rate dependence and are used only to support the same-state torque derivation, not as learned baselines, training labels or a causal explanation of policy failures. No new GPU stage was launched. [Timing diagnostic and scope](../results/control_rate_diagnostic/README.md).
+
 ## Not yet completed
 
 - Equal-budget calibration-data selection test.

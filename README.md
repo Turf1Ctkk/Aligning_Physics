@@ -4,7 +4,7 @@
 
 An experimental research proposal on calibration data for humanoid control, built on [ASAP / Humanoidverse](https://github.com/LeCAR-Lab/ASAP). The current experiments use a Unitree G1 model in **controlled sim-to-sim transfer**. They do not constitute hardware validation.
 
-**Current evidence:** task/group-weighted mixed30 calibration reduces held-out body replay error by 19.0%, while velocity error slightly worsens. In the first completed Squat comparison, the resulting ASAP policy completes 87/96 target trials versus 96/96 for equal-budget fine-tuning without calibration. Replay benefit has therefore not produced an additional control benefit in this run. The data-content hypothesis remains untested. Measured results and proposed experiments are labelled separately.
+**Current evidence:** task/group-weighted mixed30 calibration reduces held-out body replay error by 19.0%, while velocity error slightly worsens. In the first completed Squat comparison, the resulting ASAP policy completes 87/96 target trials versus 96/96 for equal-budget fine-tuning without calibration. Replay benefit has therefore not produced an additional control benefit in this run. A matched high-rate acquisition intervention changes Squat completion from 34/96 to 95/96, with mixed tracking metrics and no additional completion benefit over FT-only. The direct coverage-versus-range subset test remains pending. Measured results and proposed experiments are labelled separately.
 
 ## How I arrived at the question
 

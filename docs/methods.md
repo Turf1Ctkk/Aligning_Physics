@@ -12,6 +12,8 @@ $$
 
 Train the residual through PPO using recorded target trajectories, then freeze it while fine-tuning the task policy on the original reference motion. Deploy the resulting task policy in B without the residual. The nominal recorded input is fixed during replay; the residual remains state-conditioned. [ASAP, Sections III and VIII](https://arxiv.org/html/2502.01143v3).
 
+The nominal PD law runs at 200 Hz while action residuals are held at 50 Hz. An instantaneous gain-compensating action need not maintain torque equality at later substeps. [Known-parameter timing diagnostic](../results/control_rate_diagnostic/README.md) and [the same-state derivation](research_argument.md) make this competing interface limitation explicit. The oracle uses known gains for diagnostics only and is not a learned baseline, data label or closed-loop comparison.
+
 ## Structured parameter identification
 
 Estimate physical parameters using recorded-input trajectory matching:

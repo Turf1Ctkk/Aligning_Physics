@@ -1,0 +1,18 @@
+{
+  "reference": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/motions/diag_20261008_012651_squat_kp16.pkl",
+  "prediction": "/root/ASAP/logs/DeltaA_Diagnostic/fit_recorded_20261008_021017/motions/analytic_20261008_030316_analytic200.pkl",
+  "start_time_s": 0.0,
+  "requested_horizon_s": 1.0,
+  "first_compared_time_s": 0.019999999552965164,
+  "last_compared_time_s": 1.0,
+  "compared_frames": 50,
+  "prediction_first_reset_row": null,
+  "metrics": {
+    "dof_rmse_rad": 6.30747683045861e-05,
+    "dof_ankle_rmse_rad": 4.9085024936717894e-05,
+    "root_position_mean_error_mm": 0.011906678145874391,
+    "dof_vel_rmse_rad_s": 0.012945794472786107,
+    "dof_vel_ankle_rmse_rad_s": 0.024156221874915642
+  },
+  "scope": "Raw same-origin joint/root comparison; not body MPJPE or closed-loop tracking"
+}

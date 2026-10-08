@@ -73,3 +73,6 @@ These hashes were computed directly on the server files. Checkpoint filenames al
 
 
 `python -m research.asap_diagnostics.repeat_content --primary /path/to/content_primary --work-dir /path/to/new_repeat_root` runs the conditional second paired content-study seed. It requires completed primary artifacts, refuses automatic resume, copies exact data/sampling files with hash checks and retains the common GPU cutoff. `--verify-manifest /path/to/selection_manifest.json` performs CPU-only parent/window/task checks without starting training.
+
+
+The opt-in `analytic_replay.py` overlay is a historical known-gain timing diagnostic. Its 50/200Hz comparison is documented with source/configuration hashes in [the diagnostic report](../results/control_rate_diagnostic/README.md). Ordinary learning pipelines do not invoke this environment; do not use its privileged ratio as a training label or count it as a learned baseline.
