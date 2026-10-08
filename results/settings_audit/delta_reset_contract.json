@@ -1,0 +1,14 @@
+{
+  "scope": "CPU execution of installed methods with synthetic buffers; no physics or training",
+  "synthetic_previous_delta": 0.4,
+  "nominal_after_reset_max_abs": 0.0,
+  "delta_observation_after_reset_max_abs": 0.4000000059604645,
+  "previous_episode_delta_retained": true,
+  "nonreset_environment_unchanged": true,
+  "performance_effect": "Not measured; this audit does not explain a success-rate change",
+  "files": {
+    "/root/ASAP/humanoidverse/envs/legged_base_task/legged_robot_base.py": "c421e1fbc62757f16f03aa6a16dbbf3426d6c0baeb51708275bb1888e5316301",
+    "/root/ASAP/humanoidverse/envs/motion_tracking/motion_tracking.py": "cddc795c678f593b6848f87390641fc3ff0d33449feaa2f109359435877c0913",
+    "/root/ASAP/humanoidverse/envs/delta_a/delta_a_closed_loop.py": "db91d895a0d231351e8a192cd452a4eb08d1110e4018c4b043fea29bd3cacae9"
+  }
+}

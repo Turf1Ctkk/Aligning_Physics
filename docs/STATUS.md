@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 06:34 Beijing time (UTC+8).
+Updated October 9, 2026, 07:21 Beijing time (UTC+8).
 
 ## Completed
 
@@ -33,5 +33,7 @@ Reader-facing documents use short explanations. The main report now places obser
 Passive SysID improves Step under this protocol. The repaired delta policies do not exceed FT-only success on any task. Fixing the confirmed input mismatch helps CR7 but reduces Squat and Step success. Each main method still has only one training seed. The subset policies have not been repaired, so their transfer findings remain provisional. [Setting audit](settings_audit.md).
 
 Raw results, historical reports and failed acquisition records are preserved. Final repository cleanup and author-supplied IsaacGym visuals follow review.
+
+A further CPU audit found that episode resets retain the previous delta action in the frozen model's input. Its effect on physical training has not been measured. Runtime code and completed experiments remain unchanged. [Reset audit](settings_audit.md#a-further-reset-issue).
 
 GPU cutoff: October 9 at 17:00 Beijing time. Submission deadline: October 10 at 04:59 Beijing time.

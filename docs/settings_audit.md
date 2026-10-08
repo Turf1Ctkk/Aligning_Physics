@@ -6,7 +6,7 @@ This audit separates an implementation problem from choices in the experiment. I
 
 Delta calibration uses zero noise on base height and foot contact force. Policy fine-tuning inherited noise scales of 1.0 and 0.01 on these inputs. Both belong to the frozen delta's observation, even though the task actor does not use them.
 
-The observation helper adds uniform noise before scaling. With noise curriculum disabled, the height channel therefore receives noise between −1 and +1 metre during fine-tuning. It was noiseless during calibration. This is a real input mismatch. It could affect the correction, but its effect on final performance has not been isolated by retraining.
+The observation helper adds uniform noise before scaling. With noise curriculum disabled, the height channel therefore receives noise between −1 and +1 metre during fine-tuning. It was noiseless during calibration. The three-task repair below tests this mismatch.
 
 Earlier audits checked the deployed task actor's noise. They did not check these frozen-delta inputs during training. The helper now sets both scales to zero. Old checkpoints remain unchanged. The main comparison uses new repaired delta policies for all three tasks; the subset runs retain the old settings. The torque model reads simulator history directly, so this specific noise mismatch does not explain its results.
 
@@ -51,3 +51,9 @@ The author chose a minimal repair comparison on all three motions. It zeros only
 All three repairs are complete. Squat success falls from 89.6% to 70.8%, although first-second global position, velocity and acceleration errors decrease. CR7 success rises from 91.7% to 99.0%; first-second acceleration error increases. Step success falls from 79.2% to 25.0%. None exceeds its FT-only success.
 
 All tasks pass the saved-setting checks and exact stored-start comparison. All trial metrics were recomputed. The input mismatch is confirmed, but repair does not uniformly improve control in this training seed. It does not resolve the remaining setting differences or prove that data size causes the failures. [Repair results](../results/noise_repair/metrics.md).
+
+## A further reset issue
+
+The installed closed-loop training environment clears nominal actions at an episode reset. It does not clear `actions_closed_loop`. This value is part of the frozen delta's next input. Calibration clears its corresponding previous-action input, so the two reset paths differ.
+
+A CPU check executed the installed reset and observation methods with synthetic buffers. The nominal action became zero, while the previous delta remained in the observation. This confirms the reset issue. It does not measure its effect during physical training or explain the success rates. No runtime file or checkpoint was changed. [Audit](../results/settings_audit/delta_reset_contract.json).
