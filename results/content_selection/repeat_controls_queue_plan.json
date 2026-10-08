@@ -1,0 +1,7 @@
+{
+  "planned_utc": "2026-10-08T15:15:20.301475+00:00",
+  "repeat": "/root/autodl-tmp/aligning_physics/content_repeat_20261008",
+  "cutoff_utc": "2026-10-09T09:00:00+00:00",
+  "minimum_margin_minutes": 15,
+  "scope": "Two fresh repeat-seed test controls after all repeat training/evaluation; preserve copied primary diagnostics; no learning or selection changes"
+}

@@ -68,18 +68,30 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--methods", nargs="+", choices=METHODS, default=list(METHODS))
+    parser.add_argument("--baseline-directory", type=Path, help="External completed task evaluation used only for stored-state/settings checks")
+    parser.add_argument("--baseline-method", choices=METHODS, default="ft_only")
     args = parser.parse_args()
     root, output = args.directory, args.output
+    baseline_root = args.baseline_directory or root
+    if len(args.methods) != len(set(args.methods)):
+        raise ValueError("Duplicate audit method")
     output.mkdir(parents=True, exist_ok=True)
     if json.loads((root / "status.json").read_text())["status"] != "complete":
         raise ValueError("Task is incomplete; no completed comparison audit")
-    audit = {"scope": "First stored states/actions for all96 trials per method against FT-only; saved settings and commands. Hidden simulator state is not independently verified",
-             "max_absolute_difference": {}, "raw_config": {}, "effective_config": {}, "raw_differences_from_ft_only": {},
+    if json.loads((baseline_root / "status.json").read_text())["status"] != "complete":
+        raise ValueError("Declared baseline is incomplete")
+    audit = {"scope": "First stored states/actions for all96 trials per selected method against declared baseline; saved settings and commands. Hidden simulator state is not independently verified. External baseline training seeds are not made equal by this audit",
+             "baseline_directory": str(baseline_root), "baseline_method": args.baseline_method,
+             "baseline_recording_sha256": {},
+             "max_absolute_difference": {}, "raw_config": {}, "effective_config": {}, "raw_differences_from_baseline": {},
              "recording_sha256": {}, "evaluation_commands": {}, "policy_checkpoint_sha256": {}}
     for seed in (8101, 8102, 8103):
-        base = joblib.load(root / "tracking" / f"ft_only_seed{seed}.pkl")
-        baseline_config = extract(yaml.safe_load((root / "tracking" / f"ft_only_seed{seed}_config/config.yaml").read_text()))
-        for method in METHODS:
+        baseline_path = baseline_root / "tracking" / f"{args.baseline_method}_seed{seed}.pkl"
+        base = joblib.load(baseline_path)
+        audit["baseline_recording_sha256"][str(seed)] = file_hash(baseline_path)
+        baseline_config = extract(yaml.safe_load((baseline_root / "tracking" / f"{args.baseline_method}_seed{seed}_config/config.yaml").read_text()))
+        for method in args.methods:
             label = f"{method}_seed{seed}"
             path = root / "tracking" / (label + ".pkl")
             target = joblib.load(path)
@@ -95,7 +107,7 @@ def main():
             if effective != effective_extract(baseline_config):
                 raise ValueError("Effective evaluation settings differ: " + label)
             audit["raw_config"][method] = selected
-            audit["raw_differences_from_ft_only"][method] = {key: {"method": value, "ft_only": baseline_config[key]}
+            audit["raw_differences_from_baseline"][method] = {key: {"method": value, "baseline": baseline_config[key]}
                                                            for key, value in selected.items() if value != baseline_config[key]}
             audit["effective_config"][method] = effective
             audit["recording_sha256"].setdefault(method, {})[str(seed)] = file_hash(path)
@@ -115,8 +127,10 @@ def main():
     if len(horizons) != 1:
         raise ValueError("Evaluation horizons differ")
     audit["evaluation_horizon_s"] = horizons.pop()
+    if args.baseline_method == "ft_only":
+        audit["raw_differences_from_ft_only"] = audit["raw_differences_from_baseline"]
     (output / "matched_state_config_audit.json").write_text(json.dumps(audit, indent=2))
-    print("PASS: all96 initial stored states/actions per seven methods; effective settings, task-only deployment and horizons match; raw config differences retained")
+    print(f"PASS: all96 initial stored states/actions per{len(args.methods)} selected methods; effective settings, task-only deployment and horizons match declared baseline; raw differences retained")
 
 
 if __name__ == "__main__":

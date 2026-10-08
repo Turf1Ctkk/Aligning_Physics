@@ -120,6 +120,8 @@ def load_run(root, expected_seed, horizon):
     if set(baselines) != {"same16_zero", "source20_zero"}:
         raise ValueError("Missing fixed shared replay baselines")
     return {"calibration_seed": expected_seed, "policy_seed": expected_seed + 1000,
+            "replay_evaluation_seed": expected_seed + 100,
+            "shared_baseline_scope": "Copied primary controls at20305108; not a seed-matched repeat control" if expected_seed == 20305009 else "Fresh primary controls at20305108",
             "source_comparison_sha256": sha(root / "comparison.json"),
             "manifest_sha256": sha(root / "selection_manifest.json"),
             "shared_test_baselines": {k: replay_summary(v, 66) for k, v in baselines.items()},
@@ -160,6 +162,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--primary", type=Path, required=True)
     parser.add_argument("--repeat", type=Path)
+    parser.add_argument("--repeat-controls", type=Path, help="Completed post-repeat fresh seed-matched replay control directory")
     parser.add_argument("--preview", type=Path, required=True, help="Prespecified public selection_manifest_preview.json; actual selections must match")
     parser.add_argument("--horizon", type=float, required=True, help="Actual deployment record steps /50, checked against saved evaluation commands")
     parser.add_argument("--output", type=Path, required=True)
@@ -172,6 +175,16 @@ def main():
     if args.repeat:
         runs["repeat"] = load_run(args.repeat, 20305009, args.horizon)
         verify_repeat_inputs(args.primary, args.repeat)
+    if args.repeat_controls:
+        if not args.repeat or read(args.repeat_controls / "status.json")["status"] != "complete":
+            raise ValueError("Fresh repeat controls require completed repeat and control runs")
+        control_plan = read(args.repeat_controls / "plan.json")
+        if control_plan["replay_seed"] != 20305109 or control_plan["test_records_sha256"] != sha(args.repeat / "uniform/datasets/test_cases.pkl"):
+            raise ValueError("Fresh controls use a different seed or dataset")
+        if any(read(args.repeat_controls / "first_record_audit.json")["max_absolute_learned_vs_source20_difference"].values()):
+            raise ValueError("Fresh repeat replay starts differ")
+        controls = read(args.repeat_controls / "fresh_test_baselines.json")
+        runs["repeat"]["fresh_seed_matched_baselines"] = {k: replay_summary(v, 66) for k, v in controls["results"].items()}
     report = {"scope": "Fixed acquisition pool and selected data; descriptive contrasts per training seed, never pooled192-trial training replication",
               "training_replications": len(runs), "selected_transitions_per_selector": 954,
               "deployment_horizon_s": args.horizon,

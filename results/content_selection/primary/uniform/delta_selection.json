@@ -1,0 +1,4 @@
+{
+  "checkpoint": "/root/autodl-tmp/aligning_physics/content_20261008/uniform/models/delta/model_500.pt",
+  "validation_body_mpjpe_mm": 35.25752894695893
+}

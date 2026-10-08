@@ -1,0 +1,67 @@
+{
+  "scope": "First stored replay samples follow reset_all warm step, not the assigned pre-step initial state. Historical and primary runs use different seeds and have different warm-step states; the exact source of this difference is not isolated by this artifact audit. Do not substitute historical baselines or call between-run replay variation pure training variance.",
+  "first_recorded_clock_s": 0.019999999552965164,
+  "max_absolute_first_record_differences_vs_uniform_source20": {
+    "uniform_source20": {
+      "dof": 0.0,
+      "dof_vel": 0.0,
+      "root_trans_offset": 0.0,
+      "root_rot": 0.0,
+      "root_lin_vel": 0.0,
+      "root_ang_vel": 0.0,
+      "action": 0.0,
+      "motion_times": 0.0
+    },
+    "uniform_learned": {
+      "dof": 0.0,
+      "dof_vel": 0.0,
+      "root_trans_offset": 0.0,
+      "root_rot": 0.0,
+      "root_lin_vel": 0.0,
+      "root_ang_vel": 0.0,
+      "action": 0.0,
+      "motion_times": 0.0
+    },
+    "uniform_same16": {
+      "dof": 0.030079446732997894,
+      "dof_vel": 6.273504257202148,
+      "root_trans_offset": 0.0008227825164794922,
+      "root_rot": 0.0030769407749176025,
+      "root_lin_vel": 0.0607343390583992,
+      "root_ang_vel": 0.3404618799686432,
+      "action": 0.0,
+      "motion_times": 0.0
+    },
+    "historical_source20": {
+      "dof": 0.045441240072250366,
+      "dof_vel": 15.946033477783203,
+      "root_trans_offset": 0.0017919540405273438,
+      "root_rot": 0.00573866069316864,
+      "root_lin_vel": 0.12276697158813477,
+      "root_ang_vel": 0.9121849536895752,
+      "action": 0.0,
+      "motion_times": 0.0
+    }
+  },
+  "recording_sha256": {
+    "uniform_source20": "395477990f71a2111bf535708038f69149134a9122834021d0285a746911ac06",
+    "uniform_learned": "d7748efe0e08f77e1793744181a374a9cb3e335da2e63fcafc5b19570c9d5602",
+    "uniform_same16": "c789fe181d19c1b5468df601ca4d70cbdb309be6f8937b012a15f1be77e2d579",
+    "historical_source20": "1a8f78dd9900b03642a733f9ce79a4a527764a2e63898f8d76e4a4ff6f6f380b"
+  },
+  "dataset_sha256": {
+    "val": {
+      "historical": "8c3065dff02eaca5cc486e486bcf3dea0a2a6167c0beaa2a35276ae48b6a6607",
+      "uniform": "8c3065dff02eaca5cc486e486bcf3dea0a2a6167c0beaa2a35276ae48b6a6607"
+    },
+    "test": {
+      "historical": "86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491",
+      "uniform": "86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491"
+    }
+  },
+  "replay_seeds": {
+    "historical_mixed30": 20301108,
+    "primary_content": 20305108,
+    "planned_repeat_content": 20305109
+  }
+}
