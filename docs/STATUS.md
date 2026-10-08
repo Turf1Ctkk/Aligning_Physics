@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 8, 2026, 22:00 UTC.
+Updated October 9, 2026, 06:34 Beijing time (UTC+8).
 
 ## Completed
 
@@ -14,10 +14,13 @@ Updated October 8, 2026, 22:00 UTC.
 - Fresh 24-body calibration replays, with metrics recomputed from recorded trajectories.
 - Source-A checks of original and FT-only policies on all three tasks, with saved settings and actual metrics audited.
 - Four-error method comparison charts and a separate closed-loop success chart.
+- Three-task frozen-delta input-noise repair, with all training settings checked and all new trial metrics recomputed.
 
 ## Server queue
 
-The earlier queues are complete. SquatL1 and CR7 noise repairs are complete and independently audited. Success falls from 89.6% to 70.8% for Squat and rises from 91.7% to 99.0% for CR7. StepFBL1 is training. The repair changes only height and foot-force noise entering the frozen delta during fine-tuning. Data, input checkpoints, seeds and 1,000-update budgets stay the same. One GPU job runs at a time. [Repair results](../results/noise_repair/metrics.md).
+All authorized queues are complete. No GPU experiment is running or queued. The repair changes only height and foot-force noise entering the frozen delta during fine-tuning. Data, input checkpoints, seeds and 1,000-update budgets stay the same. Success changes from 89.6% to 70.8% for Squat, 91.7% to 99.0% for CR7, and 79.2% to 25.0% for Step. [Before/after results](../results/noise_repair/metrics.md).
+
+Main comparison charts use the fixed-final repaired delta policy on every task. Other methods and all open-loop calibration results are unchanged. Historical raw reports and the original chart data remain available.
 
 Policy and replay evaluations report position, velocity and acceleration errors. Completion and tracking success are separate percentages. Policy evaluation uses 27 points; replay uses the 24 bodies measured in the target recordings.
 
@@ -27,8 +30,8 @@ Reader-facing documents use short explanations. The main report now places obser
 
 ## Main finding so far
 
-Step shows calibration benefits under the current protocol. Squat and CR7 show no consistent extra control benefit. The source check gives original Step success 90.6% in A and 1.0% in B. It confirms a transfer problem. The delta policy results, including subset tests, precede a confirmed frozen-input noise repair. Their conclusions need that check. [Setting audit](settings_audit.md).
+Passive SysID improves Step under this protocol. The repaired delta policies do not exceed FT-only success on any task. Fixing the confirmed input mismatch helps CR7 but reduces Squat and Step success. Each main method still has only one training seed. The subset policies have not been repaired, so their transfer findings remain provisional. [Setting audit](settings_audit.md).
 
 Raw results, historical reports and failed acquisition records are preserved. Final repository cleanup and author-supplied IsaacGym visuals follow review.
 
-GPU cutoff: October 9 at 09:00 UTC. Submission deadline: October 9 at 20:59 UTC.
+GPU cutoff: October 9 at 17:00 Beijing time. Submission deadline: October 10 at 04:59 Beijing time.

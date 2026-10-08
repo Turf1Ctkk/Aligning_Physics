@@ -1,5 +1,7 @@
 # Experimental protocol
 
+The main method comparison uses the completed two-channel input-noise repair for delta policies on all three tasks. Calibration models and other policies stay unchanged. The data-selection policies retain the original noise settings. Both delta versions are kept in the [repair report](../results/noise_repair/metrics.md).
+
 ## Controlled mismatch
 
 Both domains use IsaacGym and G1. A has ankle pitch and roll stiffness 20; B has stiffness 16. Other physics stays fixed and domain randomization is off. This isolates a simple dynamics difference before testing more complex gaps.

@@ -1,4 +1,4 @@
 {
-  "status": "running",
-  "stage": "StepFBL1/train"
+  "status": "complete",
+  "stage": "noise_repair_comparison"
 }

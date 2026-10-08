@@ -55,6 +55,13 @@ def main():
         'active_20261008__active_test', 'torque_20261008__torque', 'wave_20261008_wave__torque')
     open_rows = [check_replay(replay[key])['metrics'] for key in sources]
     closed = {task: {method: check_policy(policy[task][method]) for method in METHODS} for task in TASKS}
+    previous = output / 'chart_data.json'
+    history = output / 'pre_repair_chart_data.json'
+    if repair_sources and previous.exists() and not history.exists():
+        old_chart = json.loads(previous.read_text())
+        if old_chart.get('repaired_delta_sources'):
+            raise ValueError('Original chart data is missing; refuse to label repaired data as historical')
+        history.write_text(previous.read_text())
     fig, axes = plt.subplots(2, 2, figsize=(12, 7.4))
     for ax, key, title, unit in zip(axes.flat, FIELDS, TITLES, UNITS):
         values = [row[key] for row in open_rows]

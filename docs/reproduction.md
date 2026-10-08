@@ -33,6 +33,7 @@ Set the three policy paths in the multi-motion plan or its command-line override
 | `repeat_replay_controls.py` | Replay controls at the second run's seed |
 | `paper_eval_queue.py` | Fresh 27-point policy evaluations |
 | `paper_replay_queue.py` | Fresh calibration replays on measured 24-body targets |
+| `noise_repair_queue.py` | Three-task policy retraining with two frozen-delta noise channels set to zero |
 
 Launch these modules from an ASAP checkout. The published command JSON files and plans provide the exact settings for each completed experiment. Queue tools enforce the cutoff and stop on subprocess failure. They do not silently resume incomplete training.
 
@@ -57,3 +58,11 @@ Large checkpoints and trusted joblib recordings stay outside Git. Public artifac
 Known-gain analytic replay is an opt-in implementation diagnostic. Ordinary learning queues do not use its privileged gain ratio. It is not a learned method or a training label.
 
 Source policy hashes are retained in the task evaluation audits. All three comparisons use each task's own `model_6000.pt`; a checkpoint name alone is not sufficient provenance.
+
+`audit_noise_repair.py` checks each completed repair task against its old commands and saved configs, then recomputes all metrics. `report_noise_repair.py` creates the separate before/after report. Once all three tasks pass audit, regenerate the main comparison with:
+
+```bash
+python scripts/report_method_comparison.py --repair-root results/noise_repair
+```
+
+This replaces all three delta policies together with their fixed-final repaired models. It does not select a checkpoint or a repair version from test performance. Open-loop results stay unchanged because the calibrator was not retrained.

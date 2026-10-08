@@ -8,7 +8,7 @@ Delta calibration uses zero noise on base height and foot contact force. Policy 
 
 The observation helper adds uniform noise before scaling. With noise curriculum disabled, the height channel therefore receives noise between −1 and +1 metre during fine-tuning. It was noiseless during calibration. This is a real input mismatch. It could affect the correction, but its effect on final performance has not been isolated by retraining.
 
-Earlier audits checked the deployed task actor's noise. They did not check these frozen-delta inputs during training. The helper now sets both scales to zero for future fine-tuning. Existing checkpoints and results still represent the previous settings. The torque model reads simulator history directly; this specific noise mismatch does not explain its results.
+Earlier audits checked the deployed task actor's noise. They did not check these frozen-delta inputs during training. The helper now sets both scales to zero. Old checkpoints remain unchanged. The main comparison uses new repaired delta policies for all three tasks; the subset runs retain the old settings. The torque model reads simulator history directly, so this specific noise mismatch does not explain its results.
 
 ## FT-only is additional optimization in A
 
@@ -48,4 +48,6 @@ The original and FT-only source-domain checks use the same frozen checkpoints an
 
 The author chose a minimal repair comparison on all three motions. It zeros only the two frozen-delta noise channels. It reuses the same calibrator, source checkpoint, training seed and 1,000-update budget. Rewards and curricula stay the same.
 
-Squat success falls from 89.6% to 70.8%, although first-second global position, velocity and acceleration errors decrease. CR7 success rises from 91.7% to 99.0%; first-second acceleration error increases. Both tasks pass the saved-setting checks and exact stored-start comparison. All metrics were recomputed. The mismatch is confirmed, but repair does not uniformly improve control in this training seed. Step is running. [Repair results](../results/noise_repair/metrics.md).
+All three repairs are complete. Squat success falls from 89.6% to 70.8%, although first-second global position, velocity and acceleration errors decrease. CR7 success rises from 91.7% to 99.0%; first-second acceleration error increases. Step success falls from 79.2% to 25.0%. None exceeds its FT-only success.
+
+All tasks pass the saved-setting checks and exact stored-start comparison. All trial metrics were recomputed. The input mismatch is confirmed, but repair does not uniformly improve control in this training seed. It does not resolve the remaining setting differences or prove that data size causes the failures. [Repair results](../results/noise_repair/metrics.md).

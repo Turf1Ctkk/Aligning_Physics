@@ -6,4 +6,4 @@ Calibration improves completion on Step compared with ordinary fine-tuning. It d
 
 ![Historical completion percentages](completion.png)
 
-Squat is evaluated for 5.22 seconds; CR7 and Step for 3.92 seconds. Do not pool these tasks into one score. Each method has one training seed and three deployment seeds. [CR7 details](CR7/README.md), [Step details](StepFBL1/README.md) and [raw counts and hashes](completion_summary.json) are retained. Fresh 27-point error evaluation is queued.
+Squat is evaluated for 5.22 seconds; CR7 and Step for 3.92 seconds. Do not pool these tasks into one score. Each method has one training seed and three deployment seeds. [CR7 details](CR7/README.md), [Step details](StepFBL1/README.md) and [raw counts and hashes](completion_summary.json) are retained. Fresh [27-point evaluation](../paper_evaluation) is complete; [noise-repair results](../noise_repair/metrics.md) are reported separately.

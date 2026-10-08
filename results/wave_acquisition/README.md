@@ -11,4 +11,4 @@ Both arms use the same torque model and 1,000 calibration plus 1,000 policy upda
 
 Excitation improves these two replay metrics and completion relative to unchanged data. Ankle error is slightly worse. Neither arm beats ordinary fine-tuning's 100.0% completion. These are observations from one training seed, not proof that one feature causes the difference.
 
-Joint range barely changes between arms. This motivates further tests of command timing and actuator conditions. This G1 interface differs from the original UAN experiment. [Summary](comparison_summary.json) and [raw evidence](.) preserve the paired results. Fresh 27-point policy errors are queued.
+Joint range barely changes between arms. This motivates further tests of command timing and actuator conditions. This G1 interface differs from the original UAN experiment. [Summary](comparison_summary.json) and [raw evidence](.) preserve the paired results. Fresh [27-point policy metrics](../paper_evaluation/SquatL1.md) are complete.

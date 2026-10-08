@@ -13,4 +13,4 @@ All policies run alone in B. Evaluation shares zero used observation noise, init
 
 All trials reach the first second. Later errors use only trials that reach the stated horizon. This run does not establish extra control benefit from calibration over ordinary fine-tuning.
 
-An earlier original-policy run used nonzero sensor noise. It remains historical evidence and is not used in this table. [Trials](tracking_comparison.json), [summary](summary.json) and state/config audits are retained. Position errors here use the old 24-body definition. Fresh 27-point errors are queued.
+An earlier original-policy run used nonzero sensor noise. It remains historical evidence and is not used in this table. [Trials](tracking_comparison.json), [summary](summary.json) and state/config audits are retained. Position errors here use the old 24-body definition. Fresh [27-point errors](../paper_evaluation/SquatL1.md) and a separate [noise-repair comparison](../noise_repair/metrics.md) are available.

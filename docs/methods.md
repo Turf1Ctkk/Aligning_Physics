@@ -1,6 +1,6 @@
 # Methods implemented in ASAP
 
-All methods use G1 in IsaacGym. Source A has ankle stiffness 20; target B has stiffness 16. The methods learn from B records, calibrate A, and fine-tune a motion policy in A. Deployment uses the policy alone in B. The [setting audit](settings_audit.md) identifies a frozen-delta noise mismatch in the completed action-policy runs. Repair comparisons remain separate from these results.
+All methods use G1 in IsaacGym. Source A has ankle stiffness 20; target B has stiffness 16. The methods learn from B records, calibrate A, and fine-tune a motion policy in A. Deployment uses the policy alone in B. Main delta results use the completed height/foot-force noise repair. The [setting audit](settings_audit.md) and [before/after report](../results/noise_repair/metrics.md) retain its scope. The subset policy runs still use the old noise settings.
 
 ## Delta action
 
@@ -63,3 +63,17 @@ Each task starts from its recorded `model_6000.pt` and receives 1,000 additional
 The saved fine-tuning recipe also disables motion-distance termination and changes action-rate regularization, penalty scheduling and observation noise from pretraining. These changes are shared by the adapted methods, but the experiment is not an exact continuation of the original training recipe.
 
 Calibration checkpoints are chosen by validation. Policy checkpoints are fixed at the final update. All target evaluations use zero observation noise and matched initialization and termination settings. Three evaluation seeds measure deployment variation; they do not replace independent training seeds.
+
+## Calibration data
+
+The main data comes from the three pre-trained policies executed in B. These records contain measured states and executed commands, not correction labels. Each task contributes ten rollouts. Resets divide them into 41 continuous segments, with 6,198 transitions at 50 Hz. Sampling gives equal weight to tasks and original rollouts.
+
+| Model | Data used |
+|---|---|
+| Delta action and common torque | The mixed30 dataset, about 124 seconds |
+| Passive SysID | One one-second window per segment; the loss uses its first 0.25 seconds |
+| Active SysID | Thirty new one-second records per input arm, 1,530 transitions per arm; each arm is fitted separately |
+| Native-rate torque | Thirty new records per arm, 6,210 transitions at 200 Hz, about 31 seconds |
+| Data-selection delta models | Eighteen original training rollouts, one window each, 954 transitions per rule |
+
+The full training pool contains 90 rollouts and 18,775 transitions. Main calibration uses only mixed30. Separate validation and test groups each contain 15 original rollouts. Several windows can come from one rollout, so window counts do not measure independent acquisitions. More PPO updates reuse these recordings; they do not increase the target-data budget.

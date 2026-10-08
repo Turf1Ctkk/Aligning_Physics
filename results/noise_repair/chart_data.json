@@ -207,9 +207,111 @@
           }
         }
       }
+    },
+    "StepFBL1": {
+      "before": {
+        "total_trials": 96,
+        "complete_trials": 76,
+        "paper_success_trials": 76,
+        "completion_pct": 79.16666666666667,
+        "paper_success_pct": 79.16666666666667,
+        "mean_survival_s": 3.4837500000000006,
+        "all_trial_available_metrics": {
+          "global_position_mm": 115.52841998969147,
+          "root_relative_position_mm": 57.52434161961073,
+          "body_velocity_mm_frame": 5.613146039353057,
+          "root_velocity_mm_frame": 5.142176566859827,
+          "body_acceleration_mm_frame2": 1.52969014829809
+        },
+        "completed_trial_metrics": {
+          "global_position_mm": 87.41136686082811,
+          "root_relative_position_mm": 46.147312299612665,
+          "body_velocity_mm_frame": 3.804526913357842,
+          "root_velocity_mm_frame": 3.2317244406068464,
+          "body_acceleration_mm_frame2": 1.2912615219919967
+        },
+        "paper_successful_trial_metrics": {
+          "global_position_mm": 87.41136686082811,
+          "root_relative_position_mm": 46.147312299612665,
+          "body_velocity_mm_frame": 3.804526913357842,
+          "root_velocity_mm_frame": 3.2317244406068464,
+          "body_acceleration_mm_frame2": 1.2912615219919967
+        },
+        "prefix_metrics": {
+          "1.0": {
+            "valid_trials": 96,
+            "metrics": {
+              "global_position_mm": 76.69111616779007,
+              "root_relative_position_mm": 43.196120448672445,
+              "body_velocity_mm_frame": 4.044786913494453,
+              "root_velocity_mm_frame": 3.5835272020575837,
+              "body_acceleration_mm_frame2": 1.8040324090130466
+            }
+          },
+          "3.0": {
+            "valid_trials": 76,
+            "metrics": {
+              "global_position_mm": 87.41906931182716,
+              "root_relative_position_mm": 45.15994742643325,
+              "body_velocity_mm_frame": 3.916824314524743,
+              "root_velocity_mm_frame": 3.3721125847340487,
+              "body_acceleration_mm_frame2": 1.1798033655724784
+            }
+          }
+        }
+      },
+      "after": {
+        "total_trials": 96,
+        "complete_trials": 25,
+        "paper_success_trials": 24,
+        "completion_pct": 26.041666666666668,
+        "paper_success_pct": 25.0,
+        "mean_survival_s": 2.5500000000000003,
+        "all_trial_available_metrics": {
+          "global_position_mm": 186.1089306008139,
+          "root_relative_position_mm": 84.64259191219537,
+          "body_velocity_mm_frame": 8.983959938875076,
+          "root_velocity_mm_frame": 8.753533717297683,
+          "body_acceleration_mm_frame2": 1.8001755668415804
+        },
+        "completed_trial_metrics": {
+          "global_position_mm": 115.52686608912181,
+          "root_relative_position_mm": 53.21796686983122,
+          "body_velocity_mm_frame": 4.2094911547474565,
+          "root_velocity_mm_frame": 3.5687418784220766,
+          "body_acceleration_mm_frame2": 1.2234133325310448
+        },
+        "paper_successful_trial_metrics": {
+          "global_position_mm": 112.47097871554361,
+          "root_relative_position_mm": 52.270598014148504,
+          "body_velocity_mm_frame": 4.120062165713778,
+          "root_velocity_mm_frame": 3.472697814019558,
+          "body_acceleration_mm_frame2": 1.2207303919664911
+        },
+        "prefix_metrics": {
+          "1.0": {
+            "valid_trials": 96,
+            "metrics": {
+              "global_position_mm": 86.3018426804217,
+              "root_relative_position_mm": 48.72937655706257,
+              "body_velocity_mm_frame": 4.774930523105147,
+              "root_velocity_mm_frame": 4.481247113121075,
+              "body_acceleration_mm_frame2": 1.8434544138239553
+            }
+          },
+          "3.0": {
+            "valid_trials": 27,
+            "metrics": {
+              "global_position_mm": 117.76303108946793,
+              "root_relative_position_mm": 54.38239490025185,
+              "body_velocity_mm_frame": 4.746436995161484,
+              "root_velocity_mm_frame": 4.132750482712629,
+              "body_acceleration_mm_frame2": 1.1818155655238523
+            }
+          }
+        }
+      }
     }
   },
-  "pending_tasks": [
-    "StepFBL1"
-  ]
+  "pending_tasks": []
 }
