@@ -90,6 +90,9 @@ def fine_overrides(work, plan, selected, label, task, iterations):
         "robot.control.stiffness.ankle_pitch=20", "robot.control.stiffness.ankle_roll=20",
         "env.config.add_extra_action=" + str(label != "ft_only"), "++env.config.anklePR=True",
         "env.config.noise_to_initial_level=0.2", "env.config.resample_motion_when_training=False",
+        # Match the frozen delta's noiseless calibration inputs. Previously these
+        # two channels inherited nonzero noise from train_policy_with_delta_a.
+        "obs.noise_scales.base_pos_z=0.0", "obs.noise_scales.feet_contact_force=0.0",
         "algo.config.load_optimizer=False", "algo.config.actor_learning_rate=0.0001",
         "algo.config.critic_learning_rate=0.001", "algo.config.entropy_coef=0.0",
         "algo.config.init_at_random_ep_len=False", "algo.config.save_interval=100",

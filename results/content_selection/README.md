@@ -4,6 +4,8 @@ This experiment compares uniform selection, actuator-feature coverage and large 
 
 Both training runs are complete. The repeat uses byte-identical selected data.
 
+These action-policy runs contain the frozen-delta noise mismatch found in the [setting audit](../../docs/settings_audit.md). Results remain valid for that procedure, but transfer conclusions need a repair check.
+
 | Rule | First-run replay position (mm) | Repeat replay position (mm) | First-run completion (%) | Repeat completion (%) |
 |---|---:|---:|---:|---:|
 | Uniform | 33.62 | 44.88 | 8.3 | 99.0 |

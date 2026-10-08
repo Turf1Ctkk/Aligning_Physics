@@ -9,10 +9,13 @@ For more detail:
 - [Evaluation](evaluation.md): position, velocity, acceleration, completion and tracking success.
 - [Protocol](experimental_protocol.md): datasets, budgets and comparisons.
 - [Reproduction](reproduction.md): code installation and experiment tools.
+- [Setting audit](settings_audit.md): the confirmed input mismatch and differences from pretraining.
 
 The `results` folders hold measured evidence. Their short reports explain the experiment; JSON files hold individual trials, settings and audits. Raw counts remain in those files. Reader-facing tables use percentages.
 
 The latest policy metrics are in [Squat](../results/paper_evaluation/SquatL1.md), [CR7](../results/paper_evaluation/CR7.md) and [Step](../results/paper_evaluation/StepFBL1.md). The [calibration replay table](../results/paper_replay/metrics.md) reports 24-body errors. The [data-content report](../results/content_selection/README.md) compares both training runs separately.
+
+The [method comparison](../results/method_comparison/metrics.md) collects the four requested errors and closed-loop success. The [source check](../results/source_quality/metrics.md) compares original and FT-only policies in A and B. Existing delta control results precede the noise repair.
 
 The `overlays` folder contains code installed into ASAP. `scripts` contains analysis and reporting tools. Large checkpoints and recordings stay on the experiment server. Historical records are retained while experiments finish; a final cleanup will reduce the repository further.
 

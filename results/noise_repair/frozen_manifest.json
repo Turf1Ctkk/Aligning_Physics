@@ -1,0 +1,14 @@
+[
+  {
+    "task": "SquatL1",
+    "key": "checkpoint",
+    "path": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+    "sha256": "b58e04d49ce2c46773af4400be83d7d6af44163f1c98ae47e0e2933c57433000"
+  },
+  {
+    "task": "SquatL1",
+    "key": "algo.config.policy_checkpoint",
+    "path": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/delta/model_500.pt",
+    "sha256": "2100df153eaf87818642460bf5790feebf601e726d1ccd4fa7dcf8480c4303fa"
+  }
+]

@@ -66,7 +66,7 @@ At equal data and training budgets, coverage should reduce held-out replay error
 
 Both claims matter. A replay gain without a control gain supports only the first. A negative result for this selector does not rule out every form of information-aware collection.
 
-Both subset runs show this distinction. Coverage has lower replay position error, but it does not consistently produce better policy control. Completion changes substantially between seeds. The combined hypothesis is not confirmed. Different selected phases also have different same-domain replay errors. These are retained rather than subtracted or used to replace windows.
+Both subset runs show this distinction. Coverage has lower replay position error, but it does not consistently produce better policy control. Completion changes substantially between seeds. The combined hypothesis is not confirmed under this procedure. The [setting audit](settings_audit.md) also found a frozen-delta input noise mismatch in policy training; its effect requires a repair comparison. Different selected phases have different same-domain replay errors. These are retained rather than subtracted or used to replace windows.
 
 ## What the current study can establish
 

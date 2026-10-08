@@ -30,7 +30,7 @@ The three rules use the same 18 training parents, six per task. Each selects one
 
 Each rule receives the same action model, sampler and 1,000 calibration plus 1,000 policy updates. The manifest was published before outcomes and remains unchanged. Same-domain replay errors are reported without subtraction or window replacement.
 
-The first seed is complete. The second uses byte-identical datasets with new training seeds. Replay evaluation seed also changes, so its new zero-correction controls are measured separately. Deployment seeds stay fixed. Both runs will be reported, without selecting a favorable seed.
+Both seeds are complete. The second uses byte-identical datasets with new training seeds. Replay evaluation seed also changes, so its new zero-correction controls are measured separately. Deployment seeds stay fixed. Both runs are reported, without selecting a favorable seed. These completed action-policy runs contain the frozen-delta noise mismatch found in the [setting audit](settings_audit.md).
 
 This is retrospective selection from an existing pool. Equal selected transition counts do not mean equal total acquisition cost. Motion phase, contact and initialization may change with the selected window. The test compares selection rules, not the causal effect of a single feature.
 

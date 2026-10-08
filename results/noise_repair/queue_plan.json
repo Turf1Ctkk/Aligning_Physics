@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-10-08T21:00:45.151950+00:00",
+  "cutoff_utc": "2026-10-09T09:00:00+00:00",
+  "predecessor": "/root/autodl-tmp/aligning_physics/source_quality_20261009_pathfix/status.json",
+  "tasks": [
+    "SquatL1",
+    "CR7",
+    "StepFBL1"
+  ],
+  "intervention": {
+    "obs.noise_scales.base_pos_z": [
+      1.0,
+      0.0
+    ],
+    "obs.noise_scales.feet_contact_force": [
+      0.01,
+      0.0
+    ]
+  },
+  "unchanged": [
+    "source checkpoint",
+    "frozen calibration checkpoint",
+    "training seed",
+    "1000 PPO updates",
+    "reward",
+    "termination",
+    "initialization",
+    "optimizer settings",
+    "evaluation seeds"
+  ],
+  "purpose": "Input-noise repair diagnostic; not a full paper-setting restoration"
+}

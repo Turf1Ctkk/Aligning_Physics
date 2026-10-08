@@ -1,0 +1,685 @@
+{
+  "CR7": {
+    "pretraining": {
+      "config_path": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "actor_lr": 0.001,
+      "critic_lr": 0.001,
+      "entropy": 0.01,
+      "load_optimizer": true,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.3,
+        "projected_gravity": 0.2,
+        "dof_pos": 0.01,
+        "dof_vel": 1.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": null,
+        "feet_contact_force": null
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": true,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.3,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-05,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0,
+      "penalty_curriculum": true,
+      "penalty_initial_scale": 0.1,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.5,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    },
+    "ft_only": {
+      "config_path": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/ft_only/config.yaml",
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/ft_only/model_1000.pt",
+      "actor_lr": 0.0001,
+      "critic_lr": 0.001,
+      "entropy": 0.0,
+      "load_optimizer": false,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": false
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": false,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.25,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-06,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0.2,
+      "penalty_curriculum": false,
+      "penalty_initial_scale": 1.0,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.2,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    },
+    "asap_ft": {
+      "config_path": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/asap_ft/config.yaml",
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/asap_ft/model_1000.pt",
+      "actor_lr": 0.0001,
+      "critic_lr": 0.001,
+      "entropy": 0.0,
+      "load_optimizer": false,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": false
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": false,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.25,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-06,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0.2,
+      "penalty_curriculum": false,
+      "penalty_initial_scale": 1.0,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.2,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    }
+  },
+  "SquatL1": {
+    "pretraining": {
+      "config_path": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "actor_lr": 0.001,
+      "critic_lr": 0.001,
+      "entropy": 0.01,
+      "load_optimizer": true,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.3,
+        "projected_gravity": 0.2,
+        "dof_pos": 0.01,
+        "dof_vel": 1.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": null,
+        "feet_contact_force": null
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": true,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.3,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-05,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0,
+      "penalty_curriculum": true,
+      "penalty_initial_scale": 0.1,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.5,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    },
+    "ft_only": {
+      "config_path": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/ft_only/config.yaml",
+      "checkpoint": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/ft_only/model_1000.pt",
+      "actor_lr": 0.0001,
+      "critic_lr": 0.001,
+      "entropy": 0.0,
+      "load_optimizer": false,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": false
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": false,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.25,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-06,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0.2,
+      "penalty_curriculum": false,
+      "penalty_initial_scale": 1.0,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.2,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    },
+    "asap_ft": {
+      "config_path": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/asap_ft/config.yaml",
+      "checkpoint": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/asap_ft/model_1000.pt",
+      "actor_lr": 0.0001,
+      "critic_lr": 0.001,
+      "entropy": 0.0,
+      "load_optimizer": false,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": false
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": false,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.25,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-06,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0.2,
+      "penalty_curriculum": false,
+      "penalty_initial_scale": 1.0,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.2,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    }
+  },
+  "StepFBL1": {
+    "pretraining": {
+      "config_path": "/root/ASAP/logs/MotionTracking/20261007_142152-MotionTracking_StepFBL1-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "checkpoint": "/root/ASAP/logs/MotionTracking/20261007_142152-MotionTracking_StepFBL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "actor_lr": 0.001,
+      "critic_lr": 0.001,
+      "entropy": 0.01,
+      "load_optimizer": true,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.3,
+        "projected_gravity": 0.2,
+        "dof_pos": 0.01,
+        "dof_vel": 1.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": null,
+        "feet_contact_force": null
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": true
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": true,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.3,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-05,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0,
+      "penalty_curriculum": true,
+      "penalty_initial_scale": 0.1,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.5,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    },
+    "ft_only": {
+      "config_path": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1/models/ft_only/config.yaml",
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1/models/ft_only/model_1000.pt",
+      "actor_lr": 0.0001,
+      "critic_lr": 0.001,
+      "entropy": 0.0,
+      "load_optimizer": false,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": false
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": false,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.25,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-06,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0.2,
+      "penalty_curriculum": false,
+      "penalty_initial_scale": 1.0,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.2,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    },
+    "asap_ft": {
+      "config_path": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1/models/asap_ft/config.yaml",
+      "checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1/models/asap_ft/model_1000.pt",
+      "actor_lr": 0.0001,
+      "critic_lr": 0.001,
+      "entropy": 0.0,
+      "load_optimizer": false,
+      "actor_noise_scales": {
+        "base_ang_vel": 0.0,
+        "projected_gravity": 0.0,
+        "dof_pos": 0.0,
+        "dof_vel": 0.0
+      },
+      "delta_noise_scales": {
+        "base_pos_z": 1.0,
+        "feet_contact_force": 0.01
+      },
+      "noise_curriculum": false,
+      "termination": {
+        "terminate_when_close_to_dof_pos_limit": false,
+        "terminate_when_close_to_dof_vel_limit": false,
+        "terminate_when_close_to_torque_limit": false,
+        "terminate_by_contact": false,
+        "terminate_by_gravity": true,
+        "terminate_by_low_height": false,
+        "terminate_when_motion_end": true,
+        "terminate_when_motion_far": false
+      },
+      "termination_curriculum": {
+        "terminate_when_motion_far_curriculum": false,
+        "terminate_when_motion_far_initial_threshold": 1.5,
+        "terminate_when_motion_far_threshold_max": 2.0,
+        "terminate_when_motion_far_threshold_min": 0.25,
+        "terminate_when_motion_far_curriculum_degree": 2.5e-06,
+        "terminate_when_motion_far_curriculum_level_down_threshold": 40,
+        "terminate_when_motion_far_curriculum_level_up_threshold": 42
+      },
+      "init_noise": 0.2,
+      "penalty_curriculum": false,
+      "penalty_initial_scale": 1.0,
+      "reward_scales": {
+        "teleop_body_position_extend": 1.0,
+        "teleop_vr_3point": 1.6,
+        "teleop_body_position_feet": 2.1,
+        "teleop_body_rotation_extend": 0.5,
+        "teleop_body_ang_velocity_extend": 0.5,
+        "teleop_body_velocity_extend": 0.5,
+        "teleop_joint_position": 0.75,
+        "teleop_joint_velocity": 0.5,
+        "penalty_torques": -1e-06,
+        "penalty_action_rate": -0.2,
+        "penalty_feet_ori": -2.0,
+        "feet_heading_alignment": -0.1,
+        "penalty_slippage": -1.0,
+        "limits_dof_pos": -10.0,
+        "limits_dof_vel": -5.0,
+        "limits_torque": -5.0,
+        "termination": -200.0
+      },
+      "tracking_sigma": {
+        "teleop_upper_body_pos": 0.03,
+        "teleop_lower_body_pos": 0.1,
+        "teleop_vr_3point_pos": 0.03,
+        "teleop_feet_pos": 0.03,
+        "teleop_body_rot": 1.0,
+        "teleop_body_vel": 1.0,
+        "teleop_body_ang_vel": 1.0,
+        "teleop_joint_pos": 1.0,
+        "teleop_joint_vel": 1.0
+      }
+    }
+  },
+  "delta_calibration": {
+    "path": "/root/autodl-tmp/aligning_physics/controlled_squat_20261008/models/delta/config.yaml",
+    "noise": {
+      "base_pos_z": 0.0,
+      "feet_contact_force": 0.0,
+      "base_lin_vel": 0.0,
+      "base_ang_vel": 0.0,
+      "projected_gravity": 0.0,
+      "dof_pos": 0.0,
+      "dof_vel": 0.0,
+      "actions": 0.0,
+      "history": 0.0,
+      "dif_local_rigid_body_pos": 0.0,
+      "local_ref_rigid_body_pos": 0.0,
+      "ref_motion_phase": 0.0,
+      "actions_open_loop": 0.0
+    },
+    "curriculum": false,
+    "reward": {
+      "teleop_body_position_extend": 1.0,
+      "teleop_vr_3point": 1.0,
+      "teleop_body_position_feet": 1.0,
+      "teleop_body_rotation_extend": 0.5,
+      "teleop_body_ang_velocity_extend": 0.5,
+      "teleop_body_velocity_extend": 0.5,
+      "teleop_joint_position": 0.5,
+      "teleop_joint_velocity": 0.5,
+      "penalty_torques": 0.0,
+      "penalty_action_rate": -0.01,
+      "limits_dof_pos": -10.0,
+      "limits_dof_vel": -5.0,
+      "limits_torque": -0.1,
+      "termination": -200.0,
+      "minimal_action_norm": -0.0,
+      "normalized_penalty_minimal_action_norm": 0.0,
+      "penalty_minimal_action_norm": -0.1
+    }
+  }
+}

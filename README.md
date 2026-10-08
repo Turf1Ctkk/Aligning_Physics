@@ -6,17 +6,17 @@
 
 ## 2. How I arrived at this question
 
-A humanoid can track a motion in simulation and still behave differently on hardware. Actuator response and contact dynamics are two sources of this gap. Calibration tries to make simulation better represent the target robot before further policy training.
+A humanoid can track a motion in simulation and still behave differently on hardware. Actuator response and contact dynamics contribute to this gap. Calibration aims to improve simulation before further policy training.
 
 Different methods collect different data. [ASAP](https://arxiv.org/html/2502.01143v3) uses motion-tracking policy rollouts to learn an action correction. [SPI-Active](https://github.com/LeCAR-Lab/SPI-Active) designs commands for parameter identification. [UAN](https://arxiv.org/abs/2502.10894v1) uses wave and noise inputs to learn actuator torque corrections.
 
-These works already consider informative data. My question is narrower: **what makes data useful for a learned correction, and does better replay lead to better control?** A large joint range may help, but it does not describe the relationship between commands and actual joint motion. ASAP's data-size experiment also motivates this question. Its replay and control results do not improve in the same way. That observation suggests a question, rather than proving its cause.
+These works already study informative data. My question concerns its value for learned correction and downstream control. Large joint range may help, but does not describe how motion responds to commands. ASAP's data-size analysis also shows different replay and control trends. It motivates this question without establishing the cause.
 
 ## 3. Hypothesis
 
 **At the same data budget, data that covers relevant actuator conditions will improve calibration more than data chosen only for large joint range. The benefit should reach control when those conditions also occur during policy training.**
 
-I test two claims separately: better replay of unseen recordings, and better target-domain control after equal-budget fine-tuning. Replay improvement alone does not confirm the second claim.
+I test replay and control separately. Better replay alone does not confirm better control.
 
 ## 4. Why this seems plausible
 
@@ -26,33 +26,41 @@ $$
 \tau=K_p(q_{cmd}-q)-K_d\dot q.
 $$
 
-A stiffness error changes torque through the command error, $q_{cmd}-q$. Joint range alone does not measure this error. Velocity, changing commands and torque limits may also affect what the model can learn. The relevant features depend on the type of dynamics mismatch.
+A stiffness error changes torque through $q_{cmd}-q$. Joint range does not measure this command error. Velocity, command changes and torque limits may also matter. Useful features depend on the mismatch.
 
-Control adds another issue. A fine-tuned policy chooses new actions and visits new states. A correction that fits the recorded trajectories may be inaccurate there. This explains why I evaluate the complete calibration-and-training pipeline, not just the correction model. [Reasoning and alternatives](docs/research_argument.md).
+A fine-tuned policy visits new states and chooses new actions. A correction that fits recordings may be inaccurate there. I therefore evaluate calibration and downstream training together. [Reasoning](docs/research_argument.md).
 
-## 5. Experiments so far
+## 5. Method comparisons
 
-I use G1 in IsaacGym. Domain A has ankle stiffness 20; domain B has stiffness 16. Other dynamics stay fixed. Calibration uses 30 target rollouts: ten each from CR7, SquatL1 and StepFBL1. Each adapted policy receives 1,000 additional PPO updates, then runs in B without a correction model.
+I test G1 in IsaacGym: ankle stiffness is 20 in source A and 16 in target B. Other dynamics stay fixed. Original policies are tested in B. Calibration starts with ten B rollouts each from CR7, SquatL1 and StepFBL1.
 
-The implemented methods are delta action, passive SysID, active SysID and torque correction. The latter two adapt ideas from SPI-Active and UAN to G1. They are not complete reproductions of those papers. A state-transition residual model has not been implemented. [Methods](docs/methods.md).
+Methods are FT-only, ASAP delta action, two SysID variants and two torque corrections. Each adapted policy gets 1,000 further updates and runs alone in B. FT-only continues training in A. SPI-Active and UAN ideas are adapted to G1; a state-transition residual is not implemented. [Methods](docs/methods.md).
 
-| Policy | Squat completion (%) | CR7 completion (%) | Step completion (%) |
-|---|---:|---:|---:|
-| Original | 53.1 | 100.0 | 1.0 |
-| Fine-tuning only | 100.0 | 100.0 | 40.6 |
-| Delta action | 90.6 | 95.8 | 79.2 |
-| Passive SysID | 96.9 | 80.2 | 100.0 |
-| Torque correction | 100.0 | 72.9 | 85.4 |
-| Active SysID | 95.8 | 90.6 | 90.6 |
-| Excitation-data torque correction | 99.0 | 57.3 | 86.5 |
+**These are measured results before a setting repair.** Delta fine-tuning added input noise absent from calibration. A three-motion repair comparison is running. [Audit](docs/settings_audit.md).
 
-These completion results come from fresh physical evaluations. Each method has one training seed. Calibration helps Step, but shows no extra completion benefit over ordinary fine-tuning on Squat or CR7. All three motions occur in calibration. This is not an unseen-motion test.
+Open-loop evaluation replays fixed B commands in calibrated A. The original and FT-only share the uncalibrated replay baseline, since policy weights do not enter this test.
 
-![Fresh tracking success, position, velocity and acceleration](results/paper_evaluation/overview.png)
+![Open-loop replay: four tracking errors](results/method_comparison/open_loop.png)
 
-The figure reports 27-point tracking errors and tracking success. Errors use the first second; some CR7 trials end earlier and are excluded from those means. Tracking success also checks the paper's 0.5 m mean body-distance criterion. Velocity and acceleration use mm/frame and mm/frame² at 50 Hz. [Squat](results/paper_evaluation/SquatL1.md), [CR7](results/paper_evaluation/CR7.md), [Step](results/paper_evaluation/StepFBL1.md) and [metric definitions](docs/evaluation.md) give the details.
+Closed-loop errors compare policies with the reference in B over the first second. Early CR7 failures are excluded; [tables](results/method_comparison/metrics.md) give inclusion percentages and full-motion errors.
 
-## 6. Minimum hypothesis test
+![Closed-loop tracking: four tracking errors](results/method_comparison/closed_loop.png)
+
+![Closed-loop full-motion tracking success](results/method_comparison/success.png)
+
+Both tests report $E_{g-mpjpe}$, $E_{mpjpe}$, $E_{acc}$ and root $E_{vel}$. Units are mm, mm/frame² and mm/frame at 50 Hz. Replay uses 24 measured bodies; control uses 27 points. Closed-loop success requires full completion and mean body distance within 0.5 m throughout. [Definitions](docs/evaluation.md).
+
+**Reserved extension:** IsaacGym → IsaacLab/Genesis, using the same method comparison. No cross-engine results are available yet.
+
+## 6. Observations that motivate the question
+
+Delta action reduces replay position error from 38.42 to 31.12 mm. Its current Squat and CR7 policies do not exceed FT-only success, while calibration helps Step. Each main method has one training seed; delta conclusions await the noise-repair check. The two torque datasets differ, so their contrast does not isolate excitation.
+
+The original Step policy succeeds at 90.6% in A and 1.0% in B. It learned the motion, but transfers poorly. CR7 already has 100% B success. [Source check](results/source_quality/metrics.md).
+
+Equal-size trajectory subsets also produce different replay and control results. This motivates the question: **which trajectory properties make learned correction useful, and when do replay gains transfer to humanoid control?** These experiments do not identify one causal feature.
+
+## 7. Minimum hypothesis test
 
 I select equal-size subsets from the same 18 training rollouts. Each contains 954 transitions. The rules are uniform selection, actuator-feature coverage and large ankle range. Models and training budgets stay the same.
 
@@ -62,7 +70,7 @@ I select equal-size subsets from the same 18 training rollouts. Each contains 95
 | Actuator coverage | 28.99 | 35.72 | 41.7 | 77.1 |
 | Large joint range | 46.66 | 49.17 | 77.1 | 95.8 |
 
-Fresh replay uses 24 measured target bodies. Coverage gives smaller replay errors in both runs, but it does not consistently give better control. **The combined hypothesis is not confirmed.** Completion changes substantially between training seeds. Selection also changes motion phase and contact conditions, so the results do not isolate one causal feature. The budget fixes selected training data, rather than the cost of acquiring the larger pool. [Data-content experiment](results/content_selection/README.md).
+Coverage improves replay in both runs, but not consistently control. **The combined hypothesis is not confirmed under this procedure.** These policy runs also contain the noise mismatch. Selection changes phase and contact, and fixes training size rather than total acquisition cost. [Data-content experiment](results/content_selection/README.md).
 
 ![Data selection: fresh replay and downstream tracking success](results/paper_replay/content_selection.png)
 

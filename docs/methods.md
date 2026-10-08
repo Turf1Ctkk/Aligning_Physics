@@ -1,6 +1,6 @@
 # Methods implemented in ASAP
 
-All methods use G1 in IsaacGym. Source A has ankle stiffness 20; target B has stiffness 16. The methods learn from B records, calibrate A, and fine-tune a motion policy in A. Deployment uses the policy alone in B.
+All methods use G1 in IsaacGym. Source A has ankle stiffness 20; target B has stiffness 16. The methods learn from B records, calibrate A, and fine-tune a motion policy in A. Deployment uses the policy alone in B. The [setting audit](settings_audit.md) identifies a frozen-delta noise mismatch in the completed action-policy runs. Repair comparisons remain separate from these results.
 
 ## Delta action
 
@@ -56,6 +56,10 @@ This predicts a change in state directly. It has not been implemented in this st
 
 ## Shared policy comparison
 
+FT-only continues policy optimization in uncalibrated A. It does not train in B. Fixed-command replay is identical to the original uncalibrated simulator, so it shares that open-loop baseline.
+
 Each task starts from its recorded `model_6000.pt` and receives 1,000 additional PPO updates. Optimizers are reset, while policy weights and action standard deviations are retained. Initial actor and critic learning rates are $10^{-4}$ and $10^{-3}$. The inherited adaptive-KL schedule remains enabled.
+
+The saved fine-tuning recipe also disables motion-distance termination and changes action-rate regularization, penalty scheduling and observation noise from pretraining. These changes are shared by the adapted methods, but the experiment is not an exact continuation of the original training recipe.
 
 Calibration checkpoints are chosen by validation. Policy checkpoints are fixed at the final update. All target evaluations use zero observation noise and matched initialization and termination settings. Three evaluation seeds measure deployment variation; they do not replace independent training seeds.
