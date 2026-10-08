@@ -1,6 +1,6 @@
 # Controlled mixed30 calibration and Squat adaptation
 
-**Status:** calibration training, validation selection and held-out replay have completed. Equal-budget task-policy fine-tuning is running. No closed-loop improvement is claimed yet.
+**Status:** calibration, both task-policy fine-tuning conditions and standalone deployment evaluation have completed. ASAP does not outperform equal-budget continued training in the first comparison. A full common-observation-noise reevaluation is queued after the running torque stage.
 
 The calibration data contain 30 original target recording groups: ten CR7, ten SquatL1, and ten StepFBL1. The sampler gives equal probability to tasks, to groups within a task, and to continuous segments within a group. Its [sampling manifest](sampling_manifest.json) records these probabilities. The first draw into 2048 parallel environments was CR7 687, SquatL1 657, and StepFBL1 704; expected task weights are 1/3, while a finite draw is approximate.
 
@@ -30,4 +30,26 @@ The original Squat policy in B terminated at approximately 3.9 seconds of the 5.
 
 This animation is derived from actual recorded rigid-body positions, with dashed reference positions. It is a skeleton visualization, not an IsaacGym camera render. It shows fixed trial 0 and freezes at the first termination rather than playing the automatically reset episode as a continuation. It does not show a learned-policy result.
 
-The pending comparison uses the same original policy checkpoint and 1000 additional iterations per condition: continued source training without correction versus source training with the frozen selected delta. Both policies will be evaluated in unchanged B without a correction attached, using common termination criteria and seeds. Completion, survival and common-prefix errors will be reported together to avoid hiding failures in averages over successful trials.
+## Completed policy comparison
+
+Both policies use the same pretrained Squat checkpoint and 1000 additional iterations: continued source training without correction versus source training with frozen selected delta. The passive SysID policy also uses that checkpoint and fine-tuning budget. All are evaluated in unchanged B without a correction, using the original Squat termination criteria, initialization-noise level 0.2, zero task-observation noise and three seeds of 32 environments.
+
+![Matched fine-tuned policy results](../../assets/figures/squat_tracking_initial.png)
+
+| Policy | Complete / 96 | Mean survival (s) | First-second body error (mm) | First-second root-relative error (mm) | Complete-trial full body error (mm) |
+|---|---:|---:|---:|---:|---:|
+| FT only | 96 | 5.220 | 92.62 | 29.06 | 94.45 |
+| ASAP FT | 87 | 4.984 | 97.14 | 33.52 | 96.91 |
+| Passive SysID FT | 93 | 5.173 | 91.41 | 30.87 | 95.98 |
+
+The first-second means include all 96 trials. The full-horizon means condition on completion, so their populations differ and failures must remain visible. [Aggregated measurements](tracking_summary.json) and [raw trial reports with the setting audit](tracking_comparison_initial.json) include additional horizons. Three deployment seeds do not estimate training variance: each condition trains one policy.
+
+[Checkpoint provenance](checkpoint_provenance.json) records hashes computed directly from the completed server files. The [first-frame audit](initial_state_audit.json) verifies identical stored joint/root states and actions across all 32 trials of seed 8101 for these three conditions.
+
+![Recorded target-domain policy comparison](../../assets/gifs/squat_tracking_initial.gif)
+
+The animation uses fixed trial 0 from seed 8101 for every condition; it is an actual rigid-body skeleton visualization, not a camera render or a best-trial selection. All three pictured trials complete, even though the aggregate ASAP and SysID groups contain failures. [Animation metadata](../../assets/gifs/squat_tracking_initial.json) records the selection.
+
+**Evaluation audit:** the original pretrained-policy report inherited nonzero angular-velocity, gravity, joint-position and joint-velocity observation noise. Fine-tuning configurations inherited zero noise for these task inputs. Its previous 37/96 completion result is preserved in the raw artifact, but is not a fair baseline for attributing gains to training. Common-noise evaluation of all checkpoints is queued; it changes no weights and preserves common termination settings. The FT-only versus ASAP comparison above is already matched on task observation noise.
+
+This result is useful negative evidence: lower replay position error did not provide an additional control benefit over continued training in this seed. It does not identify data content, optimization, model error or policy distribution shift as the cause, and it is not a reproduction of ASAP's data-scaling plateau.

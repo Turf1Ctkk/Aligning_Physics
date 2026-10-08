@@ -4,7 +4,7 @@
 
 An experimental research proposal on calibration data for humanoid control, built on [ASAP / Humanoidverse](https://github.com/LeCAR-Lab/ASAP). The current experiments use a Unitree G1 model in **controlled sim-to-sim transfer**. They do not constitute hardware validation.
 
-**Current evidence:** multi-motion delta-action training improves several held-out replay metrics. The new task/group-weighted mixed30 run reduces test global body position error by 19.0%, while velocity error remains slightly worse. Closed-loop policy adaptation is running, and the proposed data-content hypothesis has not yet been validated. Measured results and proposed experiments are labelled separately.
+**Current evidence:** task/group-weighted mixed30 calibration reduces held-out body replay error by 19.0%, while velocity error slightly worsens. In the first completed Squat comparison, the resulting ASAP policy completes 87/96 target trials versus 96/96 for equal-budget fine-tuning without calibration. Replay benefit has therefore not produced an additional control benefit in this run. The data-content hypothesis remains untested. Measured results and proposed experiments are labelled separately.
 
 ## How I arrived at the question
 
@@ -93,17 +93,29 @@ Raw summary evidence and a detailed audit are in [results/pilot_multimotion](res
 
 The agreed mixed30 run has completed calibration and isolated validation/test replay with corrected task/group sampling. Validation selects the 500-update checkpoint. On the held-out test, global body MPJPE changes from **37.66 to 30.51 mm** and ankle RMSE from **0.07500 to 0.06131 rad**. Joint-velocity RMSE changes from **0.87892 to 0.89057 rad/s**, a regression. All 66 one-second test windows complete; same-domain body replay error is 7.40 mm. These outcomes support a partial replay benefit, not the downstream hypothesis. [Settings, raw evidence and an actual-motion baseline animation](results/controlled_squat/README.md).
 
-## Next experiments: planned, not completed
+### First closed-loop comparison
 
-The first priority is a complete SquatL1 adaptation comparison:
+The task policies start from the same pretrained Squat checkpoint and receive 1000 additional PPO updates. Frozen corrections are used during training, then removed for standalone B deployment. Each method has one training seed and three evaluation seeds with 32 trials each; these 96 trials do not constitute 96 independent trained policies.
+
+| Target policy | Completed trials / 96 ↑ | Mean survival (s) ↑ | First-second body MPJPE (mm) ↓ | First-second root-relative MPJPE (mm) ↓ |
+|---|---:|---:|---:|---:|
+| Fine-tuning without calibration | 96 | 5.220 | 92.62 | 29.06 |
+| ASAP fine-tuning with frozen delta | 87 | 4.984 | 97.14 | 33.52 |
+| Fine-tuning with passive identified gains | 93 | 5.173 | 91.41 | 30.87 |
+
+All 96 trials complete the first second, so its means include every trial. Full-horizon means over successful trials are reported separately. These conditions share zero task-observation noise, initialization noise and termination settings. The original-policy evaluation was found to inherit nonzero observation noise and is excluded from this matched table; an explicit common-noise reevaluation of all methods is queued. [Raw trial reports, audit, plots and motion comparison](results/controlled_squat/README.md).
+
+ASAP does not exceed the continued-training control on completion or first-second tracking. Passive SysID gives a slightly lower first-second global error but lower completion and higher root-relative error. There is no stable method ranking from one training seed, and no evidence here that a particular data feature caused these differences. [The passive estimator](results/passive_sysid/README.md) also fails to recover the configured gains exactly; its replay benefits should not be confused with physical parameter recovery.
+
+## Remaining experiments
 
 | Controller evaluated in B | Purpose | Status |
 |---|---|---|
-| Original pretrained policy | Direct-transfer baseline | One clean trial; systematic evaluation queued |
-| Policy fine-tuned in A without calibration | Equal-budget continued-training control | 1000 updates complete; deployment evaluation pending |
-| Policy fine-tuned in A with frozen delta, deployed without delta | ASAP downstream benefit | Training |
-| Policy fine-tuned with identified physical parameters | Structured SysID comparison | Queued |
-| Policy fine-tuned with a learned torque correction | UAN-method comparison | Small integration tests passed; full run queued |
+| Original pretrained policy | Direct-transfer baseline | Evaluation noise audited; matched repeat queued |
+| Policy fine-tuned in A without calibration | Equal-budget continued-training control | Completed; 96/96 target trials |
+| Policy fine-tuned in A with frozen delta, deployed without delta | ASAP downstream benefit | Completed; 87/96 target trials |
+| Policy fine-tuned with identified physical parameters | Structured SysID comparison | Completed; 93/96 target trials |
+| Policy fine-tuned with a learned torque correction | UAN-method comparison | Calibration training |
 | Policy fine-tuned after active command acquisition and parameter refitting | G1 active-SysID adaptation | CPU contracts passed; serialized physical queue pending |
 
 Each method must first pass replay and integration checks. Results will be recorded whether or not control improves. The goal is to compare correction mechanisms in a common G1 task, not assume the relative ranking reported on different robots and tasks transfers here.
@@ -119,7 +131,7 @@ If time permits after the pipeline comparison, a minimal hypothesis experiment w
 - [Replay corrections and reproduction notes](docs/reproduction.md).
 - [Experiment status](docs/STATUS.md): completed evidence versus planned work.
 
-No robot-hardware results, closed-loop gains, SPI-Active gains, UAN gains, or data-selection gains are claimed until corresponding artifacts exist. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity.
+The first Squat closed-loop measurements are available; active acquisition, torque-model control and data-selection results remain pending. The controlled stiffness mismatch is a deliberately narrow mechanism test; it cannot establish full sim-to-real fidelity or hardware performance.
 
 ## References
 

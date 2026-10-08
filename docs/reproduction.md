@@ -41,6 +41,10 @@ It reuses the isolated mixed30 data, writes a task/group sampling manifest, runs
 
 `active_pipeline.py --controlled /path/to/controlled --sysid /path/to/sysid --work-dir /path/to/new/active --wait-for /path/to/torque/status.json` queues bounded command design, new target acquisition, matched unchanged/random/optimized refitting and an optimized-arm Squat policy comparison. `verify_active.py` checks CPU command and information contracts only. New acquisition must also pass an executed-command alignment check; actor outputs ignored during replay must never be substituted for actual acquisition commands. The active pipeline stops on infeasible controls, failed acquisition groups, subprocess failures or cutoff; it does not discard failed groups silently.
 
+`tracking_overrides` now explicitly disables task-observation noise for all checkpoints, in addition to fixing shared termination and initialization settings. The first original-policy evaluation inherited nonzero noise absent from the fine-tuned models; it is retained as an audited historical artifact, not used as a matched baseline. `matched_evaluation.py` serializes a new standalone evaluation of all final checkpoints, without changing weights, then runs a post-hoc known-gain SysID diagnostic. The known target gains enter that diagnostic only, not fitting or active-design selection.
+
+`extend_tasks.py` serializes CR7 and StepFBL1 fine-tuning after the active stage. It reuses the selected shared corrections and fitted gains; each task starts from its own recorded pretrained checkpoint and uses the same 1000-update policy budget. Incomplete runs stop explicitly. It is an extension of the same controlled test, not a cross-motion calibration holdout because all three motions contributed calibration data.
+
 For figures and trajectory animations, install `requirements-analysis.txt` in a separate analysis environment. JSON-only reporting does not require the simulator.
 
 ## Artifact policy

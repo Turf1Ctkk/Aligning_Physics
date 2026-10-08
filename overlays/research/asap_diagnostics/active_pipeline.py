@@ -39,6 +39,9 @@ def replay(work, inputs, gains, checkpoint, label, deadline, acquire=False):
         "++robot.asset.self_collisions=0", "++env.config.noise_to_initial_level=0",
         "++env.config.dataset_evaluation=True", "++env.config.enforce_randomize_motion_start_eval=False",
         "++env.config.resample_motion_when_training=False", "++env.config.save_motion=False",
+        # Keep the 52 post-step samples (through 1.04s) before timeout. This
+        # does not change the one-second information/held-out scoring horizon.
+        "++env.config.max_episode_length_s=1.1",
         "++env.config.dataset_record_path=" + str(output), "++env.config.dataset_record_steps=52",
         "++eval_log_dir=" + str(directory / "effective_config"),
     ]

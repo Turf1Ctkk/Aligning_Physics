@@ -100,6 +100,8 @@ Consequently, an apparent closed-loop plateau has multiple possible causes:
 
 The current pilot distinguishes none of these conclusively. In particular, 30 versus 90 recording groups cannot establish saturation because task weights changed and only one training seed was run.
 
+The [first controlled Squat result](../results/controlled_squat/README.md) now provides a concrete disagreement: the weighted mixed30 action correction lowers held-out replay body error by 19.0%, yet its adapted policy completes 87/96 trials compared with 96/96 for equal-budget continued training without calibration. Its first-second global and root-relative tracking errors are also higher. This establishes that the chosen replay improvement is not sufficient for an additional downstream benefit in this run. It does not prove that calibration data are deficient, or that dataset scaling caused a plateau. The same data-content intervention remains necessary to test the proposed explanation.
+
 ## 5. A hypothesis with explicit conditions
 
 For an actuator-response mismatch that the chosen residual interface can represent, and after replay artifacts are controlled, **equal-budget datasets covering relevant command-state regimes should improve calibration on held-out trajectories compared with a dataset selected only for large joint range or uniform repetition**.

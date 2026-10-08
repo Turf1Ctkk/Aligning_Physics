@@ -113,6 +113,11 @@ def tracking_overrides(work, checkpoint, label, task, plan, noise, seed, num_env
         "++env.config.init_noise_scale.root_pos=0", "++env.config.init_noise_scale.root_rot=0",
         "++env.config.enforce_randomize_motion_start_eval=False", "++env.config.resample_motion_when_training=False",
         "++env.config.add_extra_action=False", "++env.config.save_motion=False",
+        # Original tracking checkpoints inherit sensor noise; fine-tuned configs
+        # do not. Explicit common noiseless task observations avoid that confound.
+        "++obs.add_noise_currculum=False", "++obs.noise_scales.base_ang_vel=0.0",
+        "++obs.noise_scales.projected_gravity=0.0", "++obs.noise_scales.dof_pos=0.0",
+        "++obs.noise_scales.dof_vel=0.0",
         "++env.config.dataset_record_steps=" + str(frames),
         "++env.config.dataset_record_path=" + str(work / "tracking" / (label + ".pkl")),
         # Match the original Squat evaluation criteria for every checkpoint.

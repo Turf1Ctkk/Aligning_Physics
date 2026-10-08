@@ -6,7 +6,7 @@ This protocol specifies the confirmed first experiment and proposed follow-up st
 
 Use the same pretrained task policy, source simulator, target dynamics, reference motion, evaluation initial states, and evaluation seeds for all downstream comparisons. Train in the calibrated source simulator and deploy in the target without the calibration mechanism attached. Include both the original policy and an equal-budget source-domain fine-tuning control.
 
-The proposed first calibration dataset is 10 original training recording groups per motion, for CR7, SquatL1, and StepFBL1. The alternative is 30 SquatL1-only groups. Keep the existing held-out recording groups isolated. Neither option implies that clips or transitions have identical counts; report all three measures and useful target-domain duration.
+The confirmed first calibration dataset is 10 original training recording groups per motion, for CR7, SquatL1, and StepFBL1. Keep the existing held-out recording groups isolated. Group counts do not imply identical clip or transition counts; report all three measures and useful target-domain duration.
 
 Fix sampling by task, then original recording group, then valid continuous clip/window. When using clip weights to implement this hierarchy, assign
 
@@ -27,7 +27,7 @@ Sample a valid grid-aligned start within the chosen clip. This gives equal task 
 7. Freeze the calibration network during task-policy fine-tuning; condition it on the current nominal action, with the same observation scaling and action units used during calibration.
 8. Verify that target deployment invokes the task policy only, with the original observation/history contract and no residual hook.
 
-## Proposed calibration settings
+## Confirmed action-calibration settings
 
 | Item | Initial proposal |
 |---|---|
@@ -54,6 +54,8 @@ Closed-loop: full-reference motion tracking in the target domain, including glob
 
 All standalone Squat evaluations explicitly share the original policy's gravity thresholds (0.8 for projected gravity x/y) and motion-deviation threshold (1.5 m), with the motion-deviation threshold curriculum disabled. Termination by contact, minimum height, and proximity to joint/torque limits is disabled, and motion-end timeout is enabled. These overrides prevent fine-tuning checkpoints from silently inheriting a different success criterion. A termination count is reported as termination, not automatically as a fall without inspecting its cause.
 
+Task actor/history observation noise is explicitly zero for every checkpoint. The initial original-policy evaluation inherited nonzero observation noise and is retained only as an audited historical artifact; a common-noise repeat is queued. Initialization noise remains at 0.2. The first stored joint/root states and executed actions were verified identical across all 32 trials of seed 8101 for FT-only, ASAP FT and passive SysID FT.
+
 ## Minimal test of data content
 
 Create equal-budget continuous-window subsets from one training pool:
@@ -64,6 +66,8 @@ Create equal-budget continuous-window subsets from one training pool:
 - **High replay error, optional:** select for uncorrected short-horizon trajectory discrepancy, checking whether it enriches initialization/contact artifacts.
 
 Use the same number of unique target transitions and the same PPO budget. Limit overlapping windows; record any history prefix as part of the data budget. Keep motion and parent-group distributions matched where possible, and show remaining imbalances explicitly.
+
+A retrospective selector can inspect the existing training pool, but that does not reduce the cost of acquiring the pool. Report the pool's inspection/acquisition budget separately from the selected training-transition budget. Claims about cheaper target-data collection require prospective acquisition or a transferable selector learned on other data. The first subset test isolates training-data content, not overall acquisition cost.
 
 The hypothesis is unsupported if coverage fails to outperform uniform selection within uncertainty. A replay improvement without target-domain policy improvement supports only the replay component. Repeat key comparisons with independent training seeds before claiming a stable ranking. A second mismatch is required to support the claim that useful features depend on the mechanism, rather than merely the current Kp test.
 
