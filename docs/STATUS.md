@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 08:10 Beijing time (UTC+8).
+Updated October 9, 2026, 08:40 Beijing time (UTC+8).
 
 ## Completed
 
@@ -20,9 +20,9 @@ Updated October 9, 2026, 08:10 Beijing time (UTC+8).
 
 The previous queues and input-noise repair are complete. That repair changes only height and foot-force noise. Success changes from 89.6% to 70.8% for Squat, 91.7% to 99.0% for CR7, and 79.2% to 25.0% for Step. [Before/after results](../results/noise_repair/metrics.md).
 
-The reset-only Step comparison is complete and independently audited. Success rises from 25.0% to 37.5%. All four first-second errors decrease; full-motion velocity and acceleration errors increase in the changed successful cohort. [Results](../results/reset_repair/metrics.md).
+The reset-only Squat and Step comparisons are complete and independently audited. Success rises from 70.8% to 91.7% for Squat and from 25.0% to 37.5% for Step. All four first-second errors decrease in both tasks. Full-motion errors do not uniformly improve, and successful cohorts change. [Results](../results/reset_repair/metrics.md).
 
-Squat is training; CR7 follows serially. Every run starts from its original model_6000 with the same frozen delta model_500, seed and 1,000-update budget. Both noise channels remain zero. Rewards, curricula and optimizer settings stay fixed. Each final policy receives the same three-seed B evaluation and independent metric audit.
+CR7 is training and is the only GPU job. Every run starts from its original model_6000 with the same frozen delta model_500, seed and 1,000-update budget. Both noise channels remain zero. Rewards, curricula and optimizer settings stay fixed. Each final policy receives the same three-seed B evaluation and independent metric audit.
 
 Main comparison charts still use the noise-only delta policies on all three tasks. Reset-repaired policies will replace them together after all tasks pass their audits. Other methods and open-loop calibration results stay unchanged. Historical raw reports and chart data remain available.
 
@@ -34,7 +34,7 @@ Reader-facing documents use short explanations. The main report now places obser
 
 ## Main finding so far
 
-Passive SysID improves Step under this protocol. Noise-only delta repair helps CR7 but reduces Squat and Step success. Reset repair raises Step success to 37.5%, close to FT-only's 36.5%, while its first-second position errors remain higher. Each main method has only one training seed. The subset policies have not been repaired, so their transfer findings remain provisional. [Setting audit](settings_audit.md).
+Passive SysID improves Step under this protocol. Reset repair raises Squat success to 91.7%, below FT-only's 100%. Step reaches 37.5%, close to FT-only's 36.5%, while its first-second position errors remain higher. Each main method has only one training seed. The subset policies have not been repaired, so their transfer findings remain provisional. [Setting audit](settings_audit.md).
 
 Raw results, historical reports and failed acquisition records are preserved. Final repository cleanup and author-supplied IsaacGym visuals follow review.
 

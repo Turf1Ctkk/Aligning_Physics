@@ -58,7 +58,7 @@ Delta action reduces replay position error from 38.42 to 31.12 mm. After noise r
 
 Noise repair improves CR7 success but reduces Squat and Step success. This finding does not establish the cause of the remaining failures. Each main method has one training seed. The two torque datasets also differ, so their contrast does not isolate excitation.
 
-A further [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. Clearing it raises Step success from 25.0% to 37.5% and lowers all four first-second errors. Full-motion velocity and acceleration errors rise in the successful cohort, whose trials also change. Squat and CR7 are pending. The charts above still use noise-only repair. [Reset comparison](results/reset_repair/metrics.md).
+A further [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. Clearing it raises Squat success from 70.8% to 91.7% and Step from 25.0% to 37.5%. All four first-second errors decrease in both tasks. Full-motion errors do not uniformly improve, and successful cohorts change. CR7 is pending. The charts above still use noise-only repair. [Reset comparison](results/reset_repair/metrics.md).
 
 The original Step policy succeeds at 90.6% in A and 1.0% in B. It learned the motion, but transfers poorly. CR7 already has 100% B success. [Source check](results/source_quality/metrics.md).
 
