@@ -70,7 +70,7 @@ Code: `active_design.py` implements command offsets, sensitivity and feasibility
 For each ankle, the corrected torque is
 
 $$
-\tau_t=\operatorname{clip}\left(\tau_{PD,t}+5g_\psi(h_t),-50,50\right)\ \mathrm{Nm}.
+\tau_t=\mathrm{clip}\left(\tau_{PD,t}+5g_\psi(h_t),-50,50\right)\ \mathrm{Nm}.
 $$
 
 The history $h_t$ contains twenty samples of position error and velocity error at 5 ms intervals. Desired joint velocity is zero in this PD interface, so the second channel is $-0.05\dot q$. A shared 40→128→128→1 MLP uses ELU hidden layers. Four ankles use the same weights. The scale is 5 Nm per output unit; the correction has no separate 5 Nm cap. PPO trains this model against target trajectories. The frozen model then supplies corrective torque during policy training in calibrated simulation.

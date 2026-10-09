@@ -6,37 +6,42 @@
 
 ## 2. Background
 
-Motion tracking asks a humanoid to follow a sequence of reference poses while maintaining balance. Reinforcement learning can train a feedback policy for this task in simulation. However, the same policy may behave differently on hardware. Actuator response and contact dynamics can differ from the training environment.
+Motion tracking asks a humanoid to follow a sequence of reference poses while maintaining balance. Reinforcement learning can train a control policy for this task in simulation. However, the pre-trained policy may behave differently on real world deployment, or other simulator, which is boardly called sim-to-real gap. Actuator response and contact dynamics can differ from the training environment.
 
-One approach is to adjust simulation using data from the target domain. The adjusted environment is called **calibrated simulation** throughout this report. Three works motivate the experiments:
+One approach to handle this problem is to adjust simulation using data from the target domain. The adjusted environment is called **calibrated simulation** throughout this report. The picture from ASAP paper below shows the **delta action model** approach. 
+
+![ASAP-Approach](/results/ASAPapproach.png)
+
+
+Three works motivate the experiments:
 
 | Work | What it adjusts | What data it uses |
 |---|---|---|
-| [ASAP](https://arxiv.org/html/2502.01143v3) | Position-target actions through a learned delta action model | Target motion-tracking policy rollouts |
-| [SPI-Active](https://github.com/LeCAR-Lab/SPI-Active) | Physical parameters through identification and active exploration | Responses to commands chosen for identification |
-| [Unsupervised Actuator Net (UAN)](https://arxiv.org/abs/2502.10894) | Actuator torque through a learned correction | Responses to wave and noise inputs |
+| [ASAP](https://agile.human2humanoid.com/) | Position-target actions through a learned delta action model | Target motion-tracking policy rollouts |
+| [SPI-Active](https://lecar-lab.github.io/spi-active_/) | Physical parameters through identification and active exploration | Responses to commands chosen for identification |
+| [Unsupervised Actuator Net (UAN)](https://uan.csail.mit.edu/) | Actuator torque through a learned correction | Responses to wave and noise inputs |
 
-These methods use different data to model different parts of the dynamics. They do not give a single data-selection rule for learned correction. A large joint range may not expose the response difference that matters for control.
+These methods use different data to model different parts of the dynamics. They do not give a single data-selection rule for learned correction. Real world rollout trajectories was used to train delta action model by ASAP, and SPI-Active actively explore the informative command to excite the parameters to be identified. UAN tried to find data that provides broad coverage of actuator behavior.
 
-I tested these ideas in ASAP under a known ankle-stiffness change. Replay improved to different degrees, while control results were less consistent. This motivates the research question.
+We verified these ideas in [humanoidverse](https://github.com/LeCAR-Lab/HumanoidVerse) framework under a known ankle-stiffness change. Replay improved to different degrees, while control results were less consistent. This motivates the research question.
 
-## 3. Method comparisons
+## 3. Experiments
 
-Both domains use G1 in IsaacGym. Four ankle stiffness values change from $K_p=20$ in source A to $K_p=16$ in target B. Other dynamics stay fixed. This known change helps interpret the results; it is not a hardware test.
+Both domains use Unitree-G1 humanoid in IsaacGym. Four ankle stiffness values change from $K_p=20$ in source A to $K_p=16$ in target B. Other dynamics stay fixed. This known change helps interpret the results, and we consider the change as simulation of environment transfer.
 
 | Method | Principle |
 |---|---|
 | Original | Deploy the source policy directly in B. |
 | FT-only | Further train the policy in uncalibrated A. |
-| Delta action | Learn an action correction from B recordings, then train the policy in calibrated simulation. |
-| Passive SysID | Fit ankle pitch and roll gains to recorded joint trajectories. |
+| Delta action | Learn an action correction from B recordings, then train the policy in calibrated simulation. Without any correction method. |
+| Passive SysID | Fit ankle pitch and roll gains to recorded joint trajectories. To identify these parameters. |
 | Active SysID | Design informative command offsets, collect new trajectories, and fit the gains. |
 | Common torque | Learn a torque correction from the original motion-tracking recordings. |
 | Excitation torque | Learn a torque correction from new wave/noise excitation recordings. |
 
-Each task uses its source policy after **6,000 PPO updates**. I run these policies in B to collect commands and states. Calibration then makes replay in A approach those recorded B trajectories. Each adapted policy receives **1,000 further PPO updates** in calibrated simulation. The final policy runs alone in B. FT-only receives the same number of policy updates. Calibration procedures differ between methods.
+Each task uses its source policy after **6k** PPO step updates. Then run these policies in B to collect commands and states. Calibration then makes replay in A approach those recorded B trajectories. Each adapted policy receives **1,000** further PPO updates in calibrated simulation. The final policy runs alone in B. FT-only receives the same number of policy updates. Calibration procedures differ between methods.
 
-The SysID and torque methods adapt SPI-Active and UAN ideas to G1. This is not a full reproduction of either paper. Formulas and implementation differences are in [Methods](docs/methods.md). Settings, data collection and implementation fixes are in [Training details](docs/training_details.md).
+The SysID and torque methods adapt SPI-Active and UAN ideas to robot. This is not a full reproduction of either paper. Formulas and implementation differences are in [Methods](docs/methods.md). Settings, data collection and implementation fixes are in [Training details](docs/training_details.md).
 
 ### Open-loop replay
 
@@ -44,7 +49,7 @@ The chart compares replay in A with recorded trajectories in B over one second. 
 
 ![Four open-loop errors](results/open_loop.png)
 
-All calibrated methods reduce the four mean errors. Active SysID gives the smallest errors. Its fitted pitch/roll gains, **15.80/15.59**, are also close to the target **16/16**. This is consistent with effective identification in this simple mismatch. It does not show that parameter fitting can capture every hardware discrepancy. Passive SysID fits **13.01/10.42**, showing that a useful trajectory fit need not recover the physical parameters.
+All calibrated methods reduce the four mean errors. Active SysID gives the smallest errors. Its fitted pitch/roll gains, **15.80/15.59**, are also close to the target **16/16**. This is consistent with effective identification in this simple mismatch. It does not show that parameter fitting can capture every environment discrepancy, especially complex dynamics in real world. Passive SysID fits **13.01/10.42**, showing that a useful trajectory fit need not recover the physical parameters.
 
 ### Closed-loop motion tracking
 
@@ -60,9 +65,12 @@ The original Step policy reaches 90.6% success in A but only 1.0% in B, confirmi
 
 ### Recorded examples
 
-These author-recorded clips show behavior in B. They are partial recordings with different start phases. A blank panel marks a clip’s end. Quantitative conclusions use the evaluations above.
+We choose serveral examples that show policy behavior in B. They are partial recordings with different start phases. A blank panel marks a clip’s end. Quantitative conclusions use the evaluations above.
 
-**Squat — Left: Original. Right: Delta action.** The delta policy appears more conservative during the squat. Aggregate success rises from 44.8% to 91.7%. Its four first-second errors also decrease. Over successful full motions, root-relative error increases from 50.62 to 55.78 mm, with different successful cohorts. The result is not an increase in every error.
+**Squat — Left: Original. Right: Fine-tuned by Delta action model (ASAP).**
+We observe that the policy without fine-tuning achieves better intermediate action completion but ultimately causes the robot to fall. After fine-tuning the policy using the delta action model, the robot no longer falls, yet tracking errors increase throughout the process, making the movements appear "conservative".\
+Success rate: 44.8% to 91.7%\
+Root-relative error: 50.62 to 55.78 mm
 
 ![Squat comparison](results/visualizations/squat.gif)
 
@@ -70,55 +78,59 @@ These author-recorded clips show behavior in B. They are partial recordings with
 
 ![CR7 comparison](results/visualizations/cr7.gif)
 
-**Step — Left: Original. Right: Passive SysID.** Original leans sharply away from the reference, while Passive SysID stays upright during the recorded step. Aggregate success rises from 1.0% to 100%. The clip does not isolate the balance mechanism.
+**Step — Left: Original. Right: Passive SysID.** The original policy failed to keep the leg or heel aligned with the center of mass due to reduced ankle joint gain, resulting in a fall. Passive sysID method adapted more effectively, successfully executing the Step motion.
 
 ![Step comparison](results/visualizations/step.gif)
 
-## 4. Observations and reasoning
+## 4. Suggested from experiment results
 
-Replay measures agreement under recorded commands. Fine-tuning changes the commands and visited states. A correction can fit recordings yet be less useful for the new policy. A pooled replay average cannot explain a particular task's control result.
+The calibrated methods improve replay, but their policies do not consistently perform better in B. Replay evaluates the simulator using recorded commands. After fine-tuning, the policy can choose different commands and visit states that were rarely covered by the recordings. This could limit the usefulness of the learned correction, although the current experiments do not establish why control performance differs.
 
-The known mismatch suggests a measurable data property. For an unsaturated PD actuator, let $e=q_{cmd}-q$. At the same state and command, with equal damping,
+This leads to a more specific question: what should the calibration recordings contain? For the ankle-gain change used here, one candidate is the difference between the commanded and actual joint position, (e=q_{cmd}-q). With equal damping and no torque saturation, the same state and command produce a torque difference of
 
 $$
 \tau_B-\tau_A=(16-20)e=-4e.
 $$
 
-Matching this torque instantaneously in A requires
+The direction and magnitude of this position error therefore determine the immediate effect of the gain change. Joint range alone does not provide this information. A joint can move through a large angle while closely following its command, or move only slightly while remaining far from its commanded position.
 
-$$
-\Delta q_{cmd}=-0.2e.
-$$
+This provides a reason to select recordings that cover different signs and magnitudes of ankle position error. However, larger errors are not automatically more useful: if both actuators reach the same torque limit, saturation can hide the gain difference. The action correction is also updated less frequently than the PD controller, so matching torque at one instant does not ensure that the whole trajectory will match.
 
-Servo error therefore exposes the stiffness difference more directly than joint range. Its sign and magnitude both matter. Large error alone is not enough: clipping can hide the gain difference. The correction also runs at 50 Hz while PD runs at 200 Hz, so instantaneous matching does not guarantee trajectory matching.
+These considerations motivate the data-selection hypothesis below. 
 
 ## 5. Hypothesis
 
-**For this ankle-stiffness mismatch, calibration windows covering different signs and magnitudes of unsaturated ankle servo error will reduce held-out replay error more than random windows of the same total size. Whether this gain improves policy control is tested separately.**
+**For the ankle stiffness change used here, expecting that recordings cover different signs and magnitudes of ankle servo error to help the delta action model learn the response difference. With the same amount of data and the same training budget, this model could reproduce unseen target trajectories more accurately than a model trained on randomly selected recordings.**
 
-This hypothesis concerns the current gain change.
 
 ## 6. Minimum hypothesis test
 
-I compare **Random windows** with **Servo-error coverage**. Both select from the same target training recordings: six from each of the three motions. Each recording contributes one continuous 54-state window, giving **954 transitions per dataset**. Random selection follows fixed task, phase, speed and contact-proxy quotas. Servo-error coverage follows the same quotas but fills sign/magnitude bins separately for each ankle.
+To test this hypothesis, I keep the delta action method fixed and change how its training windows are selected. **Random windows** provide a baseline. **Servo-error coverage** selects windows that cover different signs and magnitudes of position error at each ankle.
 
-Each dataset trains a fresh delta action model with the same architecture and 1,000 updates. Both then fine-tune the same Step source policy for 1,000 updates. Noise and reset fixes are applied. Validation and test recordings are shared and separate from training. Two runs change the calibration and policy training seeds; replay and deployment seeds stay fixed.
+Both groups use the same 18 target recordings, six from each motion. Each group selects one continuous window per recording, giving **954 transitions**. Task, phase, speed and contact-proxy quotas stay the same. Each dataset trains a new delta action model for 1,000 updates. Its frozen correction is then used to fine-tune the same Step source policy for 1,000 updates.
+
+I repeat this process with a second pair of training seeds. The selected data, validation and test recordings stay unchanged, as do the evaluation seeds. In each chart, the top row is Run 1 and the bottom row is Run 2. Lower bars mean lower error.
+
+### Does servo-error coverage improve replay?
 
 ![Four replay errors in the minimum test](results/selection_replay.png)
 
+The grey dashed lines show replay without calibration. The bars show the two learned corrections. These errors average equally across the three motions.
+
+Random windows give lower error on all four measures in both runs. They also improve position and root velocity over uncalibrated replay, although acceleration error increases slightly. **Servo-error coverage does not improve on random selection in this test.** The proposed calibration benefit is therefore not supported by these results.
+
+### Do the replay results carry over to control?
+
 ![Four Step tracking errors in the minimum test](results/selection_control.png)
 
-| Training run | Random windows success | Servo-error coverage success | Matched FT-only success |
-|---|---:|---:|---:|
-| Run 1 | 0.0% | 0.0% | 5.2% |
-| Run 2 | 20.8% | 33.3% | Not evaluated |
+These bars show the resulting Step policies in B. Errors cover the first second, which every trial reaches. The grey dashed lines in Run 1 show a newly trained FT-only policy with the same training seed. There is no matched FT-only policy for Run 2.
 
-FT-only in this test is newly trained with the Run 1 policy seed. It is distinct from the main comparison’s FT-only policy.
+In Run 1, neither residual policy completes Step, and both have higher errors than FT-only. FT-only itself has only **5.2%** success, so control remains difficult under this training setup.
 
-Random windows give lower replay error on all four measures in both runs. Thus, **this selector has not supported the calibration hypothesis**. In Run 2, Servo-error coverage gives better Step success and lower first-second tracking errors despite worse replay. This reinforces the need to evaluate replay and control separately.
+Run 2 gives a different picture. Servo-error coverage has lower tracking error on all four measures and **33.3%** success, compared with **20.8%** for Random. Its replay is worse, yet its policy tracks better. **The replay ranking therefore does not predict the control ranking in this run.**
 
-The servo-error contrast is modest, and speed/contact distributions still differ. Two runs cannot establish a stable ranking. Low-error windows were prepared but not trained. Selected windows and final results are retained as CSV files.
+This small test shows why calibration and control need separate evaluation. It does not establish a reliable advantage for servo-error coverage. The actual coverage difference is small, speed and contact distributions still differ, and changing training seeds affects the outcome. A stronger data contrast and more training runs are needed to test the hypothesis further.
 
-**Future work:** test a stronger data contrast and transfer from IsaacGym to IsaacLab or Genesis. No cross-engine results are claimed here.
+Selected windows and results are retained as CSV files. Low-error windows were prepared but not trained. Future work could also test transfer to IsaacLab or Genesis.
 
 The `ASAP/` folder contains the framework source, installed fixes and method implementations. Model weights and calibration recordings are held in the separate experiment archive. This public repository provides the report, final metrics, settings, reference motions and code.
