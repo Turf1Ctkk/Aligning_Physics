@@ -1,7 +1,7 @@
 # Third-party material
 
-This repository includes diagnostic patches and integration code for [ASAP / Humanoidverse](https://github.com/LeCAR-Lab/ASAP), released under the MIT License. Its copyright and license are preserved in [overlays/ASAP_LICENSE](overlays/ASAP_LICENSE).
+The `ASAP/` source snapshot is based on [ASAP / Humanoidverse](https://github.com/LeCAR-Lab/ASAP), commit `df5320cc47dd8cad97961bdfabfe402dd62ad999`. The original copyright and MIT license are preserved in `ASAP/LICENSE`. G1 assets and reference motions retain their upstream provenance.
 
-The SPI-Active and UAN methods are cited and discussed. No claim of authorship over those methods is made. The inspected SPI-Active source commit is recorded in the method notes; its official implementation is not vendored in this repository. UAN formulations reference the paper, rather than implying use of an unverified official implementation.
+SPI-Active and Unsupervised Actuator Net are cited research methods. Their ideas are adapted in the study; neither complete original implementation is vendored. No claim of authorship over those methods is made.
 
-All measured figures in this repository are generated from the reported experiments. Author project figures and robot videos are linked as sources and are not presented as our experimental evidence.
+Report figures and recorded comparison clips come from the author's experiments. The root license covers the author's contributions; the upstream source retains its own license.

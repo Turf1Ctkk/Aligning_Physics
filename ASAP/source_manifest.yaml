@@ -1,0 +1,43 @@
+upstream_repository: https://github.com/LeCAR-Lab/ASAP
+upstream_commit: df5320cc47dd8cad97961bdfabfe402dd62ad999
+installed_files:
+- path: humanoidverse/agents/delta_a/train_delta_a.py
+  sha256: 53663f90da2445896e85c9eaff8a776cb1be474ed3e851cce3ed91b7e5ce6939
+- path: humanoidverse/envs/delta_a/delta_a_closed_loop.py
+  sha256: db91d895a0d231351e8a192cd452a4eb08d1110e4018c4b043fea29bd3cacae9
+- path: humanoidverse/envs/delta_a/delta_a_open_loop.py
+  sha256: 94d75a5e410fe59e9f668193fe8119d9cb6cb52f3391711fb2baf9407ed486ac
+- path: humanoidverse/envs/motion_tracking/motion_tracking.py
+  sha256: cddc795c678f593b6848f87390641fc3ff0d33449feaa2f109359435877c0913
+- path: humanoidverse/utils/motion_lib/motion_lib_base.py
+  sha256: 1fc73e8e67238564fa75ada0517055d32e7fac0ea5ef38492644d503324ef04c
+- path: research/asap_diagnostics/controlled_runtime.py
+  sha256: 7ba954778dc5592e03515148fedfe1ea7601933083122821f734b3a241d9cc0c
+- path: research/asap_diagnostics/dataset_runtime.py
+  sha256: bcfbea3bf513f321ddefaafdc12095b9a77a1b57ab19abeee96cf1e3b967608b
+- path: research/asap_diagnostics/dataset_tools.py
+  sha256: 7c75afe8395d8ae60300a0e486f715339d88ed9be23ebc0bd33234f143126348
+- path: research/asap_diagnostics/controlled_sampling.py
+  sha256: c02f5fe5b1f85191c495018a48c84f4f674be41fed222bb90d9f808ab6508b52
+- path: research/asap_diagnostics/sysid_runtime.py
+  sha256: c97b14a723eb8f11009553dc7ee3a069c80356b27b81ab6ff4ff56572fcac21a
+- path: research/asap_diagnostics/active_runtime.py
+  sha256: bceff42f0bcd6a365accdb373550cfe58359bee612a612b470cd7579405310a4
+- path: research/asap_diagnostics/active_design.py
+  sha256: 31e4fbf839b163bb064306dcd43453a2dd8d8e0165a0ca4840d687226eb8b8ff
+- path: research/asap_diagnostics/wave_runtime.py
+  sha256: 1839b804cd26115cb5aa7ca0ac59abf02fbf2ae9db3a664253c6a8b477d873fa
+- path: research/asap_diagnostics/wave_data.py
+  sha256: 0b8a431321ff048d12fa5283ee22b2d52950eec5988a206569b7c559a811fd30
+- path: research/asap_diagnostics/torque_runtime.py
+  sha256: 85425400f882fe621d90b8bb1166bdb53c3bf5453dd465b28d5012043ad6e768
+- path: research/asap_diagnostics/paper_metrics.py
+  sha256: 46ea144ac03f04c5ea57bb48702e44c593314fd6c35e8fb2f270b5355eb4c61b
+- path: research/asap_diagnostics/paper_tracking_runtime.py
+  sha256: 1171b4f3985bee67b0e4fd19e99d7752536c383835a1cafb59122f8f0c775013
+- path: research/asap_diagnostics/select_servo.py
+  sha256: 3e3276fc957f91ff8072bf5ef5180ec9c44b92957614504cb2475c27d79034d6
+- path: research/asap_diagnostics/delta_reset_runtime.py
+  sha256: 7a17695858682a9364ae4c56e21866fe2b4205ed4fae9a5ea2854569889023f7
+- path: research/asap_diagnostics/seeded_entry.py
+  sha256: f53d96b6e7883063f696e947e07f9577e0137412a3f95bc753b6ca4bd2063ffb

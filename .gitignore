@@ -8,3 +8,6 @@ __pycache__/
 *.npz
 .env
 .venv/
+
+# Three upstream reference motions included for this study.
+!ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/*.pkl

@@ -1,7 +1,0 @@
-{
-  "ankle_pitch_Kp": 13.012213038091938,
-  "ankle_roll_Kp": 10.421220666808713,
-  "training_objective": 0.2688547094089604,
-  "evaluations": 96,
-  "scope": "Passive structured SysID from recorded transitions; active exploration not performed"
-}

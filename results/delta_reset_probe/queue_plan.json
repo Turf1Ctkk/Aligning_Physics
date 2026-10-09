@@ -1,9 +1,0 @@
-{
-  "created_utc": "2026-10-08T23:30:48.645559+00:00",
-  "scope": "Two serialized no-update physical reset probes, 64 environments, 320 steps, StepFBL1",
-  "source_command": "/root/autodl-tmp/aligning_physics/noise_repair_20261009/StepFBL1/commands/train_asap_ft.json",
-  "source_command_sha256": "9f61385b6e21da469c408011dd224c0ec8fe22ff298b6a0e55646a8da6cdc4ea",
-  "runtime_sha256": "7a17695858682a9364ae4c56e21866fe2b4205ed4fae9a5ea2854569889023f7",
-  "cutoff_utc": "2026-10-09T09:00:00+00:00",
-  "cpu_reset_contract": "passed selective and empty reset checks"
-}

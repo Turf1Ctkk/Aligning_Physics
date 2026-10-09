@@ -1,6 +1,0 @@
-{
-  "checkpoint": "model_1000.pt",
-  "validation_global_body_mpjpe_mm": 33.018462724982385,
-  "selection": "Isolated validation body MPJPE; not selected on test",
-  "training_seed": 20303008
-}

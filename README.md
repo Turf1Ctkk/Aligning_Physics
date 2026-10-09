@@ -2,96 +2,123 @@
 
 ## 1. Open research question
 
-**For humanoid motion tracking with learned simulator correction, which calibration trajectory features improve replay at a fixed data budget? Do these improvements lead to better control after policy fine-tuning?**
+**For humanoid motion tracking with a learned residual alignment model, which calibration trajectory features improve open-loop replay when the amount of target data is fixed? Do these gains also improve closed-loop policy control?**
 
-## 2. How I arrived at this question
+## 2. Background
 
-A humanoid policy can track a motion in simulation but fail on hardware. Differences in actuators and contacts contribute to this gap.
+Motion tracking asks a humanoid to follow a sequence of reference poses while maintaining balance. Reinforcement learning can train a feedback policy for this task in simulation. However, the same policy may behave differently on hardware. Actuator response and contact dynamics can differ from the training environment.
 
-Different methods collect different data. [ASAP](https://arxiv.org/html/2502.01143v3) uses motion-tracking policy rollouts to learn an action correction. [SPI-Active](https://github.com/LeCAR-Lab/SPI-Active) designs commands for parameter identification. [UAN](https://arxiv.org/abs/2502.10894v1) uses wave and noise inputs to learn actuator torque corrections.
+One approach is to adjust simulation using data from the target domain. The adjusted environment is called **calibrated simulation** throughout this report. Three works motivate the experiments:
 
-These works already study informative data. I want to understand its value for learned correction and subsequent control. Joint range is one candidate, but does not describe the response to commands. ASAP's different replay and control trends motivate the question without identifying a cause.
+| Work | What it adjusts | What data it uses |
+|---|---|---|
+| [ASAP](https://arxiv.org/html/2502.01143v3) | Position-target actions through a learned delta action model | Target motion-tracking policy rollouts |
+| [SPI-Active](https://github.com/LeCAR-Lab/SPI-Active) | Physical parameters through identification and active exploration | Responses to commands chosen for identification |
+| [Unsupervised Actuator Net (UAN)](https://arxiv.org/abs/2502.10894) | Actuator torque through a learned correction | Responses to wave and noise inputs |
 
-## 3. Hypothesis
+These methods use different data to model different parts of the dynamics. They do not give a single data-selection rule for learned correction. A large joint range may not expose the response difference that matters for control.
 
-**For the ankle-stiffness mismatch, windows covering different signs and magnitudes of unsaturated ankle servo error will reduce held-out replay error more than random windows at the same data and optimization budgets. Whether this gain improves control is tested separately.**
+I tested these ideas in ASAP under a known ankle-stiffness change. Replay improved to different degrees, while control results were less consistent. This motivates the research question.
 
-I test replay and control separately. Better replay alone does not confirm better control.
+## 3. Method comparisons
 
-## 4. Why this seems plausible
+Both domains use G1 in IsaacGym. Four ankle stiffness values change from $K_p=20$ in source A to $K_p=16$ in target B. Other dynamics stay fixed. This known change helps interpret the results; it is not a hardware test.
 
-For a PD actuator,
+| Method | Principle |
+|---|---|
+| Original | Deploy the source policy directly in B. |
+| FT-only | Further train the policy in uncalibrated A. |
+| Delta action | Learn an action correction from B recordings, then train the policy in calibrated simulation. |
+| Passive SysID | Fit ankle pitch and roll gains to recorded joint trajectories. |
+| Active SysID | Design informative command offsets, collect new trajectories, and fit the gains. |
+| Common torque | Learn a torque correction from the original motion-tracking recordings. |
+| Excitation torque | Learn a torque correction from new wave/noise excitation recordings. |
+
+Each task uses its source policy after **6,000 PPO updates**. I run these policies in B to collect commands and states. Calibration then makes replay in A approach those recorded B trajectories. Each adapted policy receives **1,000 further PPO updates** in calibrated simulation. The final policy runs alone in B. FT-only receives the same number of policy updates. Calibration procedures differ between methods.
+
+The SysID and torque methods adapt SPI-Active and UAN ideas to G1. This is not a full reproduction of either paper. Formulas and implementation differences are in [Methods](docs/methods.md). Settings, data collection and implementation fixes are in [Training details](docs/training_details.md).
+
+### Open-loop replay
+
+The chart compares replay in A with recorded trajectories in B over one second. It averages equally across tasks and original recordings. FT-only shares the Original replay value because this test uses fixed recorded commands.
+
+![Four open-loop errors](results/open_loop.png)
+
+All calibrated methods reduce the four mean errors. Active SysID gives the smallest errors. Its fitted pitch/roll gains, **15.80/15.59**, are also close to the target **16/16**. This is consistent with effective identification in this simple mismatch. It does not show that parameter fitting can capture every hardware discrepancy. Passive SysID fits **13.01/10.42**, showing that a useful trajectory fit need not recover the physical parameters.
+
+### Closed-loop motion tracking
+
+Errors below cover the first second in B. Squat and Step include all trials. CR7 inclusion is 100% for Original, FT-only and Delta action; 95.8% for both SysID methods; 89.6% for Common torque; and 85.4% for Excitation torque. Full-motion success is shown separately.
+
+![Four closed-loop errors by task](results/closed_loop.png)
+
+![Full-motion success by task](results/success.png)
+
+Both tests report $E_{g-mpjpe}$, $E_{mpjpe}$, $E_{acc}$ and root $E_{vel}$. Units are mm, mm/frame² and mm/frame at 50 Hz. Replay uses 24 measured bodies; tracking uses 27 points. Success requires completing the motion while mean body distance stays within 0.5 m. Full-motion errors for successful trials are also retained in `results/metrics.csv`.
+
+The original Step policy reaches 90.6% success in A but only 1.0% in B, confirming a transfer challenge under this protocol. Every adapted method improves success over Original on Squat and Step. CR7 already reaches 100% with Original and FT-only; calibration methods reduce its success. Better replay therefore does not guarantee better tracking or higher success. The experiments do not isolate the cause of this difference.
+
+### Recorded examples
+
+These author-recorded clips show behavior in B. They are partial recordings with different start phases. A blank panel marks a clip’s end. Quantitative conclusions use the evaluations above.
+
+**Squat — Left: Original. Right: Delta action.** The delta policy appears more conservative during the squat. Aggregate success rises from 44.8% to 91.7%. Its four first-second errors also decrease. Over successful full motions, root-relative error increases from 50.62 to 55.78 mm, with different successful cohorts. The result is not an increase in every error.
+
+![Squat comparison](results/visualizations/squat.gif)
+
+**CR7 — Left: Original. Right: FT-only.** Both policies jump and return to standing. Further training lowers global error but raises root-relative error. Both have 100% aggregate success.
+
+![CR7 comparison](results/visualizations/cr7.gif)
+
+**Step — Left: Original. Right: Passive SysID.** Original leans sharply away from the reference, while Passive SysID stays upright during the recorded step. Aggregate success rises from 1.0% to 100%. The clip does not isolate the balance mechanism.
+
+![Step comparison](results/visualizations/step.gif)
+
+## 4. Observations and reasoning
+
+Replay measures agreement under recorded commands. Fine-tuning changes the commands and visited states. A correction can fit recordings yet be less useful for the new policy. A pooled replay average cannot explain a particular task's control result.
+
+The known mismatch suggests a measurable data property. For an unsaturated PD actuator, let $e=q_{cmd}-q$. At the same state and command, with equal damping,
 
 $$
-\tau=K_p(q_{cmd}-q)-K_d\dot q.
+\tau_B-\tau_A=(16-20)e=-4e.
 $$
 
-A stiffness error changes torque through $q_{cmd}-q$. Joint range does not measure this command error. Velocity, command changes and torque limits may also matter. Useful features depend on the mismatch.
+Matching this torque instantaneously in A requires
 
-A fine-tuned policy visits new states and chooses new actions. A correction that fits recordings may be inaccurate there. I therefore evaluate both replay and policy control. [Reasoning](docs/research_argument.md).
+$$
+\Delta q_{cmd}=-0.2e.
+$$
 
-## 5. Method comparisons
+Servo error therefore exposes the stiffness difference more directly than joint range. Its sign and magnitude both matter. Large error alone is not enough: clipping can hide the gain difference. The correction also runs at 50 Hz while PD runs at 200 Hz, so instantaneous matching does not guarantee trajectory matching.
 
-I test G1 in IsaacGym: ankle stiffness is 20 in source A and 16 in target B. Other dynamics stay fixed. Original policies are tested in B. Calibration starts with ten B rollouts each from CR7, SquatL1 and StepFBL1.
+## 5. Hypothesis
 
-I compare FT-only, ASAP delta action, two SysID variants and two torque corrections. Each policy gets 1,000 further updates in A and runs alone in B. SPI-Active and UAN ideas are adapted to G1. No state-transition residual is implemented. [Methods](docs/methods.md).
+**For this ankle-stiffness mismatch, calibration windows covering different signs and magnitudes of unsaturated ankle servo error will reduce held-out replay error more than random windows of the same total size. Whether this gain improves policy control is tested separately.**
 
-**Delta uses the completed noise and reset repairs on all three tasks.** Data, calibrator, source checkpoint, seed and update budget stay fixed. Other methods are unchanged. The [noise comparison](results/noise_repair/metrics.md) and [reset comparison](results/reset_repair/metrics.md) retain all versions. [Setting audit](docs/settings_audit.md).
+This hypothesis concerns the current gain change.
 
-Open-loop evaluation replays fixed B commands in calibrated A. The original and FT-only share the uncalibrated replay baseline, since policy weights do not enter this test.
+## 6. Minimum hypothesis test
 
-![Open-loop replay: four tracking errors](results/method_comparison/open_loop.png)
+I compare **Random windows** with **Servo-error coverage**. Both select from the same target training recordings: six from each of the three motions. Each recording contributes one continuous 54-state window, giving **954 transitions per dataset**. Random selection follows fixed task, phase, speed and contact-proxy quotas. Servo-error coverage follows the same quotas but fills sign/magnitude bins separately for each ankle.
 
-Closed-loop errors compare policies with the reference in B over the first second. Early CR7 failures are excluded; [tables](results/method_comparison/metrics.md) give inclusion percentages and full-motion errors.
+Each dataset trains a fresh delta action model with the same architecture and 1,000 updates. Both then fine-tune the same Step source policy for 1,000 updates. Noise and reset fixes are applied. Validation and test recordings are shared and separate from training. Two runs change the calibration and policy training seeds; replay and deployment seeds stay fixed.
 
-![Closed-loop tracking: four tracking errors](results/method_comparison/closed_loop.png)
+![Four replay errors in the minimum test](results/selection_replay.png)
 
-![Closed-loop full-motion tracking success](results/method_comparison/success.png)
+![Four Step tracking errors in the minimum test](results/selection_control.png)
 
-Both tests report $E_{g-mpjpe}$, $E_{mpjpe}$, $E_{acc}$ and root $E_{vel}$. Units are mm, mm/frame² and mm/frame at 50 Hz. Replay uses 24 measured bodies; control uses 27 points. Closed-loop success requires full completion and mean body distance within 0.5 m throughout. [Definitions](docs/evaluation.md).
+| Training run | Random windows success | Servo-error coverage success | Matched FT-only success |
+|---|---:|---:|---:|
+| Run 1 | 0.0% | 0.0% | 5.2% |
+| Run 2 | 20.8% | 33.3% | Not evaluated |
 
-**Reserved extension:** IsaacGym → IsaacLab/Genesis, using the same method comparison. No cross-engine results are available yet.
+FT-only in this test is newly trained with the Run 1 policy seed. It is distinct from the main comparison’s FT-only policy.
 
-<!-- GUI_VISUALIZATIONS_START -->
+Random windows give lower replay error on all four measures in both runs. Thus, **this selector has not supported the calibration hypothesis**. In Run 2, Servo-error coverage gives better Step success and lower first-second tracking errors despite worse replay. This reinforces the need to evaluate replay and control separately.
 
-Author-recorded IsaacGym clips in target B, using seed 8101 and one robot. These are partial recordings, not full-motion evaluations. Starts are not phase-synchronized. A blank panel marks the end of a recording.
+The servo-error contrast is modest, and speed/contact distributions still differ. Two runs cannot establish a stable ranking. Low-error windows were prepared but not trained. Selected windows and final results are retained as CSV files.
 
-**Squat — Left: Original. Right: repaired ASAP delta action.** Both follow the squat and stay upright in these clips. Torso and knee alignment differ during the descent. The aggregate success rates are 44.8% and 91.7%; FT-only remains stronger at 100%.
+**Future work:** test a stronger data contrast and transfer from IsaacGym to IsaacLab or Genesis. No cross-engine results are claimed here.
 
-![Squat: Original and repaired ASAP](results/visualizations/squat.gif)
-
-**CR7 — Left: Original. Right: FT-only.** Both jump and return to standing. Arm alignment with the reference differs around takeoff. Both reach 100% aggregate success; fine-tuning lowers global error but raises root-relative error.
-
-![CR7: Original and FT-only](results/visualizations/cr7.gif)
-
-**Step — Left: Original. Right: passive SysID.** The original leans sharply away from the reference points, while SysID stays upright during the step. Aggregate success is 1.0% versus 100%. The fitted gains are a surrogate, not recovery of the target parameters.
-
-![Step: Original and passive SysID](results/visualizations/step.gif)
-
-<!-- GUI_VISUALIZATIONS_END -->
-
-## 6. Observations that motivate the question
-
-Delta action reduces replay position error from 38.42 to 31.12 mm. After noise and reset repairs, its success is 91.7% for Squat, 94.8% for CR7 and 37.5% for Step. FT-only reaches 100%, 100% and 36.5%. The small Step difference does not establish superiority. Passive SysID reaches 100% on Step.
-
-The repairs do not uniformly improve control. Each main method has one training seed. The two torque datasets also differ, so their contrast does not isolate excitation.
-
-A [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. Clearing it raises Squat and Step success and lowers all four first-second errors in both tasks. CR7 success falls from 99.0% to 94.8%, with mixed error changes. Full-motion errors do not uniformly improve, and successful cohorts change.
-
-The original Step policy succeeds at 90.6% in A and 1.0% in B. It learned the motion, but transfers poorly. CR7 already has 100% B success. [Source check](results/source_quality/metrics.md).
-
-Equal-size trajectory subsets also produce different replay and control results. This motivates the question: **which trajectory properties make learned correction useful, and when do replay gains transfer to humanoid control?** These experiments do not identify one causal feature.
-
-## 7. Minimum hypothesis test
-
-The new test compares Random-N with Servo-coverage-N using the same 18 training parents and 954 transitions. Each group trains its own delta model, then fine-tunes Step with repaired inputs and reset. FT-only shares the first policy training seed. Selection was frozen before learning. [Design](docs/servo_error_experiment.md).
-
-Random has lower error on all four replay measures in both training runs. Its global replay errors are 35.58 and 31.74 mm, compared with 42.93 and 39.80 mm for Servo. This selector has not shown a calibration advantage in these seeds.
-
-Control gives a different picture. Both residual policies have 0% success in the first run; matched FT-only reaches 5.2% and has lower first-second errors. In the repeat, Random reaches 20.8% and Servo reaches 33.3%. Servo also has lower error on all four first-second tracking measures. All trials reach one second. The repeat has no matched FT-only, so it does not establish an added benefit over fine-tuning.
-
-Replay ranking does not predict control ranking in the repeat. Both runs are retained; two seeds cannot establish a reliable ranking. Low-error calibration was skipped by its time gate. [Errors, success and limits](results/servo_error_selection/metrics.md).
-
-Earlier subset experiments improved replay with actuator coverage, but control varied greatly across training seeds. Those policies retain the old noise and reset issues. Their [results](results/content_selection/README.md) remain exploratory.
-
-[Experiment details](docs/experimental_protocol.md) · [Reproduction](docs/reproduction.md) · [Reading guide](docs/reading_guide.md)
+The `ASAP/` folder contains the framework source, installed fixes and method implementations. Model weights and calibration recordings are held in the separate experiment archive. This public repository provides the report, final metrics, settings, reference motions and code.

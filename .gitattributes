@@ -1,2 +1,6 @@
 # Diff context in vendored patch files intentionally includes whitespace.
 *.patch -whitespace
+
+# Preserve whitespace in the upstream framework and exact installed source.
+ASAP/humanoidverse/** -whitespace
+ASAP/isaac_utils/** -whitespace

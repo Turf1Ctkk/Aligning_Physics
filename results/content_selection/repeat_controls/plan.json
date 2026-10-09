@@ -1,8 +1,0 @@
-{
-  "replay_seed": 20305109,
-  "test_records_sha256": "86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491",
-  "selected_uniform_checkpoint": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/uniform/models/delta/model_500.pt",
-  "comparison": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/uniform/comparison.json",
-  "minimum_margin_minutes": 15,
-  "copied_primary_baselines": "/root/autodl-tmp/aligning_physics/content_repeat_20261008/shared_test_baselines.json"
-}

@@ -1,0 +1,214 @@
+- study: methods
+  run: main
+  task: SquatL1
+  method: Original
+  checkpoint_sha256: b58e04d49ce2c46773af4400be83d7d6af44163f1c98ae47e0e2933c57433000
+  training_seed: null
+  checkpoint_file: model_6000.pt
+- study: methods
+  run: main
+  task: SquatL1
+  method: FT-only
+  checkpoint_sha256: f3ff9e2d94c96d9fb9186e47323a96ff53d774ec9cc7a381c19f6ff590c8e165
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: SquatL1
+  method: Delta action
+  checkpoint_sha256: d12778b2a2fcb5b5314877e0237470c54288f5e175e2e06f59589b7259957565
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: SquatL1
+  method: Passive SysID
+  checkpoint_sha256: d07f5144d8599a91e9e1ae6397ae5bccf52af8b7063eaab39380488e4aaf73ec
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: SquatL1
+  method: Active SysID
+  checkpoint_sha256: 6345edd6da301c707590c145ffe3e66f688a511645ac3af38d4f19a19eeafbe3
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: SquatL1
+  method: Common torque
+  checkpoint_sha256: 3cdbe4a5f8626a031612248bc19ec21ceaa123570d41693dbb8b73071c6d438b
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: SquatL1
+  method: Excitation torque
+  checkpoint_sha256: 126e64e28453ed66c72af2f7a75a22ce72324bcda10f2afc3db58e96ae5956ac
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: CR7
+  method: Original
+  checkpoint_sha256: c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7
+  training_seed: null
+  checkpoint_file: model_6000.pt
+- study: methods
+  run: main
+  task: CR7
+  method: FT-only
+  checkpoint_sha256: 91dde0fcf0c5533b6675273ab1df8e7e8e122643a44e8a5da0e3a02307072b9a
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: CR7
+  method: Delta action
+  checkpoint_sha256: ba8a3709b8aaae02d72884f37b43260b5c0dc84837ba14791dd64fd94fc8aed5
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: CR7
+  method: Passive SysID
+  checkpoint_sha256: 48ebec08d431694337743322a6966048396136d40dcbf728d4f0887fba900457
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: CR7
+  method: Active SysID
+  checkpoint_sha256: ac27694d2a78cc69bc00aa79b0cb3b5d71f84562b82569c99eb1ea33ee5ed228
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: CR7
+  method: Common torque
+  checkpoint_sha256: bede4b6f088cb2cbbb38aa11df75a7cdf76cc74bb972711a55f5a19cd87501e4
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: CR7
+  method: Excitation torque
+  checkpoint_sha256: 7406a1408a8a0c4b93328bd4f2746d4f906f50c47e34544f5e6e94148c9c25a6
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: StepFBL1
+  method: Original
+  checkpoint_sha256: 9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b
+  training_seed: null
+  checkpoint_file: model_6000.pt
+- study: methods
+  run: main
+  task: StepFBL1
+  method: FT-only
+  checkpoint_sha256: 09bafbde58fda2f6d233802f3d0350109a3b84e43c95cd73fd1e904e88aa0ea8
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: StepFBL1
+  method: Delta action
+  checkpoint_sha256: cdf63cc6f0d32e4d44f1519568013beb85c45974dbd30f2ba8e4a7acb885a377
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: StepFBL1
+  method: Passive SysID
+  checkpoint_sha256: 34fdcabad90ca8d957b75bea8160e6bc64f7bddfa46a9a234657047a04e0c392
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: StepFBL1
+  method: Active SysID
+  checkpoint_sha256: 1ebc0a54ced877f4abbabf90d597ac097f7adf1d64b00e31a95d22d734193c87
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: StepFBL1
+  method: Common torque
+  checkpoint_sha256: 25aa8a2acd392a20624c12910a695fd9c6666a9a258f0044ae42f6c196cfca89
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: methods
+  run: main
+  task: StepFBL1
+  method: Excitation torque
+  checkpoint_sha256: 7f08c6bf1189144d8c9bab281278cc3a367303d48f2a913642190d93e1346353
+  training_seed: null
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: primary
+  task: StepFBL1
+  method: Random windows
+  checkpoint_sha256: ee3de6241d479600769a7be1621c723b84f620d70c5c53ab8ee59015cfa6821c
+  training_seed: 20310009
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: primary
+  method: Random windows
+  role: calibrator
+  checkpoint_sha256: d0f3d58f4e81586fa1f77f1d71360b41a0b5107dc27a9292770ea05ac3e0f295
+  target_sha256: 86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491
+  record_sha256: 0b8f3ca2633f56e9339b9dee9f3575db637b96e169380e451bb6c25dc455c1b0
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: primary
+  task: StepFBL1
+  method: Servo-error coverage
+  checkpoint_sha256: 686fa2203672458f9f7a4aa1a69f4805d3b1d05b83b1b30d1b1dbffa2955ca62
+  training_seed: 20310009
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: primary
+  method: Servo-error coverage
+  role: calibrator
+  checkpoint_sha256: 4e83573116ecfaf920a5b24e072dc6406f3d898bcaf4d442f655d9143ad1f074
+  target_sha256: 86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491
+  record_sha256: 2648efc8a474f5aa8ddd0fc0f789b5ac10f6966984ec625d2f6e2c937ed11e26
+  checkpoint_file: model_500.pt
+- study: selection
+  run: primary
+  task: StepFBL1
+  method: FT-only
+  checkpoint_sha256: 35a23785c9828b81515b914828e0520f5d63ac302e1345a5c1a41fa275f997fb
+  training_seed: 20310009
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: repeat
+  task: StepFBL1
+  method: Random windows
+  checkpoint_sha256: ed68f332d8bd5e9ff6f27b306280a8c330d8ee8b092199b26ac98c35ffa41f74
+  training_seed: 20310010
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: repeat
+  method: Random windows
+  role: calibrator
+  checkpoint_sha256: 3fb465311034a72e0deee44030c7d55c49242e693d6bf146dae9ff1bd802fb70
+  target_sha256: 86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491
+  record_sha256: 8105505f717c12041e2dff7025b1b4078c45642cb5da8273446552bfa71e4979
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: repeat
+  task: StepFBL1
+  method: Servo-error coverage
+  checkpoint_sha256: 903cbd4243a72f2f76062a95f6ca8a040faa7bd97dd3027f9ed42c17e0bcf188
+  training_seed: 20310010
+  checkpoint_file: model_1000.pt
+- study: selection
+  run: repeat
+  method: Servo-error coverage
+  role: calibrator
+  checkpoint_sha256: d6988422bf0c7b075e9ca4be071c8b453be43eb0243cffefcb5c8ce5f142e68f
+  target_sha256: 86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491
+  record_sha256: bff0d0545b457879297cf6c302f6fcc7a781256c525b7db4cccce79994eeaa82
+  checkpoint_file: model_1000.pt

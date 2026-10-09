@@ -1,0 +1,7 @@
+method,pitch_Kp,roll_Kp
+Source simulation,20,20
+Target simulation,16,16
+Passive SysID,13.012213038091938,10.421220666808713
+Active acquisition: zero,15.787125401332352,15.661969193810005
+Active acquisition: random,16.005788223156262,16.271182537236655
+Active acquisition: active,15.802532179901686,15.585412438846884
