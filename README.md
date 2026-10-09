@@ -52,6 +52,24 @@ Both tests report $E_{g-mpjpe}$, $E_{mpjpe}$, $E_{acc}$ and root $E_{vel}$. Unit
 
 **Reserved extension:** IsaacGym → IsaacLab/Genesis, using the same method comparison. No cross-engine results are available yet.
 
+<!-- GUI_VISUALIZATIONS_START -->
+
+Author-recorded IsaacGym clips in target B, using seed 8101 and one robot. These are partial recordings, not full-motion evaluations. Starts are not phase-synchronized. A blank panel marks the end of a recording.
+
+**Squat — Left: Original. Right: repaired ASAP delta action.** Both follow the squat and stay upright in these clips. Torso and knee alignment differ during the descent. The aggregate success rates are 44.8% and 91.7%; FT-only remains stronger at 100%.
+
+![Squat: Original and repaired ASAP](results/visualizations/squat.gif)
+
+**CR7 — Left: Original. Right: FT-only.** Both jump and return to standing. Arm alignment with the reference differs around takeoff. Both reach 100% aggregate success; fine-tuning lowers global error but raises root-relative error.
+
+![CR7: Original and FT-only](results/visualizations/cr7.gif)
+
+**Step — Left: Original. Right: passive SysID.** The original leans sharply away from the reference points, while SysID stays upright during the step. Aggregate success is 1.0% versus 100%. The fitted gains are a surrogate, not recovery of the target parameters.
+
+![Step: Original and passive SysID](results/visualizations/step.gif)
+
+<!-- GUI_VISUALIZATIONS_END -->
+
 ## 6. Observations that motivate the question
 
 Delta action reduces replay position error from 38.42 to 31.12 mm. After noise and reset repairs, its success is 91.7% for Squat, 94.8% for CR7 and 37.5% for Step. FT-only reaches 100%, 100% and 36.5%. The small Step difference does not establish superiority. Passive SysID reaches 100% on Step.

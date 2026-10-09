@@ -197,7 +197,7 @@
       "remote_motion": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_step_forward_back_level1_filter_amass.pkl"
     }
   ],
-  "status": "Awaiting author-recorded videos; no GIFs or placeholder embeds generated.",
+  "status": "Six author-recorded videos imported as three side-by-side GIFs, with labeled methods and source hashes in provenance.json. Partial clips are not phase-synchronized or full-motion evaluations.",
   "selection_reason": {
     "squat": "Original versus repaired ASAP: transfer improvement; FT-only remains a stronger success baseline.",
     "cr7": "Original versus FT-only: equal success ceiling, global/relative error tradeoff.",

@@ -75,10 +75,12 @@ Six policies are prepared for three small comparisons: Original versus repaired 
 
 The local viewer uses target ankle stiffness 16, seed 8101 and one robot. All six models pass a short local inference check; native viewer creation also passes. This check does not produce new tracking statistics. The prepared local bundle contains `view.sh` and `RECORDING_GUIDE.md`. Press R to start recording and R again to save the video before closing the window.
 
-Once the author records the six videos, import them with:
+The author's six recordings are now displayed as three side-by-side GIFs in the main README. Each GIF labels the left and right policies. They are partial clips with different recording lengths, not phase-synchronized evaluations. The shorter side becomes a blank "Recording ended" panel. [Video and checkpoint hashes](../results/visualizations/provenance.json) retain their sources.
+
+To reproduce the import:
 
 ```bash
 python scripts/import_gui_recordings.py --recordings PATH_TO_RECORDINGS --manifest PATH_TO_BUNDLE/manifest.json
 ```
 
-Expected filenames are `squat_original.mp4`, `squat_asap.mp4`, `cr7_original.mp4`, `cr7_ft.mp4`, `step_original.mp4` and `step_sysid.mp4`. Optional `--starts` accepts a JSON file of start times for clip alignment. The importer creates three comparison GIFs, records video hashes and inserts actual embeds into the main README. Missing videos stop it before any README edit. Review the clips before publishing; they do not replace the aggregate error and success figures.
+Expected filenames are `squat_original.mp4`, `squat_asap.mp4`, `cr7_original.mp4`, `cr7_ft.mp4`, `step_original.mp4` and `step_sysid.mp4`. Optional `--starts` accepts a JSON file of clip start times; it does not establish phase alignment. The importer crops both sides equally and preserves video speed at 20 fps. It records source hashes and inserts three actual GIFs into the README. Missing videos stop it before any README edit. Review the clips before publishing; they do not replace the aggregate error and success figures.

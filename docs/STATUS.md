@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 16:44 Beijing time (UTC+8).
+Updated October 9, 2026, after the author-recorded GUI import.
 
 The authorized servo-error experiment and its physical evaluations are complete. All five Step policies and four calibrators pass independent audits. The manager has exited and the GPU is idle. Low-error calibration was skipped because fewer than 50 minutes remained before the cutoff.
 
@@ -18,6 +18,6 @@ Replay and control rankings differ in the repeat. Calibration and policy trainin
 
 Settings, input/checkpoint hashes, stored starts and physical metrics are verified. Known log limits and nonzero reconstruction floors remain disclosed. No floor is subtracted; terminations are not classified as falls without evidence.
 
-The seven-method report and repairs remain unchanged. Older subset results retain earlier noise/reset defects and remain exploratory. Raw science, checkpoints and failures are preserved. Final cleanup and author visualizations follow review. No further training is queued.
+The seven-method report and repairs remain unchanged. Three author-recorded GUI comparison GIFs are now in the main README, with left/right labels and short observations. They illustrate partial motions; quantitative results are unchanged. Older subset results retain earlier noise/reset defects and remain exploratory. Raw science, checkpoints and failures are preserved. Final cleanup follows review. No further training is queued.
 
 GPU cutoff: October 9 at 17:00 Beijing. Submission deadline: October 10 at 04:59 Beijing.

@@ -1,0 +1,115 @@
+{
+  "scope": "Author-recorded local GUI examples, not aggregate evaluation or a selected trial ranking.",
+  "viewer": {
+    "domain": "B",
+    "ankle_kp": 16,
+    "seed": 8101,
+    "num_envs": 1
+  },
+  "alignment": "Same elapsed recording time, not simulator-phase synchronization.",
+  "editing": "Fixed spatial crop within each pair; original video speed, sampled to 20 fps. A blank end card replaces an ended recording; no motion frames are synthesized or frozen.",
+  "clips": [
+    {
+      "task": "SquatL1",
+      "gif": "squat.gif",
+      "seconds": 4.16,
+      "gif_sha256": "75d41b66c2ac96345d22b2815938a7d8ba87bece82f0564b186fa17e22a42a02",
+      "gif_bytes": 9414476,
+      "crop_xyxy": [
+        400,
+        150,
+        1250,
+        900
+      ],
+      "output_fps": 20,
+      "sources": [
+        {
+          "key": "squat_original",
+          "video_sha256": "b475a09c931f6c0de6d3239b881de708a4dc57af0f877c37e06dd9dfb0bace0b",
+          "start_s": 0.0,
+          "source_fps": 50.0,
+          "source_frames": 208,
+          "source_seconds": 4.16,
+          "checkpoint_sha256": "b58e04d49ce2c46773af4400be83d7d6af44163f1c98ae47e0e2933c57433000"
+        },
+        {
+          "key": "squat_asap",
+          "video_sha256": "7e4dc4370543eba7e16e46d69666c0505b6fc6a16ccf57ff234677a6b5e8da33",
+          "start_s": 0.0,
+          "source_fps": 50.0,
+          "source_frames": 179,
+          "source_seconds": 3.58,
+          "checkpoint_sha256": "d12778b2a2fcb5b5314877e0237470c54288f5e175e2e06f59589b7259957565"
+        }
+      ]
+    },
+    {
+      "task": "CR7",
+      "gif": "cr7.gif",
+      "seconds": 2.48,
+      "gif_sha256": "3c8717b1a40fb98a86865b1ef64ea56de3033657fd85f6d3b4be6b82da812f35",
+      "gif_bytes": 6110408,
+      "crop_xyxy": [
+        400,
+        0,
+        1250,
+        900
+      ],
+      "output_fps": 20,
+      "sources": [
+        {
+          "key": "cr7_original",
+          "video_sha256": "1fb7c7c6411b1538205d72900322516f2aee69ad118bdbcb6d8af6d41573d1a0",
+          "start_s": 0.0,
+          "source_fps": 50.0,
+          "source_frames": 124,
+          "source_seconds": 2.48,
+          "checkpoint_sha256": "c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7"
+        },
+        {
+          "key": "cr7_ft",
+          "video_sha256": "264caacacc719d0cabb53d714cb3a5b96a8f5606fd28d933ac6d3dfee745b126",
+          "start_s": 0.0,
+          "source_fps": 50.0,
+          "source_frames": 122,
+          "source_seconds": 2.44,
+          "checkpoint_sha256": "91dde0fcf0c5533b6675273ab1df8e7e8e122643a44e8a5da0e3a02307072b9a"
+        }
+      ]
+    },
+    {
+      "task": "StepFBL1",
+      "gif": "step.gif",
+      "seconds": 3.58,
+      "gif_sha256": "97ab3dc202938094c943c1b637f80a02b3edf2aae497a404e20c5445a95b3256",
+      "gif_bytes": 6961787,
+      "crop_xyxy": [
+        400,
+        150,
+        1250,
+        900
+      ],
+      "output_fps": 20,
+      "sources": [
+        {
+          "key": "step_original",
+          "video_sha256": "c625ec214b00aa6960ffb294986081a668b57949d5fc6e40b3b1974bcf11b0de",
+          "start_s": 0.0,
+          "source_fps": 50.0,
+          "source_frames": 89,
+          "source_seconds": 1.78,
+          "checkpoint_sha256": "9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b"
+        },
+        {
+          "key": "step_sysid",
+          "video_sha256": "a05f7fee6500ec541638df3457a33578ddb09a7becc583dd544fc5381ce5f05e",
+          "start_s": 0.0,
+          "source_fps": 50.0,
+          "source_frames": 179,
+          "source_seconds": 3.58,
+          "checkpoint_sha256": "34fdcabad90ca8d957b75bea8160e6bc64f7bddfa46a9a234657047a04e0c392"
+        }
+      ]
+    }
+  ]
+}
