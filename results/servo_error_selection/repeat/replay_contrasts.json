@@ -1,0 +1,10 @@
+{
+  "contrast": "Servo minus Random at the second shared training seed",
+  "metrics": {
+    "global_position_mm": 8.053617073863215,
+    "root_relative_position_mm": 4.200698227626948,
+    "body_acceleration_mm_frame2": 0.0354758973246615,
+    "root_velocity_mm_frame": 0.6676178779620119
+  },
+  "scope": "Calibration only; control is separate; no population ranking"
+}

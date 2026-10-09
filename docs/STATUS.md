@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 15:44 Beijing time (UTC+8).
+Updated October 9, 2026, 16:13 Beijing time (UTC+8).
 
 The seven-method comparisons, paper metrics, source checks, and three-task noise/reset repairs are complete. Main charts use the preset repaired policies. Earlier results remain available.
 
@@ -12,7 +12,7 @@ Second-seed Random is also complete and audited. Success is 20.8%, completion is
 
 The runs use identical selected data. Calibration and policy training seeds change together; replay and deployment seeds stay fixed. The repeat has no matched FT-only. Both outcomes are retained, without selecting a better seed.
 
-Second-seed Servo calibration began at 15:40 Beijing and is the only GPU stage. Its learned and control results remain pending. Low-error calibration runs only if its preset time gate permits. No windows or settings change after outcomes.
+Second-seed Servo calibration is complete and independently audited. Validation selects update 1,000. Replay global/relative errors are 39.80/21.17 mm, acceleration is 0.846 mm/frame², and root velocity is 3.487 mm/frame. All replays complete. Random has lower replay error on all four measures in both runs; the proposed selector has not shown a calibration advantage in these seeds. Servo Step fine-tuning began at 16:09 Beijing and is the only GPU stage. Its control result remains pending. Low-error calibration runs only if its preset time gate permits. No windows or settings change after outcomes.
 
 ## Scope and deadlines
 

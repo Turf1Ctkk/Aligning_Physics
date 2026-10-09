@@ -47,6 +47,13 @@ def repeat_report(root):
         lines.append('| '+name+' | '+' | '.join('%.3f'%metrics['metrics'][k] for k in fields)+' | %.1f |'%metrics['completion_pct'])
     if pending:
         lines+=['','Pending calibration: '+', '.join(pending)+'. No second-seed selector contrast is available yet.']
+    if len(rows)==3:
+        differences={k:rows[2][1]['paper_metrics']['metrics'][k]-rows[1][1]['paper_metrics']['metrics'][k] for k in fields}
+        (root/'repeat/replay_contrasts.json').write_text(json.dumps({'contrast':'Servo minus Random at the second shared training seed','metrics':differences,'scope':'Calibration only; control is separate; no population ranking'},indent=2)+'\n')
+        lines+=['','Servo minus Random at the second training seed. Positive values mean higher error.','',
+            '| E_g-mpjpe | E_mpjpe | E_acc | E_vel |','|---:|---:|---:|---:|',
+            '| '+' | '.join('%+.3f'%differences[k] for k in fields)+' |',
+            '', 'Random has lower error on all four measures in both completed calibration runs. This selector has not shown a replay advantage in these two seeds. The coverage contrast is modest, and selection still changes contact and initialization conditions. These results do not rule out other data-selection rules.']
     lines+=['','| Group | Validation at 500 (mm) | Validation at 1,000 (mm) | Selected update |','|---|---:|---:|---:|']
     for name,selection,work in selections:
         values=[read(work/('delta_%d_paper_metrics.json'%i))['paper_metrics']['metrics']['global_position_mm'] for i in (500,1000)]

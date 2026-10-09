@@ -1,4 +1,4 @@
 {
   "status": "running",
-  "stage": "repeat/servo/calibration_train"
+  "stage": "repeat/servo/policy_train"
 }

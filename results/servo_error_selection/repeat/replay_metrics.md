@@ -10,12 +10,20 @@ Position is in mm, acceleration in mm/frame² and root velocity in mm/frame at 5
 |---|---:|---:|---:|---:|---:|
 | Shared source20 zero | 39.774 | 21.043 | 0.799 | 3.521 | 100.0 |
 | Random-N | 31.744 | 16.967 | 0.811 | 2.819 | 100.0 |
+| Servo-coverage-N | 39.797 | 21.167 | 0.846 | 3.487 | 100.0 |
 
-Pending calibration: Servo-coverage-N. No second-seed selector contrast is available yet.
+Servo minus Random at the second training seed. Positive values mean higher error.
+
+| E_g-mpjpe | E_mpjpe | E_acc | E_vel |
+|---:|---:|---:|---:|
+| +8.054 | +4.201 | +0.035 | +0.668 |
+
+Random has lower error on all four measures in both completed calibration runs. This selector has not shown a replay advantage in these two seeds. The coverage contrast is modest, and selection still changes contact and initialization conditions. These results do not rule out other data-selection rules.
 
 | Group | Validation at 500 (mm) | Validation at 1,000 (mm) | Selected update |
 |---|---:|---:|---:|
 | Random-N | 48.108 | 42.053 | 1000 |
+| Servo-coverage-N | 95.602 | 52.236 | 1000 |
 
 Both validation candidates are retained. Test outcomes do not select checkpoints. Actual case identities, hashes and metric aggregates were recomputed from physical records. Learned and shared-zero starts, actions and clocks match exactly. No reconstruction floor is subtracted.
 
@@ -39,3 +47,15 @@ Bins are fixed from training. Inclusion is the share of planned scored samples f
 | Random-N | Right roll | Small | 36.7 | 25.290 | 0.06501 | 2.70241 |
 | Random-N | Right roll | Medium | 36.6 | 22.221 | 0.02534 | 2.01176 |
 | Random-N | Right roll | Large | 26.7 | 40.358 | 0.03451 | 2.48726 |
+| Servo-coverage-N | Left pitch | Small | 30.9 | 43.897 | 0.12009 | 3.95977 |
+| Servo-coverage-N | Left pitch | Medium | 36.3 | 42.811 | 0.15745 | 1.79474 |
+| Servo-coverage-N | Left pitch | Large | 32.8 | 47.567 | 0.13122 | 2.71353 |
+| Servo-coverage-N | Left roll | Small | 35.6 | 46.248 | 0.07545 | 3.62826 |
+| Servo-coverage-N | Left roll | Medium | 32.1 | 36.108 | 0.05195 | 3.04532 |
+| Servo-coverage-N | Left roll | Large | 15.9 | 61.119 | 0.06987 | 6.54256 |
+| Servo-coverage-N | Right pitch | Small | 43.8 | 45.096 | 0.17375 | 3.67191 |
+| Servo-coverage-N | Right pitch | Medium | 29.3 | 48.230 | 0.14632 | 2.99515 |
+| Servo-coverage-N | Right pitch | Large | 23.9 | 30.399 | 0.11796 | 2.09295 |
+| Servo-coverage-N | Right roll | Small | 36.7 | 30.926 | 0.06667 | 1.64831 |
+| Servo-coverage-N | Right roll | Medium | 36.6 | 29.673 | 0.03091 | 1.39001 |
+| Servo-coverage-N | Right roll | Large | 26.7 | 60.459 | 0.02450 | 2.65646 |
