@@ -50,6 +50,8 @@ The first run uses calibration seed 20309009 and policy seed 20310009. A second 
 
 The replay helper reuses the root same16 log and command names. The test check replaces these names after the selected-training check. Split-specific recordings, reports and configs remain separate. No physical check is repeated to hide this limit.
 
+Completed deployment logs also contain an optional keyboard-listener NameError. The recorder finishes and the main process returns successfully. Independent audits recompute the metrics from actual records. Log hashes and markers are preserved; no physics run is discarded or repeated.
+
 ## Interpretation
 
 Better replay with better Step tracking supports both stages in this setting. Better replay without better tracking supports calibration alone. Similar replay means this selector and budget did not show an advantage. A weaker Low-error result may suggest that response information matters, without proving that Servo-coverage improves on random selection.

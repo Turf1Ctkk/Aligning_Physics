@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 13:42 Beijing time (UTC+8).
+Updated October 9, 2026, 14:10 Beijing time (UTC+8).
 
 The seven-method comparisons, fresh paper metrics, source checks, and three-task noise and reset repairs are complete. Main charts use all three preset repaired delta policies. Earlier records remain available.
 
@@ -16,7 +16,9 @@ Random Step training and evaluation are complete and independently audited. Succ
 
 Servo calibration is complete and audited. Validation selected update 500. Test global/relative errors are 42.93/23.32 mm, acceleration is 0.847 mm/frame² and root velocity is 3.824 mm/frame. All four exceed Random and shared zero correction in this run. [Calibration comparison](../results/servo_error_selection/primary/servo/replay_metrics.md).
 
-Servo Step training began at 13:31 Beijing and is the only GPU stage. The new FT-only policy, paired repeat and Low-error calibration remain pending. Control transfer and the matched FT-only contrast cannot yet be assessed. Training-window reconstruction errors remain unmodified; no floor is subtracted.
+Servo Step evaluation is complete and audited. Success is 0%, with mean survival 1.73 seconds. All trials reach one second. Global/relative errors are 107.40/45.58 mm, acceleration is 1.923 mm/frame² and root velocity is 6.170 mm/frame. Relative error is lower than Random; the other errors are higher. Neither arm completes the motion.
+
+The new matched-seed FT-only started at 14:05 Beijing and is the only GPU stage. Its results, the paired repeat and Low-error calibration remain pending. Training-window reconstruction errors remain unmodified; no floor is subtracted.
 
 All four errors and closed-loop success will be reported. Audits check actual settings, fixed checkpoints, stored starts and recomputed metrics. Missing or failed audits stop downstream work. Partial runs are not silently resumed.
 

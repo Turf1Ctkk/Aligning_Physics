@@ -25,7 +25,7 @@ def main():
     a = p.parse_args()
     a.output.mkdir(parents=True, exist_ok=True)
     plan, selection = load(a.root / 'queue_plan.json'), load(a.root / 'selection_manifest.json')
-    rows, pending = {}, []
+    rows, pending, contrasts = {}, [], {}
     for run in ('primary', 'repeat'):
         run_status = a.root / run / 'status.json'
         if run_status.exists() and load(run_status)['status'] == 'skipped':
@@ -100,6 +100,25 @@ def main():
         bars=ax.bar([NAMES[x] for x in labels],[arms[x]['control']['paper_success_pct'] for x in labels],color=['#3476A8','#D49A35','#6D9671'][:len(labels)])
         ax.bar_label(bars,fmt='%.1f%%');ax.set_ylim(0,115);ax.set_ylabel('Step full-motion success (%)')
         fig.tight_layout();fig.savefig(a.output/(run+'_success.png'),dpi=180);plt.close(fig)
+        lines += ['', f'![{run.capitalize()} four-error comparison]({run}_errors.png)', '',
+            f'![{run.capitalize()} Step success]({run}_success.png)', '']
+        if {'random', 'servo'} <= set(arms):
+            contrast = {}
+            for scope in ('replay', 'control'):
+                def metrics(arm):
+                    item = arms[arm]
+                    return (item['replay']['paper_metrics']['metrics'] if scope == 'replay'
+                            else item['control']['prefix_metrics']['1.0']['metrics'])
+                random, servo = metrics('random'), metrics('servo')
+                contrast[scope] = {k: servo[k] - random[k] if servo and random else None for k in FIELDS}
+            contrast['success_percentage_points'] = arms['servo']['control']['paper_success_pct'] - arms['random']['control']['paper_success_pct']
+            contrast['mean_survival_seconds'] = arms['servo']['control']['mean_survival_s'] - arms['random']['control']['mean_survival_s']
+            contrasts[run] = contrast
+            lines += ['', 'Servo minus Random at the same planned training seed. Positive error differences mean higher error.', '',
+                '| Endpoint | E_g-mpjpe | E_mpjpe | E_acc | E_vel |', '|---|---:|---:|---:|---:|']
+            for scope, name in (('replay', 'Replay'), ('control', 'Step first second')):
+                lines += ['| ' + name + ' | ' + ' | '.join(f'{contrast[scope][k]:+.3f}' if contrast[scope][k] is not None else 'N/A' for k in FIELDS) + ' |']
+            lines += ['', f'Success changes by {contrast["success_percentage_points"]:+.1f} percentage points; mean survival changes by {contrast["mean_survival_seconds"]:+.3f} seconds. This is one whole-training-run contrast, not an isolated feature effect.', '']
     strata={run:{arm:item['replay']['stratified'] for arm,item in arms.items() if 'replay' in item} for run,arms in rows.items()}
     supplemental = {}
     low_status = a.root / 'low_error/status.json'
@@ -148,6 +167,7 @@ def main():
         ft_text + ' The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.', '']
     (a.output/'metrics.md').write_text('\n'.join(lines).rstrip()+'\n')
     (a.output/'chart_data.json').write_text(json.dumps({'runs':rows,'pending':pending,'selection':selection,'supplemental':supplemental},indent=2)+'\n')
+    (a.output/'paired_contrasts.json').write_text(json.dumps(contrasts,indent=2)+'\n')
     print('Reported completed audited arms; pending/skipped:',pending)
 
 

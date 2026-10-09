@@ -1,4 +1,4 @@
 {
   "status": "running",
-  "stage": "primary/servo/policy_train"
+  "stage": "primary/ft_only/policy_train"
 }
