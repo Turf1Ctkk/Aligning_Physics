@@ -36,7 +36,7 @@ I test G1 in IsaacGym: ankle stiffness is 20 in source A and 16 in target B. Oth
 
 I compare FT-only, ASAP delta action, two SysID variants and two torque corrections. Each policy gets 1,000 further updates in A and runs alone in B. SPI-Active and UAN ideas are adapted to G1. No state-transition residual is implemented. [Methods](docs/methods.md).
 
-**Delta uses the completed input-noise repair on all three tasks.** Data, calibrator, source checkpoint, seed and update budget stay fixed. Other methods are unchanged. Both delta versions remain in the [before/after report](results/noise_repair/metrics.md). [Setting audit](docs/settings_audit.md).
+**Delta uses the completed noise and reset repairs on all three tasks.** Data, calibrator, source checkpoint, seed and update budget stay fixed. Other methods are unchanged. The [noise comparison](results/noise_repair/metrics.md) and [reset comparison](results/reset_repair/metrics.md) retain all versions. [Setting audit](docs/settings_audit.md).
 
 Open-loop evaluation replays fixed B commands in calibrated A. The original and FT-only share the uncalibrated replay baseline, since policy weights do not enter this test.
 
@@ -54,11 +54,11 @@ Both tests report $E_{g-mpjpe}$, $E_{mpjpe}$, $E_{acc}$ and root $E_{vel}$. Unit
 
 ## 6. Observations that motivate the question
 
-Delta action reduces replay position error from 38.42 to 31.12 mm. After noise repair, its success is 70.8% for Squat, 99.0% for CR7 and 25.0% for Step. None exceeds FT-only. Other calibration methods help Step; passive SysID reaches 100%, compared with FT-only's 36.5%.
+Delta action reduces replay position error from 38.42 to 31.12 mm. After noise and reset repairs, its success is 91.7% for Squat, 94.8% for CR7 and 37.5% for Step. FT-only reaches 100%, 100% and 36.5%. The small Step difference does not establish superiority. Passive SysID reaches 100% on Step.
 
-Noise repair improves CR7 success but reduces Squat and Step success. This finding does not establish the cause of the remaining failures. Each main method has one training seed. The two torque datasets also differ, so their contrast does not isolate excitation.
+The repairs do not uniformly improve control. Each main method has one training seed. The two torque datasets also differ, so their contrast does not isolate excitation.
 
-A further [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. Clearing it raises Squat success from 70.8% to 91.7% and Step from 25.0% to 37.5%. All four first-second errors decrease in both tasks. Full-motion errors do not uniformly improve, and successful cohorts change. CR7 is pending. The charts above still use noise-only repair. [Reset comparison](results/reset_repair/metrics.md).
+A [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. Clearing it raises Squat and Step success and lowers all four first-second errors in both tasks. CR7 success falls from 99.0% to 94.8%, with mixed error changes. Full-motion errors do not uniformly improve, and successful cohorts change.
 
 The original Step policy succeeds at 90.6% in A and 1.0% in B. It learned the motion, but transfers poorly. CR7 already has 100% B success. [Source check](results/source_quality/metrics.md).
 

@@ -1,6 +1,6 @@
 # Experimental protocol
 
-The main method comparison uses the completed two-channel input-noise repair for delta policies on all three tasks. Calibration models and other policies stay unchanged. The data-selection policies retain the original noise settings. Both delta versions are kept in the [repair report](../results/noise_repair/metrics.md).
+The main method comparison uses the completed noise and reset repairs for delta policies on all three tasks. Calibration models and other policies stay unchanged. The data-selection policies retain both issues. All delta versions are kept in the [noise report](../results/noise_repair/metrics.md) and [reset report](../results/reset_repair/metrics.md).
 
 ## Controlled mismatch
 
@@ -32,7 +32,7 @@ The three rules use the same 18 training parents, six per task. Each selects one
 
 Each rule receives the same action model, sampler and 1,000 calibration plus 1,000 policy updates. The manifest was published before outcomes and remains unchanged. Same-domain replay errors are reported without subtraction or window replacement.
 
-Both seeds are complete. The second uses byte-identical datasets with new training seeds. Replay evaluation seed also changes, so its new zero-correction controls are measured separately. Deployment seeds stay fixed. Both runs are reported, without selecting a favorable seed. These completed action-policy runs contain the frozen-delta noise mismatch found in the [setting audit](settings_audit.md).
+Both seeds are complete. The second uses byte-identical datasets with new training seeds. Replay evaluation seed also changes, so its new zero-correction controls are measured separately. Deployment seeds stay fixed. Both runs are reported, without selecting a favorable seed. These action-policy runs retain the noise and reset issues in the [setting audit](settings_audit.md).
 
 This is retrospective selection from an existing pool. Equal selected transition counts do not mean equal total acquisition cost. Motion phase, contact and initialization may change with the selected window. The test compares selection rules, not the causal effect of a single feature.
 

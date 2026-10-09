@@ -104,6 +104,110 @@
         }
       }
     },
+    "CR7": {
+      "before": {
+        "total_trials": 96,
+        "complete_trials": 95,
+        "paper_success_trials": 95,
+        "completion_pct": 98.95833333333333,
+        "paper_success_pct": 98.95833333333333,
+        "mean_survival_s": 3.898750000000001,
+        "all_trial_available_metrics": {
+          "global_position_mm": 118.54804212221752,
+          "root_relative_position_mm": 59.14480296098418,
+          "body_velocity_mm_frame": 7.001758222252192,
+          "root_velocity_mm_frame": 5.691090921788977,
+          "body_acceleration_mm_frame2": 3.107365959243326
+        },
+        "completed_trial_metrics": {
+          "global_position_mm": 116.90321917224233,
+          "root_relative_position_mm": 58.46377503021231,
+          "body_velocity_mm_frame": 6.857019446506867,
+          "root_velocity_mm_frame": 5.589502148077489,
+          "body_acceleration_mm_frame2": 3.0859231853897664
+        },
+        "paper_successful_trial_metrics": {
+          "global_position_mm": 116.90321917224233,
+          "root_relative_position_mm": 58.46377503021231,
+          "body_velocity_mm_frame": 6.857019446506867,
+          "root_velocity_mm_frame": 5.589502148077489,
+          "body_acceleration_mm_frame2": 3.0859231853897664
+        },
+        "prefix_metrics": {
+          "1.0": {
+            "valid_trials": 96,
+            "metrics": {
+              "global_position_mm": 123.66066182891439,
+              "root_relative_position_mm": 51.824939697581414,
+              "body_velocity_mm_frame": 6.234035115784477,
+              "root_velocity_mm_frame": 5.047631939864343,
+              "body_acceleration_mm_frame2": 2.633987127810109
+            }
+          },
+          "3.0": {
+            "valid_trials": 95,
+            "metrics": {
+              "global_position_mm": 116.47804154466073,
+              "root_relative_position_mm": 57.88452141861219,
+              "body_velocity_mm_frame": 8.684031380105376,
+              "root_velocity_mm_frame": 7.1243989306280415,
+              "body_acceleration_mm_frame2": 3.8142006580956154
+            }
+          }
+        }
+      },
+      "after": {
+        "total_trials": 96,
+        "complete_trials": 93,
+        "paper_success_trials": 91,
+        "completion_pct": 96.875,
+        "paper_success_pct": 94.79166666666667,
+        "mean_survival_s": 3.846250000000001,
+        "all_trial_available_metrics": {
+          "global_position_mm": 134.64238819111912,
+          "root_relative_position_mm": 58.03675636707598,
+          "body_velocity_mm_frame": 7.6557043833684375,
+          "root_velocity_mm_frame": 6.414114687056681,
+          "body_acceleration_mm_frame2": 3.2179287503211
+        },
+        "completed_trial_metrics": {
+          "global_position_mm": 130.31206708504,
+          "root_relative_position_mm": 56.661360484064915,
+          "body_velocity_mm_frame": 7.355880539090302,
+          "root_velocity_mm_frame": 6.097412122666163,
+          "body_acceleration_mm_frame2": 3.187136961126462
+        },
+        "paper_successful_trial_metrics": {
+          "global_position_mm": 124.8161633664754,
+          "root_relative_position_mm": 56.39281868101561,
+          "body_velocity_mm_frame": 7.266721819969237,
+          "root_velocity_mm_frame": 6.030930773464738,
+          "body_acceleration_mm_frame2": 3.1610940008384163
+        },
+        "prefix_metrics": {
+          "1.0": {
+            "valid_trials": 96,
+            "metrics": {
+              "global_position_mm": 125.6163316512683,
+              "root_relative_position_mm": 47.79539959598025,
+              "body_velocity_mm_frame": 6.051245762321763,
+              "root_velocity_mm_frame": 4.9450055081453455,
+              "body_acceleration_mm_frame2": 2.7075084672133216
+            }
+          },
+          "3.0": {
+            "valid_trials": 93,
+            "metrics": {
+              "global_position_mm": 126.55921483965864,
+              "root_relative_position_mm": 58.091246698711956,
+              "body_velocity_mm_frame": 9.311544068461632,
+              "root_velocity_mm_frame": 7.75440264755636,
+              "body_acceleration_mm_frame2": 3.9446841131887678
+            }
+          }
+        }
+      }
+    },
     "StepFBL1": {
       "before": {
         "total_trials": 96,
@@ -209,7 +313,5 @@
       }
     }
   },
-  "pending_tasks": [
-    "CR7"
-  ]
+  "pending_tasks": []
 }

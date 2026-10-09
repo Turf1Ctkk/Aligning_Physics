@@ -73,7 +73,11 @@ def main():
         if not noise_history.exists():
             old_chart = json.loads(previous.read_text())
             old_sources = old_chart.get('repaired_delta_sources', {})
-            if set(old_sources) != set(TASKS) or any('/noise_repair/' not in v['checkpoint'] for v in old_sources.values()):
+            expected_noise = {}
+            for task in TASKS:
+                saved = json.loads((ROOT / 'results/noise_repair' / task / 'comparison.json').read_text())
+                expected_noise[task] = {'checkpoint': saved['checkpoint'], 'sha256': saved['checkpoint_sha256']}
+            if old_chart.get('repair_kind') not in (None, 'noise') or old_sources != expected_noise:
                 raise ValueError('Cannot archive the previous noise-only comparison')
             noise_history.write_text(previous.read_text())
     fig, axes = plt.subplots(2, 2, figsize=(12, 7.4))

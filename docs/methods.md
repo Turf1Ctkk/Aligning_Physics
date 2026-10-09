@@ -1,6 +1,6 @@
 # Methods implemented in ASAP
 
-All methods use G1 in IsaacGym. Source A has ankle stiffness 20; target B has stiffness 16. The methods learn from B records, calibrate A, and fine-tune a motion policy in A. Deployment uses the policy alone in B. Main delta results use the completed height/foot-force noise repair. The [setting audit](settings_audit.md) and [before/after report](../results/noise_repair/metrics.md) retain its scope. The subset policy runs still use the old noise settings.
+All methods use G1 in IsaacGym. Source A has ankle stiffness 20; target B has stiffness 16. The methods learn from B records, calibrate A, and fine-tune a motion policy in A. Deployment uses the policy alone in B. Main delta results use the completed noise and reset repairs. The [setting audit](settings_audit.md), [noise comparison](../results/noise_repair/metrics.md) and [reset comparison](../results/reset_repair/metrics.md) retain their scope. The subset policy runs still have both issues.
 
 ## Delta action
 

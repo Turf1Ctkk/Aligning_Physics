@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 08:40 Beijing time (UTC+8).
+Updated October 9, 2026, 09:15 Beijing time (UTC+8).
 
 ## Completed
 
@@ -15,16 +15,17 @@ Updated October 9, 2026, 08:40 Beijing time (UTC+8).
 - Source-A checks of original and FT-only policies on all three tasks, with saved settings and actual metrics audited.
 - Four-error method comparison charts and a separate closed-loop success chart.
 - Three-task frozen-delta input-noise repair, with all training settings checked and all new trial metrics recomputed.
+- Three-task reset repair, with the same independent checks and all new trial metrics recomputed.
 
 ## Server queue
 
 The previous queues and input-noise repair are complete. That repair changes only height and foot-force noise. Success changes from 89.6% to 70.8% for Squat, 91.7% to 99.0% for CR7, and 79.2% to 25.0% for Step. [Before/after results](../results/noise_repair/metrics.md).
 
-The reset-only Squat and Step comparisons are complete and independently audited. Success rises from 70.8% to 91.7% for Squat and from 25.0% to 37.5% for Step. All four first-second errors decrease in both tasks. Full-motion errors do not uniformly improve, and successful cohorts change. [Results](../results/reset_repair/metrics.md).
+The reset-only comparison is complete and independently audited on all three tasks. Success rises from 70.8% to 91.7% for Squat and from 25.0% to 37.5% for Step. All four first-second errors decrease in both tasks. CR7 success falls from 99.0% to 94.8%, with mixed error changes. Full-motion errors do not uniformly improve, and successful cohorts change. [Results](../results/reset_repair/metrics.md).
 
-CR7 is training and is the only GPU job. Every run starts from its original model_6000 with the same frozen delta model_500, seed and 1,000-update budget. Both noise channels remain zero. Rewards, curricula and optimizer settings stay fixed. Each final policy receives the same three-seed B evaluation and independent metric audit.
+The authorized queues are complete. No GPU job remains. Every repair started from its original model_6000 with the same frozen delta model_500, seed and 1,000-update budget. Rewards, curricula and optimizer settings stayed fixed. No further training is scheduled.
 
-Main comparison charts still use the noise-only delta policies on all three tasks. Reset-repaired policies will replace them together after all tasks pass their audits. Other methods and open-loop calibration results stay unchanged. Historical raw reports and chart data remain available.
+Main charts use all three fixed-final noise-and-reset repaired delta policies. No version was chosen by test performance. Other policies and open-loop calibration results stay unchanged. Original and noise-only chart data remain available. The heartbeat is paused after publication.
 
 Policy and replay evaluations report position, velocity and acceleration errors. Completion and tracking success are separate percentages. Policy evaluation uses 27 points; replay uses the 24 bodies measured in the target recordings.
 

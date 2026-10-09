@@ -15,7 +15,7 @@ The `results` folders hold measured evidence. Their short reports explain the ex
 
 The original 27-point policy metrics are in [Squat](../results/paper_evaluation/SquatL1.md), [CR7](../results/paper_evaluation/CR7.md) and [Step](../results/paper_evaluation/StepFBL1.md). The [calibration replay table](../results/paper_replay/metrics.md) reports 24-body errors. The [data-content report](../results/content_selection/README.md) compares both training runs separately.
 
-The [method comparison](../results/method_comparison/metrics.md) collects the four requested errors and closed-loop success. It uses all three repaired delta policies, with other methods unchanged. The [repair report](../results/noise_repair/metrics.md) preserves before/after results. The [source check](../results/source_quality/metrics.md) compares original and FT-only policies in A and B.
+The [method comparison](../results/method_comparison/metrics.md) collects the four requested errors and closed-loop success. It uses all three noise-and-reset repaired delta policies, with other methods unchanged. The [noise report](../results/noise_repair/metrics.md) and [reset report](../results/reset_repair/metrics.md) preserve before/after results. The [source check](../results/source_quality/metrics.md) compares original and FT-only policies in A and B.
 
 The `overlays` folder contains code installed into ASAP. `scripts` contains analysis and reporting tools. Large checkpoints and recordings stay on the experiment server. Historical records are retained while experiments finish; a final cleanup will reduce the repository further.
 

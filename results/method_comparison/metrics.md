@@ -1,6 +1,6 @@
 # Method comparison
 
-Delta uses the preset height/foot-force noise repair on all three tasks. Other policies and all calibration models are unchanged. [Before/after results](../noise_repair/metrics.md) retain both versions. No test-based checkpoint choice was made.
+Delta uses the preset noise and reset repairs on all three tasks. Other policies and calibration models are unchanged. [Reset comparison](../reset_repair/metrics.md) retains the previous noise-only policies. All fixed-final repaired models are used regardless of outcome.
 
 ## Open-loop replay
 
@@ -28,7 +28,7 @@ Errors use the first second. Success uses the complete reference horizon. E_vel 
 |---|---:|---:|---:|---:|---:|---:|
 | Original | 44.8 | 100.0 | 94.897 | 36.394 | 1.711 | 3.499 |
 | FT only | 100.0 | 100.0 | 92.837 | 34.944 | 1.707 | 3.455 |
-| Delta action | 70.8 | 100.0 | 92.686 | 38.004 | 1.758 | 3.739 |
+| Delta action | 91.7 | 100.0 | 91.117 | 34.342 | 1.705 | 3.274 |
 | Passive SysID | 96.9 | 100.0 | 90.554 | 35.141 | 1.755 | 3.269 |
 | Active SysID | 95.8 | 100.0 | 93.118 | 38.797 | 1.732 | 3.189 |
 | Common torque | 100.0 | 100.0 | 92.499 | 37.158 | 1.716 | 3.736 |
@@ -40,7 +40,7 @@ Full-motion errors below use successful trials only. A small error with low incl
 |---|---:|---:|---:|---:|---:|
 | Original | 44.8 | 126.136 | 50.619 | 0.828 | 2.801 |
 | FT only | 100.0 | 93.250 | 43.279 | 0.795 | 2.591 |
-| Delta action | 70.8 | 102.929 | 47.527 | 0.807 | 2.527 |
+| Delta action | 91.7 | 104.817 | 55.783 | 0.797 | 2.772 |
 | Passive SysID | 96.9 | 94.999 | 43.275 | 0.824 | 2.699 |
 | Active SysID | 95.8 | 106.547 | 44.631 | 0.807 | 2.619 |
 | Common torque | 100.0 | 105.282 | 44.938 | 0.809 | 2.669 |
@@ -54,7 +54,7 @@ Errors use the first second. Success uses the complete reference horizon. E_vel 
 |---|---:|---:|---:|---:|---:|---:|
 | Original | 100.0 | 100.0 | 123.467 | 43.260 | 2.662 | 5.277 |
 | FT only | 100.0 | 100.0 | 119.983 | 53.270 | 2.569 | 5.336 |
-| Delta action | 99.0 | 100.0 | 123.661 | 51.825 | 2.634 | 5.048 |
+| Delta action | 94.8 | 100.0 | 125.616 | 47.795 | 2.708 | 4.945 |
 | Passive SysID | 79.2 | 95.8 | 129.575 | 56.101 | 2.671 | 6.074 |
 | Active SysID | 89.6 | 95.8 | 123.418 | 49.294 | 2.690 | 5.681 |
 | Common torque | 67.7 | 89.6 | 136.243 | 59.017 | 2.667 | 6.650 |
@@ -66,7 +66,7 @@ Full-motion errors below use successful trials only. A small error with low incl
 |---|---:|---:|---:|---:|---:|
 | Original | 100.0 | 133.683 | 50.985 | 3.417 | 5.830 |
 | FT only | 100.0 | 114.467 | 57.113 | 3.104 | 5.681 |
-| Delta action | 99.0 | 116.903 | 58.464 | 3.086 | 5.590 |
+| Delta action | 94.8 | 124.816 | 56.393 | 3.161 | 6.031 |
 | Passive SysID | 79.2 | 115.166 | 57.132 | 3.232 | 6.075 |
 | Active SysID | 89.6 | 121.877 | 55.526 | 3.185 | 5.862 |
 | Common torque | 67.7 | 126.649 | 56.965 | 3.128 | 5.887 |
@@ -80,7 +80,7 @@ Errors use the first second. Success uses the complete reference horizon. E_vel 
 |---|---:|---:|---:|---:|---:|---:|
 | Original | 1.0 | 100.0 | 91.108 | 43.144 | 1.809 | 4.992 |
 | FT only | 36.5 | 100.0 | 77.686 | 43.029 | 1.913 | 4.242 |
-| Delta action | 25.0 | 100.0 | 86.302 | 48.729 | 1.843 | 4.481 |
+| Delta action | 37.5 | 100.0 | 80.791 | 46.993 | 1.667 | 4.099 |
 | Passive SysID | 100.0 | 100.0 | 62.851 | 39.785 | 1.738 | 2.704 |
 | Active SysID | 90.6 | 100.0 | 78.325 | 43.884 | 2.030 | 4.341 |
 | Common torque | 84.4 | 100.0 | 66.452 | 36.934 | 1.695 | 2.977 |
@@ -92,7 +92,7 @@ Full-motion errors below use successful trials only. A small error with low incl
 |---|---:|---:|---:|---:|---:|
 | Original | 1.0 | 91.747 | 41.646 | 1.177 | 3.076 |
 | FT only | 36.5 | 119.887 | 47.446 | 1.269 | 3.971 |
-| Delta action | 25.0 | 112.471 | 52.271 | 1.221 | 3.473 |
+| Delta action | 37.5 | 86.821 | 48.482 | 1.241 | 3.569 |
 | Passive SysID | 100.0 | 85.321 | 47.885 | 1.274 | 3.305 |
 | Active SysID | 90.6 | 96.339 | 47.447 | 1.307 | 4.133 |
 | Common torque | 84.4 | 91.691 | 45.203 | 1.273 | 3.251 |
