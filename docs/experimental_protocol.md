@@ -1,6 +1,6 @@
 # Experimental protocol
 
-The main method comparison uses the completed noise and reset repairs for delta policies on all three tasks. Calibration models and other policies stay unchanged. The data-selection policies retain both issues. All delta versions are kept in the [noise report](../results/noise_repair/metrics.md) and [reset report](../results/reset_repair/metrics.md).
+The main method comparison uses the completed noise and reset repairs for delta policies on all three tasks. Calibration models and other policies stay unchanged. The earlier data-selection policies retain both issues. The new [servo-error experiment](servo_error_experiment.md) uses both repairs and evaluates Step only. All earlier delta versions are kept in the [noise report](../results/noise_repair/metrics.md) and [reset report](../results/reset_repair/metrics.md).
 
 ## Controlled mismatch
 
@@ -20,7 +20,7 @@ Evaluation uses seeds 8101–8103 and 32 trials per seed. Squat is recorded for 
 
 [Metric definitions](evaluation.md) explain the new whole-body evaluation. Old physical records remain available for comparison.
 
-## Data-content test
+## Earlier exploratory data-content test
 
 The three rules use the same 18 training parents, six per task. Each selects one 54-state window per parent, giving 954 transitions. Candidate windows and the feature scaler use training data only.
 

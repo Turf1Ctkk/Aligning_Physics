@@ -62,11 +62,11 @@ This is a same-state identity. It is not a bound on the best learned correction 
 
 ## What would support the hypothesis?
 
-At equal data and training budgets, coverage should reduce held-out replay error compared with uniform selection and range selection. The resulting policy should also improve target control after the same fine-tuning budget.
+The new hypothesis focuses on unsaturated ankle servo error. At equal budgets, coverage of its signs and magnitudes should reduce held-out replay error compared with random windows. Transfer to Step control is tested separately. The [new design](servo_error_experiment.md) fixes the data rules before learning and uses repaired inputs and reset.
 
 Both claims matter. A replay gain without a control gain supports only the first. A negative result for this selector does not rule out every form of information-aware collection.
 
-Both subset runs show this distinction. Coverage has lower replay position error, but it does not consistently produce better policy control. Completion changes substantially between seeds. These results do not confirm the combined hypothesis. The subset policies retain a frozen-delta input noise mismatch. A separate [three-task repair](../results/noise_repair/metrics.md) has mixed effects on success; it does not repair or validate the subset comparison. Different selected phases also have different same-domain replay errors. These are retained without subtraction or window replacement.
+The earlier exploratory subset runs show this distinction. Coverage has lower replay position error, but it does not consistently produce better policy control. Completion changes substantially between seeds. These results do not confirm the earlier combined hypothesis. Those policies retain the input-noise and reset issues. The completed main-policy repairs do not repair or validate that subset comparison. Different selected phases also have different same-domain replay errors. These are retained without subtraction or window replacement.
 
 ## What the current study can establish
 

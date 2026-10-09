@@ -14,7 +14,7 @@ These works already study informative data. I want to understand its value for l
 
 ## 3. Hypothesis
 
-**At the same data budget, data that covers relevant actuator conditions will improve calibration more than data chosen only for large joint range. The benefit should reach control when those conditions also occur during policy training.**
+**For the ankle-stiffness mismatch, windows covering different signs and magnitudes of unsaturated ankle servo error will reduce held-out replay error more than random windows at the same data and optimization budgets. Whether this gain improves control is tested separately.**
 
 I test replay and control separately. Better replay alone does not confirm better control.
 
@@ -66,7 +66,9 @@ Equal-size trajectory subsets also produce different replay and control results.
 
 ## 7. Minimum hypothesis test
 
-I select equal-size subsets from the same 18 training rollouts. Each contains 954 transitions. The rules are uniform selection, actuator-feature coverage and large ankle range. Models and training budgets stay the same.
+The new test compares Random-N with Servo-coverage-N. Both use the same 18 training parents and 954 transitions. Each trains its own delta action model. Both then fine-tune Step with the repaired inputs and reset. A fresh FT-only policy shares the first training seed. Low-error-N is a supplemental calibration control if time remains. The selection rules are frozen before learning. [Design and limits](docs/servo_error_experiment.md). No new learned results are available yet.
+
+The earlier exploratory test is retained below. I select equal-size subsets from the same 18 training rollouts. Each contains 954 transitions. The rules are uniform selection, actuator-feature coverage and large ankle range. Models and training budgets stay the same.
 
 | Selection rule | First-run replay error (mm) | Repeat replay error (mm) | First-run completion (%) | Repeat completion (%) |
 |---|---:|---:|---:|---:|

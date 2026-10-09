@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-10-09T04:00:06.695735+00:00",
+  "cutoff_utc": "2026-10-09T09:00:00+00:00",
+  "prepared": "/root/autodl-tmp/aligning_physics/servo_step_preflight_phasefix_20261009",
+  "failed_preflight": "/root/autodl-tmp/aligning_physics/servo_step_preflight_20261009",
+  "task": "StepFBL1",
+  "main_arms": [
+    "random",
+    "servo"
+  ],
+  "data_transitions": 954,
+  "parent_groups": 18,
+  "calibration_seeds": [
+    20309009,
+    20309010
+  ],
+  "policy_seeds": [
+    20310009,
+    20310010
+  ],
+  "fixed_replay_seed": 20309109,
+  "deployment_seeds": [
+    8101,
+    8102,
+    8103
+  ],
+  "calibration_updates": 1000,
+  "policy_updates": 1000,
+  "validation_checkpoints": [
+    500,
+    1000
+  ],
+  "primary_endpoint": "Equal task/parent1s heldout global body MPJPE; calibration and control claims separate",
+  "stratified_endpoint": "Perjoint small/medium/large target servo-error transition bins from fixed training edges",
+  "policy_selection": "Every final model_1000, both main arms regardless of test outcomes",
+  "control": "Fresh primary-seed FT-only; repeat compares main arms at its shared seed",
+  "repeat_gate": "Run second paired main seed only with>=2.2hours left, else explicit skipped",
+  "low_error_gate": "Supplemental calibration only after main/repeat decision, if>=50minutes remain; otherwise skipped",
+  "training_template": "/root/autodl-tmp/aligning_physics/reset_repair_20261009/StepFBL1/commands/train_asap_ft.json",
+  "hypothesis": "Unsaturated perjoint servo-error sign/magnitude coverage improves replay over random at fixed budget; Step transfer tested separately",
+  "scope": "SameIsaacGym source20 target16; mixed calibration parents; downstreamStep chosen using earlier evidence; contact is a proxy, exact continuous velocity/contact matching is not claimed"
+}

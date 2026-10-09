@@ -1,44 +1,23 @@
 # Current work
 
-Updated October 9, 2026, 09:15 Beijing time (UTC+8).
+Updated October 9, 2026, 12:08 Beijing time (UTC+8).
 
-## Completed
+The seven-method comparisons, fresh paper metrics, source checks, and three-task noise and reset repairs are complete. Main charts use all three preset repaired delta policies. Earlier records remain available.
 
-- Replay and frozen-correction interface fixes.
-- Mixed-motion delta calibration and policy comparisons.
-- Passive and active SysID adaptations.
-- Common-data and measured-200-Hz torque adaptations.
-- Seven-policy comparisons for Squat, CR7 and StepFBL1.
-- Both training seeds of the three-rule data-content test and fresh repeat-seed replay controls.
-- Fresh 27-point policy evaluations and checks of all stored starts and effective settings.
-- Fresh 24-body calibration replays, with metrics recomputed from recorded trajectories.
-- Source-A checks of original and FT-only policies on all three tasks, with saved settings and actual metrics audited.
-- Four-error method comparison charts and a separate closed-loop success chart.
-- Three-task frozen-delta input-noise repair, with all training settings checked and all new trial metrics recomputed.
-- Three-task reset repair, with the same independent checks and all new trial metrics recomputed.
+## Running
 
-## Server queue
+The new [servo-error experiment](servo_error_experiment.md) compares Random-N and Servo-coverage-N. Each group trains a fresh delta action model and then fine-tunes Step. Both use the repaired inputs and reset. A fresh FT-only policy shares the primary seed.
 
-The previous queues and input-noise repair are complete. That repair changes only height and foot-force noise. Success changes from 89.6% to 70.8% for Squat, 91.7% to 99.0% for CR7, and 79.2% to 25.0% for Step. [Before/after results](../results/noise_repair/metrics.md).
+Selection, quotas and bin edges are frozen. The first reference-phase preflight failed because late Step windows were unavailable. A revised CPU preflight passed with shared training-candidate phase tertiles. The failed preflight is retained.
 
-The reset-only comparison is complete and independently audited on all three tasks. Success rises from 70.8% to 91.7% for Squat and from 25.0% to 37.5% for Step. All four first-second errors decrease in both tasks. CR7 success falls from 99.0% to 94.8%, with mixed error changes. Full-motion errors do not uniformly improve, and successful cohorts change. [Results](../results/reset_repair/metrics.md).
+Random's same-domain training-window check is complete. Its historical 24-body position error is 21.52 mm. This is an initialization/reconstruction diagnostic, not a learned result. Random delta calibration is running. There are no new learned results yet. Servo, the paired training repeat and supplemental Low-error calibration follow serially, subject to cutoff gates. Only one heavy stage runs at a time.
 
-The authorized queues are complete. No GPU job remains. Every repair started from its original model_6000 with the same frozen delta model_500, seed and 1,000-update budget. Rewards, curricula and optimizer settings stayed fixed. No further training is scheduled.
+All four errors and closed-loop success will be reported. Audits check actual settings, fixed checkpoints, stored starts and recomputed metrics. Missing or failed audits stop downstream work. Partial runs are not silently resumed.
 
-Main charts use all three fixed-final noise-and-reset repaired delta policies. No version was chosen by test performance. Other policies and open-loop calibration results stay unchanged. Original and noise-only chart data remain available. The heartbeat is paused after publication.
+## Scope
 
-Policy and replay evaluations report position, velocity and acceleration errors. Completion and tracking success are separate percentages. Policy evaluation uses 27 points; replay uses the 24 bodies measured in the target recordings.
+The old data-content test retains the earlier noise and reset issues. Its findings remain exploratory. New selectors are not chosen from its test ranking.
 
-## Document repair
-
-Reader-facing documents use short explanations. The main report now places observations after the method comparison and before the subset test. The old completion-only table is replaced by error bars and closed-loop success. GIFs remain removed. Percentages appear in readable tables; raw counts remain in JSON.
-
-## Main finding so far
-
-Passive SysID improves Step under this protocol. Reset repair raises Squat success to 91.7%, below FT-only's 100%. Step reaches 37.5%, close to FT-only's 36.5%, while its first-second position errors remain higher. Each main method has only one training seed. The subset policies have not been repaired, so their transfer findings remain provisional. [Setting audit](settings_audit.md).
-
-Raw results, historical reports and failed acquisition records are preserved. Final repository cleanup and author-supplied IsaacGym visuals follow review.
-
-A reset audit found that the previous delta action remains in the frozen model's input. Two no-update physical probes confirm that it changes the correction. Core files and completed experiments stay unchanged. [Reset audit](../results/delta_reset_probe/metrics.md).
+Reader-facing reports use percentages and short English. GIFs remain removed. Raw results, checkpoints and failed artifacts are preserved. Final cleanup and author-supplied visualizations follow review.
 
 GPU cutoff: October 9 at 17:00 Beijing time. Submission deadline: October 10 at 04:59 Beijing time.

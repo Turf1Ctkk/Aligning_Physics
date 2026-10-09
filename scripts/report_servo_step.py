@@ -1,0 +1,131 @@
+"""Report audited servo-selection arms without choosing favorable results."""
+import argparse
+import json
+from pathlib import Path
+
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import numpy as np
+from report_paper_evaluation import checked
+
+FIELDS = ('global_position_mm', 'root_relative_position_mm', 'body_acceleration_mm_frame2', 'root_velocity_mm_frame')
+TITLES = ('$E_{g-mpjpe}$ (mm)', '$E_{mpjpe}$ (mm)', '$E_{acc}$ (mm/frame²)', '$E_{vel}$, root (mm/frame)')
+NAMES = {'random': 'Random-N', 'servo': 'Servo-coverage-N', 'ft_only': 'FT-only', 'low_error': 'Low-error-N'}
+
+
+def load(path):
+    return json.loads(path.read_text())
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('--root', type=Path, required=True)
+    p.add_argument('--output', type=Path, required=True)
+    a = p.parse_args()
+    a.output.mkdir(parents=True, exist_ok=True)
+    plan, selection = load(a.root / 'queue_plan.json'), load(a.root / 'selection_manifest.json')
+    rows, pending = {}, []
+    for run in ('primary', 'repeat'):
+        run_status = a.root / run / 'status.json'
+        if run_status.exists() and load(run_status)['status'] == 'skipped':
+            pending.append(run + ': skipped by cutoff gate')
+            continue
+        rows[run] = {}
+        for arm in ('random', 'servo', 'ft_only') if run == 'primary' else ('random', 'servo'):
+            work = a.root / run / arm
+            if not (work / 'status.json').exists() or load(work / 'status.json')['status'] != 'complete':
+                pending.append(run + '/' + arm)
+                continue
+            report, audit = load(work / 'comparison.json'), load(work / 'publication_audit.json')
+            if audit['training_seed'] != plan['policy_seeds'][int(run == 'repeat')] or audit['final_checkpoint_sha256'] != report['checkpoint_sha256']:
+                raise ValueError('Policy seed/checkpoint audit mismatch')
+            if len(audit['evaluation_audit']) != 3 or len(report['trials']) != 96 or {(t['seed'], t['trial']) for t in report['trials']} != {(s,t) for s in (8101,8102,8103) for t in range(32)}:
+                raise ValueError('Policy identities incomplete')
+            summary = checked(report)
+            item = {'control': summary, 'policy_seed': audit['training_seed'], 'audit': audit}
+            if arm != 'ft_only':
+                calibration = load(work / 'calibration_audit.json')
+                replay = load(work / 'learned_paper_metrics.json')
+                if calibration['selected_checkpoint']['sha256'] != replay['checkpoint_sha256'] or len(replay['cases']) != 66:
+                    raise ValueError('Calibration/checkpoint/case audit mismatch')
+                identities = {(c['task'],c['group'],c['key']) for c in replay['cases']}
+                if len(identities) != 66 or {c['task'] for c in replay['cases']} != {'CR7','SquatL1','StepFBL1'}:
+                    raise ValueError('Replay identities incomplete')
+                start = load(work / 'replay_start_audit.json')
+                if not start['exact'] or start['learned_sha256'] != replay['record_sha256']:
+                    raise ValueError('Shared replay startup audit missing')
+                item.update(replay=replay, calibration=calibration)
+            rows[run][arm] = item
+    if not any(rows.values()):
+        raise ValueError('No audited main policy arm complete; do not report pending results')
+    lines = ['# Servo-error selection results', '',
+        'The selectors were frozen before learning. Every arm uses the same parents and selected data budget. Replay and Step control are separate endpoints. Both policies use repaired inputs and reset.', '',
+        'Replay has 24 measured bodies. Step tracking has 27 points. Errors use the first second. Velocity is root velocity at 50 Hz. Early terminations change inclusion; full-motion means include successful trials only.', '']
+    if pending:
+        lines += ['Pending or skipped: ' + ', '.join(pending) + '.', '']
+    for run, arms in rows.items():
+        if not arms:
+            continue
+        lines += ['## ' + run.capitalize(), '', '| Group | Replay E_g-mpjpe | Replay E_mpjpe | Replay E_acc | Replay E_vel | Complete replay (%) |', '|---|---:|---:|---:|---:|---:|']
+        for arm, item in arms.items():
+            if 'replay' in item:
+                replay = item['replay']['paper_metrics']
+                lines += ['| ' + NAMES[arm] + ' | ' + ' | '.join(f'{replay["metrics"][k]:.3f}' for k in FIELDS) + f' | {replay["completion_pct"]:.1f} |']
+        lines += ['', '| Group | Success (%) | Completion (%) | First-second inclusion (%) | E_g-mpjpe | E_mpjpe | E_acc | E_vel |', '|---|---:|---:|---:|---:|---:|---:|---:|']
+        for arm, item in arms.items():
+            s = item['control']; prefix = s['prefix_metrics']['1.0']
+            lines += [f'| {NAMES[arm]} | {s["paper_success_pct"]:.1f} | {s["completion_pct"]:.1f} | {100*prefix["valid_trials"]/s["total_trials"]:.1f} | ' + ' | '.join(f'{prefix["metrics"][k]:.3f}' if prefix['metrics'] else 'N/A' for k in FIELDS) + ' |']
+        lines += ['', '| Group | Successful full-motion inclusion (%) | E_g-mpjpe | E_mpjpe | E_acc | E_vel |', '|---|---:|---:|---:|---:|---:|']
+        for arm, item in arms.items():
+            s = item['control']; m = s['paper_successful_trial_metrics']
+            lines += [f'| {NAMES[arm]} | {s["paper_success_pct"]:.1f} | ' + ' | '.join(f'{m[k]:.3f}' if m else 'N/A' for k in FIELDS) + ' |']
+        fig, axes = plt.subplots(2,4,figsize=(15,7))
+        for row, scope in enumerate(('replay','control')):
+            labels = [arm for arm,item in arms.items() if scope in item]
+            for ax,k,title in zip(axes[row],FIELDS,TITLES):
+                values = []
+                for arm in labels:
+                    metrics = (arms[arm]['replay']['paper_metrics']['metrics'] if scope=='replay'
+                               else arms[arm]['control']['prefix_metrics']['1.0']['metrics'])
+                    values.append(metrics[k] if metrics is not None else np.nan)
+                bars=ax.bar(np.arange(len(labels)),values,color=['#3476A8','#D49A35','#6D9671'][:len(labels)])
+                ax.bar_label(bars,fmt='%.2f',fontsize=8,padding=3)
+                ax.set_xticks(np.arange(len(labels)),[NAMES[x] for x in labels],rotation=20,ha='right',fontsize=8)
+                ax.set_title(('Replay: ' if row==0 else 'Step: ')+title,fontsize=10);ax.set_ylim(bottom=0);ax.margins(y=.2)
+                ax.spines[['top','right']].set_visible(False)
+        fig.suptitle(run.capitalize()+': four errors; first second')
+        fig.tight_layout();fig.savefig(a.output/(run+'_errors.png'),dpi=180);plt.close(fig)
+        fig,ax=plt.subplots(figsize=(6,4));labels=list(arms)
+        bars=ax.bar([NAMES[x] for x in labels],[arms[x]['control']['paper_success_pct'] for x in labels],color=['#3476A8','#D49A35','#6D9671'][:len(labels)])
+        ax.bar_label(bars,fmt='%.1f%%');ax.set_ylim(0,115);ax.set_ylabel('Step full-motion success (%)')
+        fig.tight_layout();fig.savefig(a.output/(run+'_success.png'),dpi=180);plt.close(fig)
+    strata={run:{arm:item['replay']['stratified'] for arm,item in arms.items() if 'replay' in item} for run,arms in rows.items()}
+    supplemental = {}
+    low_status = a.root / 'low_error/status.json'
+    if low_status.exists():
+        supplemental['status'] = load(low_status)
+        if supplemental['status']['status'] == 'complete':
+            low = a.root / 'low_error'
+            calibration, replay = load(low / 'calibration_audit.json'), load(low / 'learned_paper_metrics.json')
+            if calibration['selected_checkpoint']['sha256'] != replay['checkpoint_sha256'] or len(replay['cases']) != 66 or not load(low / 'replay_start_audit.json')['exact']:
+                raise ValueError('Supplemental calibration audit incomplete')
+            supplemental.update(calibration=calibration, replay=replay)
+            m = replay['paper_metrics']['metrics']
+            lines += ['', '## Supplemental Low-error calibration', '',
+                'This arm has no policy training or control result.', '',
+                '| Group | E_g-mpjpe | E_mpjpe | E_acc | E_vel | Complete replay (%) |',
+                '|---|---:|---:|---:|---:|---:|---:|',
+                '| Low-error-N | ' + ' | '.join(f'{m[k]:.3f}' for k in FIELDS) + f' | {replay["paper_metrics"]["completion_pct"]:.1f} |']
+            strata['supplemental_low_error'] = replay['stratified']
+    (a.output/'stratified_metrics.json').write_text(json.dumps(strata,indent=2)+'\n')
+    lines += ['', 'Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Raw strata and their inclusion are retained in stratified_metrics.json.', '',
+        'Phase quotas cover the available training pool, rather than the full reference. Contact uses a height/speed proxy. Continuous speed and contact distributions still differ. No same-domain floor is subtracted. The selected budget is not total acquisition cost.', '',
+        'The first run has a matched FT-only policy. The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.', '']
+    (a.output/'metrics.md').write_text('\n'.join(lines)+'\n')
+    (a.output/'chart_data.json').write_text(json.dumps({'runs':rows,'pending':pending,'selection':selection,'supplemental':supplemental},indent=2)+'\n')
+    print('Reported completed audited arms; pending/skipped:',pending)
+
+
+if __name__=='__main__':
+    main()

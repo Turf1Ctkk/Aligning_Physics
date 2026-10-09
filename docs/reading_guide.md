@@ -7,6 +7,7 @@ For more detail:
 - [Research argument](research_argument.md): why actuator data may matter, and why replay may not predict control.
 - [Methods](methods.md): what was implemented and how it differs from the source papers.
 - [Evaluation](evaluation.md): position, velocity, acceleration, completion and tracking success.
+- [Servo-error experiment](servo_error_experiment.md): the new fixed-budget selection test and its limits.
 - [Protocol](experimental_protocol.md): datasets, budgets and comparisons.
 - [Reproduction](reproduction.md): code installation and experiment tools.
 - [Setting audit](settings_audit.md): the confirmed input mismatch and differences from pretraining.
