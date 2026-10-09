@@ -60,8 +60,8 @@ def main():
     if not any(rows.values()):
         raise ValueError('No audited main policy arm complete; do not report pending results')
     lines = ['# Servo-error selection results', '',
-        'The selectors were frozen before learning. Every arm uses the same parents and selected data budget. Replay and Step control are separate endpoints. Both policies use repaired inputs and reset.', '',
-        'Replay has 24 measured bodies. Step tracking has 27 points. Errors use the first second. Velocity is root velocity at 50 Hz. Early terminations change inclusion; full-motion means include successful trials only.', '']
+        'The selectors were frozen before learning. The planned arms use the same parents and selected data budget. Results include completed audited conditions only. Replay and Step control are separate endpoints. Scheduled policies use repaired inputs and reset.', '',
+        'Replay has 24 measured bodies. Step tracking has 27 points. Errors use the first second. Velocity is root velocity at 50 Hz. Units are mm for position, mm/frame² for acceleration and mm/frame for velocity. Early terminations change inclusion; full-motion means include successful trials only.', '']
     if pending:
         lines += ['Pending or skipped: ' + ', '.join(pending) + '.', '']
     for run, arms in rows.items():
@@ -141,9 +141,11 @@ def main():
                 inclusion = 100*s['included_frame_entries']/(66*49)
                 strata_lines.append(f'| {NAMES[arm]} | {ankle} | {magnitude} | {inclusion:.1f} | {s["global_position_mm"]:.3f} | {s["joint_position_rmse_rad"]:.5f} | {s["joint_velocity_rmse_rad_s"]:.5f} |')
     (a.output/'stratified_metrics.md').write_text('\n'.join(strata_lines).rstrip()+'\n')
+    ft_text = ('The first run includes a matched FT-only policy.' if 'ft_only' in rows.get('primary', {})
+               else 'The new matched FT-only policy is pending; no comparison against it is available yet.')
     lines += ['', 'Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Joint-error tables are in stratified_metrics.md; raw strata and inclusion are in stratified_metrics.json.', '',
         'Phase quotas cover the available training pool, rather than the full reference. Contact uses a height/speed proxy. Continuous speed and contact distributions still differ. No same-domain floor is subtracted. The selected budget is not total acquisition cost.', '',
-        'The first run has a matched FT-only policy. The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.', '']
+        ft_text + ' The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.', '']
     (a.output/'metrics.md').write_text('\n'.join(lines).rstrip()+'\n')
     (a.output/'chart_data.json').write_text(json.dumps({'runs':rows,'pending':pending,'selection':selection,'supplemental':supplemental},indent=2)+'\n')
     print('Reported completed audited arms; pending/skipped:',pending)

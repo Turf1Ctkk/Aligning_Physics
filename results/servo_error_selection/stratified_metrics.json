@@ -1,0 +1,127 @@
+{
+  "primary": {
+    "random": {
+      "j0_bin0": {
+        "global_position_mm": 44.272361036009265,
+        "joint_position_mse_rad2": 0.014111891484246575,
+        "joint_velocity_mse_rad2_s2": 19.666962810862394,
+        "joint_position_rmse_rad": 0.11879348249902676,
+        "joint_velocity_rmse_rad_s": 4.434744954432261,
+        "included_frame_entries": 999,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j0_bin1": {
+        "global_position_mm": 41.978401798672145,
+        "joint_position_mse_rad2": 0.013837485737011374,
+        "joint_velocity_mse_rad2_s2": 2.0217285151917186,
+        "joint_position_rmse_rad": 0.11763284293517424,
+        "joint_velocity_rmse_rad_s": 1.4218749998476372,
+        "included_frame_entries": 1173,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j1_bin1": {
+        "global_position_mm": 30.64135530160533,
+        "joint_position_mse_rad2": 0.0020639196951395492,
+        "joint_velocity_mse_rad2_s2": 8.33852653282395,
+        "joint_position_rmse_rad": 0.045430382951715795,
+        "joint_velocity_rmse_rad_s": 2.8876506943922338,
+        "included_frame_entries": 1038,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j1_bin2": {
+        "global_position_mm": 55.289737383524574,
+        "joint_position_mse_rad2": 0.01089304861122097,
+        "joint_velocity_mse_rad2_s2": 40.86737363621592,
+        "joint_position_rmse_rad": 0.10436976866516937,
+        "joint_velocity_rmse_rad_s": 6.392759469604337,
+        "included_frame_entries": 515,
+        "included_parent_groups": 12,
+        "included_tasks": 3
+      },
+      "j2_bin0": {
+        "global_position_mm": 41.01467744562361,
+        "joint_position_mse_rad2": 0.019586433499579368,
+        "joint_velocity_mse_rad2_s2": 29.349273831786377,
+        "joint_position_rmse_rad": 0.13995153982568168,
+        "joint_velocity_rmse_rad_s": 5.417497008008992,
+        "included_frame_entries": 1415,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j2_bin1": {
+        "global_position_mm": 43.882858763668274,
+        "joint_position_mse_rad2": 0.02109618372258511,
+        "joint_velocity_mse_rad2_s2": 6.834016491265243,
+        "joint_position_rmse_rad": 0.14524525370071517,
+        "joint_velocity_rmse_rad_s": 2.614195189970566,
+        "included_frame_entries": 947,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j2_bin2": {
+        "global_position_mm": 28.293430879380967,
+        "joint_position_mse_rad2": 0.008819220474146681,
+        "joint_velocity_mse_rad2_s2": 1.6484637367021706,
+        "joint_position_rmse_rad": 0.09391070478995822,
+        "joint_velocity_rmse_rad_s": 1.2839251289316564,
+        "included_frame_entries": 772,
+        "included_parent_groups": 11,
+        "included_tasks": 3
+      },
+      "j3_bin0": {
+        "global_position_mm": 25.489206029574078,
+        "joint_position_mse_rad2": 0.004195570178602187,
+        "joint_velocity_mse_rad2_s2": 9.08060076266527,
+        "joint_position_rmse_rad": 0.06477322115351518,
+        "joint_velocity_rmse_rad_s": 3.0134035180614744,
+        "included_frame_entries": 1188,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j3_bin1": {
+        "global_position_mm": 27.807679274082187,
+        "joint_position_mse_rad2": 0.0006508011085454811,
+        "joint_velocity_mse_rad2_s2": 7.847522715056296,
+        "joint_position_rmse_rad": 0.02551080376125929,
+        "joint_velocity_rmse_rad_s": 2.8013430198846225,
+        "included_frame_entries": 1183,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j3_bin2": {
+        "global_position_mm": 52.29981720559299,
+        "joint_position_mse_rad2": 0.0054535957110043816,
+        "joint_velocity_mse_rad2_s2": 9.618105962787133,
+        "joint_position_rmse_rad": 0.07384846451351837,
+        "joint_velocity_rmse_rad_s": 3.1013071377706423,
+        "included_frame_entries": 863,
+        "included_parent_groups": 10,
+        "included_tasks": 2
+      },
+      "j0_bin2": {
+        "global_position_mm": 37.42176056755914,
+        "joint_position_mse_rad2": 0.012720305070559131,
+        "joint_velocity_mse_rad2_s2": 3.7966553984044324,
+        "joint_position_rmse_rad": 0.11278432989808083,
+        "joint_velocity_rmse_rad_s": 1.9485008079044854,
+        "included_frame_entries": 1060,
+        "included_parent_groups": 15,
+        "included_tasks": 3
+      },
+      "j1_bin0": {
+        "global_position_mm": 44.44870502789814,
+        "joint_position_mse_rad2": 0.0035907621167461917,
+        "joint_velocity_mse_rad2_s2": 10.615554567376773,
+        "joint_position_rmse_rad": 0.0599229681903875,
+        "joint_velocity_rmse_rad_s": 3.2581520172295173,
+        "included_frame_entries": 1150,
+        "included_parent_groups": 10,
+        "included_tasks": 2
+      }
+    }
+  },
+  "repeat": {}
+}
