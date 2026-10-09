@@ -82,11 +82,11 @@ Root-relative error: 50.62 to 55.78 mm
 
 ![Step comparison](results/visualizations/step.gif)
 
-## 4. Suggested from experiment results
+## 4. Suggestion from experiment results
 
 The calibrated methods improve replay, but their policies do not consistently perform better in B. Replay evaluates the simulator using recorded commands. After fine-tuning, the policy can choose different commands and visit states that were rarely covered by the recordings. This could limit the usefulness of the learned correction, although the current experiments do not establish why control performance differs.
 
-This leads to a more specific question: what should the calibration recordings contain? For the ankle-gain change used here, one candidate is the difference between the commanded and actual joint position, (e=q_{cmd}-q). With equal damping and no torque saturation, the same state and command produce a torque difference of
+This leads to a more specific question: what should the calibration recordings contain? For the ankle-gain change used here, one candidate is the difference between the commanded and actual joint position, $e=q_{cmd}-q$. With equal damping and no torque saturation, the same state and command produce a torque difference of
 
 $$
 \tau_B-\tau_A=(16-20)e=-4e.
@@ -129,8 +129,18 @@ In Run 1, neither residual policy completes Step, and both have higher errors th
 
 Run 2 gives a different picture. Servo-error coverage has lower tracking error on all four measures and **33.3%** success, compared with **20.8%** for Random. Its replay is worse, yet its policy tracks better. **The replay ranking therefore does not predict the control ranking in this run.**
 
-This small test shows why calibration and control need separate evaluation. It does not establish a reliable advantage for servo-error coverage. The actual coverage difference is small, speed and contact distributions still differ, and changing training seeds affects the outcome. A stronger data contrast and more training runs are needed to test the hypothesis further.
+This small test shows calibration and fine-tuning control policy may need separated evaluation. It does not establish a reliable advantage for servo-error coverage. The actual coverage difference is small, speed and contact distributions still differ, and changing training seeds affects the outcome. A stronger data contrast and more training runs are needed to test the hypothesis further.
 
-Selected windows and results are retained as CSV files. Low-error windows were prepared but not trained. Future work could also test transfer to IsaacLab or Genesis.
+# Statement by author
 
-The `ASAP/` folder contains the framework source, installed fixes and method implementations. Model weights and calibration recordings are held in the separate experiment archive. This public repository provides the report, final metrics, settings, reference motions and code.
+The question I raise here is: with limited target-domain data, which information from actual robot motion helps a residual model learn dynamics differences and support the transfer of a control policy? The experiments above are an initial exploration of this question. Their conclusions are limited by the experimental setup and the scale of validation.
+
+The current experiments only change the fixed gains of four ankle joints. Under ideal conditions with equal damping and no torque clipping, the action correction needed to match instantaneous torque is simply proportional to the difference between the commanded and actual joint angle. This setup is useful for checking the implementation and establishing interpretable comparisons, but it does not fully represent the complex differences involved in real transfer. Actuator response, friction and contact behavior can jointly affect robot motion. These responses may also vary between individual robots, loads and operating conditions. The current results need further validation under a wider range of controlled dynamics changes, cross-simulator transfer and hardware experiments.
+
+I am more interested in the relationship between open-loop replay and closed-loop control. In ASAP, calibration data comes from real-world rollouts of the original policy, while the fine-tuned policy can behave differently in the real world. Even if the residual model enables accurate replay of existing recordings and generalizes to unseen trajectories collected in the same way, this does not automatically establish that it can support new control behavior. Moreover, average replay error does not distinguish which errors matter most for balance and motion completion. Changes in state and action distributions, the effect of errors on the task, and the ability of feedback control to compensate for them can all influence the final outcome. I consider this relationship a particularly worthwhile research question.
+
+I also want to distinguish three limitations: whether the correction model can represent the target-domain differences, whether its training data contains the information needed to predict the response, and whether the recordings clearly reveal these differences or mix them with noise. If the correction structure or input information is insufficient, adding more similar recordings may still fail to solve the problem. Conversely, rollouts with poor motion completion can still provide useful state-action information, because calibration learns the robot’s actual response to commands, rather than using successful motions as demonstrations.
+
+The servo-error selection did not show a consistent advantage, which led me to reconsider the reasoning from the physical equations to data selection. A direct relationship between servo error and gain mismatch does not imply that broader coverage will necessarily improve learning efficiency. For the simple gain change used here, random data may already provide sufficient excitation. I therefore consider it meaningful to investigate how data value depends on the type of mismatch, the correction model’s structure and the response conditions required by the subsequent task. I also believe that further research requires better simulation and real-world experimental infrastructure.
+
+Finally, I had not previously studied humanoid RL planning and control in depth. This report grew out of my efforts to learn and explore the field, so it may contain misunderstandings or misleading interpretations.
