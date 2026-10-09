@@ -63,7 +63,7 @@ def main():
         'The selectors were frozen before learning. The planned arms use the same parents and selected data budget. Results include completed audited conditions only. Replay and Step control are separate endpoints. Scheduled policies use repaired inputs and reset.', '',
         'Replay has 24 measured bodies. Step tracking has 27 points. Errors use the first second. Velocity is root velocity at 50 Hz. Units are mm for position, mm/frame² for acceleration and mm/frame for velocity. Early terminations change inclusion; full-motion means include successful trials only.', '']
     if pending:
-        lines += ['Pending or skipped: ' + ', '.join(pending) + '.', '']
+        lines += ['Pending policy evaluation or skipped: ' + ', '.join(pending) + '.', '']
     for run, arms in rows.items():
         if not arms:
             continue
@@ -182,6 +182,8 @@ def main():
     lines += ['', 'Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Joint-error tables are in stratified_metrics.md; raw strata and inclusion are in stratified_metrics.json.', '',
         'Phase quotas cover the available training pool, rather than the full reference. Contact uses a height/speed proxy. Continuous speed and contact distributions still differ. No same-domain floor is subtracted. The selected budget is not total acquisition cost.', '',
         ft_text + ' The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.', '']
+    if (a.root / 'repeat/replay_metrics.md').exists():
+        lines += ['[Second-seed calibration report](repeat/replay_metrics.md). Calibration can finish before its policy evaluation; these endpoints remain separate.', '']
     (a.output/'metrics.md').write_text('\n'.join(lines).rstrip()+'\n')
     (a.output/'chart_data.json').write_text(json.dumps({'runs':rows,'pending':pending,'selection':selection,'supplemental':supplemental},indent=2)+'\n')
     (a.output/'paired_contrasts.json').write_text(json.dumps(contrasts,indent=2)+'\n')

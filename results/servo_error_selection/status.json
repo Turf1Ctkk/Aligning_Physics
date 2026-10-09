@@ -1,4 +1,4 @@
 {
   "status": "running",
-  "stage": "repeat/random/calibration_train"
+  "stage": "repeat/random/policy_train"
 }

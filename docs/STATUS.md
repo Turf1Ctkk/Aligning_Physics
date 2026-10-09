@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 14:42 Beijing time (UTC+8).
+Updated October 9, 2026, 15:11 Beijing time (UTC+8).
 
 The seven-method comparisons, fresh paper metrics, source checks, and three-task noise and reset repairs are complete. Main charts use all three preset repaired delta policies. Earlier records remain available.
 
@@ -20,7 +20,9 @@ Servo Step evaluation is complete and audited. Success is 0%, with mean survival
 
 The matched primary-seed FT-only is complete and audited. Success is 5.2%, completion is 7.3%, and mean survival is 2.43 seconds. First-second global/relative errors are 79.51/40.38 mm, acceleration is 1.821 mm/frame² and root velocity is 4.211 mm/frame. All trials reach one second. Both residual arms are worse on all four errors and success in this run. FT-only itself remains weak; the cause is not isolated.
 
-The second paired seed passed the preset time gate. Random calibration started at 14:39 Beijing and is the only GPU stage. Servo follows it serially. The repeat has no new matched FT-only. Low-error calibration remains conditional on its time gate. All selected windows stay fixed, and no reconstruction floor is subtracted.
+Second-seed Random calibration is complete and audited. Validation selected update 1,000. Test global/relative errors are 31.74/16.97 mm, acceleration is 0.811 mm/frame² and root velocity is 2.819 mm/frame. Both position errors and root velocity improve over shared zero correction; acceleration remains slightly worse. The same selected data and replay seed are retained. [Repeat calibration report](../results/servo_error_selection/repeat/replay_metrics.md).
+
+Second-seed Random Step training began at 15:08 Beijing and is the only GPU stage. Servo follows it serially. Neither repeat policy outcome is available yet. The repeat has no new matched FT-only. Low-error calibration remains conditional on its time gate. No selected window is replaced and no reconstruction floor is subtracted.
 
 All four errors and closed-loop success will be reported. Audits check actual settings, fixed checkpoints, stored starts and recomputed metrics. Missing or failed audits stop downstream work. Partial runs are not silently resumed.
 

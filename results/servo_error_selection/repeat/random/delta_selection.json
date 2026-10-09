@@ -1,0 +1,15 @@
+{
+  "checkpoint": "/root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/random/models/delta/model_1000.pt",
+  "sha256": "3fb465311034a72e0deee44030c7d55c49242e693d6bf146dae9ff1bd802fb70",
+  "validation_loss": 42.0533424439708,
+  "candidates": [
+    {
+      "loss": 48.10775204826126,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/random/models/delta/model_500.pt"
+    },
+    {
+      "loss": 42.0533424439708,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/random/models/delta/model_1000.pt"
+    }
+  ]
+}

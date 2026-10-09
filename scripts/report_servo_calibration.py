@@ -8,8 +8,77 @@ import matplotlib.pyplot as plt
 import numpy as np
 parser=argparse.ArgumentParser()
 parser.add_argument('--root', type=Path, required=True)
-root=parser.parse_args().root
+parser.add_argument('--run', choices=('primary', 'repeat'), default='primary')
+args=parser.parse_args()
+root=args.root
 read=lambda p:json.loads(p.read_text())
+
+def repeat_report(root):
+    fields=('global_position_mm','root_relative_position_mm','body_acceleration_mm_frame2','root_velocity_mm_frame')
+    titles=('$E_{g-mpjpe}$ (mm)','$E_{mpjpe}$ (mm)','$E_{acc}$ (mm/frame²)','$E_{vel}$, root (mm/frame)')
+    zero=read(root/'primary/random/source20_zero_paper_metrics.json')
+    plan=read(root/'queue_plan.json')
+    rows=[('Shared source20 zero',zero)]
+    selections=[]
+    pending=[]
+    for arm,name in (('random','Random-N'),('servo','Servo-coverage-N')):
+        work=root/'repeat'/arm
+        required=('learned_paper_metrics.json','calibration_audit.json','replay_start_audit.json','replay_publication_audit.json')
+        if not all((work/file).exists() for file in required):
+            pending.append(name)
+            continue
+        replay,audit,start,independent=[read(work/file) for file in required]
+        assert audit['actual_recipe_changes']['seed']==plan['calibration_seeds'][1]
+        assert audit['selected_transitions']==954 and audit['selected_checkpoint']['sha256']==replay['checkpoint_sha256']
+        assert replay['target_sha256']==zero['target_sha256'] and len(replay['cases'])==66
+        assert {(c['task'],c['group'],c['key']) for c in replay['cases']}=={(c['task'],c['group'],c['key']) for c in zero['cases']}
+        assert start['exact'] and start['learned_sha256']==replay['record_sha256'] and start['source_zero_sha256']==zero['record_sha256']
+        assert next(c for c in independent['checks'] if c['label']=='learned')['metrics']==replay['paper_metrics']
+        rows.append((name,replay))
+        selections.append((name,audit['selected_checkpoint'],work))
+    if len(rows)==1:
+        raise ValueError('No audited repeat calibration outcome yet')
+    lines=['# Second-seed calibration replay','','Only completed, audited calibrators are shown. Step control is a separate endpoint. This run reuses exactly the same selected data; it is not new acquisition.','',
+        'Position is in mm, acceleration in mm/frame² and root velocity in mm/frame at 50 Hz. Replay uses the first second and 24 measured bodies. The source-zero control was recorded once at the fixed shared replay seed.','',
+        '![Second-seed replay errors](../repeat_replay.png)','',
+        '| Group | E_g-mpjpe | E_mpjpe | E_acc | E_vel | Complete replay (%) |', '|---|---:|---:|---:|---:|---:|']
+    for name,replay in rows:
+        metrics=replay['paper_metrics']
+        lines.append('| '+name+' | '+' | '.join('%.3f'%metrics['metrics'][k] for k in fields)+' | %.1f |'%metrics['completion_pct'])
+    if pending:
+        lines+=['','Pending calibration: '+', '.join(pending)+'. No second-seed selector contrast is available yet.']
+    lines+=['','| Group | Validation at 500 (mm) | Validation at 1,000 (mm) | Selected update |','|---|---:|---:|---:|']
+    for name,selection,work in selections:
+        values=[read(work/('delta_%d_paper_metrics.json'%i))['paper_metrics']['metrics']['global_position_mm'] for i in (500,1000)]
+        selected=Path(selection['checkpoint']).stem.split('_')[-1]
+        lines.append('| %s | %.3f | %.3f | %s |'%(name,values[0],values[1],selected))
+    lines+=['','Both validation candidates are retained. Test outcomes do not select checkpoints. Actual case identities, hashes and metric aggregates were recomputed from physical records. Learned and shared-zero starts, actions and clocks match exactly. No reconstruction floor is subtracted.','',
+        'Two training seeds cannot establish a reliable ranking. Do not select the better run. The full [control report](../metrics.md) includes completed audited policies only.','',
+        '## Per-ankle magnitude strata','',
+        'Bins are fixed from training. Inclusion is the share of planned scored samples for that ankle. Errors average available cases by parent and task. Entries overlap across ankles and are not independent trials. Sign is not separated in this table.','',
+        '| Group | Ankle | Magnitude | Inclusion (%) | Body error (mm) | Joint RMSE (rad) | Joint velocity RMSE (rad/s) |','|---|---|---|---:|---:|---:|---:|']
+    for name,replay in rows[1:]:
+        for key,s in sorted(replay['stratified'].items()):
+            a,b=key.split('_')
+            ankle=('Left pitch','Left roll','Right pitch','Right roll')[int(a[1:])]
+            magnitude=('Small','Medium','Large')[int(b[3:])]
+            lines.append('| %s | %s | %s | %.1f | %.3f | %.5f | %.5f |'%(name,ankle,magnitude,100*s['included_frame_entries']/(66*49),s['global_position_mm'],s['joint_position_rmse_rad'],s['joint_velocity_rmse_rad_s']))
+    (root/'repeat/replay_metrics.md').write_text('\n'.join(lines).rstrip()+'\n')
+    fig,axes=plt.subplots(1,4,figsize=(14,4.2))
+    for ax,k,title in zip(axes,fields,titles):
+        values=[r['paper_metrics']['metrics'][k] for _,r in rows]
+        bars=ax.bar(np.arange(len(rows)),values,color=['#85919a','#3476A8','#D49A35'][:len(rows)])
+        ax.bar_label(bars,fmt='%.2f',fontsize=9,padding=3)
+        ax.set_xticks(np.arange(len(rows)));ax.set_xticklabels(['Zero correction']+[name for name,_ in rows[1:]],rotation=20,ha='right',fontsize=9)
+        ax.set_title(title,fontsize=11);ax.set_ylim(0,max(values)*1.22);ax.spines[['top','right']].set_visible(False)
+    fig.suptitle('Second-seed calibration: first-second errors; control reported separately')
+    fig.tight_layout();fig.savefig(root/'repeat_replay.png',dpi=180);plt.close(fig)
+    print('PASS repeat calibration seed/checkpoint/case/start/physical aggregate gates; pending:',pending)
+
+if args.run=='repeat':
+    repeat_report(root)
+    raise SystemExit(0)
+
 servo=root/'primary/servo'; random=root/'primary/random'
 new=read(servo/'learned_paper_metrics.json'); old=read(random/'learned_paper_metrics.json'); zero=read(random/'source20_zero_paper_metrics.json')
 audit=read(servo/'calibration_audit.json'); start=read(servo/'replay_start_audit.json'); independent=read(servo/'replay_publication_audit.json')

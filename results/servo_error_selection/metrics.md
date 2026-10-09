@@ -4,7 +4,7 @@ The selectors were frozen before learning. The planned arms use the same parents
 
 Replay has 24 measured bodies. Step tracking has 27 points. Errors use the first second. Velocity is root velocity at 50 Hz. Units are mm for position, mm/frame² for acceleration and mm/frame for velocity. Early terminations change inclusion; full-motion means include successful trials only.
 
-Pending or skipped: repeat/random, repeat/servo.
+Pending policy evaluation or skipped: repeat/random, repeat/servo.
 
 ## Primary
 
@@ -52,3 +52,5 @@ Stratified replay uses separate ankle magnitude bins from the training pool. Mis
 Phase quotas cover the available training pool, rather than the full reference. Contact uses a height/speed proxy. Continuous speed and contact distributions still differ. No same-domain floor is subtracted. The selected budget is not total acquisition cost.
 
 The first run includes a matched FT-only policy. The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.
+
+[Second-seed calibration report](repeat/replay_metrics.md). Calibration can finish before its policy evaluation; these endpoints remain separate.
