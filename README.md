@@ -66,9 +66,13 @@ Equal-size trajectory subsets also produce different replay and control results.
 
 ## 7. Minimum hypothesis test
 
-The new test compares Random-N with Servo-coverage-N using the same 18 training parents and 954 transitions. Each group trains its own delta model, then fine-tunes Step with repaired inputs and reset. FT-only shares the first policy training seed. Selection was frozen before learning. Low-error calibration is optional. [Design](docs/servo_error_experiment.md).
+The new test compares Random-N with Servo-coverage-N using the same 18 training parents and 954 transitions. Each group trains its own delta model, then fine-tunes Step with repaired inputs and reset. FT-only shares the first policy training seed. Selection was frozen before learning. [Design](docs/servo_error_experiment.md).
 
-In the first run, replay global error is 35.58 mm for Random and 42.93 mm for Servo, against 39.77 mm without correction. Servo is worse on all four replay errors. Both residual policies have 0% success. Matched FT-only reaches 5.2% and has lower first-second error on all four measures. This run does not support Servo-coverage gains. Repeated Random replay error is 31.74 mm and Step success is 20.8%, compared with 0% in its first run. Both outcomes are retained. Second-seed Servo replay error is 39.80 mm. Random has lower error on all four replay measures in both runs. Servo control is pending, and the repeat has no matched FT-only. [Errors, success and limits](results/servo_error_selection/metrics.md).
+Random has lower error on all four replay measures in both training runs. Its global replay errors are 35.58 and 31.74 mm, compared with 42.93 and 39.80 mm for Servo. This selector has not shown a calibration advantage in these seeds.
+
+Control gives a different picture. Both residual policies have 0% success in the first run; matched FT-only reaches 5.2% and has lower first-second errors. In the repeat, Random reaches 20.8% and Servo reaches 33.3%. Servo also has lower error on all four first-second tracking measures. All trials reach one second. The repeat has no matched FT-only, so it does not establish an added benefit over fine-tuning.
+
+Replay ranking does not predict control ranking in the repeat. Both runs are retained; two seeds cannot establish a reliable ranking. Low-error calibration was skipped by its time gate. [Errors, success and limits](results/servo_error_selection/metrics.md).
 
 Earlier subset experiments improved replay with actuator coverage, but control varied greatly across training seeds. Those policies retain the old noise and reset issues. Their [results](results/content_selection/README.md) remain exploratory.
 

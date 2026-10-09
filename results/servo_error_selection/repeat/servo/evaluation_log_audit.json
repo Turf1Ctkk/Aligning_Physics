@@ -1,0 +1,23 @@
+{
+  "scope": "Read-only log checks; policy metrics and completion independently recomputed by publication audit",
+  "checks": [
+    {
+      "seed": 8101,
+      "log_sha256": "620ff7d01c96363a3e22c5e5d131d9581538cb4f39894a5dcf3125f73c8f28ff",
+      "ancillary_keyboard_name_error": true,
+      "recorder_completion_marker": true
+    },
+    {
+      "seed": 8102,
+      "log_sha256": "778be2ce02e0463c3e892eb8c9315f08c03af953856de500ae8a052a9622cfd0",
+      "ancillary_keyboard_name_error": true,
+      "recorder_completion_marker": true
+    },
+    {
+      "seed": 8103,
+      "log_sha256": "3019cca14d3aa7bbb8d6175e260b411482ab327d703657078426f83de31fd307",
+      "ancillary_keyboard_name_error": true,
+      "recorder_completion_marker": true
+    }
+  ]
+}

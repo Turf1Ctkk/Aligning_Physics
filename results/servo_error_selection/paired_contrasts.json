@@ -36,5 +36,21 @@
         "mean_survival_seconds": -0.7045833333333333
       }
     }
+  },
+  "repeat": {
+    "replay": {
+      "global_position_mm": 8.053617073863215,
+      "root_relative_position_mm": 4.200698227626948,
+      "body_acceleration_mm_frame2": 0.0354758973246615,
+      "root_velocity_mm_frame": 0.6676178779620119
+    },
+    "control": {
+      "global_position_mm": -11.90423235669256,
+      "root_relative_position_mm": -6.661209229002637,
+      "body_acceleration_mm_frame2": -0.23659447260698552,
+      "root_velocity_mm_frame": -1.2123855607618252
+    },
+    "success_percentage_points": 12.500000000000004,
+    "mean_survival_seconds": 0.4866666666666668
   }
 }

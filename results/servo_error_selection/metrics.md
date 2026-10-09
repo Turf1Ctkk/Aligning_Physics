@@ -4,8 +4,6 @@ The selectors were frozen before learning. The planned arms use the same parents
 
 Replay has 24 measured bodies. Step tracking has 27 points. Errors use the first second. Velocity is root velocity at 50 Hz. Units are mm for position, mm/frame² for acceleration and mm/frame for velocity. Early terminations change inclusion; full-motion means include successful trials only.
 
-Pending policy evaluation or skipped: repeat/servo.
-
 ## Primary
 
 | Group | Replay E_g-mpjpe | Replay E_mpjpe | Replay E_acc | Replay E_vel | Complete replay (%) |
@@ -51,18 +49,31 @@ Matched primary-seed control contrast: each arm minus FT-only. Positive error di
 | Group | Replay E_g-mpjpe | Replay E_mpjpe | Replay E_acc | Replay E_vel | Complete replay (%) |
 |---|---:|---:|---:|---:|---:|
 | Random-N | 31.744 | 16.967 | 0.811 | 2.819 | 100.0 |
+| Servo-coverage-N | 39.797 | 21.167 | 0.846 | 3.487 | 100.0 |
 
 | Group | Success (%) | Completion (%) | First-second inclusion (%) | E_g-mpjpe | E_mpjpe | E_acc | E_vel |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Random-N | 20.8 | 21.9 | 100.0 | 83.226 | 46.827 | 1.869 | 4.638 |
+| Servo-coverage-N | 33.3 | 36.5 | 100.0 | 71.321 | 40.166 | 1.632 | 3.426 |
 
 | Group | Successful full-motion inclusion (%) | E_g-mpjpe | E_mpjpe | E_acc | E_vel |
 |---|---:|---:|---:|---:|---:|
 | Random-N | 20.8 | 95.213 | 55.456 | 1.192 | 3.599 |
+| Servo-coverage-N | 33.3 | 99.420 | 46.786 | 1.177 | 3.646 |
 
 ![Repeat four-error comparison](repeat_errors.png)
 
 ![Repeat Step success](repeat_success.png)
+
+
+Servo minus Random at the same planned training seed. Positive error differences mean higher error.
+
+| Endpoint | E_g-mpjpe | E_mpjpe | E_acc | E_vel |
+|---|---:|---:|---:|---:|
+| Replay | +8.054 | +4.201 | +0.035 | +0.668 |
+| Step first second | -11.904 | -6.661 | -0.237 | -1.212 |
+
+Success changes by +12.5 percentage points; mean survival changes by +0.487 seconds. This is one whole-training-run contrast, not an isolated feature effect.
 
 
 ## Fixed-data training-seed sensitivity
@@ -72,8 +83,14 @@ Both runs are retained. Calibration and policy training seeds change together; r
 | Group | Primary success (%) | Repeat success (%) | Primary first-second inclusion (%) | Repeat first-second inclusion (%) |
 |---|---:|---:|---:|---:|
 | Random-N | 0.0 | 20.8 | 100.0 | 100.0 |
+| Servo-coverage-N | 0.0 | 33.3 | 100.0 | 100.0 |
 
 Repeat-minus-primary four-error differences are retained in seed_sensitivity.json. Prefix means remain conditional on their reported inclusion. Two runs do not establish a population ranking.
+
+
+## Supplemental Low-error calibration
+
+Skipped because fewer than 50 minutes remained before the GPU cutoff. No Low-error model was trained or evaluated.
 
 
 Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Joint-error tables are in stratified_metrics.md; raw strata and inclusion are in stratified_metrics.json.

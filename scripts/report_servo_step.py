@@ -162,6 +162,9 @@ def main():
     low_status = a.root / 'low_error/status.json'
     if low_status.exists():
         supplemental['status'] = load(low_status)
+        if supplemental['status']['status'] == 'skipped':
+            lines += ['', '## Supplemental Low-error calibration', '',
+                'Skipped because fewer than 50 minutes remained before the GPU cutoff. No Low-error model was trained or evaluated.', '']
         if supplemental['status']['status'] == 'complete':
             low = a.root / 'low_error'
             calibration, replay = load(low / 'calibration_audit.json'), load(low / 'learned_paper_metrics.json')

@@ -48,3 +48,15 @@ Inclusion is the percentage of planned scored samples for that ankle. Missing bi
 | Random-N | Right roll | Small | 36.7 | 25.290 | 0.06501 | 2.70241 |
 | Random-N | Right roll | Medium | 36.6 | 22.221 | 0.02534 | 2.01176 |
 | Random-N | Right roll | Large | 26.7 | 40.358 | 0.03451 | 2.48726 |
+| Servo-coverage-N | Left pitch | Small | 30.9 | 43.897 | 0.12009 | 3.95977 |
+| Servo-coverage-N | Left pitch | Medium | 36.3 | 42.811 | 0.15745 | 1.79474 |
+| Servo-coverage-N | Left pitch | Large | 32.8 | 47.567 | 0.13122 | 2.71353 |
+| Servo-coverage-N | Left roll | Small | 35.6 | 46.248 | 0.07545 | 3.62826 |
+| Servo-coverage-N | Left roll | Medium | 32.1 | 36.108 | 0.05195 | 3.04532 |
+| Servo-coverage-N | Left roll | Large | 15.9 | 61.119 | 0.06987 | 6.54256 |
+| Servo-coverage-N | Right pitch | Small | 43.8 | 45.096 | 0.17375 | 3.67191 |
+| Servo-coverage-N | Right pitch | Medium | 29.3 | 48.230 | 0.14632 | 2.99515 |
+| Servo-coverage-N | Right pitch | Large | 23.9 | 30.399 | 0.11796 | 2.09295 |
+| Servo-coverage-N | Right roll | Small | 36.7 | 30.926 | 0.06667 | 1.64831 |
+| Servo-coverage-N | Right roll | Medium | 36.6 | 29.673 | 0.03091 | 1.39001 |
+| Servo-coverage-N | Right roll | Large | 26.7 | 60.459 | 0.02450 | 2.65646 |

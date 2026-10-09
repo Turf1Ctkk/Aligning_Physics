@@ -1,0 +1,148 @@
+eval_timestamp: ${now:%Y%m%d_%H%M%S}
+eval_name: TEST
+eval_log_dir: /root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/servo/tracking/asap_ft_seed8101_config
+env:
+  config:
+    save_motion: false
+    eval_timestamp: ${eval_timestamp}
+    save_note: null
+    ckpt_dir: null
+    save_total_steps: 10000
+    noise_to_initial_level: 0.2
+    init_noise_scale:
+      root_pos: 0
+      root_rot: 0
+    enforce_randomize_motion_start_eval: false
+    resample_motion_when_training: false
+    add_extra_action: false
+    dataset_record_steps: 196
+    dataset_record_path: /root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/servo/tracking/asap_ft_seed8101.pkl
+    termination:
+      terminate_by_contact: false
+      terminate_by_gravity: true
+      terminate_by_low_height: false
+      terminate_when_motion_end: true
+      terminate_when_motion_far: true
+      terminate_when_close_to_dof_pos_limit: false
+      terminate_when_close_to_dof_vel_limit: false
+      terminate_when_close_to_torque_limit: false
+    termination_scales:
+      termination_gravity_x: 0.8
+      termination_gravity_y: 0.8
+      termination_motion_far_threshold: 1.5
+    termination_curriculum:
+      terminate_when_motion_far_curriculum: false
+  _target_: humanoidverse.envs.motion_tracking.motion_tracking.LeggedRobotMotionTracking
+domain_rand:
+  push_robots: false
+  push_interval_s:
+  - 5
+  - 10
+  max_push_vel_xy: 1.0
+  randomize_base_com: false
+  base_com_range:
+    x:
+    - -0.1
+    - 0.1
+    'y':
+    - -0.1
+    - 0.1
+    z:
+    - -0.01
+    - 0.01
+  randomize_link_mass: false
+  link_mass_range:
+  - 0.7
+  - 1.3
+  randomize_pd_gain: false
+  kp_range:
+  - 0.75
+  - 1.25
+  kd_range:
+  - 0.75
+  - 1.25
+  randomize_friction: false
+  friction_range:
+  - -0.6
+  - 1.2
+  randomize_base_mass: false
+  randomize_torque_rfi: false
+  rfi_lim: 0.1
+  randomize_rfi_lim: false
+  rfi_lim_range:
+  - 0.5
+  - 1.5
+  randomize_ctrl_delay: false
+  ctrl_delay_step_range:
+  - 0
+  - 2
+  added_mass_range:
+  - -5.0
+  - 10.0
+  randomize_link_body_names:
+  - pelvis
+  - left_hip_yaw_link
+  - left_hip_roll_link
+  - left_hip_pitch_link
+  - left_knee_link
+  - right_hip_yaw_link
+  - right_hip_roll_link
+  - right_hip_pitch_link
+  - right_knee_link
+  randomize_motion_ref_xyz: false
+  motion_ref_xyz_range:
+  - - -0.02
+    - 0.02
+  - - -0.02
+    - 0.02
+  - - -0.1
+    - 0.1
+  motion_package_loss: false
+  package_loss_range:
+  - 1
+  - 10
+  package_loss_interval_s: 2
+  born_offset: false
+  born_offset_curriculum: false
+  born_offset_level_down_threshold: 50
+  born_offset_level_up_threshold: 120
+  level_degree: 5.0e-05
+  born_distance: 0.25
+  born_offset_range:
+  - 0.0
+  - 1
+  born_offset_possibility: 1.0
+  born_heading_curriculum: false
+  born_heading_randomization: false
+  born_heading_level_down_threshold: 50
+  born_heading_level_up_threshold: 120
+  born_heading_degree: 10
+  born_heading_range:
+  - 0
+  - 180
+  born_heading_level_degree: 5.0e-05
+checkpoint: /root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/servo/models/asap_ft/model_1000.pt
+headless: true
+num_envs: 32
+seed: 8101
+algo:
+  _target_: research.asap_diagnostics.paper_tracking_runtime.PaperTrackingRecorderPPO
+obs:
+  obs_dict:
+    closed_loop_actor_obs:
+    - ref_motion_phase
+  add_noise_currculum: false
+  noise_scales:
+    base_ang_vel: 0.0
+    projected_gravity: 0.0
+    dof_pos: 0.0
+    dof_vel: 0.0
+robot:
+  motion:
+    motion_file: /root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_step_forward_back_level1_filter_amass.pkl
+  control:
+    stiffness:
+      ankle_pitch: 16
+      ankle_roll: 16
+  asset:
+    self_collisions: 0
