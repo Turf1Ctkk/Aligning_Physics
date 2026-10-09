@@ -6,15 +6,17 @@ viewer:
   seed: 8101
   num_envs: 1
 alignment: Same elapsed recording time, not simulator-phase synchronization.
-editing: Fixed spatial crop within each pair; original video speed, sampled to 20
-  fps. A blank end card replaces an ended recording; no motion frames are synthesized
-  or frozen.
+editing: Latest native renderings used directly, without collect script. Fixed spatial
+  crop within each pair; original recorded playback speed, sampled to 20 fps. Entire
+  longer recording retained. After a shorter recording ends, its last frame is held
+  with an explicit still-frame label. Held frames do not show additional simulated
+  standing time.
 clips:
 - task: SquatL1
   gif: squat.gif
-  seconds: 4.16
-  gif_sha256: 75d41b66c2ac96345d22b2815938a7d8ba87bece82f0564b186fa17e22a42a02
-  gif_bytes: 9414476
+  seconds: 5.5
+  gif_sha256: a42430706c9e12bdd8aa79e23342929fffec2379aa6165c82edec3a5da6ac643
+  gif_bytes: 7457610
   crop_xyxy:
   - 400
   - 150
@@ -23,24 +25,26 @@ clips:
   output_fps: 20
   sources:
   - key: squat_original
-    video_sha256: b475a09c931f6c0de6d3239b881de708a4dc57af0f877c37e06dd9dfb0bace0b
+    video_file: /home/turfctkk/ASAP/visualization_bundle_20261009/squat_original/renderings/ckpt_policy/gui_squat_original-2026-10-10-04-54-27.mp4
+    video_sha256: 9dadf9b065daf3060223ec6fd82f52c01c6d38cfbd05e5b32cb4b701e77ccfd9
     start_s: 0.0
     source_fps: 50.0
-    source_frames: 208
-    source_seconds: 4.16
+    source_frames: 198
+    source_seconds: 3.96
     checkpoint_sha256: b58e04d49ce2c46773af4400be83d7d6af44163f1c98ae47e0e2933c57433000
   - key: squat_asap
-    video_sha256: 7e4dc4370543eba7e16e46d69666c0505b6fc6a16ccf57ff234677a6b5e8da33
+    video_file: /home/turfctkk/ASAP/visualization_bundle_20261009/squat_asap/renderings/ckpt_policy/gui_squat_asap-2026-10-10-05-07-31.mp4
+    video_sha256: 2603d2b9f655fce12191fd746eb315e40b4f06d8f6b2ca3d2d2728776dadc244
     start_s: 0.0
     source_fps: 50.0
-    source_frames: 179
-    source_seconds: 3.58
+    source_frames: 274
+    source_seconds: 5.48
     checkpoint_sha256: d12778b2a2fcb5b5314877e0237470c54288f5e175e2e06f59589b7259957565
 - task: CR7
   gif: cr7.gif
-  seconds: 2.48
-  gif_sha256: 3c8717b1a40fb98a86865b1ef64ea56de3033657fd85f6d3b4be6b82da812f35
-  gif_bytes: 6110408
+  seconds: 3.65
+  gif_sha256: 0bbe2c0c6a10a3634127892f1ae57fa2fa3ebc87ba662e7ab3ba83bb462ad790
+  gif_bytes: 5276815
   crop_xyxy:
   - 400
   - 0
@@ -49,24 +53,26 @@ clips:
   output_fps: 20
   sources:
   - key: cr7_original
-    video_sha256: 1fb7c7c6411b1538205d72900322516f2aee69ad118bdbcb6d8af6d41573d1a0
+    video_file: /home/turfctkk/ASAP/visualization_bundle_20261009/cr7_original/renderings/ckpt_policy/gui_cr7_original-2026-10-10-05-10-09.mp4
+    video_sha256: 576759e67adbd3a42978d2981d0a3518a22b31c88b738e88586b340b4bcee2f8
     start_s: 0.0
     source_fps: 50.0
-    source_frames: 124
-    source_seconds: 2.48
+    source_frames: 182
+    source_seconds: 3.64
     checkpoint_sha256: c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7
   - key: cr7_ft
-    video_sha256: 264caacacc719d0cabb53d714cb3a5b96a8f5606fd28d933ac6d3dfee745b126
+    video_file: /home/turfctkk/ASAP/visualization_bundle_20261009/cr7_ft/renderings/ckpt_policy/gui_cr7_ft-2026-10-10-05-20-40.mp4
+    video_sha256: 0fb849856c7c3eb4666af6901df9faf5b9422531058d05e12bcd7a7a0008c057
     start_s: 0.0
     source_fps: 50.0
-    source_frames: 122
-    source_seconds: 2.44
+    source_frames: 175
+    source_seconds: 3.5
     checkpoint_sha256: 91dde0fcf0c5533b6675273ab1df8e7e8e122643a44e8a5da0e3a02307072b9a
 - task: StepFBL1
   gif: step.gif
-  seconds: 3.58
-  gif_sha256: 97ab3dc202938094c943c1b637f80a02b3edf2aae497a404e20c5445a95b3256
-  gif_bytes: 6961787
+  seconds: 3.6
+  gif_sha256: 9ebb5d9820a925cf7caf539f46a9f15805b3feb36f86be39c8f2ffd9baaab0c6
+  gif_bytes: 4642582
   crop_xyxy:
   - 400
   - 150
@@ -75,14 +81,16 @@ clips:
   output_fps: 20
   sources:
   - key: step_original
-    video_sha256: c625ec214b00aa6960ffb294986081a668b57949d5fc6e40b3b1974bcf11b0de
+    video_file: /home/turfctkk/ASAP/visualization_bundle_20261009/step_original/renderings/ckpt_policy/gui_step_original-2026-10-10-05-27-22.mp4
+    video_sha256: fae10dbc6970b6b58c48a9625e55f258125a7d62e73a2ea4f97fdbc4d05d30ea
     start_s: 0.0
     source_fps: 50.0
-    source_frames: 89
-    source_seconds: 1.78
+    source_frames: 109
+    source_seconds: 2.18
     checkpoint_sha256: 9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b
   - key: step_sysid
-    video_sha256: a05f7fee6500ec541638df3457a33578ddb09a7becc583dd544fc5381ce5f05e
+    video_file: /home/turfctkk/ASAP/visualization_bundle_20261009/step_sysid/renderings/ckpt_policy/gui_step_sysid-2026-10-10-05-28-37.mp4
+    video_sha256: c42c38a75808a20028d7cf25f2e1bffa289ea47fa80fe0bb90c21652e725e7ea
     start_s: 0.0
     source_fps: 50.0
     source_frames: 179

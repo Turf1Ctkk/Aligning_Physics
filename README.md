@@ -65,7 +65,7 @@ The original Step policy reaches 90.6% success in A but only 1.0% in B, confirmi
 
 ### Recorded examples
 
-We choose serveral examples that show policy behavior in B. They are partial recordings with different start phases. A blank panel marks a clip’s end. Quantitative conclusions use the evaluations above.
+We choose serveral examples that show policy behavior in B. They are partial recordings with different start phases. When one recording ends first, its final frame remains visible with a still-frame label. Quantitative conclusions use the evaluations above.
 
 **Squat — Left: Original. Right: Fine-tuned by Delta action model (ASAP).**
 We observe that the policy without fine-tuning achieves better intermediate action completion but ultimately causes the robot to fall. After fine-tuning the policy using the delta action model, the robot no longer falls, yet tracking errors increase throughout the process, making the movements appear "conservative".\
