@@ -37,5 +37,6 @@
   "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/datasets/train_check_cases.pkl": "1a7e8f6c4fb51efcd0d7fb6e6dcb04c5b26c846573f3e49473ff96bcb70c239d",
   "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/datasets/val_cases.pkl": "8c3065dff02eaca5cc486e486bcf3dea0a2a6167c0beaa2a35276ae48b6a6607",
   "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/datasets/test_cases.pkl": "86c18c38986bae61339633ed901262be337e87ffdf42598523535f7a5ebb3491",
-  "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/sampling_manifest.json": "6271de6feb67fa4117697e381a0ba682d1c35e477389fc8ad60227dc8d3f159c"
+  "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/sampling_manifest.json": "6271de6feb67fa4117697e381a0ba682d1c35e477389fc8ad60227dc8d3f159c",
+  "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/models/delta/model_500.pt": "4e83573116ecfaf920a5b24e072dc6406f3d898bcaf4d442f655d9143ad1f074"
 }

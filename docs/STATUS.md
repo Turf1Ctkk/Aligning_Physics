@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 13:17 Beijing time (UTC+8).
+Updated October 9, 2026, 13:42 Beijing time (UTC+8).
 
 The seven-method comparisons, fresh paper metrics, source checks, and three-task noise and reset repairs are complete. Main charts use all three preset repaired delta policies. Earlier records remain available.
 
@@ -14,7 +14,9 @@ Random calibration is complete and audited. Validation selected update 1,000. Te
 
 Random Step training and evaluation are complete and independently audited. Success is 0%, with mean survival 1.69 seconds. First-second global/relative position errors are 99.76/47.90 mm; acceleration is 1.913 mm/frame² and root velocity is 5.965 mm/frame. All trials reach one second and terminate between 1.34 and 2.42 seconds. No termination cause is assigned. [Audited results](../results/servo_error_selection/metrics.md).
 
-Servo calibration started at 13:02 Beijing and is the only GPU stage. Its selected-training same16 error is 19.61 mm, compared with Random's 21.52 mm. These are reconstruction diagnostics, not subtracted floors. The new FT-only policy, paired repeat and Low-error calibration remain pending. There is no selector ranking or matched FT-only contrast yet.
+Servo calibration is complete and audited. Validation selected update 500. Test global/relative errors are 42.93/23.32 mm, acceleration is 0.847 mm/frame² and root velocity is 3.824 mm/frame. All four exceed Random and shared zero correction in this run. [Calibration comparison](../results/servo_error_selection/primary/servo/replay_metrics.md).
+
+Servo Step training began at 13:31 Beijing and is the only GPU stage. The new FT-only policy, paired repeat and Low-error calibration remain pending. Control transfer and the matched FT-only contrast cannot yet be assessed. Training-window reconstruction errors remain unmodified; no floor is subtracted.
 
 All four errors and closed-loop success will be reported. Audits check actual settings, fixed checkpoints, stored starts and recomputed metrics. Missing or failed audits stop downstream work. Partial runs are not silently resumed.
 

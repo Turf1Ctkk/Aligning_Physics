@@ -1,0 +1,16 @@
+{
+  "source_zero_sha256": "3076b3eaf682d3e032006835e15e5e27acab71aca04b7be2800c184e1b4308a5",
+  "learned_sha256": "2648efc8a474f5aa8ddd0fc0f789b5ac10f6966984ec625d2f6e2c937ed11e26",
+  "cases": 66,
+  "fields": [
+    "dof",
+    "dof_vel",
+    "root_trans_offset",
+    "root_rot",
+    "root_lin_vel",
+    "root_ang_vel",
+    "action",
+    "motion_times"
+  ],
+  "exact": true
+}

@@ -25,3 +25,5 @@ Stratified replay uses separate ankle magnitude bins from the training pool. Mis
 Phase quotas cover the available training pool, rather than the full reference. Contact uses a height/speed proxy. Continuous speed and contact distributions still differ. No same-domain floor is subtracted. The selected budget is not total acquisition cost.
 
 The new matched FT-only policy is pending; no comparison against it is available yet. The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.
+
+Servo calibration is complete, while its control evaluation remains pending. The [calibration comparison](primary/servo/replay_metrics.md) reports its four errors and the shared zero control. [Per-ankle strata](calibration_stratified_metrics.md) retain inclusion differences.

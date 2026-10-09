@@ -1,0 +1,15 @@
+{
+  "checkpoint": "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/models/delta/model_500.pt",
+  "sha256": "4e83573116ecfaf920a5b24e072dc6406f3d898bcaf4d442f655d9143ad1f074",
+  "validation_loss": 49.30562411185819,
+  "candidates": [
+    {
+      "loss": 49.30562411185819,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/models/delta/model_500.pt"
+    },
+    {
+      "loss": 59.958393506829225,
+      "checkpoint": "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/servo/models/delta/model_1000.pt"
+    }
+  ]
+}

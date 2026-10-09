@@ -66,7 +66,9 @@ Equal-size trajectory subsets also produce different replay and control results.
 
 ## 7. Minimum hypothesis test
 
-The new test compares Random-N with Servo-coverage-N. Both use the same 18 training parents and 954 transitions. Each trains its own delta action model. Both then fine-tune Step with the repaired inputs and reset. A fresh FT-only policy shares the first training seed. Low-error-N is a supplemental calibration control if time remains. The selection rules are frozen before learning. [Design and limits](docs/servo_error_experiment.md). Random calibration is complete: test global error falls from 39.77 to 35.58 mm, while acceleration worsens slightly. The resulting Step policy has 0% success in this seed. Servo-coverage and the new matched FT-only are pending. [Four-error and control results](results/servo_error_selection/metrics.md).
+The new test compares Random-N with Servo-coverage-N. Both use the same 18 training parents and 954 transitions. Each trains its own delta action model. Both then fine-tune Step with the repaired inputs and reset. A fresh FT-only policy shares the first training seed. Low-error-N is a supplemental calibration control if time remains. The selection rules are frozen before learning. [Design and limits](docs/servo_error_experiment.md).
+
+Random calibration is complete: test global error falls from 39.77 to 35.58 mm, while acceleration worsens slightly. The resulting Step policy has 0% success in this seed. Servo-coverage calibration is also complete. Its test global error is 42.93 mm, and all four errors exceed Random in this run. Its Step policy and the new matched FT-only are pending. [Calibration comparison](results/servo_error_selection/primary/servo/replay_metrics.md). [Four-error and control results](results/servo_error_selection/metrics.md).
 
 Earlier subset experiments improved replay with actuator coverage, but control varied greatly across training seeds. Those policies retain the old noise and reset issues. Their [results](results/content_selection/README.md) remain exploratory.
 

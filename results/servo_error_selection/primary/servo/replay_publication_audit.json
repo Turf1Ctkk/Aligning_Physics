@@ -1,0 +1,210 @@
+{
+  "scope": "Independent case identity/hash and aggregate four-error recomputation from actual physical records; no fresh GPU job",
+  "checks": [
+    {
+      "split": "val",
+      "label": "delta_500",
+      "record_sha256": "dbea1820d0c8baf4c2079a44350405f6087d9ba78885ed4aa2a2c8930cbd75fa",
+      "cases": 60,
+      "metrics": {
+        "metrics": {
+          "global_position_mm": 49.30562411185819,
+          "root_relative_position_mm": 28.74845583374719,
+          "body_velocity_mm_frame": 4.393007213002816,
+          "root_velocity_mm_frame": 4.153999001012735,
+          "body_acceleration_mm_frame2": 1.0247632857836289
+        },
+        "completion_pct": 100.0,
+        "total_cases": 60,
+        "per_task": {
+          "CR7": {
+            "global_position_mm": 34.69631034256181,
+            "root_relative_position_mm": 22.763326272107754,
+            "body_velocity_mm_frame": 3.549275432938702,
+            "root_velocity_mm_frame": 3.2804113004615076,
+            "body_acceleration_mm_frame2": 1.1665755952772994
+          },
+          "SquatL1": {
+            "global_position_mm": 41.36249897341423,
+            "root_relative_position_mm": 27.890538850048255,
+            "body_velocity_mm_frame": 3.697381494863297,
+            "root_velocity_mm_frame": 2.9137058495721058,
+            "body_acceleration_mm_frame2": 0.831755913823786
+          },
+          "StepFBL1": {
+            "global_position_mm": 71.85806301959852,
+            "root_relative_position_mm": 35.59150237908557,
+            "body_velocity_mm_frame": 5.93236471120645,
+            "root_velocity_mm_frame": 6.2678798530045885,
+            "body_acceleration_mm_frame2": 1.075958348249801
+          }
+        },
+        "scope": "Available uninterrupted frames; equal means within group, then task, then across tasks. Read completion separately."
+      }
+    },
+    {
+      "split": "val",
+      "label": "delta_1000",
+      "record_sha256": "3e2c36a81e56bc2c188c9f95f13b221278412badcd57f880b50829a2dae6d2a0",
+      "cases": 60,
+      "metrics": {
+        "metrics": {
+          "global_position_mm": 59.958393506829225,
+          "root_relative_position_mm": 33.28116390547196,
+          "body_velocity_mm_frame": 5.1445529414484215,
+          "root_velocity_mm_frame": 4.886799886122985,
+          "body_acceleration_mm_frame2": 1.1888302480604926
+        },
+        "completion_pct": 100.0,
+        "total_cases": 60,
+        "per_task": {
+          "CR7": {
+            "global_position_mm": 34.9666196310374,
+            "root_relative_position_mm": 22.7058721955203,
+            "body_velocity_mm_frame": 3.502591693233383,
+            "root_velocity_mm_frame": 3.2792800694274042,
+            "body_acceleration_mm_frame2": 1.1470633806051567
+          },
+          "SquatL1": {
+            "global_position_mm": 56.44095115482804,
+            "root_relative_position_mm": 35.02946492811749,
+            "body_velocity_mm_frame": 4.874406308429165,
+            "root_velocity_mm_frame": 4.571992390254364,
+            "body_acceleration_mm_frame2": 0.8203014683170892
+          },
+          "StepFBL1": {
+            "global_position_mm": 88.46760973462222,
+            "root_relative_position_mm": 42.10815459277811,
+            "body_velocity_mm_frame": 7.056660822682718,
+            "root_velocity_mm_frame": 6.809127198687186,
+            "body_acceleration_mm_frame2": 1.599125895259232
+          }
+        },
+        "scope": "Available uninterrupted frames; equal means within group, then task, then across tasks. Read completion separately."
+      }
+    },
+    {
+      "split": "test",
+      "label": "learned",
+      "record_sha256": "2648efc8a474f5aa8ddd0fc0f789b5ac10f6966984ec625d2f6e2c937ed11e26",
+      "cases": 66,
+      "metrics": {
+        "metrics": {
+          "global_position_mm": 42.93170531025805,
+          "root_relative_position_mm": 23.31722529845219,
+          "body_velocity_mm_frame": 3.7659008466860384,
+          "root_velocity_mm_frame": 3.823805668880061,
+          "body_acceleration_mm_frame2": 0.8469768534011243
+        },
+        "completion_pct": 100.0,
+        "total_cases": 66,
+        "per_task": {
+          "CR7": {
+            "global_position_mm": 36.165575745152886,
+            "root_relative_position_mm": 23.181211427093476,
+            "body_velocity_mm_frame": 3.739517798341545,
+            "root_velocity_mm_frame": 3.585717455323201,
+            "body_acceleration_mm_frame2": 1.1353681089429783
+          },
+          "SquatL1": {
+            "global_position_mm": 27.561022407581383,
+            "root_relative_position_mm": 14.098576239115392,
+            "body_velocity_mm_frame": 2.09284577142767,
+            "root_velocity_mm_frame": 2.207766063881562,
+            "body_acceleration_mm_frame2": 0.36702747616728104
+          },
+          "StepFBL1": {
+            "global_position_mm": 65.06851777803988,
+            "root_relative_position_mm": 32.67188822914771,
+            "body_velocity_mm_frame": 5.4653389702889,
+            "root_velocity_mm_frame": 5.6779334874354195,
+            "body_acceleration_mm_frame2": 1.0385349750931137
+          }
+        },
+        "scope": "Available uninterrupted frames; equal means within group, then task, then across tasks. Read completion separately."
+      }
+    },
+    {
+      "split": "test",
+      "label": "source20_zero",
+      "record_sha256": "3076b3eaf682d3e032006835e15e5e27acab71aca04b7be2800c184e1b4308a5",
+      "cases": 66,
+      "metrics": {
+        "metrics": {
+          "global_position_mm": 39.77359309837598,
+          "root_relative_position_mm": 21.042807202106147,
+          "body_velocity_mm_frame": 3.4972440370002444,
+          "root_velocity_mm_frame": 3.5207466090396093,
+          "body_acceleration_mm_frame2": 0.7987939268828465
+        },
+        "completion_pct": 100.0,
+        "total_cases": 66,
+        "per_task": {
+          "CR7": {
+            "global_position_mm": 32.138948344282454,
+            "root_relative_position_mm": 18.385376528720492,
+            "body_velocity_mm_frame": 3.1883113394125795,
+            "root_velocity_mm_frame": 3.0019367966531876,
+            "body_acceleration_mm_frame2": 1.0726919062808988
+          },
+          "SquatL1": {
+            "global_position_mm": 29.74292645260478,
+            "root_relative_position_mm": 15.286041619947762,
+            "body_velocity_mm_frame": 2.4101324848710406,
+            "root_velocity_mm_frame": 2.573353027857102,
+            "body_acceleration_mm_frame2": 0.36816858883584197
+          },
+          "StepFBL1": {
+            "global_position_mm": 57.43890449824072,
+            "root_relative_position_mm": 29.45700345765019,
+            "body_velocity_mm_frame": 4.8932882867171115,
+            "root_velocity_mm_frame": 4.986950002608539,
+            "body_acceleration_mm_frame2": 0.9555212855317988
+          }
+        },
+        "scope": "Available uninterrupted frames; equal means within group, then task, then across tasks. Read completion separately."
+      }
+    },
+    {
+      "split": "test",
+      "label": "same16_zero",
+      "record_sha256": "4bca10f0e45f650dd468b244166a5c174add03371285629220c09487404e43de",
+      "cases": 66,
+      "metrics": {
+        "metrics": {
+          "global_position_mm": 11.58484040287059,
+          "root_relative_position_mm": 7.0791260269812,
+          "body_velocity_mm_frame": 1.1375802095760628,
+          "root_velocity_mm_frame": 1.0638463157466076,
+          "body_acceleration_mm_frame2": 0.39509979581825333
+        },
+        "completion_pct": 100.0,
+        "total_cases": 66,
+        "per_task": {
+          "CR7": {
+            "global_position_mm": 27.083334084438246,
+            "root_relative_position_mm": 16.686844538389273,
+            "body_velocity_mm_frame": 2.65131292766694,
+            "root_velocity_mm_frame": 2.5101869761180735,
+            "body_acceleration_mm_frame2": 0.8743883835833277
+          },
+          "SquatL1": {
+            "global_position_mm": 3.176000304584778,
+            "root_relative_position_mm": 2.062268509453376,
+            "body_velocity_mm_frame": 0.2769744890429699,
+            "root_velocity_mm_frame": 0.2526502575599149,
+            "body_acceleration_mm_frame2": 0.0713562648080379
+          },
+          "StepFBL1": {
+            "global_position_mm": 4.495186819588748,
+            "root_relative_position_mm": 2.4882650331009506,
+            "body_velocity_mm_frame": 0.48445321201827873,
+            "root_velocity_mm_frame": 0.4287017135618341,
+            "body_acceleration_mm_frame2": 0.23955473906339436
+          }
+        },
+        "scope": "Available uninterrupted frames; equal means within group, then task, then across tasks. Read completion separately."
+      }
+    }
+  ]
+}

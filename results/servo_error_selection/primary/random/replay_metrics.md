@@ -10,7 +10,7 @@ All test cases reach the one-second horizon. Errors exclude the warm sample. Pos
 | Random-N delta | 35.575 | 18.359 | 0.817 | 3.029 |
 | Same16, zero correction diagnostic | 11.585 | 7.079 | 0.395 | 1.064 |
 
-Random calibration improves both position errors and root velocity. Acceleration error is slightly worse. Servo-coverage is pending, so these results do not compare selection rules. Step evaluation is now complete: success is 0% in this seed. The four-error control table and audits are in the [full results](../../metrics.md). The new FT-only contrast remains pending.
+Random calibration improves both position errors and root velocity. Acceleration error is slightly worse. Servo-coverage calibration is now complete. Its four errors are higher in this run; see the [calibration comparison](../servo/replay_metrics.md). Step evaluation is now complete: success is 0% in this seed. The four-error control table and audits are in the [full results](../../metrics.md). The new FT-only contrast remains pending.
 
 The learned and source-zero replays have exactly matching first stored states, actions and clocks. Actual records were independently checked and their metric aggregates recomputed. The same-gain diagnostic is retained without subtraction; its warm state uses different gains.
 
