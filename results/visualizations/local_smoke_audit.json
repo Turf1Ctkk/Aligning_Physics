@@ -1,0 +1,42 @@
+{
+  "scope": "Local checkpoint and runtime compatibility only; no new aggregate tracking metric",
+  "checks": [
+    {
+      "key": "squat_original",
+      "checkpoint_sha256": "b58e04d49ce2c46773af4400be83d7d6af44163f1c98ae47e0e2933c57433000",
+      "headless_smoke": "16 finite-action steps; no optimizer update",
+      "log_sha256": "c3bab7bbbdcb1927d1293c66699311343f33e2fa34645ffea58e4022a2e90a48"
+    },
+    {
+      "key": "squat_asap",
+      "checkpoint_sha256": "d12778b2a2fcb5b5314877e0237470c54288f5e175e2e06f59589b7259957565",
+      "headless_smoke": "16 finite-action steps; no optimizer update",
+      "log_sha256": "b1c9d07cf95d179dcfaea21ed0eef91d76db3bbe356f6e144e43402335f1b475"
+    },
+    {
+      "key": "cr7_original",
+      "checkpoint_sha256": "c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7",
+      "headless_smoke": "16 finite-action steps; no optimizer update",
+      "log_sha256": "814393a623d7f17da05bf38d797c348dbee081d2aefa52d2f31ea878c91aff9e"
+    },
+    {
+      "key": "cr7_ft",
+      "checkpoint_sha256": "91dde0fcf0c5533b6675273ab1df8e7e8e122643a44e8a5da0e3a02307072b9a",
+      "headless_smoke": "16 finite-action steps; no optimizer update",
+      "log_sha256": "4115ef28a0e49fcf55c720d747480843bd7bea96f12f072919270a0dad12e86e"
+    },
+    {
+      "key": "step_original",
+      "checkpoint_sha256": "9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b",
+      "headless_smoke": "16 finite-action steps; no optimizer update",
+      "log_sha256": "04c0764189ba8ee69a79f528cba0828526e783c6d986d592d3dd036f26d10627"
+    },
+    {
+      "key": "step_sysid",
+      "checkpoint_sha256": "34fdcabad90ca8d957b75bea8160e6bc64f7bddfa46a9a234657047a04e0c392",
+      "headless_smoke": "16 finite-action steps; no optimizer update",
+      "log_sha256": "457f7061296badf07463794719ecd426266acde633927d418b87c2c01868c0e0"
+    }
+  ],
+  "native_gui_check": "Viewer opened and 16 policy steps completed"
+}

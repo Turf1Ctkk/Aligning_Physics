@@ -68,3 +68,17 @@ python scripts/report_method_comparison.py --repair-root results/reset_repair --
 ```
 
 The main reporter refuses a pending repair root. It replaces all three delta policies together with their fixed-final noise-and-reset repaired models. It does not select a checkpoint or a repair version from test performance. Open-loop results stay unchanged because the calibrator was not retrained. Earlier chart data and both before/after reports remain available.
+
+## Author-recorded GUI examples
+
+Six policies are prepared for three small comparisons: Original versus repaired ASAP on Squat, Original versus FT-only on CR7, and Original versus passive SysID on Step. [The selection manifest](../results/visualizations/selection_manifest.json) retains checkpoint hashes and aggregate results. These are chosen illustrations, not a complete method ranking. CR7 includes the global/relative error tradeoff, and FT-only remains a stronger Squat success baseline.
+
+The local viewer uses target ankle stiffness 16, seed 8101 and one robot. All six models pass a short local inference check; native viewer creation also passes. This check does not produce new tracking statistics. The prepared local bundle contains `view.sh` and `RECORDING_GUIDE.md`. Press R to start recording and R again to save the video before closing the window.
+
+Once the author records the six videos, import them with:
+
+```bash
+python scripts/import_gui_recordings.py --recordings PATH_TO_RECORDINGS --manifest PATH_TO_BUNDLE/manifest.json
+```
+
+Expected filenames are `squat_original.mp4`, `squat_asap.mp4`, `cr7_original.mp4`, `cr7_ft.mp4`, `step_original.mp4` and `step_sysid.mp4`. Optional `--starts` accepts a JSON file of start times for clip alignment. The importer creates three comparison GIFs, records video hashes and inserts actual embeds into the main README. Missing videos stop it before any README edit. Review the clips before publishing; they do not replace the aggregate error and success figures.

@@ -1,0 +1,206 @@
+{
+  "scope": "Six final policies selected for author-recorded GUI comparisons. Illustrations do not replace aggregate results.",
+  "viewer_settings": {
+    "seed": 8101,
+    "num_envs": 1,
+    "ankle_kp": 16,
+    "initialization_noise": 0.2,
+    "actor_sensor_noise": 0,
+    "learned_correction_during_deployment": false
+  },
+  "urdf_sha256": "548972bfbcb33c4b6f999ee2a1e9df5ec24321ae95a2aa09fc666bde4add6369",
+  "policies": [
+    {
+      "key": "squat_original",
+      "task": "SquatL1",
+      "task_key": "squat",
+      "label": "original",
+      "method": "vanilla",
+      "remote_checkpoint": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "checkpoint_sha256": "b58e04d49ce2c46773af4400be83d7d6af44163f1c98ae47e0e2933c57433000",
+      "success_pct": 44.791666666666664,
+      "first_second_metrics": {
+        "global_position_mm": 94.89706841923656,
+        "root_relative_position_mm": 36.39411032294519,
+        "body_velocity_mm_frame": 3.9314742753238128,
+        "root_velocity_mm_frame": 3.498553748394729,
+        "body_acceleration_mm_frame2": 1.7111431637315668
+      },
+      "full_successful_metrics": {
+        "global_position_mm": 126.13597913597233,
+        "root_relative_position_mm": 50.61914558490484,
+        "body_velocity_mm_frame": 3.0253809228679978,
+        "root_velocity_mm_frame": 2.8011529699730464,
+        "body_acceleration_mm_frame2": 0.8284146449611
+      },
+      "source_config": "/root/ASAP/logs/MotionTracking/20261007_101434-MotionTracking_SquatL1-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "source_config_sha256": "a12923aa56dcb45498c9cb0b32744aaf016990956dbddd4197a8681cfacf7a75",
+      "checkpoint_bytes": 9769058,
+      "local_checkpoint": "/home/turfctkk/ASAP/visualization_bundle_20261009/squat_original/policy.pt",
+      "local_motion": "/home/turfctkk/ASAP/visualization_bundle_20261009/references/squat.pkl",
+      "motion_sha256": "f9e0816216db51e930340f360701f6aa53139809fc3d9e7a171e415887c7fb31",
+      "remote_motion": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_squat_level1_filter_amass.pkl"
+    },
+    {
+      "key": "squat_asap",
+      "task": "SquatL1",
+      "task_key": "squat",
+      "label": "asap",
+      "method": "asap_ft",
+      "remote_checkpoint": "/root/autodl-tmp/aligning_physics/reset_repair_20261009/SquatL1/models/asap_ft/model_1000.pt",
+      "checkpoint_sha256": "d12778b2a2fcb5b5314877e0237470c54288f5e175e2e06f59589b7259957565",
+      "success_pct": 91.66666666666667,
+      "first_second_metrics": {
+        "global_position_mm": 91.1169444371828,
+        "root_relative_position_mm": 34.34225214605718,
+        "body_velocity_mm_frame": 3.626944649363441,
+        "root_velocity_mm_frame": 3.274229530319888,
+        "body_acceleration_mm_frame2": 1.7048042081304846
+      },
+      "full_successful_metrics": {
+        "global_position_mm": 104.81720551006883,
+        "root_relative_position_mm": 55.783026169640316,
+        "body_velocity_mm_frame": 2.8147904946259246,
+        "root_velocity_mm_frame": 2.7721513157224926,
+        "body_acceleration_mm_frame2": 0.7972193270365789
+      },
+      "source_config": "/root/autodl-tmp/aligning_physics/reset_repair_20261009/SquatL1/models/asap_ft/config.yaml",
+      "source_config_sha256": "0363e5bf0b5709e2af7e738416f9d846f383c7f0414e1dfa41a424bde37e1638",
+      "checkpoint_bytes": 9769058,
+      "local_checkpoint": "/home/turfctkk/ASAP/visualization_bundle_20261009/squat_asap/policy.pt",
+      "local_motion": "/home/turfctkk/ASAP/visualization_bundle_20261009/references/squat.pkl",
+      "motion_sha256": "f9e0816216db51e930340f360701f6aa53139809fc3d9e7a171e415887c7fb31",
+      "remote_motion": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_squat_level1_filter_amass.pkl"
+    },
+    {
+      "key": "cr7_original",
+      "task": "CR7",
+      "task_key": "cr7",
+      "label": "original",
+      "method": "vanilla",
+      "remote_checkpoint": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "checkpoint_sha256": "c13bc7a430712e1f2e2e912e88b3d6c00c31a31cc895d20cd70565688deea7f7",
+      "success_pct": 100.0,
+      "first_second_metrics": {
+        "global_position_mm": 123.46736831081506,
+        "root_relative_position_mm": 43.259819839179634,
+        "body_velocity_mm_frame": 6.357659996814651,
+        "root_velocity_mm_frame": 5.277093875057552,
+        "body_acceleration_mm_frame2": 2.661625573383612
+      },
+      "full_successful_metrics": {
+        "global_position_mm": 133.68255170468683,
+        "root_relative_position_mm": 50.98507757500514,
+        "body_velocity_mm_frame": 7.528933613186556,
+        "root_velocity_mm_frame": 5.8296078710537484,
+        "body_acceleration_mm_frame2": 3.4168358847602076
+      },
+      "source_config": "/root/ASAP/logs/MotionTracking/20261007_003636-MotionTracking_CR7-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "source_config_sha256": "734642c7154f42ca7f666dbdfb1b95e9e8bb5b533481a75c357b9e2ccf7ce665",
+      "checkpoint_bytes": 9769058,
+      "local_checkpoint": "/home/turfctkk/ASAP/visualization_bundle_20261009/cr7_original/policy.pt",
+      "local_motion": "/home/turfctkk/ASAP/visualization_bundle_20261009/references/cr7.pkl",
+      "motion_sha256": "da9777c049737ae5bd975d35c9d7ee9813f48160f164b5c80f11889222666ee1",
+      "remote_motion": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl"
+    },
+    {
+      "key": "cr7_ft",
+      "task": "CR7",
+      "task_key": "cr7",
+      "label": "ft",
+      "method": "ft_only",
+      "remote_checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/ft_only/model_1000.pt",
+      "checkpoint_sha256": "91dde0fcf0c5533b6675273ab1df8e7e8e122643a44e8a5da0e3a02307072b9a",
+      "success_pct": 100.0,
+      "first_second_metrics": {
+        "global_position_mm": 119.98304449022703,
+        "root_relative_position_mm": 53.269993438163375,
+        "body_velocity_mm_frame": 6.104170279736272,
+        "root_velocity_mm_frame": 5.335990008582232,
+        "body_acceleration_mm_frame2": 2.5685180879830107
+      },
+      "full_successful_metrics": {
+        "global_position_mm": 114.46689299794879,
+        "root_relative_position_mm": 57.11314392825091,
+        "body_velocity_mm_frame": 6.676885979932681,
+        "root_velocity_mm_frame": 5.681148267490321,
+        "body_acceleration_mm_frame2": 3.1037657619158696
+      },
+      "source_config": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/CR7/models/ft_only/config.yaml",
+      "source_config_sha256": "ed9855a5a7a5757f6bf50a6d6a684fafd94e6b4e9327611c8d7e5b5ade1d571a",
+      "checkpoint_bytes": 9769058,
+      "local_checkpoint": "/home/turfctkk/ASAP/visualization_bundle_20261009/cr7_ft/policy.pt",
+      "local_motion": "/home/turfctkk/ASAP/visualization_bundle_20261009/references/cr7.pkl",
+      "motion_sha256": "da9777c049737ae5bd975d35c9d7ee9813f48160f164b5c80f11889222666ee1",
+      "remote_motion": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl"
+    },
+    {
+      "key": "step_original",
+      "task": "StepFBL1",
+      "task_key": "step",
+      "label": "original",
+      "method": "vanilla",
+      "remote_checkpoint": "/root/ASAP/logs/MotionTracking/20261007_142152-MotionTracking_StepFBL1-motion_tracking-g1_29dof_anneal_23dof/model_6000.pt",
+      "checkpoint_sha256": "9e67bb692d34867d9861bdf8ff0e768a65a590f1a8cbcbe91b1051a34c0ca91b",
+      "success_pct": 1.0416666666666667,
+      "first_second_metrics": {
+        "global_position_mm": 91.10803610595535,
+        "root_relative_position_mm": 43.14410636421951,
+        "body_velocity_mm_frame": 5.3936410536589605,
+        "root_velocity_mm_frame": 4.991778641482291,
+        "body_acceleration_mm_frame2": 1.8091267875553088
+      },
+      "full_successful_metrics": {
+        "global_position_mm": 91.74655058729223,
+        "root_relative_position_mm": 41.646434825215735,
+        "body_velocity_mm_frame": 3.6354056271879736,
+        "root_velocity_mm_frame": 3.075794261671707,
+        "body_acceleration_mm_frame2": 1.1765294088849914
+      },
+      "source_config": "/root/ASAP/logs/MotionTracking/20261007_142152-MotionTracking_StepFBL1-motion_tracking-g1_29dof_anneal_23dof/config.yaml",
+      "source_config_sha256": "18e3df6a4c3817030731e417608f9b9491bc38cfed82ca135f2c6972e80dfcf7",
+      "checkpoint_bytes": 9769058,
+      "local_checkpoint": "/home/turfctkk/ASAP/visualization_bundle_20261009/step_original/policy.pt",
+      "local_motion": "/home/turfctkk/ASAP/visualization_bundle_20261009/references/step.pkl",
+      "motion_sha256": "e89947b9a5e30fabad737232e1a28051121b6b74bbcddc674397e8f2c095db86",
+      "remote_motion": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_step_forward_back_level1_filter_amass.pkl"
+    },
+    {
+      "key": "step_sysid",
+      "task": "StepFBL1",
+      "task_key": "step",
+      "label": "sysid",
+      "method": "sysid_ft",
+      "remote_checkpoint": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1/models/sysid_ft/model_1000.pt",
+      "checkpoint_sha256": "34fdcabad90ca8d957b75bea8160e6bc64f7bddfa46a9a234657047a04e0c392",
+      "success_pct": 100.0,
+      "first_second_metrics": {
+        "global_position_mm": 62.851167475952444,
+        "root_relative_position_mm": 39.78460112741208,
+        "body_velocity_mm_frame": 3.432516517173506,
+        "root_velocity_mm_frame": 2.703636596517118,
+        "body_acceleration_mm_frame2": 1.7379414103727322
+      },
+      "full_successful_metrics": {
+        "global_position_mm": 85.32119306541787,
+        "root_relative_position_mm": 47.885252044253214,
+        "body_velocity_mm_frame": 3.906945315282322,
+        "root_velocity_mm_frame": 3.3046042832562588,
+        "body_acceleration_mm_frame2": 1.2736631805137557
+      },
+      "source_config": "/root/autodl-tmp/aligning_physics/extend_tasks_20261008/StepFBL1/models/sysid_ft/config.yaml",
+      "source_config_sha256": "6051e7e003283c8dd162e68191dc960f08e60ea06430d7d15c6cc1e8939c9db7",
+      "checkpoint_bytes": 9769058,
+      "local_checkpoint": "/home/turfctkk/ASAP/visualization_bundle_20261009/step_sysid/policy.pt",
+      "local_motion": "/home/turfctkk/ASAP/visualization_bundle_20261009/references/step.pkl",
+      "motion_sha256": "e89947b9a5e30fabad737232e1a28051121b6b74bbcddc674397e8f2c095db86",
+      "remote_motion": "/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_step_forward_back_level1_filter_amass.pkl"
+    }
+  ],
+  "status": "Awaiting author-recorded videos; no GIFs or placeholder embeds generated.",
+  "selection_reason": {
+    "squat": "Original versus repaired ASAP: transfer improvement; FT-only remains a stronger success baseline.",
+    "cr7": "Original versus FT-only: equal success ceiling, global/relative error tradeoff.",
+    "step": "Original versus passive SysID: strong transfer contrast; fitted gains are a surrogate."
+  }
+}
