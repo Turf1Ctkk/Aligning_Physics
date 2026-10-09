@@ -140,11 +140,11 @@ def main():
                 magnitude = ('Small','Medium','Large')[int(parts[1][3:])]
                 inclusion = 100*s['included_frame_entries']/(66*49)
                 strata_lines.append(f'| {NAMES[arm]} | {ankle} | {magnitude} | {inclusion:.1f} | {s["global_position_mm"]:.3f} | {s["joint_position_rmse_rad"]:.5f} | {s["joint_velocity_rmse_rad_s"]:.5f} |')
-    (a.output/'stratified_metrics.md').write_text('\n'.join(strata_lines)+'\n')
+    (a.output/'stratified_metrics.md').write_text('\n'.join(strata_lines).rstrip()+'\n')
     lines += ['', 'Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Joint-error tables are in stratified_metrics.md; raw strata and inclusion are in stratified_metrics.json.', '',
         'Phase quotas cover the available training pool, rather than the full reference. Contact uses a height/speed proxy. Continuous speed and contact distributions still differ. No same-domain floor is subtracted. The selected budget is not total acquisition cost.', '',
         'The first run has a matched FT-only policy. The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.', '']
-    (a.output/'metrics.md').write_text('\n'.join(lines)+'\n')
+    (a.output/'metrics.md').write_text('\n'.join(lines).rstrip()+'\n')
     (a.output/'chart_data.json').write_text(json.dumps({'runs':rows,'pending':pending,'selection':selection,'supplemental':supplemental},indent=2)+'\n')
     print('Reported completed audited arms; pending/skipped:',pending)
 

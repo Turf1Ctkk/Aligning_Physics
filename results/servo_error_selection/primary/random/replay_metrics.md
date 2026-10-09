@@ -17,4 +17,3 @@ The learned and source-zero replays have exactly matching first stored states, a
 The selected-training same16 check has a historical 24-body error of 21.52 mm. This is a reconstruction diagnostic, not a learned result. The replay helper reuses the root same16 log and command names. The test check replaces these names after the training check. Both checks retain separate recordings, reports and configs. This limits log provenance.
 
 Four-ankle position and velocity errors and fixed magnitude strata remain in the raw case reports. Stratum inclusion differs; frame entries are not independent trials.
-
