@@ -1,4 +1,4 @@
 {
   "status": "running",
-  "stage": "primary/ft_only/policy_train"
+  "stage": "repeat/random/calibration_train"
 }

@@ -119,6 +119,23 @@ def main():
             for scope, name in (('replay', 'Replay'), ('control', 'Step first second')):
                 lines += ['| ' + name + ' | ' + ' | '.join(f'{contrast[scope][k]:+.3f}' if contrast[scope][k] is not None else 'N/A' for k in FIELDS) + ' |']
             lines += ['', f'Success changes by {contrast["success_percentage_points"]:+.1f} percentage points; mean survival changes by {contrast["mean_survival_seconds"]:+.3f} seconds. This is one whole-training-run contrast, not an isolated feature effect.', '']
+        if 'ft_only' in arms:
+            base = arms['ft_only']['control']
+            matched = {}
+            lines += ['', 'Matched primary-seed control contrast: each arm minus FT-only. Positive error differences mean higher error.', '',
+                '| Group | Success difference (percentage points) | E_g-mpjpe | E_mpjpe | E_acc | E_vel |',
+                '|---|---:|---:|---:|---:|---:|']
+            for arm in ('random', 'servo'):
+                if arm not in arms:
+                    continue
+                current = arms[arm]['control']
+                cm, bm = current['prefix_metrics']['1.0']['metrics'], base['prefix_metrics']['1.0']['metrics']
+                values = {k: cm[k] - bm[k] if cm and bm else None for k in FIELDS}
+                success = current['paper_success_pct'] - base['paper_success_pct']
+                matched[arm] = {'first_second_errors': values, 'success_percentage_points': success,
+                    'mean_survival_seconds': current['mean_survival_s'] - base['mean_survival_s']}
+                lines += [f'| {NAMES[arm]} | {success:+.1f} | ' + ' | '.join(f'{values[k]:+.3f}' if values[k] is not None else 'N/A' for k in FIELDS) + ' |']
+            contrasts.setdefault(run, {})['matched_ft_only'] = matched
     strata={run:{arm:item['replay']['stratified'] for arm,item in arms.items() if 'replay' in item} for run,arms in rows.items()}
     supplemental = {}
     low_status = a.root / 'low_error/status.json'

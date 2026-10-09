@@ -13,6 +13,28 @@
       "root_velocity_mm_frame": 0.20496156492029538
     },
     "success_percentage_points": 0.0,
-    "mean_survival_seconds": 0.03812499999999974
+    "mean_survival_seconds": 0.03812499999999974,
+    "matched_ft_only": {
+      "random": {
+        "first_second_errors": {
+          "global_position_mm": 20.24425748994554,
+          "root_relative_position_mm": 7.525514653935808,
+          "body_acceleration_mm_frame2": 0.09226810894146631,
+          "root_velocity_mm_frame": 1.7545583495757624
+        },
+        "success_percentage_points": -5.208333333333333,
+        "mean_survival_seconds": -0.7427083333333331
+      },
+      "servo": {
+        "first_second_errors": {
+          "global_position_mm": 27.88030331341767,
+          "root_relative_position_mm": 5.20302195559988,
+          "body_acceleration_mm_frame2": 0.10248998712947688,
+          "root_velocity_mm_frame": 1.9595199144960578
+        },
+        "success_percentage_points": -5.208333333333333,
+        "mean_survival_seconds": -0.7045833333333333
+      }
+    }
   }
 }

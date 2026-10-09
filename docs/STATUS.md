@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 14:10 Beijing time (UTC+8).
+Updated October 9, 2026, 14:42 Beijing time (UTC+8).
 
 The seven-method comparisons, fresh paper metrics, source checks, and three-task noise and reset repairs are complete. Main charts use all three preset repaired delta policies. Earlier records remain available.
 
@@ -18,7 +18,9 @@ Servo calibration is complete and audited. Validation selected update 500. Test 
 
 Servo Step evaluation is complete and audited. Success is 0%, with mean survival 1.73 seconds. All trials reach one second. Global/relative errors are 107.40/45.58 mm, acceleration is 1.923 mm/frame² and root velocity is 6.170 mm/frame. Relative error is lower than Random; the other errors are higher. Neither arm completes the motion.
 
-The new matched-seed FT-only started at 14:05 Beijing and is the only GPU stage. Its results, the paired repeat and Low-error calibration remain pending. Training-window reconstruction errors remain unmodified; no floor is subtracted.
+The matched primary-seed FT-only is complete and audited. Success is 5.2%, completion is 7.3%, and mean survival is 2.43 seconds. First-second global/relative errors are 79.51/40.38 mm, acceleration is 1.821 mm/frame² and root velocity is 4.211 mm/frame. All trials reach one second. Both residual arms are worse on all four errors and success in this run. FT-only itself remains weak; the cause is not isolated.
+
+The second paired seed passed the preset time gate. Random calibration started at 14:39 Beijing and is the only GPU stage. Servo follows it serially. The repeat has no new matched FT-only. Low-error calibration remains conditional on its time gate. All selected windows stay fixed, and no reconstruction floor is subtracted.
 
 All four errors and closed-loop success will be reported. Audits check actual settings, fixed checkpoints, stored starts and recomputed metrics. Missing or failed audits stop downstream work. Partial runs are not silently resumed.
 

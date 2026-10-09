@@ -1,0 +1,27 @@
+{
+  "scope": "Read-only actual repeat calibration recipe and byte-identical copied input hashes; no completed learning result",
+  "config_changes": {
+    "env.config.sampling_manifest": [
+      "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/random/sampling_manifest.json",
+      "/root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/random/sampling_manifest.json"
+    ],
+    "robot.motion.motion_file": [
+      "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/random/datasets/mixed30.pkl",
+      "/root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/random/datasets/mixed30.pkl"
+    ],
+    "experiment_dir": [
+      "/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/random/models/delta",
+      "/root/autodl-tmp/aligning_physics/servo_step_20261009/repeat/random/models/delta"
+    ],
+    "seed": [
+      20309009,
+      20309010
+    ]
+  },
+  "matched_primary_files": [
+    "datasets/mixed30.pkl",
+    "datasets/val_cases.pkl",
+    "datasets/test_cases.pkl",
+    "sampling_manifest.json"
+  ]
+}

@@ -1,0 +1,196 @@
+hydra:
+  run:
+    dir: ${eval_log_dir}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+  launcher:
+    _target_: hydra._internal.core_plugins.basic_launcher.BasicLauncher
+  sweeper:
+    _target_: hydra._internal.core_plugins.basic_sweeper.BasicSweeper
+    max_batch_size: null
+    params: null
+  help:
+    app_name: ${hydra.job.name}
+    header: '${hydra.help.app_name} is powered by Hydra.
+
+      '
+    footer: 'Powered by Hydra (https://hydra.cc)
+
+      Use --hydra-help to view Hydra specific help
+
+      '
+    template: '${hydra.help.header}
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (group=option)
+
+
+      $APP_CONFIG_GROUPS
+
+
+      == Config ==
+
+      Override anything in the config (foo.bar=value)
+
+
+      $CONFIG
+
+
+      ${hydra.help.footer}
+
+      '
+  hydra_help:
+    template: 'Hydra (${hydra.runtime.version})
+
+      See https://hydra.cc for more info.
+
+
+      == Flags ==
+
+      $FLAGS_HELP
+
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (For example, append hydra/job_logging=disabled
+      to command line)
+
+
+      $HYDRA_CONFIG_GROUPS
+
+
+      Use ''--cfg hydra'' to Show the Hydra config.
+
+      '
+    hydra_help: ???
+  hydra_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][HYDRA] %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+    root:
+      level: INFO
+      handlers:
+      - console
+    loggers:
+      logging_example:
+        level: DEBUG
+    disable_existing_loggers: false
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.runtime.output_dir}/${hydra.job.name}.log
+    root:
+      level: INFO
+      handlers:
+      - console
+      - file
+    disable_existing_loggers: false
+  env: {}
+  mode: RUN
+  searchpath: []
+  callbacks: {}
+  output_subdir: .hydra
+  overrides:
+    hydra:
+    - hydra.mode=RUN
+    task:
+    - ++checkpoint=/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/ft_only/models/asap_ft/model_1000.pt
+    - +headless=True
+    - +num_envs=32
+    - +opt=record
+    - +domain_rand=NO_domain_rand
+    - ++seed=8102
+    - ++algo._target_=research.asap_diagnostics.paper_tracking_runtime.PaperTrackingRecorderPPO
+    - ++env._target_=humanoidverse.envs.motion_tracking.motion_tracking.LeggedRobotMotionTracking
+    - ++obs.obs_dict.closed_loop_actor_obs=[ref_motion_phase]
+    - ++eval_log_dir=/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/ft_only/tracking/asap_ft_seed8102_config
+    - ++robot.motion.motion_file=/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_step_forward_back_level1_filter_amass.pkl
+    - ++robot.control.stiffness.ankle_pitch=16
+    - ++robot.control.stiffness.ankle_roll=16
+    - ++robot.asset.self_collisions=0
+    - ++env.config.noise_to_initial_level=0.2
+    - ++env.config.init_noise_scale.root_pos=0
+    - ++env.config.init_noise_scale.root_rot=0
+    - ++env.config.enforce_randomize_motion_start_eval=False
+    - ++env.config.resample_motion_when_training=False
+    - ++env.config.add_extra_action=False
+    - ++env.config.save_motion=False
+    - ++obs.add_noise_currculum=False
+    - ++obs.noise_scales.base_ang_vel=0.0
+    - ++obs.noise_scales.projected_gravity=0.0
+    - ++obs.noise_scales.dof_pos=0.0
+    - ++obs.noise_scales.dof_vel=0.0
+    - ++env.config.dataset_record_steps=196
+    - ++env.config.dataset_record_path=/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/ft_only/tracking/asap_ft_seed8102.pkl
+    - ++env.config.termination.terminate_by_contact=False
+    - ++env.config.termination.terminate_by_gravity=True
+    - ++env.config.termination.terminate_by_low_height=False
+    - ++env.config.termination.terminate_when_motion_end=True
+    - ++env.config.termination.terminate_when_motion_far=True
+    - ++env.config.termination.terminate_when_close_to_dof_pos_limit=False
+    - ++env.config.termination.terminate_when_close_to_dof_vel_limit=False
+    - ++env.config.termination.terminate_when_close_to_torque_limit=False
+    - ++env.config.termination_scales.termination_gravity_x=0.8
+    - ++env.config.termination_scales.termination_gravity_y=0.8
+    - ++env.config.termination_scales.termination_motion_far_threshold=1.5
+    - ++env.config.termination_curriculum.terminate_when_motion_far_curriculum=False
+  job:
+    name: eval_agent
+    chdir: null
+    override_dirname: ++algo._target_=research.asap_diagnostics.paper_tracking_runtime.PaperTrackingRecorderPPO,++checkpoint=/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/ft_only/models/asap_ft/model_1000.pt,++env._target_=humanoidverse.envs.motion_tracking.motion_tracking.LeggedRobotMotionTracking,++env.config.add_extra_action=False,++env.config.dataset_record_path=/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/ft_only/tracking/asap_ft_seed8102.pkl,++env.config.dataset_record_steps=196,++env.config.enforce_randomize_motion_start_eval=False,++env.config.init_noise_scale.root_pos=0,++env.config.init_noise_scale.root_rot=0,++env.config.noise_to_initial_level=0.2,++env.config.resample_motion_when_training=False,++env.config.save_motion=False,++env.config.termination.terminate_by_contact=False,++env.config.termination.terminate_by_gravity=True,++env.config.termination.terminate_by_low_height=False,++env.config.termination.terminate_when_close_to_dof_pos_limit=False,++env.config.termination.terminate_when_close_to_dof_vel_limit=False,++env.config.termination.terminate_when_close_to_torque_limit=False,++env.config.termination.terminate_when_motion_end=True,++env.config.termination.terminate_when_motion_far=True,++env.config.termination_curriculum.terminate_when_motion_far_curriculum=False,++env.config.termination_scales.termination_gravity_x=0.8,++env.config.termination_scales.termination_gravity_y=0.8,++env.config.termination_scales.termination_motion_far_threshold=1.5,++eval_log_dir=/root/autodl-tmp/aligning_physics/servo_step_20261009/primary/ft_only/tracking/asap_ft_seed8102_config,++obs.add_noise_currculum=False,++obs.noise_scales.base_ang_vel=0.0,++obs.noise_scales.dof_pos=0.0,++obs.noise_scales.dof_vel=0.0,++obs.noise_scales.projected_gravity=0.0,++obs.obs_dict.closed_loop_actor_obs=[ref_motion_phase],++robot.asset.self_collisions=0,++robot.control.stiffness.ankle_pitch=16,++robot.control.stiffness.ankle_roll=16,++robot.motion.motion_file=/root/ASAP/humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-motions_raw_tairantestbed_smpl_video_step_forward_back_level1_filter_amass.pkl,++seed=8102,+domain_rand=NO_domain_rand,+headless=True,+num_envs=32,+opt=record
+    id: ???
+    num: ???
+    config_name: base_eval
+    env_set: {}
+    env_copy: []
+    config:
+      override_dirname:
+        kv_sep: '='
+        item_sep: ','
+        exclude_keys: []
+  runtime:
+    version: 1.3.7
+    version_base: '1.1'
+    cwd: /root/ASAP
+    config_sources:
+    - path: hydra.conf
+      schema: pkg
+      provider: hydra
+    - path: /root/ASAP/humanoidverse/config
+      schema: file
+      provider: main
+    - path: ''
+      schema: structured
+      provider: schema
+    output_dir: /root/autodl-tmp/aligning_physics/servo_step_20261009/primary/ft_only/tracking/asap_ft_seed8102_config
+    choices:
+      domain_rand: NO_domain_rand
+      opt: record
+      hydra/env: default
+      hydra/callbacks: null
+      hydra/job_logging: default
+      hydra/hydra_logging: default
+      hydra/hydra_help: default
+      hydra/help: default
+      hydra/sweeper: basic
+      hydra/launcher: basic
+      hydra/output: default
+  verbose: false
