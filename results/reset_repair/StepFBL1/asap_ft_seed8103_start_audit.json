@@ -1,0 +1,17 @@
+{
+  "old_record_sha256": "54ca12fbd24e7b98cd7ae845460c1fe3fea36509dcd63acca61938ee3308fd5f",
+  "fresh_record_sha256": "99df2a69d76c46511cb85a211c842c389151ad7a4be8a9d45c30eaa7d19e494c",
+  "initial_max_absolute_difference": {
+    "dof": 0.0,
+    "dof_vel": 0.0,
+    "root_trans_offset": 0.0,
+    "root_rot": 0.0,
+    "root_lin_vel": 0.0,
+    "root_ang_vel": 0.0,
+    "action": 0.0,
+    "motion_times": 0.0
+  },
+  "point_count": 27,
+  "legacy_point_count": 24,
+  "scope": "Exact first stored state/action/clock check; no claim about hidden solver state"
+}

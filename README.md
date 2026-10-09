@@ -58,7 +58,7 @@ Delta action reduces replay position error from 38.42 to 31.12 mm. After noise r
 
 Noise repair improves CR7 success but reduces Squat and Step success. This finding does not establish the cause of the remaining failures. Each main method has one training seed. The two torque datasets also differ, so their contrast does not isolate excitation.
 
-A further [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. The input repair passes a short physical check, but its effect on policy success has not been tested. Delta results therefore still carry this training issue.
+A further [reset check](results/delta_reset_probe/metrics.md) found that delta training retains the previous episode's correction. Clearing it raises Step success from 25.0% to 37.5% and lowers all four first-second errors. Full-motion velocity and acceleration errors rise in the successful cohort, whose trials also change. Squat and CR7 are pending. The charts above still use noise-only repair. [Reset comparison](results/reset_repair/metrics.md).
 
 The original Step policy succeeds at 90.6% in A and 1.0% in B. It learned the motion, but transfers poorly. CR7 already has 100% B success. [Source check](results/source_quality/metrics.md).
 
@@ -74,7 +74,7 @@ I select equal-size subsets from the same 18 training rollouts. Each contains 95
 | Actuator coverage | 28.99 | 35.72 | 41.7 | 77.1 |
 | Large joint range | 46.66 | 49.17 | 77.1 | 95.8 |
 
-Coverage improves replay in both runs, but not consistently control. **These results do not confirm the hypothesis.** The policies retain the noise mismatch. Selection also changes phase and contact. The budget counts selected training data, rather than the cost of acquiring the larger pool. [Data-content experiment](results/content_selection/README.md).
+Coverage improves replay in both runs, but not consistently control. **These results do not confirm the hypothesis.** The policies retain the noise and reset issues. Selection also changes phase and contact. The budget counts selected training data, rather than the cost of acquiring the larger pool. [Data-content experiment](results/content_selection/README.md).
 
 ![Data selection: fresh replay and downstream tracking success](results/paper_replay/content_selection.png)
 
