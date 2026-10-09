@@ -119,7 +119,29 @@ def main():
                 '| Low-error-N | ' + ' | '.join(f'{m[k]:.3f}' for k in FIELDS) + f' | {replay["paper_metrics"]["completion_pct"]:.1f} |']
             strata['supplemental_low_error'] = replay['stratified']
     (a.output/'stratified_metrics.json').write_text(json.dumps(strata,indent=2)+'\n')
-    lines += ['', 'Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Raw strata and their inclusion are retained in stratified_metrics.json.', '',
+    strata_lines = ['# Per-ankle servo-error strata', '',
+        'Magnitude edges are fixed from training data. Errors use available samples with equal parent and task means. Bins can include different tasks. Entries overlap across ankles and are not independent trials.', '',
+        'Inclusion is the percentage of planned scored samples for that ankle. Missing bins stay absent. Joint position and velocity below are not body errors.', '']
+    stratum_runs = list(rows.items())
+    if 'replay' in supplemental:
+        stratum_runs.append(('supplemental', {'low_error': {'replay': supplemental['replay']}}))
+    for run, arms in stratum_runs:
+        if not any('replay' in item for item in arms.values()):
+            continue
+        strata_lines += ['## ' + run.capitalize(), '',
+            '| Group | Ankle | Magnitude | Inclusion (%) | Global body error (mm) | Joint RMSE (rad) | Joint velocity RMSE (rad/s) |',
+            '|---|---|---|---:|---:|---:|---:|']
+        for arm, item in arms.items():
+            if 'replay' not in item:
+                continue
+            for key, s in sorted(item['replay']['stratified'].items()):
+                parts = key.split('_')
+                ankle = ('Left pitch','Left roll','Right pitch','Right roll')[int(parts[0][1:])]
+                magnitude = ('Small','Medium','Large')[int(parts[1][3:])]
+                inclusion = 100*s['included_frame_entries']/(66*49)
+                strata_lines.append(f'| {NAMES[arm]} | {ankle} | {magnitude} | {inclusion:.1f} | {s["global_position_mm"]:.3f} | {s["joint_position_rmse_rad"]:.5f} | {s["joint_velocity_rmse_rad_s"]:.5f} |')
+    (a.output/'stratified_metrics.md').write_text('\n'.join(strata_lines)+'\n')
+    lines += ['', 'Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Joint-error tables are in stratified_metrics.md; raw strata and inclusion are in stratified_metrics.json.', '',
         'Phase quotas cover the available training pool, rather than the full reference. Contact uses a height/speed proxy. Continuous speed and contact distributions still differ. No same-domain floor is subtracted. The selected budget is not total acquisition cost.', '',
         'The first run has a matched FT-only policy. The repeat compares two selectors at its own shared seed; it has no new matched FT-only. Runs are reported separately. Two seeds do not establish a reliable ranking.', '']
     (a.output/'metrics.md').write_text('\n'.join(lines)+'\n')

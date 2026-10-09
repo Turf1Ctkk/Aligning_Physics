@@ -1,6 +1,6 @@
 # Current work
 
-Updated October 9, 2026, 12:08 Beijing time (UTC+8).
+Updated October 9, 2026, 12:41 Beijing time (UTC+8).
 
 The seven-method comparisons, fresh paper metrics, source checks, and three-task noise and reset repairs are complete. Main charts use all three preset repaired delta policies. Earlier records remain available.
 
@@ -10,7 +10,9 @@ The new [servo-error experiment](servo_error_experiment.md) compares Random-N an
 
 Selection, quotas and bin edges are frozen. The first reference-phase preflight failed because late Step windows were unavailable. A revised CPU preflight passed with shared training-candidate phase tertiles. The failed preflight is retained.
 
-Random's same-domain training-window check is complete. Its historical 24-body position error is 21.52 mm. This is an initialization/reconstruction diagnostic, not a learned result. Random delta calibration is running. There are no new learned results yet. Servo, the paired training repeat and supplemental Low-error calibration follow serially, subject to cutoff gates. Only one heavy stage runs at a time.
+Random calibration is complete and audited. Validation selected update 1,000. Test global position error falls from 39.77 to 35.58 mm; relative position and root velocity also improve. Acceleration rises from 0.799 to 0.817 mm/frame². [Random replay results](../results/servo_error_selection/primary/random/replay_metrics.md).
+
+Random Step fine-tuning started at 12:29 Beijing and is running alone on the GPU. Servo and the fresh FT-only policy follow. The paired repeat and Low-error calibration remain subject to cutoff gates. No new closed-loop result or selector ranking is available. The selected-training same16 check remains a 21.52 mm reconstruction diagnostic.
 
 All four errors and closed-loop success will be reported. Audits check actual settings, fixed checkpoints, stored starts and recomputed metrics. Missing or failed audits stop downstream work. Partial runs are not silently resumed.
 

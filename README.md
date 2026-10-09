@@ -66,18 +66,8 @@ Equal-size trajectory subsets also produce different replay and control results.
 
 ## 7. Minimum hypothesis test
 
-The new test compares Random-N with Servo-coverage-N. Both use the same 18 training parents and 954 transitions. Each trains its own delta action model. Both then fine-tune Step with the repaired inputs and reset. A fresh FT-only policy shares the first training seed. Low-error-N is a supplemental calibration control if time remains. The selection rules are frozen before learning. [Design and limits](docs/servo_error_experiment.md). No new learned results are available yet.
+The new test compares Random-N with Servo-coverage-N. Both use the same 18 training parents and 954 transitions. Each trains its own delta action model. Both then fine-tune Step with the repaired inputs and reset. A fresh FT-only policy shares the first training seed. Low-error-N is a supplemental calibration control if time remains. The selection rules are frozen before learning. [Design and limits](docs/servo_error_experiment.md). Random calibration is complete: test global error falls from 39.77 to 35.58 mm, while acceleration worsens slightly. Servo-coverage and Step control remain pending. [Partial results](results/servo_error_selection/primary/random/replay_metrics.md).
 
-The earlier exploratory test is retained below. I select equal-size subsets from the same 18 training rollouts. Each contains 954 transitions. The rules are uniform selection, actuator-feature coverage and large ankle range. Models and training budgets stay the same.
-
-| Selection rule | First-run replay error (mm) | Repeat replay error (mm) | First-run completion (%) | Repeat completion (%) |
-|---|---:|---:|---:|---:|
-| Uniform | 33.62 | 44.88 | 8.3 | 99.0 |
-| Actuator coverage | 28.99 | 35.72 | 41.7 | 77.1 |
-| Large joint range | 46.66 | 49.17 | 77.1 | 95.8 |
-
-Coverage improves replay in both runs, but not consistently control. **These results do not confirm the hypothesis.** The policies retain the noise and reset issues. Selection also changes phase and contact. The budget counts selected training data, rather than the cost of acquiring the larger pool. [Data-content experiment](results/content_selection/README.md).
-
-![Data selection: fresh replay and downstream tracking success](results/paper_replay/content_selection.png)
+Earlier subset experiments improved replay with actuator coverage, but control varied greatly across training seeds. Those policies retain the old noise and reset issues. Their [results](results/content_selection/README.md) remain exploratory.
 
 [Experiment details](docs/experimental_protocol.md) · [Reproduction](docs/reproduction.md) · [Reading guide](docs/reading_guide.md)

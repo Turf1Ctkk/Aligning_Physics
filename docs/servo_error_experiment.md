@@ -46,6 +46,10 @@ Step runs alone in target B. We report the four tracking errors and full-motion 
 
 The first run uses calibration seed 20309009 and policy seed 20310009. A second paired run uses 20309010 and 20310010 if at least 2.2 hours remain before the GPU cutoff. Replay seed 20309109 and deployment seeds 8101–8103 stay fixed across runs. The repeat compares the two selectors; it has no new matched FT-only policy. Low-error calibration follows only if at least 50 minutes remain. Skipped stages are recorded explicitly.
 
+## Logging limit
+
+The replay helper reuses the root same16 log and command names. The test check replaces these names after the selected-training check. Split-specific recordings, reports and configs remain separate. No physical check is repeated to hide this limit.
+
 ## Interpretation
 
 Better replay with better Step tracking supports both stages in this setting. Better replay without better tracking supports calibration alone. Similar replay means this selector and budget did not show an advantage. A weaker Low-error result may suggest that response information matters, without proving that Servo-coverage improves on random selection.
