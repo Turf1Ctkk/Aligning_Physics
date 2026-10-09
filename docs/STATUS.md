@@ -1,35 +1,23 @@
 # Current work
 
-Updated October 9, 2026, 15:11 Beijing time (UTC+8).
+Updated October 9, 2026, 15:44 Beijing time (UTC+8).
 
-The seven-method comparisons, fresh paper metrics, source checks, and three-task noise and reset repairs are complete. Main charts use all three preset repaired delta policies. Earlier records remain available.
+The seven-method comparisons, paper metrics, source checks, and three-task noise/reset repairs are complete. Main charts use the preset repaired policies. Earlier results remain available.
 
-## Running
+## Servo-error study
 
-The new [servo-error experiment](servo_error_experiment.md) compares Random-N and Servo-coverage-N. Each group trains a fresh delta action model and then fine-tunes Step. Both use the repaired inputs and reset. A fresh FT-only policy shares the primary seed.
+The primary run is complete and audited. Random-N and Servo-coverage-N both have 0% Step success. Matched FT-only reaches 5.2% and has lower first-second error on all four measures. FT-only itself is weak; the cause is not isolated. [Errors and audits](../results/servo_error_selection/metrics.md).
 
-Selection, quotas and bin edges are frozen. The first reference-phase preflight failed because late Step windows were unavailable. A revised CPU preflight passed with shared training-candidate phase tertiles. The failed preflight is retained.
+Second-seed Random is also complete and audited. Success is 20.8%, completion is 21.9%, and mean survival is 2.75 seconds. First-second global and relative errors are 83.23 and 46.83 mm. Acceleration is 1.869 mm/frame²; root velocity is 4.638 mm/frame. All trials reach one second. These four errors are lower than in the primary Random run.
 
-Random calibration is complete and audited. Validation selected update 1,000. Test global position error falls from 39.77 to 35.58 mm; relative position and root velocity also improve. Acceleration rises from 0.799 to 0.817 mm/frame². [Random replay results](../results/servo_error_selection/primary/random/replay_metrics.md).
+The runs use identical selected data. Calibration and policy training seeds change together; replay and deployment seeds stay fixed. The repeat has no matched FT-only. Both outcomes are retained, without selecting a better seed.
 
-Random Step training and evaluation are complete and independently audited. Success is 0%, with mean survival 1.69 seconds. First-second global/relative position errors are 99.76/47.90 mm; acceleration is 1.913 mm/frame² and root velocity is 5.965 mm/frame. All trials reach one second and terminate between 1.34 and 2.42 seconds. No termination cause is assigned. [Audited results](../results/servo_error_selection/metrics.md).
+Second-seed Servo calibration began at 15:40 Beijing and is the only GPU stage. Its learned and control results remain pending. Low-error calibration runs only if its preset time gate permits. No windows or settings change after outcomes.
 
-Servo calibration is complete and audited. Validation selected update 500. Test global/relative errors are 42.93/23.32 mm, acceleration is 0.847 mm/frame² and root velocity is 3.824 mm/frame. All four exceed Random and shared zero correction in this run. [Calibration comparison](../results/servo_error_selection/primary/servo/replay_metrics.md).
+## Scope and deadlines
 
-Servo Step evaluation is complete and audited. Success is 0%, with mean survival 1.73 seconds. All trials reach one second. Global/relative errors are 107.40/45.58 mm, acceleration is 1.923 mm/frame² and root velocity is 6.170 mm/frame. Relative error is lower than Random; the other errors are higher. Neither arm completes the motion.
+All completed settings, hashes, stored starts and metrics pass independent audits. Known log limits and reconstruction floors remain disclosed. No floor is subtracted, and terminations are not automatically classified as falls.
 
-The matched primary-seed FT-only is complete and audited. Success is 5.2%, completion is 7.3%, and mean survival is 2.43 seconds. First-second global/relative errors are 79.51/40.38 mm, acceleration is 1.821 mm/frame² and root velocity is 4.211 mm/frame. All trials reach one second. Both residual arms are worse on all four errors and success in this run. FT-only itself remains weak; the cause is not isolated.
+The old subset study retains earlier noise/reset defects and remains exploratory. No new GIFs, hardware claims or unseen-motion claims are added. Raw science, checkpoints and failures are preserved; final cleanup and author visualizations follow review.
 
-Second-seed Random calibration is complete and audited. Validation selected update 1,000. Test global/relative errors are 31.74/16.97 mm, acceleration is 0.811 mm/frame² and root velocity is 2.819 mm/frame. Both position errors and root velocity improve over shared zero correction; acceleration remains slightly worse. The same selected data and replay seed are retained. [Repeat calibration report](../results/servo_error_selection/repeat/replay_metrics.md).
-
-Second-seed Random Step training began at 15:08 Beijing and is the only GPU stage. Servo follows it serially. Neither repeat policy outcome is available yet. The repeat has no new matched FT-only. Low-error calibration remains conditional on its time gate. No selected window is replaced and no reconstruction floor is subtracted.
-
-All four errors and closed-loop success will be reported. Audits check actual settings, fixed checkpoints, stored starts and recomputed metrics. Missing or failed audits stop downstream work. Partial runs are not silently resumed.
-
-## Scope
-
-The old data-content test retains the earlier noise and reset issues. Its findings remain exploratory. New selectors are not chosen from its test ranking.
-
-Reader-facing reports use percentages and short English. GIFs remain removed. Raw results, checkpoints and failed artifacts are preserved. Final cleanup and author-supplied visualizations follow review.
-
-GPU cutoff: October 9 at 17:00 Beijing time. Submission deadline: October 10 at 04:59 Beijing time.
+GPU cutoff: October 9 at 17:00 Beijing. Submission deadline: October 10 at 04:59 Beijing.

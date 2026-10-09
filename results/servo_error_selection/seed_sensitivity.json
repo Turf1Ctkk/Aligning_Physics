@@ -1,0 +1,24 @@
+{
+  "random": {
+    "repeat_minus_primary": {
+      "replay": {
+        "global_position_mm": -3.8315961917762706,
+        "root_relative_position_mm": -1.3919884313516633,
+        "body_acceleration_mm_frame2": -0.006009764438406839,
+        "root_velocity_mm_frame": -0.20967542276570006
+      },
+      "control": {
+        "global_position_mm": -16.533536991527882,
+        "root_relative_position_mm": -1.0745843544077545,
+        "body_acceleration_mm_frame2": -0.044656709385897386,
+        "root_velocity_mm_frame": -1.3271653725965606
+      }
+    },
+    "primary_success_pct": 0.0,
+    "repeat_success_pct": 20.833333333333332,
+    "first_second_inclusion_pct": {
+      "primary": 100.0,
+      "repeat": 100.0
+    }
+  }
+}

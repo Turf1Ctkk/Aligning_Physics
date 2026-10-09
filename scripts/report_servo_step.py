@@ -136,6 +136,27 @@ def main():
                     'mean_survival_seconds': current['mean_survival_s'] - base['mean_survival_s']}
                 lines += [f'| {NAMES[arm]} | {success:+.1f} | ' + ' | '.join(f'{values[k]:+.3f}' if values[k] is not None else 'N/A' for k in FIELDS) + ' |']
             contrasts.setdefault(run, {})['matched_ft_only'] = matched
+    sensitivity = {}
+    shared = set(rows.get('primary', {})) & set(rows.get('repeat', {}))
+    if shared:
+        lines += ['', '## Fixed-data training-seed sensitivity', '',
+            'Both runs are retained. Calibration and policy training seeds change together; replay and deployment seeds stay fixed. These differences do not isolate either training stage. There is no matched repeat FT-only.', '',
+            '| Group | Primary success (%) | Repeat success (%) | Primary first-second inclusion (%) | Repeat first-second inclusion (%) |',
+            '|---|---:|---:|---:|---:|']
+        for arm in sorted(shared):
+            primary, repeat = [rows[run][arm] for run in ('primary', 'repeat')]
+            controls = [item['control'] for item in (primary, repeat)]
+            inclusion = [100*s['prefix_metrics']['1.0']['valid_trials']/s['total_trials'] for s in controls]
+            changes = {}
+            for scope in ('replay', 'control'):
+                values = [item['replay']['paper_metrics']['metrics'] if scope == 'replay'
+                          else item['control']['prefix_metrics']['1.0']['metrics'] for item in (primary, repeat)]
+                changes[scope] = {k: values[1][k]-values[0][k] if all(values) else None for k in FIELDS}
+            sensitivity[arm] = {'repeat_minus_primary': changes,
+                'primary_success_pct': controls[0]['paper_success_pct'], 'repeat_success_pct': controls[1]['paper_success_pct'],
+                'first_second_inclusion_pct': dict(zip(('primary', 'repeat'), inclusion))}
+            lines += [f'| {NAMES[arm]} | {controls[0]["paper_success_pct"]:.1f} | {controls[1]["paper_success_pct"]:.1f} | {inclusion[0]:.1f} | {inclusion[1]:.1f} |']
+        lines += ['', 'Repeat-minus-primary four-error differences are retained in seed_sensitivity.json. Prefix means remain conditional on their reported inclusion. Two runs do not establish a population ranking.', '']
     strata={run:{arm:item['replay']['stratified'] for arm,item in arms.items() if 'replay' in item} for run,arms in rows.items()}
     supplemental = {}
     low_status = a.root / 'low_error/status.json'
@@ -187,6 +208,7 @@ def main():
     (a.output/'metrics.md').write_text('\n'.join(lines).rstrip()+'\n')
     (a.output/'chart_data.json').write_text(json.dumps({'runs':rows,'pending':pending,'selection':selection,'supplemental':supplemental},indent=2)+'\n')
     (a.output/'paired_contrasts.json').write_text(json.dumps(contrasts,indent=2)+'\n')
+    (a.output/'seed_sensitivity.json').write_text(json.dumps(sensitivity,indent=2)+'\n')
     print('Reported completed audited arms; pending/skipped:',pending)
 
 

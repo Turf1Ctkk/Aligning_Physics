@@ -4,7 +4,7 @@ The selectors were frozen before learning. The planned arms use the same parents
 
 Replay has 24 measured bodies. Step tracking has 27 points. Errors use the first second. Velocity is root velocity at 50 Hz. Units are mm for position, mm/frame² for acceleration and mm/frame for velocity. Early terminations change inclusion; full-motion means include successful trials only.
 
-Pending policy evaluation or skipped: repeat/random, repeat/servo.
+Pending policy evaluation or skipped: repeat/servo.
 
 ## Primary
 
@@ -46,6 +46,35 @@ Matched primary-seed control contrast: each arm minus FT-only. Positive error di
 |---|---:|---:|---:|---:|---:|
 | Random-N | -5.2 | +20.244 | +7.526 | +0.092 | +1.755 |
 | Servo-coverage-N | -5.2 | +27.880 | +5.203 | +0.102 | +1.960 |
+## Repeat
+
+| Group | Replay E_g-mpjpe | Replay E_mpjpe | Replay E_acc | Replay E_vel | Complete replay (%) |
+|---|---:|---:|---:|---:|---:|
+| Random-N | 31.744 | 16.967 | 0.811 | 2.819 | 100.0 |
+
+| Group | Success (%) | Completion (%) | First-second inclusion (%) | E_g-mpjpe | E_mpjpe | E_acc | E_vel |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Random-N | 20.8 | 21.9 | 100.0 | 83.226 | 46.827 | 1.869 | 4.638 |
+
+| Group | Successful full-motion inclusion (%) | E_g-mpjpe | E_mpjpe | E_acc | E_vel |
+|---|---:|---:|---:|---:|---:|
+| Random-N | 20.8 | 95.213 | 55.456 | 1.192 | 3.599 |
+
+![Repeat four-error comparison](repeat_errors.png)
+
+![Repeat Step success](repeat_success.png)
+
+
+## Fixed-data training-seed sensitivity
+
+Both runs are retained. Calibration and policy training seeds change together; replay and deployment seeds stay fixed. These differences do not isolate either training stage. There is no matched repeat FT-only.
+
+| Group | Primary success (%) | Repeat success (%) | Primary first-second inclusion (%) | Repeat first-second inclusion (%) |
+|---|---:|---:|---:|---:|
+| Random-N | 0.0 | 20.8 | 100.0 | 100.0 |
+
+Repeat-minus-primary four-error differences are retained in seed_sensitivity.json. Prefix means remain conditional on their reported inclusion. Two runs do not establish a population ranking.
+
 
 Stratified replay uses separate ankle magnitude bins from the training pool. Missing bins are not filled. Frame entries can overlap across ankles. Joint-error tables are in stratified_metrics.md; raw strata and inclusion are in stratified_metrics.json.
 

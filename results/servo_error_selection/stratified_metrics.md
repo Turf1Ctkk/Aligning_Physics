@@ -32,3 +32,19 @@ Inclusion is the percentage of planned scored samples for that ankle. Missing bi
 | Servo-coverage-N | Right roll | Small | 36.7 | 34.113 | 0.03486 | 1.66924 |
 | Servo-coverage-N | Right roll | Medium | 36.6 | 28.247 | 0.03938 | 1.37835 |
 | Servo-coverage-N | Right roll | Large | 26.7 | 66.943 | 0.02714 | 2.53709 |
+## Repeat
+
+| Group | Ankle | Magnitude | Inclusion (%) | Global body error (mm) | Joint RMSE (rad) | Joint velocity RMSE (rad/s) |
+|---|---|---|---:|---:|---:|---:|
+| Random-N | Left pitch | Small | 30.9 | 35.068 | 0.11909 | 4.69782 |
+| Random-N | Left pitch | Medium | 36.3 | 39.471 | 0.11757 | 1.59466 |
+| Random-N | Left pitch | Large | 32.8 | 37.369 | 0.11309 | 2.16648 |
+| Random-N | Left roll | Small | 35.6 | 40.249 | 0.06510 | 3.49348 |
+| Random-N | Left roll | Medium | 32.1 | 27.916 | 0.03900 | 3.17163 |
+| Random-N | Left roll | Large | 15.9 | 43.574 | 0.04800 | 6.98064 |
+| Random-N | Right pitch | Small | 43.8 | 39.364 | 0.19266 | 5.76085 |
+| Random-N | Right pitch | Medium | 29.3 | 39.465 | 0.15299 | 3.16152 |
+| Random-N | Right pitch | Large | 23.9 | 26.779 | 0.08311 | 1.58059 |
+| Random-N | Right roll | Small | 36.7 | 25.290 | 0.06501 | 2.70241 |
+| Random-N | Right roll | Medium | 36.6 | 22.221 | 0.02534 | 2.01176 |
+| Random-N | Right roll | Large | 26.7 | 40.358 | 0.03451 | 2.48726 |
